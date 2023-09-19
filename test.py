@@ -1,61 +1,94 @@
 import tkinter as tk
 
-root = tk.Tk()
-root.title("Move App")
-root.state('zoomed') # this creates a window that takes over the screen
-root.minsize(150, 100)
+import clr
+from tkwebview2.tkwebview2 import WebView2, have_runtime, install_runtime
+clr.AddReference('System.Windows.Forms')
+clr.AddReference('System.Threading')
+from System.Windows.Forms import Control
+from System.Threading import Thread,ApartmentState,ThreadStart
 
-# Create a Canvas widget to hold the frame and enable scrolling
-canvas = tk.Canvas(root)
-canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+if not have_runtime():  # 没有webview2 runtime
+    install_runtime()
 
-# Create a Scrollbar and connect it to the Canvas
-scrollbar = tk.Scrollbar(root, command=canvas.yview)
-scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
-canvas.config(yscrollcommand=scrollbar.set)
+def main():
 
-# Create a frame to hold your content of the canvers
-frame = tk.Frame(canvas)
-canvas.create_window((0, 0), window=frame, anchor=tk.NW)
+        root = tk.Tk()
+        root.title("Move App")
+        root.state('zoomed') # this creates a window that takes over the screen
+        root.minsize(150, 100)
 
-# Create a large frame within the canvas frame (replace this with your content)
-large_frame = tk.Frame(frame, width=800, height=1900)
-large_frame.pack()
+        # Get the screen dimensions
+        screen_width = root.winfo_screenwidth()
+        screen_height = root.winfo_screenheight()
 
-# Add widgets and content to the large frame (replace this with your content)
-# Example content:
-label = tk.Label(large_frame, bg='green', text="This is a label in the large frame")
-label.place(x = 0.1, rely=0.1, relheight = 0.1)
+        # Create a Canvas widget to hold the frame and enable scrolling
+        canvas = tk.Canvas(root, highlightthickness=0)
+        canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+
+        # Create a Scrollbar and connect it to the Canvas
+        scrollbar = tk.Scrollbar(root, command=canvas.yview)
+        #scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+        canvas.config(yscrollcommand=scrollbar.set)
+
+        # Create a frame to hold your content of the canvers
+        frame = tk.Frame(canvas)
+        canvas.create_window((0, 0), window=frame, anchor=tk.NW)
+
+        # Create a large frame within the canvas frame (replace this with your content)
+        large_frame = tk.Frame(frame, bg='gray', width=screen_width,  height=1900)
+        large_frame.pack(fill=tk.X)
+
+        def on_frame_configure(event):  # Update the canvas scrolling region when the large frame changes size
+            canvas.configure(scrollregion=canvas.bbox("all"))
+
+        def on_mouse_wheel(event):  # Function to handle mouse wheel scrolling
+            # Scroll the canvas up or down based on the mouse wheel direction
+            if event.delta < 0:
+                canvas.yview_scroll(1, "units")
+            else:
+                canvas.yview_scroll(-1, "units")
+
+        def Load_Movie(widget, movie_id):
+            movie_id = 'tt8385148'
+            frame2 = WebView2(widget, 500, 5000)
+            frame2.load_url(f'https://vidsrc.to/embed/movie/{movie_id}')
+            frame2.pack(side='left', padx=20, fill='both', expand=True)
+
+        #  content:
+
+        video_box = tk.Frame(large_frame, bg='green')
+        video_box.place(relx=0.03, rely=0.04, relheight=0.4, relwidth=0.94)
+        Load_Movie(video_box, None)
 
 
-label2 = tk.Label(large_frame, bg='green',text="This is a label in the large frame")
-label2.place(x = 0.1, rely=0.9, relheight = 0.1)
-
-
-def on_frame_configure(event): # Update the canvas scrolling region when the large frame changes size
-    canvas.configure(scrollregion=canvas.bbox("all"))
-
-frame.bind("<Configure>", on_frame_configure)
+        label2 = tk.Label(large_frame, bg='green',text="This is a label in the large frame")
+        label2.place(x = 0.1, rely=0.9, relheight = 0.1)
 
 
 
-
-
-
-def on_mouse_wheel(event):  # Function to handle mouse wheel scrolling
-    # Scroll the canvas up or down based on the mouse wheel direction
-    if event.delta < 0:
-        canvas.yview_scroll(1, "units")
-    else:
-        canvas.yview_scroll(-1, "units")
-
-
-
-canvas.bind_all("<MouseWheel>", on_mouse_wheel)  # Bind the mouse wheel event to the canvas
+        frame.bind("<Configure>", on_frame_configure)
 
 
 
 
 
 
-root.mainloop()
+
+
+
+
+        canvas.bind_all("<MouseWheel>", on_mouse_wheel)  # Bind the mouse wheel event to the canvas
+
+        # Configure the canvas scrolling region to hide scrollbars
+        canvas.configure(scrollregion=canvas.bbox("all"))
+
+
+
+
+        root.mainloop()
+
+if __name__ == "__main__":
+    t = Thread(ThreadStart(main))
+    t.ApartmentState = ApartmentState.STA
+    t.Start()
+    t.Join()
