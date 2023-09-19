@@ -45,7 +45,7 @@ if __name__ == '__main__':
     window.events.closed += on_closed
     window.events.closing += on_closing
     window.events.shown += on_shown
-    window.events.loaded += on_loaded
+
     window.events.minimized += on_minimized
     window.events.maximized += on_maximized
     window.events.restored += on_restored
