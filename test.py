@@ -9,8 +9,9 @@ from System.Threading import Thread,ApartmentState,ThreadStart
 
 if not have_runtime():  # 没有webview2 runtime
     install_runtime()
-
+global hold
 def main():
+        global hold
 
         root = tk.Tk()
         root.title("Move App")
