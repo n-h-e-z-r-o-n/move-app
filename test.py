@@ -64,10 +64,10 @@ def main():
         video_box = tk.Frame(large_frame, bg='green')
         video_box.place(relx=0.03, rely=0.04, relheight=0.4, relwidth=0.94)
         Load_Movie(video_box, None)
-        hold.full_screeen()
+       
 
 
-        label2 = tk.Button(large_frame, bg='green',text="This is a label in the large frame")
+        label2 = tk.Button(large_frame, bg='green',text="This is a label in the large frame", command=lambda:hold.full_screeen())
         label2.place(x = 0.1, rely=0.7, relheight = 0.1)
 
 
