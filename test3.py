@@ -40,7 +40,7 @@ def on_moved(x, y):
 
 
 if __name__ == '__main__':
-    window = webview.create_window('Simple browser', 'https://vidsrc.to/embed/movie/tt8385148', confirm_close=True)
+    window = webview.create_window('Simple browser', 'https://vidsrc.to/embed/movie/tt8385148', confirm_close=True, fullscreen=True)
 
     window.events.closed += on_closed
     window.events.closing += on_closing
