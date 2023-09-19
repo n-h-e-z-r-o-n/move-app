@@ -49,10 +49,12 @@ def main():
                 canvas.yview_scroll(-1, "units")
 
         def Load_Movie(widget, movie_id):
+            global hold
             movie_id = 'tt8385148'
             frame2 = WebView2(widget, 500, 5000)
+            hold = frame2
             frame2.load_url(f'https://vidsrc.to/embed/movie/{movie_id}')
-            frame2.full_screeen()
+
             frame2.pack(side='left', padx=20, fill='both', expand=True)
 
 
@@ -61,6 +63,7 @@ def main():
         video_box = tk.Frame(large_frame, bg='green')
         video_box.place(relx=0.03, rely=0.04, relheight=0.4, relwidth=0.94)
         Load_Movie(video_box, None)
+        hold.full_screeen()
 
 
         label2 = tk.Button(large_frame, bg='green',text="This is a label in the large frame")
