@@ -36,11 +36,7 @@ def main():
     frame2 = WebView2(root, 500, 500)
     frame2.pack(side='left', padx=20, fill='both', expand=True)
 
-    # Bind event handlers to WebView2 events
-    frame2.NavigationCompleted += on_navigation_completed
-    frame2.WebMessageReceived += on_web_message_received
-    frame2.NavigationStarting += on_navigation_starting
-    frame2.DocumentTitleChanged += on_document_title_changed
+
 
     frame2.load_url('https://vidsrc.to/embed/movie/tt8385148')
 
