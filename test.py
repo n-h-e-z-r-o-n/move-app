@@ -52,7 +52,9 @@ def main():
             movie_id = 'tt8385148'
             frame2 = WebView2(widget, 500, 5000)
             frame2.load_url(f'https://vidsrc.to/embed/movie/{movie_id}')
+            frame2.full_screeen()
             frame2.pack(side='left', padx=20, fill='both', expand=True)
+
 
         #  content:
 
@@ -61,8 +63,8 @@ def main():
         Load_Movie(video_box, None)
 
 
-        label2 = tk.Label(large_frame, bg='green',text="This is a label in the large frame")
-        label2.place(x = 0.1, rely=0.9, relheight = 0.1)
+        label2 = tk.Button(large_frame, bg='green',text="This is a label in the large frame")
+        label2.place(x = 0.1, rely=0.7, relheight = 0.1)
 
 
 
