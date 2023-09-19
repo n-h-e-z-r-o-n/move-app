@@ -18,7 +18,7 @@ def main():
     frame2=WebView2(root,500,500)
     frame2.pack(side='left',padx=20,fill='both',expand=True)
     frame2.load_url('https://vidsrc.to/embed/movie/tt8385148')
-
+    frame2.toggle_fullscreen()
     root.mainloop()
 
 if __name__ == "__main__":
