@@ -63,6 +63,8 @@ def main():
             root.after(1000, lambda: change_color(widget))
 
         def pulsing_color(widget):
+            def con():
+                continue
             for i in range(360):  # Transition through hue values (0 to 359)
                 hue = i / 360.0
                 rgb_color = tuple(int(val * 255) for val in colorsys.hsv_to_rgb(hue, 1, 1))  # Convert hue to RGB
