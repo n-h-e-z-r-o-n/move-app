@@ -134,11 +134,13 @@ def main():
             return photo
 
         def on_entry_click(widget, event):
+            global placeholder_text
             if widget.get() == "Placeholder Text":
                 widget.delete(0, tk.END)
                 widget.config(fg='black')  # Change text color to black
 
         def on_focusout(widget, event):
+            global placeholder_text
             if not widget.get():
                 widget.insert(0, "Placeholder Text")
                 widget.config(fg='gray')  # Change text color to gray
@@ -152,8 +154,11 @@ def main():
         #change_fg_OnHover(image_label,'Blue', 'white')
         change_color(image_label)
 
-        Search_box =  tk.Entry(large_frame,  font = ('Georgia', 14), justify='center', bg = '#ab23ff', borderwidth=0, border=0, fg='white')
+        Search_box =  tk.Entry(large_frame,  font = ('Georgia', 14), justify='center', bg = '#ab23ff', borderwidth=0, border=0, fg='gray')
         Search_box.place(relx=0.30, rely=0.007, relheight=0.02, relwidth=0.4)
+        placeholder_text = "Search"
+        Search_box.bind("<FocusIn>", lambda e: on_entry_click(Search_box, e))
+        Search_box.bind("<FocusOut>", lambda e: on_focusout(Search_box, e))
 
 
 
