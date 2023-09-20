@@ -4,7 +4,7 @@ ia = imdb.Cinemagoer()
 # Set up SQLite caching
 print(dir(imdb))
 
-movies = ia.search_movie('matrix')
+movies = ia.search_movie('Spider-Man: Across the Spider-Verse')
 
 print(movies)
 print(type(movies))
