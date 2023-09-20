@@ -13,7 +13,7 @@ print("title", movies[0]['title'])
 print("ID", movies[0].movieID)
 print("Year:", movies[0]["year"])
 print("Plot:", movies[0]["plot"])
-
+print("Genres:", ", ".join(movies[0]["genres"]))
 #for x in movies:
     # print(x)
 
