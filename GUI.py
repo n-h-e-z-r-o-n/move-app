@@ -107,8 +107,8 @@ def main():
         image_label.place(relx=0, rely=0.0, relheight=0.45, relwidth=1)
         photo = imagen(image_label)
         image_label.config(image=photo)
-        button = customtkinter.CTkButton(root, text="CTkButton", command=on_button_click)
-        play_bn = tk.Button(image_label, text='▶', font = ('Arial Black', 36), justify='center', bg = '#ab23ff', borderwidth=0, border=0, fg='white')
+        play_bn = customtkinter.CTkButton(root, text="CTkButton")
+        #play_bn = tk.Button(image_label, text='▶', font = ('Arial Black', 36), justify='center', bg = '#ab23ff', borderwidth=0, border=0, fg='white')
         play_bn.place(relx=0.49, rely=0.47, relheight=0.04, relwidth=0.02)
 
 
