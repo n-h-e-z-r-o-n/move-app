@@ -7,7 +7,8 @@ movies = ia.search_movie('matrix')
 print(movies)
 print(type(movies))
 
-
+# Fetch additional details, including images
+ia.update(movies[0])
 print("title", movies[0]['title'])
 print("ID", movies[0].movieID)
 print("Year:", movies[0]["year"])
