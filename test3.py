@@ -11,7 +11,7 @@ root.state('zoomed')
 
 # Create a frame to hold the image
 image_frame = tk.Frame(root)
-image_frame.pack()
+image_frame.place(relx=0, rely=0, relheight=1, relwidth=1)
 
 # Define the URL of the web image
 image_url = "https://m.media-amazon.com/images/M/MV5BMzI0NmVkMjEtYmY4MS00ZDMxLTlkZmEtMzU4MDQxYTMzMjU2XkEyXkFqcGdeQXVyMzQ0MzA0NTM@.jpg"  # Replace with the actual image URL
@@ -27,7 +27,7 @@ image = Image.open(BytesIO(image_data))
 photo = ImageTk.PhotoImage(image)
 
 # Create a label to display the image
-image_label = tk.Label(image_frame, bg='blue')
+image_label = tk.Frame(image_frame, bg='blue', image=photo)
 image_label.place(relx=0.03, rely=0.04, relheight=0.4, relwidth=0.94)
 
 # Keep a reference to the PhotoImage to prevent it from being garbage collected
