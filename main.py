@@ -22,6 +22,7 @@ print("Director:", ", ".join([director["name"] for director in movies[0]["direct
 print("Cast:", ", ".join([actor["name"] for actor in movies[0]["cast"]]))
 print()
 print(movies[0].current_info)
+print("Plot:", movies[0]["main"])
 
 
 #for x in movies:
