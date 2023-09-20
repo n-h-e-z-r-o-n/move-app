@@ -10,6 +10,8 @@ print(type(movies))
 
 print(movies[0]['title'])
 print(movies[0].movieID)
+print("Year:", movies["year"])
+print("Plot:", movies["plot"])
 
 #for x in movies:
     # print(x)
