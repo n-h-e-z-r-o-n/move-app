@@ -64,6 +64,7 @@ def main():
 
         def pulsing_color(widget):
             def con():
+                if
                 continue
             for i in range(360):  # Transition through hue values (0 to 359)
                 hue = i / 360.0
