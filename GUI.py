@@ -25,13 +25,11 @@ def main():
         root.title("Move App")
         root.state('zoomed') # this creates a window that takes over the screen
         root.minsize(150, 100)
-        root.wm_attributes('-transparentcolor', '#ab23ff')
 
         # Get the screen dimensions
         screen_width = root.winfo_screenwidth()
         screen_height = root.winfo_screenheight()
         large_frame_size = screen_height+700
-
 
         # Create a Canvas widget to hold the frame and enable scrolling
         canvas = tk.Canvas(root, highlightthickness=0)
