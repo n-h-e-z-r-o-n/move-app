@@ -57,7 +57,7 @@ def main():
             widget.config(fg=new_color)  # Change the background color of the label
 
             # Schedule the function to run again in 1000 milliseconds (1 second)
-            root.after(1000, change_color)
+            root.after(1000, lambda: change_color(widget))
 
         def change_bg_OnHover(button, colorOnHover, colorOnLeave):  # Color change bg on Mouse Hover
             button.bind("<Enter>", func=lambda e: button.config(background=colorOnHover))
