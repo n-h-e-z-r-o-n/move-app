@@ -1,24 +1,30 @@
 import tkinter as tk
-import random
+import time
+from colorsys import rgb_to_hsv, hsv_to_rgb
 
+def rgb_to_hex(rgb):
+    """Convert RGB color tuple to hexadecimal string."""
+    return "#{:02X}{:02X}{:02X}".format(*rgb)
 
-def change_color(widget):
-    # Generate a random color in hexadecimal format (#RRGGBB)
-    new_color = "#{:02X}{:02X}{:02X}".format(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
+def pulsing_color(label):
+    base_color = (255, 0, 0)  # You can change this to the desired color (RGB format)
 
-    widget.config(bg=new_color)  # Change the background color of the label
+    for i in range(360):  # Transition through hue values (0 to 359)
+        hue = i / 360.0
+        rgb_color = hsv_to_rgb(hue, 1, 1)  # Convert hue to RGB
+        hex_color = rgb_to_hex(tuple(int(val * 255) for val in rgb_color))
 
-    # Schedule the function to run again in 1000 milliseconds (1 second)
-    root.after(1000, lambda : change_color(widget))
-
+        label.config(bg=hex_color)
+        label.update()  # Update the label's appearance
+        time.sleep(0.01)  # Adjust the delay as needed for the desired pulsing speed
 
 root = tk.Tk()
 root.geometry("400x400")
 
-label = tk.Label(root, text="Changing Color", width=20, height=5)
+label = tk.Label(root, text="Pulsing Color", width=20, height=5)
 label.pack()
 
-# Start the color-changing loop
-change_color(label)
+# Start the pulsing color effect
+pulsing_color(label)
 
 root.mainloop()
