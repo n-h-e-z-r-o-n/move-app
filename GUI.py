@@ -73,9 +73,9 @@ def main():
                     widget.config(bg=hex_color)
                     widget.update()  # Update the label's appearance
 
-                time.sleep(0.04)  # Adjust the delay as needed for the desired pulsing speed
+                #time.sleep(0.04)  # Adjust the delay as needed for the desired pulsing speed
 
-            root.after(1000, lambda: pulsing_color(widget))
+            root.after(3000, lambda: pulsing_color(widget))
 
         def change_bg_OnHover(button, colorOnHover, colorOnLeave):  # Color change bg on Mouse Hover
             button.bind("<Enter>", func=lambda e: button.config(background=colorOnHover))
