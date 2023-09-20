@@ -23,6 +23,8 @@ image_data = response.content
 # Create a PIL Image object from the image data
 image = Image.open(BytesIO(image_data))
 
+image = image.resize((frame.winfo_width(), frame.winfo_height()), Image.ANTIALIAS)
+
 # Create a PhotoImage object from the PIL Image
 photo = ImageTk.PhotoImage(image)
 
