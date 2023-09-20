@@ -1,24 +1,19 @@
-from tkinter import * 
+import tkinter as tk
 
-cnt=1
-def msgShow():
-    global cnt
-    # label["text"] = "I love Python x" + str(cnt)
-    # label["bg"] = "lightyellow"
-    # label["fg"] = "blue"
-    label.config(text="I love Python x" + str(cnt),
-            bg="lightyellow",fg="blue")
-    cnt += 1
+root = tk.Tk()
 
-root = Tk()
-root.title("apidemos.com")
-root.geometry("300x300")
-label = Label(root)
-# label["text"] = "I love Java"
+# Create a Button widget with a raised border.
+button1 = tk.Button(root, text="Raised", relief=tk.RAISED)
 
-btn = Button(root,command=msgShow,
-                cursor="star")
-label.pack()
-btn.pack()
+# Create a Button widget with a sunken border.
+button2 = tk.Button(root, text="Sunken", relief=tk.SUNKEN)
+
+# Create a Button widget with a flat border.
+button3 = tk.Button(root, text="Flat", relief=tk.FLAT)
+
+# Pack the buttons to the window.
+button1.pack()
+button2.pack()
+button3.pack()
 
 root.mainloop()
