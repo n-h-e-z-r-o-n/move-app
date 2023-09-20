@@ -25,7 +25,7 @@ def imagen(widget):
     image = Image.open(BytesIO(image_data))
 
     # Resize the image to match the frame's dimensions
-    image = image.resize((screen_width, (screen_height/2), Image.LANCZOS)
+    image = image.resize((screen_width, (screen_height)), Image.LANCZOS)
 
     # Create a PhotoImage object from the PIL Image
     photo = ImageTk.PhotoImage(image)
