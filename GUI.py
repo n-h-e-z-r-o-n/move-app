@@ -115,7 +115,7 @@ def main():
         play_bn = tk.Button(image_label, text='▶', font = ('Arial Black', 36), justify='center', bg = '#ab23ff', borderwidth=0, border=0, fg='white')
         #play_bn.place(relx=0.48, rely=0.48, relheight=0.04, relwidth=0.04)
 
-        
+
 
 
         video_box = tk.Frame(large_frame, bg='green')
