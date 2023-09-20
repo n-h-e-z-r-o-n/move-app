@@ -7,7 +7,8 @@ from io import BytesIO
 root = tk.Tk()
 root.title("Display Web Image in tkinter")
 root.state('zoomed')
-
+screen_width = root.winfo_screenwidth()
+screen_height = root.winfo_screenheight()
 
 # Create a frame to hold the image
 image_frame = tk.Frame(root)
@@ -24,7 +25,7 @@ def imagen(widget):
     image = Image.open(BytesIO(image_data))
 
     # Resize the image to match the frame's dimensions
-    image = image.resize((1940, 1900), Image.LANCZOS)
+    image = image.resize((screen_width, (screen_height/2), Image.LANCZOS)
 
     # Create a PhotoImage object from the PIL Image
     photo = ImageTk.PhotoImage(image)
