@@ -49,9 +49,7 @@ def main():
         large_frame = tk.Frame(frame, bg='gray', width=screen_width,  height=large_frame_size)
         large_frame.pack(fill=tk.X)
 
-        def test_search(widget, colorOnHover, colorOnLeave):  # Color change on Mouse Hover
-            widget.bind("<Enter>", func=lambda e: button.config(background=colorOnHover, command=click_handler()))
-            button.bind("<Leave>", func=lambda e: button.config(background=colorOnLeave, command=release_handler()))
+
 
         def on_frame_configure(event):  # Update the canvas scrolling region when the large frame changes size
             canvas.configure(scrollregion=canvas.bbox("all"))
