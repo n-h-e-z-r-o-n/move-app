@@ -11,6 +11,6 @@ win.geometry("700x350")
 win.wm_attributes('-transparentcolor', '#ab23ff')
 
 #Create a Label
-Label(win, text= "Hello World!", font= ('Helvetica 18'), bg= '#ab23ff').pack(ipadx= 50, ipady=50, padx= 20)
+Label(win, text= "Hello World!", font= ('Helvetica 18'), bg= 'blue').pack(ipadx= 50, ipady=50, padx= 20)
 
 win.mainloop()
