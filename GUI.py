@@ -107,7 +107,7 @@ def main():
         image_label.place(relx=0, rely=0.0, relheight=0.45, relwidth=1)
         photo = imagen(image_label)
         image_label.config(image=photo)
-        play_bn = tk.Button(image_label, text='▶', font = ('Arial Black', 26), justify='center',)
+        play_bn = tk.Button(image_label, text='▶', font = ('Arial Black', 26), justify='center', bg='rgba(0, 0, 0, 0)')
         play_bn.place(relx=0.49, rely=0.47, relheight=0.04, relwidth=0.02)
 
 
