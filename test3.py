@@ -1,18 +1,24 @@
 import tkinter as tk
+import random
 
-def change_brightness(widget, brightness):
-    """Sets the brightness of the widget to the specified value."""
-    widget.config(highlightbackground=widget.cget("highlightbackground")[:4] + str(brightness), highlightcolor=widget.cget("highlightcolor")[:4] + str(brightness))
 
-# Create a Label widget.
-label = tk.Label(text="This is a label.")
+def change_color():
+    # Generate a random color in hexadecimal format (#RRGGBB)
+    new_color = "#{:02X}{:02X}{:02X}".format(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
 
-# Bind the change_brightness function to the Enter and Leave events of the label.
-label.bind("<Enter>", lambda event: change_brightness(label, 1.5))
-label.bind("<Leave>", lambda event: change_brightness(label, 1.0))
+    label.config(bg=new_color)  # Change the background color of the label
 
-# Pack the label to the window.
-label.pack()
+    # Schedule the function to run again in 1000 milliseconds (1 second)
+    root.after(1000, change_color)
+
 
 root = tk.Tk()
+root.geometry("400x400")
+
+label = tk.Label(root, text="Changing Color", width=20, height=5)
+label.pack()
+
+# Start the color-changing loop
+change_color()
+
 root.mainloop()
