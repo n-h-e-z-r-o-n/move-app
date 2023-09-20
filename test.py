@@ -10,17 +10,22 @@ from System.Threading import Thread,ApartmentState,ThreadStart
 if not have_runtime():  # 没有webview2 runtime
     install_runtime()
 global hold
+is_fullscreen = False
 def main():
         global hold
+        global is_fullscreen
 
         root = tk.Tk()
         root.title("Move App")
         root.state('zoomed') # this creates a window that takes over the screen
         root.minsize(150, 100)
+        root.overrideredirect(True)
 
         # Get the screen dimensions
         screen_width = root.winfo_screenwidth()
         screen_height = root.winfo_screenheight()
+        large_frame_size = screen_height+700
+
 
         # Create a Canvas widget to hold the frame and enable scrolling
         canvas = tk.Canvas(root, highlightthickness=0)
@@ -36,7 +41,7 @@ def main():
         canvas.create_window((0, 0), window=frame, anchor=tk.NW)
 
         # Create a large frame within the canvas frame (replace this with your content)
-        large_frame = tk.Frame(frame, bg='gray', width=screen_width,  height=1900)
+        large_frame = tk.Frame(frame, bg='gray', width=screen_width,  height=large_frame_size)
         large_frame.pack(fill=tk.X)
 
         def on_frame_configure(event):  # Update the canvas scrolling region when the large frame changes size
@@ -57,14 +62,34 @@ def main():
             frame2.load_url(f'https://vidsrc.to/embed/movie/{movie_id}')
             frame2.pack(side='left', padx=0, fill='both', expand=True)
 
+        def toggle_fullscreen(widget):
+            global is_fullscreen
+            if is_fullscreen:
+                # Restore the video frame to its original size and position
+                widget.forget()
+                widget.place(relx=0.03, rely=0.04, relheight=0.4, relwidth=0.94, x=original_x, y=original_y, width=original_width, height=original_height)
+                is_fullscreen = False
+            else:
+                # Expand the video frame to full screen
+                widget.forget()
+                print(screen_height,screen_width)
+                widget.place(relx=0, rely=0, x=0, y=0, relwidth=1, relheight=screen_height/large_frame_size)
+                is_fullscreen = True
+
 
         #  content:
 
         video_box = tk.Frame(large_frame, bg='green')
         video_box.place(relx=0.03, rely=0.04, relheight=0.4, relwidth=0.94)
         Load_Movie(video_box, None)
-       
 
+        original_x = video_box.winfo_x()
+        original_y = video_box.winfo_y()
+        original_width = video_box.winfo_width()
+        original_height = video_box.winfo_height()
+
+        fullscreen_button = tk.Button(video_box, text="Expand to Full Screen", command=lambda: toggle_fullscreen(video_box))
+        fullscreen_button.place(relx=0.01, rely=0.01, relheight=0.1, relwidth=0.1)
 
         label2 = tk.Button(large_frame, bg='green',text="This is a label in the large frame", command=lambda:hold.full_screeen())
         label2.place(x = 0.1, rely=0.7, relheight = 0.1)
