@@ -27,8 +27,8 @@ image = Image.open(BytesIO(image_data))
 photo = ImageTk.PhotoImage(image)
 
 # Create a label to display the image
-image_label = tk.Label(image_frame, image=photo)
-image_label.place(relx=0.03, rely=0.04, relheight=0.4, relwidth=0.94)
+image_label = tk.Label(image_frame, image=photo, bg='blue')
+image_label.pack()
 
 # Keep a reference to the PhotoImage to prevent it from being garbage collected
 image_label.photo = photo
