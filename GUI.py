@@ -1,4 +1,7 @@
 import tkinter as tk
+from PIL import Image, ImageTk
+import requests
+from io import BytesIO
 
 import clr
 from tkwebview2.tkwebview2 import WebView2, have_runtime, install_runtime
@@ -81,6 +84,10 @@ def main():
 
 
         #  content:
+
+        image_label = tk.Label(large_frame, bg='blue')
+        image_label.place(relx=0, rely=0.0, relheight=0.4, relwidth=1)
+
 
         video_box = tk.Frame(large_frame, bg='green')
         #video_box.place(relx=0.03, rely=0.04, relheight=0.4, relwidth=0.94)
