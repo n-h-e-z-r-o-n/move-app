@@ -182,6 +182,10 @@ def main():
         fullscreen_button = tk.Button(video_box, border=0, borderwidth=0, text="⤢",  bg='black', justify='center', activebackground='black', activeforeground='white',fg='white', font = ('Arial Black', 26),  command=lambda: toggle_fullscreen(video_box))
         fullscreen_button.place(relx=0.97, rely=0.95, relheight=0.05, relwidth=0.03)
 
+
+
+
+
         label2 = tk.Button(large_frame, bg='green',text="This is a label in the large frame", command=lambda:hold.full_screeen())
         label2.place(x = 0.1, rely=0.7, relheight = 0.1)
 
