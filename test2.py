@@ -6,7 +6,7 @@ def on_button_click():
 
 root = tk.Tk()
 root.title("Rounded Button Example")
-
+root.config(bg='yellow')
 # Create a custom style
 style = ttk.Style()
 
