@@ -1,12 +1,27 @@
-import tkinter as tk
-from tkVideoPlayer import TkinterVideo
+import imdb
 
-root = tk.Tk()
+# Create an instance of the IMDb class
+ia = imdb.IMDb()
 
-videoplayer = TkinterVideo(master=root, scaled=True)
-videoplayer.load(r"C:\Users\HEZRON WEKESA\Videos\download.mp4")
-videoplayer.pack(expand=True, fill="both")
+# Search for a movie by its title
+movie_title = "The Shawshank Redemption"
+movies = ia.search_movie(movie_title)
 
-videoplayer.play() # play the video
+if movies:
+    # Get the first movie (most relevant)
+    movie = movies[0]
 
-root.mainloop()
+    # Fetch additional details, including images
+    ia.update(movie)
+
+    # Print the movie's details
+    print("Title:", movie["title"])
+    print("Year:", movie["year"])
+    print("Plot:", movie["plot"])
+    print("Genres:", ", ".join(movie["genres"]))
+
+    # Access the movie's images
+    for image_url in movie.get("full-size cover url", []):
+        print("Image URL:", image_url)
+else:
+    print(f"No movie found with the title: {movie_title}")
