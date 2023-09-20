@@ -107,8 +107,8 @@ def main():
         image_label.place(relx=0, rely=0.0, relheight=0.45, relwidth=1)
         photo = imagen(image_label)
         image_label.config(image=photo)
-        play_bn = tk.Button(image_label, text='▶' )
-        play_bn.place(relx=0.49, rely=0.49, relheight=0.02, relwidth=0.02)
+        play_bn = tk.Button(image_label, text='▶', font = ('Arial Black', 26))
+        play_bn.place(relx=0.49, rely=0.47, relheight=0.04, relwidth=0.02)
 
 
         video_box = tk.Frame(large_frame, bg='green')
@@ -120,7 +120,7 @@ def main():
         original_width = video_box.winfo_width()
         original_height = video_box.winfo_height()
 
-        fullscreen_button = tk.Button(video_box, border=0, borderwidth=0, text="⤢",  bg='black', activebackground='black', activeforeground='white',fg='white', font = ('Arial Black', 26),  command=lambda: toggle_fullscreen(video_box))
+        fullscreen_button = tk.Button(video_box, border=0, borderwidth=0, text="⤢",  bg='black', justify='center', activebackground='black', activeforeground='white',fg='white', font = ('Arial Black', 26),  command=lambda: toggle_fullscreen(video_box))
         fullscreen_button.place(relx=0.97, rely=0.95, relheight=0.05, relwidth=0.03)
 
         label2 = tk.Button(large_frame, bg='green',text="This is a label in the large frame", command=lambda:hold.full_screeen())
