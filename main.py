@@ -14,6 +14,9 @@ print("ID", movies[0].movieID)
 print("Year:", movies[0]["year"])
 print("Plot:", movies[0]["plot"])
 print("Genres:", ", ".join(movies[0]["genres"]))
+image_url = movies[0].get("full-size cover url", [])
+print("Image URL:", image_url)
+
 #for x in movies:
     # print(x)
 
