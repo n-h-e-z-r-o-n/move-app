@@ -6,6 +6,8 @@ from io import BytesIO
 # Create the main tkinter window
 root = tk.Tk()
 root.title("Display Web Image in tkinter")
+root.state('zoomed')
+
 
 # Create a frame to hold the image
 image_frame = tk.Frame(root)
