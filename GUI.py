@@ -136,7 +136,7 @@ def main():
 
         #  content:
 
-        image_label = tk.Button(large_frame, bg='blue', fg='white', borderwidth=0, border=0, activebackground='white', activeforeground='yellow',  font = ('Arial Black', 76))
+        image_label = tk.Button(large_frame, bg='blue', fg='white', borderwidth=0, border=0, activebackground='white', activeforeground='yellow', relief=tk.FLAT, font = ('Arial Black', 76))
         image_label.place(relx=0, rely=0.0, relheight=0.45, relwidth=1)
         photo = imagen(image_label)
         image_label.config(image=photo, compound=tk.CENTER, text='▷')
