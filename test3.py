@@ -26,7 +26,7 @@ image = Image.open(BytesIO(image_data))
 image_label = tk.Frame(image_frame, bg='blue')
 image_label.place(relx=0.03, rely=0.04, relheight=0.4, relwidth=0.94)
 
-image = image.resize((image_label.winfo_width(), image_label.winfo_height()), Image.ANTIALIAS)
+image = image.resize((image_label.winfo_width(), image_label.winfo_height()), Image.LANCZOS)
 
 # Create a PhotoImage object from the PIL Image
 photo = ImageTk.PhotoImage(image)

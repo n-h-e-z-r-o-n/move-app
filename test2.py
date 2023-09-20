@@ -11,7 +11,7 @@ def display_web_image():
     image = Image.open(image_bytes)
 
     # Resize the image to match the frame's dimensions
-    image = image.resize((frame.winfo_width(), frame.winfo_height()), Image.ANTIALIAS)
+    image = image.resize((frame.winfo_width(), frame.winfo_height()), Image.LANCZOS)
 
     photo = ImageTk.PhotoImage(image)
     label.config(image=photo)
