@@ -19,7 +19,6 @@ def main():
         root.title("Move App")
         root.state('zoomed') # this creates a window that takes over the screen
         root.minsize(150, 100)
-        root.overrideredirect(True)
 
         # Get the screen dimensions
         screen_width = root.winfo_screenwidth()
@@ -66,6 +65,7 @@ def main():
             global is_fullscreen
             if is_fullscreen:
                 # Restore the video frame to its original size and position
+                root.overrideredirect(False)
                 widget.forget()
                 widget.place(relx=0.03, rely=0.04, relheight=0.4, relwidth=0.94, x=original_x, y=original_y, width=original_width, height=original_height)
                 is_fullscreen = False
