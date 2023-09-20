@@ -1,45 +1,67 @@
 import tkinter as tk
+from PIL import Image, ImageTk, ImageDraw
 import requests
-from PIL import Image, ImageTk, ImageFilter
 from io import BytesIO
 
-# Define the URL of the web image
-image_url = "https://m.media-amazon.com/images/M/MV5BMzI0NmVkMjEtYmY4MS00ZDMxLTlkZmEtMzU4MDQxYTMzMjU2XkEyXkFqcGdeQXVyMzQ0MzA0NTM@.jpg"  # Replace with the actual image URL
+# Define screen width and height (you should set these values appropriately)
 
-# Download the image from the web
-response = requests.get(image_url)
-image_data = response.content
 
-# Create a PIL Image object from the image data
-image = Image.open(BytesIO(image_data))
 
-# Assuming you have screen_width and screen_height defined earlier
-screen_width = 800  # Replace with your actual screen dimensions
-screen_height = 600
+def create_gradient_mask(width, height):
+    # Create a gradient mask image
+    mask = Image.new("L", (width, height))
 
-# Resize the image to match the frame's dimensions
-image = image.resize((screen_width, screen_height), Image.LANCZOS)
+    # Create a gradient from black to white
+    for y in range(height):
+        alpha = int((y / height) * 255)
+        mask.putpixel((width // 2, y), alpha)
 
-# Create a gradient mask image
-gradient = Image.new("L", (screen_width, screen_height))
-for y in range(screen_height):
-    alpha = int(255 * abs(y - (screen_height / 2)) / (screen_height / 2))
-    gradient.putpixel((0, y), alpha)
+    return mask
 
-# Apply the gradient as an alpha mask to the image
-image.putalpha(gradient)
+def apply_gradient(image, gradient_mask):
+    # Apply the gradient mask to the image
+    gradient = Image.new("RGBA", image.size)
+    gradient.paste(image, (0, 0))
 
-# Create a PhotoImage object from the PIL Image
-photo = ImageTk.PhotoImage(image)
+    # Create a transparent version of the image
+    image = Image.new("RGBA", image.size)
+    image.paste(gradient, (0, 0), gradient_mask)
+
+    return image
+
+def imagen(widget):
+    # Define the URL of the web image
+    image_url = "https://m.media-amazon.com/images/M/MV5BMzI0NmVkMjEtYmY4MS00ZDMxLTlkZmEtMzU4MDQxYTMzMjU2XkEyXkFqcGdeQXVyMzQ0MzA0NTM@.jpg"
+
+    # Download the image from the web
+    response = requests.get(image_url)
+    image_data = response.content
+
+    # Create a PIL Image object from the image data
+    image = Image.open(BytesIO(image_data))
+
+    # Resize the image to match the frame's dimensions
+    image = image.resize((screen_width, screen_height), Image.LANCZOS)
+
+    # Create a gradient mask for the top and bottom
+    gradient_mask = create_gradient_mask(screen_width, screen_height)
+
+    # Apply the gradient effect to the image
+    image_with_gradient = apply_gradient(image, gradient_mask)
+
+    # Create a PhotoImage object from the modified image
+    photo = ImageTk.PhotoImage(image_with_gradient)
+
+    return photo
 
 # Create a tkinter window
 root = tk.Tk()
+root.geometry("800x600")
 
 # Create a label to display the image
 image_label = tk.Label(root, bg='blue')
-image_label.pack()
-
-# Set the image as the label's image
+image_label.place(relx=0.03, rely=0.04, relheight=0.4, relwidth=0.94)
+photo = imagen(image_label)
 image_label.config(image=photo)
 
 root.mainloop()
