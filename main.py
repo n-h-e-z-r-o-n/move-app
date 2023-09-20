@@ -2,6 +2,7 @@ import imdb
 
 ia = imdb.IMDb()
 # Set up SQLite caching
+
 print(dir(imdb))
 
 movies = ia.search_movie('matrix')
