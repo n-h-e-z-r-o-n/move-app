@@ -109,7 +109,7 @@ def main():
         image_label.config(image=photo)
         play_bn = customtkinter.CTkButton(root, text="CTkButton")
         #play_bn = tk.Button(image_label, text='▶', font = ('Arial Black', 36), justify='center', bg = '#ab23ff', borderwidth=0, border=0, fg='white')
-        play_bn.place(relx=0.49, rely=0.47, relheight=0.04, relwidth=0.02)
+        play_bn.place(relx=0.49, rely=0.47, relheight=0.04, relwidth=0.2)
 
 
 
