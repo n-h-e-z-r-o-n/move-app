@@ -24,18 +24,19 @@ def imagen(widget):
     image = Image.open(BytesIO(image_data))
 
     # Resize the image to match the frame's dimensions
-    image = image.resize((widget.winfo_width(), widget.winfo_height()), Image.LANCZOS)
+    #image = image.resize((widget.winfo_width(), widget.winfo_height()), Image.LANCZOS)
 
     # Create a PhotoImage object from the PIL Image
     photo = ImageTk.PhotoImage(image)
     return photo
 
 # Create a label to display the image
-image_label = tk.Label(image_frame, bg='blue', image=imagen(image_label))
+image_label = tk.Label(image_frame, bg='blue')
 image_label.place(relx=0.03, rely=0.04, relheight=0.4, relwidth=0.94)
-
+photo =imagen(image_label)
+image_label.config(image= )
 # Keep a reference to the PhotoImage to prevent it from being garbage collected
-image_label.photo = photo
+image_label.photo = imagen(image_label)
 
 # Start the tkinter main loop
 root.mainloop()
