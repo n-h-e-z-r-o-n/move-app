@@ -2,8 +2,7 @@ import imdb
 
 ia = imdb.Cinemagoer()
 # Set up SQLite caching
-print(dir(imdb
-          ))
+print(dir(imdb))
 
 movies = ia.search_movie('matrix')
 
