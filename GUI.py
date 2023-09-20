@@ -115,7 +115,7 @@ def main():
         image_label.place(relx=0, rely=0.0, relheight=0.45, relwidth=1)
         photo = imagen(image_label)
         image_label.config(image=photo, compound=tk.CENTER, text='▶')
-        change_fg_OnHover(image_label,'Blu')
+        change_fg_OnHover(image_label,'Blue', 'white')
 
         play_bn = tk.Button(image_label, text='▶', font = ('Arial Black', 36), justify='center', bg = '#ab23ff', borderwidth=0, border=0, fg='white')
         #play_bn.place(relx=0.48, rely=0.48, relheight=0.04, relwidth=0.04)
