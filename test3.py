@@ -13,10 +13,10 @@ def pulsing_color(label):
         hue = i / 360.0
         rgb_color = hsv_to_rgb(hue, 1, 1)  # Convert hue to RGB
         hex_color = rgb_to_hex(tuple(int(val * 255) for val in rgb_color))
-
+        if 
         label.config(bg=hex_color)
         label.update()  # Update the label's appearance
-        time.sleep(0.01)  # Adjust the delay as needed for the desired pulsing speed
+        time.sleep(0.04)  # Adjust the delay as needed for the desired pulsing speed
     root.after(1000, lambda :pulsing_color(label))
 
 root = tk.Tk()
