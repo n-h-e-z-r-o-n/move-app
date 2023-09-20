@@ -133,6 +133,15 @@ def main():
             photo = ImageTk.PhotoImage(image)
             return photo
 
+        def on_entry_click(widget, event):
+            if widget.get() == "Placeholder Text":
+                widget.delete(0, tk.END)
+                widget.config(fg='black')  # Change text color to black
+
+        def on_focusout(widget, event):
+            if not widget.get():
+                widget.insert(0, "Placeholder Text")
+                widget.config(fg='gray')  # Change text color to gray
 
         #  content:
 

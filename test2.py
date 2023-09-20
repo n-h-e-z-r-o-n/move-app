@@ -17,8 +17,8 @@ placeholder_text = "Placeholder Text"
 
 entry = tk.Entry(root, fg='gray')  # Set the initial text color to gray
 entry.insert(0, placeholder_text)
-entry.bind("<FocusIn>", lambda e:  on_entry_click(entry))
-entry.bind("<FocusOut>", lambda : on_focusout(entry))
+entry.bind("<FocusIn>", lambda e:  on_entry_click(entry, e))
+entry.bind("<FocusOut>", lambda e: on_focusout(entry, e))
 entry.pack()
 
 root.mainloop()
