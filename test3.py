@@ -7,7 +7,7 @@ def rgb_to_hex(rgb):
     return "#{:02X}{:02X}{:02X}".format(*rgb)
 
 def pulsing_color(label):
-    base_color = (255, 0, 0)  # You can change this to the desired color (RGB format)
+
 
     for i in range(360):  # Transition through hue values (0 to 359)
         hue = i / 360.0
@@ -17,6 +17,7 @@ def pulsing_color(label):
         label.config(bg=hex_color)
         label.update()  # Update the label's appearance
         time.sleep(0.01)  # Adjust the delay as needed for the desired pulsing speed
+    root.after(1000, lambda :pulsing_color(label))
 
 root = tk.Tk()
 root.geometry("400x400")
