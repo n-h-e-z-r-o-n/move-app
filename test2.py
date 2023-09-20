@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-
+import customtkinter
 def on_button_click():
     print("Button clicked!")
 
@@ -16,5 +16,8 @@ style.configure("Rounded.TButton", borderwidth=0, relief="flat", padding=10, bor
 # Create a button with the custom style
 rounded_button = ttk.Button(root, text="Click Me", style="Rounded.TButton", command=on_button_click)
 rounded_button.pack(padx=20, pady=10)
+button = customtkinter.CTkButton(root, text="CTkButton", command=on_button_click)
+button.pack(padx=20, pady=10)
+
 
 root.mainloop()
