@@ -107,7 +107,8 @@ def main():
         image_label.place(relx=0, rely=0.0, relheight=0.45, relwidth=1)
         photo = imagen(image_label)
         image_label.config(image=photo)
-        play_bn = tk.Button()
+        play_bn = tk.Button(image_label, text='▶' )
+        play_bn.place(relx=0.49, rely=0.49, relheight=0.02, relwidth=0.02)
 
 
         video_box = tk.Frame(large_frame, bg='green')
