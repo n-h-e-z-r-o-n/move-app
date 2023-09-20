@@ -9,7 +9,7 @@ def change_color(widget):
     widget.config(bg=new_color)  # Change the background color of the label
 
     # Schedule the function to run again in 1000 milliseconds (1 second)
-    root.after(1000, change_color)
+    root.after(1000, lambda : change_color(widget))
 
 
 root = tk.Tk()
@@ -19,6 +19,6 @@ label = tk.Label(root, text="Changing Color", width=20, height=5)
 label.pack()
 
 # Start the color-changing loop
-change_color()
+change_color(label)
 
 root.mainloop()
