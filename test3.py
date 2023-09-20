@@ -23,7 +23,7 @@ root = tk.Tk()
 root.geometry("400x400")
 
 # Load your image
-image = Image.open("your_image.png")  # Replace with your image file path
+image = Image.open(r"C:\Users\HEZRON WEKESA\Pictures\car.jpg")  # Replace with your image file path
 original_image = ImageTk.PhotoImage(image)
 
 label = tk.Label(root, image=original_image)
