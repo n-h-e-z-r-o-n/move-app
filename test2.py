@@ -1,31 +1,45 @@
 import tkinter as tk
-from PIL import Image, ImageTk
+import requests
+from PIL import Image, ImageTk, ImageFilter
+from io import BytesIO
+
+# Define the URL of the web image
+image_url = "https://m.media-amazon.com/images/M/MV5BMzI0NmVkMjEtYmY4MS00ZDMxLTlkZmEtMzU4MDQxYTMzMjU2XkEyXkFqcGdeQXVyMzQ0MzA0NTM@.jpg"  # Replace with the actual image URL
+
+# Download the image from the web
+response = requests.get(image_url)
+image_data = response.content
+
+# Create a PIL Image object from the image data
+image = Image.open(BytesIO(image_data))
+
+# Assuming you have screen_width and screen_height defined earlier
+screen_width = 800  # Replace with your actual screen dimensions
+screen_height = 600
+
+# Resize the image to match the frame's dimensions
+image = image.resize((screen_width, screen_height), Image.LANCZOS)
+
+# Create a gradient mask image
+gradient = Image.new("L", (screen_width, screen_height))
+for y in range(screen_height):
+    alpha = int(255 * abs(y - (screen_height / 2)) / (screen_height / 2))
+    gradient.putpixel((0, y), alpha)
+
+# Apply the gradient as an alpha mask to the image
+image.putalpha(gradient)
+
+# Create a PhotoImage object from the PIL Image
+photo = ImageTk.PhotoImage(image)
 
 # Create a tkinter window
 root = tk.Tk()
-root.geometry("400x400")
 
-# Create a gradient image
-width, height = 400, 400
-gradient = Image.new("RGB", (width, height))
+# Create a label to display the image
+image_label = tk.Label(root, bg='blue')
+image_label.pack()
 
-# Define the gradient colors (you can change these to create your desired gradient)
-color1 = (255, 0, 0)  # Red
-color2 = (0, 0, 255)  # Blue
-
-for y in range(height):
-    r = int(color1[0] + (color2[0] - color1[0]) * y / height)
-    g = int(color1[1] + (color2[1] - color1[1]) * y / height)
-    b = int(color1[2] + (color2[2] - color1[2]) * y / height)
-
-    for x in range(width):
-        gradient.putpixel((x, y), (r, g, b))
-
-# Convert the gradient image to a PhotoImage
-gradient_photo = ImageTk.PhotoImage(gradient)
-
-# Create a label to display the gradient photo
-label = tk.Label(root, image=gradient_photo)
-label.pack()
+# Set the image as the label's image
+image_label.config(image=photo)
 
 root.mainloop()
