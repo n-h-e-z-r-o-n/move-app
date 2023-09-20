@@ -3,6 +3,7 @@ from PIL import Image, ImageTk
 import requests
 from io import BytesIO
 import customtkinter
+import random
 
 import clr
 from tkwebview2.tkwebview2 import WebView2, have_runtime, install_runtime
@@ -48,6 +49,15 @@ def main():
         # Create a large frame within the canvas frame (replace this with your content)
         large_frame = tk.Frame(frame, bg='gray', width=screen_width,  height=large_frame_size)
         large_frame.pack(fill=tk.X)
+
+        def change_color(widget):
+            # Generate a random color in hexadecimal format (#RRGGBB)
+            new_color = "#{:02X}{:02X}{:02X}".format(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
+
+            widget.config(bg=new_color)  # Change the background color of the label
+
+            # Schedule the function to run again in 1000 milliseconds (1 second)
+            root.after(1000, change_color)
 
         def change_bg_OnHover(button, colorOnHover, colorOnLeave):  # Color change bg on Mouse Hover
             button.bind("<Enter>", func=lambda e: button.config(background=colorOnHover))

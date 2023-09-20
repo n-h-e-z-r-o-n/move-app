@@ -2,11 +2,11 @@ import tkinter as tk
 import random
 
 
-def change_color():
+def change_color(widget):
     # Generate a random color in hexadecimal format (#RRGGBB)
     new_color = "#{:02X}{:02X}{:02X}".format(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
 
-    label.config(bg=new_color)  # Change the background color of the label
+    widget.config(bg=new_color)  # Change the background color of the label
 
     # Schedule the function to run again in 1000 milliseconds (1 second)
     root.after(1000, change_color)
