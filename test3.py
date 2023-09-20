@@ -32,11 +32,10 @@ def img(widget):
     return  photo
 
 
-image_label = tk.Frame(image_frame, bg='blue', )
+image_label = tk.Label(image_frame, bg='blue')
 image_label.place(relx=0.03, rely=0.04, relheight=0.4, relwidth=0.94)
+image_label.config(image = img(image_label))
 
-# Create a label to display the image
-image_label.config(image=photo)
 
 
 # Keep a reference to the PhotoImage to prevent it from being garbage collected
