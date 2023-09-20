@@ -1,3 +1,4 @@
+import colorsys
 import tkinter as tk
 from PIL import Image, ImageTk
 import requests
@@ -75,6 +76,7 @@ def main():
                 time.sleep(0.04)  # Adjust the delay as needed for the desired pulsing speed
 
             root.after(1000, lambda: pulsing_color(widget))
+
         def change_bg_OnHover(button, colorOnHover, colorOnLeave):  # Color change bg on Mouse Hover
             button.bind("<Enter>", func=lambda e: button.config(background=colorOnHover))
             button.bind("<Leave>", func=lambda e: button.config(background=colorOnLeave))
@@ -154,9 +156,10 @@ def main():
         image_label.config(image=photo, compound=tk.CENTER, text='▷')
         #change_fg_OnHover(image_label,'Blue', 'white')
         change_color(image_label)
-        
+
         Search_box =  tk.Entry(large_frame,  font = ('Georgia', 17), justify='center', borderwidth=0, border=0, fg='gray')
         Search_box.place(relx=0.30, rely=0.007, relheight=0.02, relwidth=0.4)
+        pulsing_color(Search_box)
         placeholder_text = "Search"
         Search_box.insert(0, placeholder_text)
         Search_box.bind("<FocusIn>", lambda e: on_entry_click(Search_box, e))
