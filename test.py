@@ -91,7 +91,7 @@ def main():
         original_width = video_box.winfo_width()
         original_height = video_box.winfo_height()
 
-        fullscreen_button = tk.Button(video_box, text="↕",  command=lambda: toggle_fullscreen(video_box))
+        fullscreen_button = tk.Button(video_box, text="↕",  font = ('Arial Black', 26), command=lambda: toggle_fullscreen(video_box))
         fullscreen_button.place(relx=0.95, rely=0.95, relheight=0.05, relwidth=0.05)
 
         label2 = tk.Button(large_frame, bg='green',text="This is a label in the large frame", command=lambda:hold.full_screeen())
