@@ -1,13 +1,26 @@
 import tkinter as tk
 
+# Define a function to increase brightness
+def increase_brightness(event):
+    widget = event.widget
+    widget.config(bg='lightblue')  # Change the background color to a brighter color
+
+# Define a function to reset brightness
+def reset_brightness(event):
+    widget = event.widget
+    widget.config(bg='blue')  # Reset the background color to the original color
+
 root = tk.Tk()
+root.geometry("400x400")
 
-# Create a Label widget with an image and text displayed above each other.
-label1 = tk.Label(root, bg='green', compound=tk.CENTER, text="This is some text.", image=tk.PhotoImage(file=r"C:\Users\HEZRON WEKESA\Pictures\12.png"))
-label1.pack()
+# Create a label widget
+label = tk.Label(root, text="Hover over me!", bg='blue', font=('Arial', 18))
+label.pack(pady=50)
 
-# Create a Button widget with an image and text displayed to the left of each other.
-button1 = tk.Button(root, compound=tk.BOTTOM, text="Click me!", image=tk.PhotoImage(file=r"C:\Users\HEZRON WEKESA\Pictures\12.png"))
-button1.pack()
+# Bind the mouse enter event to increase_brightness function
+label.bind("<Enter>", increase_brightness)
+
+# Bind the mouse leave event to reset_brightness function
+label.bind("<Leave>", reset_brightness)
 
 root.mainloop()
