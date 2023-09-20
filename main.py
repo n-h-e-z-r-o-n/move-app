@@ -8,10 +8,10 @@ print(movies)
 print(type(movies))
 
 
-print(movies[0]['title'])
-print(movies[0].movieID)
-print("Year:", movies["year"])
-print("Plot:", movies["plot"])
+print("title", movies[0]['title'])
+print("ID", movies[0].movieID)
+print("Year:", movies[0]["year"])
+print("Plot:", movies[0]["plot"])
 
 #for x in movies:
     # print(x)
