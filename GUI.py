@@ -154,8 +154,8 @@ def main():
         image_label.config(image=photo, compound=tk.CENTER, text='▷')
         #change_fg_OnHover(image_label,'Blue', 'white')
         change_color(image_label)
-
-        Search_box =  tk.Entry(large_frame,  font = ('Georgia', 14), justify='center', bg = '#ab23ff', borderwidth=0, border=0, fg='gray')
+        
+        Search_box =  tk.Entry(large_frame,  font = ('Georgia', 17), justify='center', borderwidth=0, border=0, fg='gray')
         Search_box.place(relx=0.30, rely=0.007, relheight=0.02, relwidth=0.4)
         placeholder_text = "Search"
         Search_box.insert(0, placeholder_text)
