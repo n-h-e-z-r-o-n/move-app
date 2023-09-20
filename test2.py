@@ -6,7 +6,7 @@ import colorsys
 
 
 
-def pulsing_color(label):
+def pulsing_color(widget):
     for i in range(360):  # Transition through hue values (0 to 359)
         hue = i / 360.0
         rgb_color = tuple(int(val * 255) for val in colorsys.hsv_to_rgb(hue, 1, 1))   # Convert hue to RGB
@@ -14,12 +14,12 @@ def pulsing_color(label):
 
         # Check if the color is not blue (#0000FF)
         if hex_color != "#0000FF":
-            label.config(bg=hex_color)
-            label.update()  # Update the label's appearance
+            widget.config(bg=hex_color)
+            widget.update()  # Update the label's appearance
 
         time.sleep(0.04)  # Adjust the delay as needed for the desired pulsing speed
 
-    root.after(1000, lambda: pulsing_color(label))
+    root.after(1000, lambda: pulsing_color(widget))
 
 
 root = tk.Tk()
