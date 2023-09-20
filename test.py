@@ -11,6 +11,9 @@ if not have_runtime():  # 没有webview2 runtime
     install_runtime()
 global hold
 is_fullscreen = False
+
+
+
 def main():
         global hold
         global is_fullscreen
