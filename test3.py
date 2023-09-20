@@ -13,6 +13,7 @@ screen_height = root.winfo_screenheight()
 # Create a frame to hold the image
 image_frame = tk.Frame(root)
 image_frame.place(relx=0, rely=0, relheight=1, relwidth=1)
+
 def imagen(widget):
     # Define the URL of the web image
     image_url = "https://m.media-amazon.com/images/M/MV5BMzI0NmVkMjEtYmY4MS00ZDMxLTlkZmEtMzU4MDQxYTMzMjU2XkEyXkFqcGdeQXVyMzQ0MzA0NTM@.jpg"  # Replace with the actual image URL

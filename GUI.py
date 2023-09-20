@@ -82,11 +82,31 @@ def main():
                 widget.place(relx=0, rely=0, x=0, y=0, relwidth=1, relheight=screen_height/large_frame_size)
                 is_fullscreen = True
 
+        def imagen(widget):
+            # Define the URL of the web image
+            image_url = "https://m.media-amazon.com/images/M/MV5BMzI0NmVkMjEtYmY4MS00ZDMxLTlkZmEtMzU4MDQxYTMzMjU2XkEyXkFqcGdeQXVyMzQ0MzA0NTM@.jpg"  # Replace with the actual image URL
+
+            # Download the image from the web
+            response = requests.get(image_url)
+            image_data = response.content
+
+            # Create a PIL Image object from the image data
+            image = Image.open(BytesIO(image_data))
+
+            # Resize the image to match the frame's dimensions
+            image = image.resize((screen_width, (screen_height)), Image.LANCZOS)
+
+            # Create a PhotoImage object from the PIL Image
+            photo = ImageTk.PhotoImage(image)
+            return photo
+
 
         #  content:
 
         image_label = tk.Label(large_frame, bg='blue')
         image_label.place(relx=0, rely=0.0, relheight=0.4, relwidth=1)
+        photo = imagen(image_label)
+        image_label.config(image=photo)
 
 
         video_box = tk.Frame(large_frame, bg='green')
