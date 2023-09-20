@@ -109,6 +109,7 @@ def main():
         image_label.config(image=photo)
         play_bn = tk.Button(image_label, text='▶', font = ('Arial Black', 26), justify='center', bg = image_label.cget("bg"))
         play_bn.place(relx=0.49, rely=0.47, relheight=0.04, relwidth=0.02)
+        play_bn.wm_attributes('-transparentcolor', '#ab23ff')
 
 
         video_box = tk.Frame(large_frame, bg='green')
