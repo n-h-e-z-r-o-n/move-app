@@ -1,16 +1,20 @@
-#Import the required libraries
-from tkinter import *
+import tkinter as tk
+from tkinter import ttk
 
-#Create an instance of Tkinter Frame
-win = Tk()
+def on_button_click():
+    print("Button clicked!")
 
-#Set the geometry
-win.geometry("700x350")
+root = tk.Tk()
+root.title("Rounded Button Example")
 
-#Adding transparent background property
-win.wm_attributes('-transparentcolor', '#ab23ff')
+# Create a custom style
+style = ttk.Style()
 
-#Create a Label
-Label(win, text= "Hello World!", font= ('Helvetica 18'), bg= 'blue').pack(ipadx= 50, ipady=50, padx= 20)
+# Configure the custom style to create a rounded button
+style.configure("Rounded.TButton", borderwidth=0, relief="flat", padding=10, bordercolor="white", background="lightblue", highlightthickness=0)
 
-win.mainloop()
+# Create a button with the custom style
+rounded_button = ttk.Button(root, text="Click Me", style="Rounded.TButton", command=on_button_click)
+rounded_button.pack(padx=20, pady=10)
+
+root.mainloop()
