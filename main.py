@@ -1,6 +1,6 @@
 import imdb
 
-ia = imdb.Cinemagoer()
+ia = imdb.IMDb()
 # Set up SQLite caching
 print(dir(imdb))
 
