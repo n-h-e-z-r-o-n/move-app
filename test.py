@@ -71,6 +71,7 @@ def main():
                 is_fullscreen = False
             else:
                 # Expand the video frame to full screen
+                root.overrideredirect(True)
                 widget.forget()
                 print(screen_height,screen_width)
                 widget.place(relx=0, rely=0, x=0, y=0, relwidth=1, relheight=screen_height/large_frame_size)
