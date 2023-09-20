@@ -12,7 +12,7 @@ image_frame = tk.Frame(root)
 image_frame.pack()
 
 # Define the URL of the web image
-image_url = "https://example.com/path/to/your/image.jpg"  # Replace with the actual image URL
+image_url = "https://m.media-amazon.com/images/M/MV5BMzI0NmVkMjEtYmY4MS00ZDMxLTlkZmEtMzU4MDQxYTMzMjU2XkEyXkFqcGdeQXVyMzQ0MzA0NTM@.jpg"  # Replace with the actual image URL
 
 # Download the image from the web
 response = requests.get(image_url)
