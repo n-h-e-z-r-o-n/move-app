@@ -1,27 +1,35 @@
-import imdb
+import tkinter as tk
+from PIL import Image, ImageTk
+import requests
+from io import BytesIO
 
-# Create an instance of the IMDb class
-ia = imdb.IMDb()
+# Create the main tkinter window
+root = tk.Tk()
+root.title("Display Web Image in tkinter")
 
-# Search for a movie by its title
-movie_title = "The Shawshank Redemption"
-movies = ia.search_movie(movie_title)
+# Create a frame to hold the image
+image_frame = tk.Frame(root)
+image_frame.pack()
 
-if movies:
-    # Get the first movie (most relevant)
-    movie = movies[0]
+# Define the URL of the web image
+image_url = "https://example.com/path/to/your/image.jpg"  # Replace with the actual image URL
 
-    # Fetch additional details, including images
-    ia.update(movie)
+# Download the image from the web
+response = requests.get(image_url)
+image_data = response.content
 
-    # Print the movie's details
-    print("Title:", movie["title"])
-    print("Year:", movie["year"])
-    print("Plot:", movie["plot"])
-    print("Genres:", ", ".join(movie["genres"]))
+# Create a PIL Image object from the image data
+image = Image.open(BytesIO(image_data))
 
-    # Access the movie's images
+# Create a PhotoImage object from the PIL Image
+photo = ImageTk.PhotoImage(image)
 
-image_url = movie.get("full-size cover url", [])
-print("Image URL:", image_url)
+# Create a label to display the image
+image_label = tk.Label(image_frame, image=photo)
+image_label.pack()
 
+# Keep a reference to the PhotoImage to prevent it from being garbage collected
+image_label.photo = photo
+
+# Start the tkinter main loop
+root.mainloop()
