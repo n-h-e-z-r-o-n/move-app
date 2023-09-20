@@ -104,9 +104,10 @@ def main():
         #  content:
 
         image_label = tk.Label(large_frame, bg='blue')
-        image_label.place(relx=0, rely=0.0, relheight=0.4, relwidth=1)
+        image_label.place(relx=0, rely=0.0, relheight=0.45, relwidth=1)
         photo = imagen(image_label)
         image_label.config(image=photo)
+        play_bn = tk.Button()
 
 
         video_box = tk.Frame(large_frame, bg='green')
