@@ -106,8 +106,9 @@ def main():
         image_label = tk.Label(large_frame, bg='blue', text='Play')
         image_label.place(relx=0, rely=0.0, relheight=0.45, relwidth=1)
         photo = imagen(image_label)
-        image_label.config(image=photo)
-        play_bn = customtkinter.CTkButton(root, text="CTkButton", corner_radius=90)
+        #image_label.config(image=photo)
+
+        play_bn = customtkinter.CTkButton(image_label, text="CTkButton", corner_radius=90)
         #play_bn = tk.Button(image_label, text='▶', font = ('Arial Black', 36), justify='center', bg = '#ab23ff', borderwidth=0, border=0, fg='white')
         play_bn.place(relx=0.49, rely=0.47, relheight=0.04, relwidth=0.2)
 
