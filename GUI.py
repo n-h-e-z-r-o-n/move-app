@@ -17,12 +17,13 @@ if not have_runtime():  # 没有webview2 runtime
     install_runtime()
 global hold
 is_fullscreen = False
-
+placeholder_text = None
 
 
 def main():
         global hold
         global is_fullscreen
+        global placeholder_text
 
         root = tk.Tk()
         root.title("Move App")
@@ -135,7 +136,7 @@ def main():
 
         def on_entry_click(widget, event):
             global placeholder_text
-            if widget.get() == "Placeholder Text":
+            if widget.get() == "Search":
                 widget.delete(0, tk.END)
                 widget.config(fg='black')  # Change text color to black
 
