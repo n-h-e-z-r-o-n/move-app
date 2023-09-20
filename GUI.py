@@ -54,7 +54,7 @@ def main():
             # Generate a random color in hexadecimal format (#RRGGBB)
             new_color = "#{:02X}{:02X}{:02X}".format(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
 
-            widget.config(bg=new_color)  # Change the background color of the label
+            widget.config(fg=new_color)  # Change the background color of the label
 
             # Schedule the function to run again in 1000 milliseconds (1 second)
             root.after(1000, change_color)
@@ -125,7 +125,8 @@ def main():
         image_label.place(relx=0, rely=0.0, relheight=0.45, relwidth=1)
         photo = imagen(image_label)
         image_label.config(image=photo, compound=tk.CENTER, text='▷')
-        change_fg_OnHover(image_label,'Blue', 'white')
+        #change_fg_OnHover(image_label,'Blue', 'white')
+        change_color(image_label)
 
         play_bn = tk.Button(image_label, text='▶', font = ('Arial Black', 36), justify='center', bg = '#ab23ff', borderwidth=0, border=0, fg='white')
         #play_bn.place(relx=0.48, rely=0.48, relheight=0.04, relwidth=0.04)
