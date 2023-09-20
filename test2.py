@@ -44,19 +44,22 @@ def imagen(widget):
     image = image.resize((screen_width, screen_height), Image.LANCZOS)
 
     # Create a gradient mask for the top and bottom
-    gradient_mask = create_gradient_mask(screen_width, screen_height)
+    #gradient_mask = create_gradient_mask(1000, 1000)
 
     # Apply the gradient effect to the image
-    image_with_gradient = apply_gradient(image, gradient_mask)
+    #image_with_gradient = apply_gradient(image, gradient_mask)
 
     # Create a PhotoImage object from the modified image
-    photo = ImageTk.PhotoImage(image_with_gradient)
+    photo = ImageTk.PhotoImage(image)
 
     return photo
 
 # Create a tkinter window
 root = tk.Tk()
 root.geometry("800x600")
+screen_width = root.winfo_screenwidth()
+screen_height = root.winfo_screenheight()
+large_frame_size = screen_height+700
 
 # Create a label to display the image
 image_label = tk.Label(root, bg='blue')
