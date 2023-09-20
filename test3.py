@@ -21,7 +21,7 @@ if movies:
     print("Genres:", ", ".join(movie["genres"]))
 
     # Access the movie's images
-    for image_url in movie.get("full-size cover url", []):
-        print("Image URL:", image_url)
-else:
-    print(f"No movie found with the title: {movie_title}")
+
+image_url = movie.get("full-size cover url", [])
+print("Image URL:", image_url)
+
