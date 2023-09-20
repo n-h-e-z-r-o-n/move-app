@@ -1,19 +1,22 @@
 import tkinter as tk
 
+class EntryWithPlaceholder(tk.Entry):
+    def __init__(self, master, placeholder, **kwargs):
+        super().__init__(master, **kwargs)
+        self.placeholder = placeholder
+        self.insert(0, placeholder)
+
+    def on_focus_in(self, event):
+        if self.get() == self.placeholder:
+            self.delete(0, "end")
+
+    def on_focus_out(self, event):
+        if self.get() == "":
+            self.insert(0, self.placeholder)
+
 root = tk.Tk()
 
-# Create a Button widget with a raised border.
-button1 = tk.Button(root, text="Raised", relief=tk.RAISED)
-
-# Create a Button widget with a sunken border.
-button2 = tk.Button(root, text="Sunken", relief=tk.SUNKEN)
-
-# Create a Button widget with a flat border.
-button3 = tk.Button(root, text="Flat", relief=tk.FLAT)
-
-# Pack the buttons to the window.
-button1.pack()
-button2.pack()
-button3.pack()
+entry = EntryWithPlaceholder(root, placeholder="Enter your name")
+entry.pack()
 
 root.mainloop()
