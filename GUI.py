@@ -143,8 +143,8 @@ def main():
         #change_fg_OnHover(image_label,'Blue', 'white')
         change_color(image_label)
 
-        Search_box =  tk.Entry(image_label,  font = ('Arial Black', 36), justify='center', bg = '#ab23ff', borderwidth=0, border=0, fg='white')
-        Search_box.place(relx=00, rely=0.01, relheight=0.02, relwidth=0.4)
+        Search_box =  tk.Entry(large_frame,  font = ('Arial Black', 36), justify='center', bg = '#ab23ff', borderwidth=0, border=0, fg='white')
+        Search_box.place(relx=0.30, rely=0.007, relheight=0.02, relwidth=0.4)
 
 
 
