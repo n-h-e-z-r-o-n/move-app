@@ -23,14 +23,17 @@ image_data = response.content
 # Create a PIL Image object from the image data
 image = Image.open(BytesIO(image_data))
 
-image = image.resize((frame.winfo_width(), frame.winfo_height()), Image.ANTIALIAS)
+image_label = tk.Frame(image_frame, bg='blue')
+image_label.place(relx=0.03, rely=0.04, relheight=0.4, relwidth=0.94)
+
+image = image.resize((image_label.winfo_width(), image_label.winfo_height()), Image.ANTIALIAS)
 
 # Create a PhotoImage object from the PIL Image
 photo = ImageTk.PhotoImage(image)
 
 # Create a label to display the image
-image_label = tk.Frame(image_frame, bg='blue', image=photo)
-image_label.place(relx=0.03, rely=0.04, relheight=0.4, relwidth=0.94)
+image_label.config(image=photo)
+
 
 # Keep a reference to the PhotoImage to prevent it from being garbage collected
 image_label.photo = photo
