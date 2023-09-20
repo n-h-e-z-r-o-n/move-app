@@ -43,7 +43,7 @@ def imagen(widget):
     for i, color in enumerate(rainbow_colors):
         top = i * gradient_height
         bottom = (i + 1) * gradient_height
-        draw.rectangle([0, top, screen_width, bottom], fill=color)
+        draw.rectangle((0, top, screen_width, bottom), fill=color)
 
     # Paste the gradient over the original image
     image.paste(gradient, (0, 0), gradient)
