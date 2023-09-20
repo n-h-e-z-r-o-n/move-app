@@ -18,11 +18,14 @@ print("Plot:", movies[0]["plot"])
 print("Genres:", ", ".join(movies[0]["genres"]))
 image_url = movies[0].get("full-size cover url", [])
 print("Image URL:", image_url)
+poster_urls = movies[0].get("full-size cover url", [])
+print("Image URL:", poster_urls)
+
 print("Director:", ", ".join([director["name"] for director in movies[0]["director"]]))
 print("Cast:", ", ".join([actor["name"] for actor in movies[0]["cast"]]))
 print()
 print(movies[0].current_info)
-print("Plot:", movies[0]["main"])
+
 
 
 #for x in movies:
