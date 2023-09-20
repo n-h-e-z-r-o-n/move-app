@@ -20,6 +20,9 @@ image_url = movies[0].get("full-size cover url", [])
 print("Image URL:", image_url)
 print("Director:", ", ".join([director["name"] for director in movies[0]["director"]]))
 print("Cast:", ", ".join([actor["name"] for actor in movies[0]["cast"]]))
+print()
+print(movies[0].current_info)
+
 
 #for x in movies:
     # print(x)
