@@ -49,7 +49,13 @@ def main():
         large_frame = tk.Frame(frame, bg='gray', width=screen_width,  height=large_frame_size)
         large_frame.pack(fill=tk.X)
 
+        def change_bg_OnHover(button, colorOnHover, colorOnLeave):  # Color change bg on Mouse Hover
+            button.bind("<Enter>", func=lambda e: button.config(background=colorOnHover))
+            button.bind("<Leave>", func=lambda e: button.config(background=colorOnLeave))
 
+        def change_fg_OnHover(button, colorOnHover, colorOnLeave):  # Color change fg on Mouse Hover
+            button.bind("<Enter>", func=lambda e: button.config(fg=colorOnHover))
+            button.bind("<Leave>", func=lambda e: button.config(fg=colorOnLeave))
 
         def on_frame_configure(event):  # Update the canvas scrolling region when the large frame changes size
             canvas.configure(scrollregion=canvas.bbox("all"))
@@ -109,6 +115,7 @@ def main():
         image_label.place(relx=0, rely=0.0, relheight=0.45, relwidth=1)
         photo = imagen(image_label)
         image_label.config(image=photo, compound=tk.CENTER, text='▶')
+        change_fg_OnHover(image_label,'Blu')
 
         play_bn = tk.Button(image_label, text='▶', font = ('Arial Black', 36), justify='center', bg = '#ab23ff', borderwidth=0, border=0, fg='white')
         #play_bn.place(relx=0.48, rely=0.48, relheight=0.04, relwidth=0.04)
