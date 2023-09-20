@@ -83,8 +83,8 @@ def main():
         #  content:
 
         video_box = tk.Frame(large_frame, bg='green')
-        video_box.place(relx=0.03, rely=0.04, relheight=0.4, relwidth=0.94)
-        Load_Movie(video_box, None)
+        #video_box.place(relx=0.03, rely=0.04, relheight=0.4, relwidth=0.94)
+        #Load_Movie(video_box, None)
 
         original_x = video_box.winfo_x()
         original_y = video_box.winfo_y()
