@@ -1,36 +1,18 @@
 import tkinter as tk
-from PIL import Image, ImageEnhance, ImageTk
 
-def adjust_brightness(image, factor):
-    """
-    Adjusts the brightness of an image by a given factor.
-    """
-    enhancer = ImageEnhance.Brightness(image)
-    return enhancer.enhance(factor)
+def change_brightness(widget, brightness):
+    """Sets the brightness of the widget to the specified value."""
+    widget.config(highlightbackground=widget.cget("highlightbackground")[:4] + str(brightness), highlightcolor=widget.cget("highlightcolor")[:4] + str(brightness))
 
-def on_enter(event):
-    global original_image
-    # Increase brightness on hover (adjust the factor as needed)
-    brightened_image = adjust_brightness(original_image, 1.5)
-    label.config(image=brightened_image)
-    label.image = brightened_image  # Update the reference to the image
+# Create a Label widget.
+label = tk.Label(text="This is a label.")
 
-def on_leave(event):
-    label.config(image=original_image)
-    label.image = original_image  # Restore the original image
+# Bind the change_brightness function to the Enter and Leave events of the label.
+label.bind("<Enter>", lambda event: change_brightness(label, 1.5))
+label.bind("<Leave>", lambda event: change_brightness(label, 1.0))
 
-root = tk.Tk()
-root.geometry("400x400")
-
-# Load your image
-image = Image.open(r"C:\Users\HEZRON WEKESA\Pictures\car.jpg")  # Replace with your image file path
-original_image = ImageTk.PhotoImage(image)
-
-label = tk.Label(root, image=original_image)
+# Pack the label to the window.
 label.pack()
 
-# Bind mouse enter and leave events to the label
-label.bind("<Enter>", on_enter)
-label.bind("<Leave>", on_leave)
-
+root = tk.Tk()
 root.mainloop()
