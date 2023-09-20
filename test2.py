@@ -1,28 +1,27 @@
-from tkinter import Tk
+import tkinter as tk
 
-import clr
-from tkwebview2.tkwebview2 import WebView2, have_runtime, install_runtime
-clr.AddReference('System.Windows.Forms')
-clr.AddReference('System.Threading')
-from System.Windows.Forms import Control
-from System.Threading import Thread,ApartmentState,ThreadStart
+def toggle_fullscreen():
+    global is_fullscreen
+    if is_fullscreen:
+        root.attributes("-fullscreen", False)
+        fullscreen_button.config(text="Expand to Full Screen")
+        is_fullscreen = False
+    else:
+        root.attributes("-fullscreen", True)
+        fullscreen_button.config(text="Restore")
+        is_fullscreen = True
 
-#范例
-def main():
-    if not have_runtime():#没有webview2 runtime
-        install_runtime()
-    root=Tk()
-    root.title('pywebview for tkinter test')
-    root.geometry('1200x600+5+5')
+root = tk.Tk()
+root.title("Toggle Frame to Full Screen")
 
-    frame2=WebView2(root,500,500)
-    frame2.pack(side='left',padx=20,fill='both',expand=True)
-    frame2.load_url('https://vidsrc.to/embed/movie/tt8385148')
-    frame2.full_screeen()
-    root.mainloop()
+# Create a Frame widget
+frame = tk.Frame(root, width=800, height=600, bg="green")
+frame.pack(fill=tk.BOTH, expand=True)
 
-if __name__ == "__main__":
-    t = Thread(ThreadStart(main))
-    t.ApartmentState = ApartmentState.STA
-    t.Start()
-    t.Join()
+# Create a button to toggle full screen
+fullscreen_button = tk.Button(root, text="Expand to Full Screen", command=toggle_fullscreen)
+fullscreen_button.pack()
+
+is_fullscreen = False
+
+root.mainloop()
