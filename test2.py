@@ -14,6 +14,9 @@ def proc():
         # Create a PIL Image object from the image data
         image = Image.open(BytesIO(image_data))
 
+        # Resize the image to match the frame's dimensions
+        image = image.resize((400, (400)), image.LANCZOS)
+
         # Ensure the image has an alpha channel.
         im = image.convert("RGBA")
 
@@ -39,8 +42,7 @@ def proc():
         # Save the modified image.
         im.save('birdfade.png')
 
-        # Resize the image to match the frame's dimensions
-        image = im.resize((400, (400)), im.LANCZOS)
+
 
         # Create a PhotoImage object from the PIL Image
         photo = ImageTk.PhotoImage(image)
