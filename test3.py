@@ -4,7 +4,7 @@ import imdb
 ia = imdb.IMDb()
 
 # Search for a movie by its title
-movie_title = "The Shawshank Redemption"  # Replace with the title of the movie you're interested in
+movie_title = "AHSOKA"  # Replace with the title of the movie you're interested in
 search_results = ia.search_movie(movie_title)
 
 # Check if search results are available and get the first result
