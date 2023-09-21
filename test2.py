@@ -4,19 +4,15 @@ from PIL import Image
 # Load the two images to be blended.
 image1 = Image.open(r"C:\Users\HEZRON WEKESA\Pictures\20220819_083721.jpg")
 image2 = Image.open(r"C:\Users\HEZRON WEKESA\Pictures\20220819_083721.jpg")
-
-# Convert the images to NumPy arrays.
-image1_array = np.array(image1)
-image2_array = np.array(image2)
-
-# Create a new NumPy array to store the blended image.
-blended_image_array = np.zeros_like(image1_array)
-
-# Blend the two images together.
-blended_image_array = Image.blend(image1_array, image2_array, 0.5)
-
-# Convert the NumPy array back to an Image object.
-blended_image = Image.fromarray(blended_image_array.astype(np.uint8))
-
-# Save the blended image.
-blended_image.save("blended_image.png")
+im = Image.open('bird.jpg')
+im.putalpha(255)
+width, height = im.size
+pixels = im.load()
+for y in range(int(height*.55), int(height*.75)):
+    alpha = 255-int((y - height*.55)/height/.20 * 255)
+    for x in range(width):
+        pixels[x, y] = pixels[x, y][:3] + (alpha,)
+for y in range(y, height):
+    for x in range(width):
+        pixels[x, y] = pixels[x, y][:3] + (0,)
+im.save('birdfade.png')
