@@ -234,7 +234,7 @@ def main():
         def plot():
             plot_str = ''
             for i in movies[0]["plot"]:
-                plot_str += str(i) + ', '
+                plot_str += str(i) + ',
             return plot_str
 
 
