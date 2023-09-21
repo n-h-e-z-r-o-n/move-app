@@ -182,7 +182,7 @@ def main():
         original_width = video_box.winfo_width()
         original_height = video_box.winfo_height()
 
-        video_box.forget()
+        #video_box.forget()
 
         fullscreen_button = tk.Button(video_box, border=0, borderwidth=0, text="⤢",  bg='black', justify='center', activebackground='black', activeforeground='white',fg='white', font = ('Arial Black', 26),  command=lambda: toggle_fullscreen(video_box))
         fullscreen_button.place(relx=0.97, rely=0.95, relheight=0.05, relwidth=0.03)
