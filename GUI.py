@@ -228,13 +228,13 @@ def main():
         def country():
             country_str = ''
             for i in movies[0]["countries"]:
-                country_str += str(i) + ', '
+                country_str += str(i) + '. '
             return country_str
 
         def plot():
             plot_str = ''
             for i in movies[0]["plot"]:
-                plot_str += str(i) + ',
+                plot_str += str(i)
             return plot_str
 
 
