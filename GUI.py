@@ -149,7 +149,7 @@ def main():
             image = Image.open(BytesIO(image_data))
 
             # Resize the image to match the frame's dimensions
-            image = image.resize((1000, (1000)), Image.LANCZOS)
+            image = image.resize((screen_width, (screen_height)), Image.LANCZOS)
 
             # Ensure the image has an alpha channel.
             im = image.convert("RGBA")
