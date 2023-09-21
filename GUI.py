@@ -299,14 +299,12 @@ def main():
         Type16 = tk.Label(large_frame, bg='green', fg='white', text= cast_n, justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"), wraplength=1200)
         Type16.place(relx=0.26, rely=0.658, relheight=0.026, relwidth=0.68)
 
-        Type6 = tk.Label(large_frame, bg='green', fg='gray', text="Plot : ", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
+        Type6 = tk.Label(large_frame, bg=, fg='gray', text="Plot : ", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
         Type6.place(relx=0.19, rely=0.689, relheight=0.016, relwidth=0.06)
 
         Type16 = tk.Text(large_frame, bg='green', fg='white', borderwidth = 0, border=0, wrap=tk.WORD, font=('Comic Sans MS', 12))
         Type16.insert("end", plot_n)
         Type16.config(state="disabled")
-        Type16.sta
-
         Type16.place(relx=0.26, rely=0.689, relheight=0.026, relwidth=0.68)
 
         #  content:
