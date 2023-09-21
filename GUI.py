@@ -296,7 +296,8 @@ def main():
         Type6 = tk.Label(large_frame, bg='green', fg='gray', text="Cast : ", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS',  12, "bold"))
         Type6.place(relx=0.19, rely=0.658, relheight=0.016, relwidth=0.06)
 
-        Type16 = tk.Label(large_frame, bg='green', fg='white', text= cast_n, justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"), wraplength=1200)
+        Type16 = tk.Text(large_frame, bg='green', fg='white', font=('Comic Sans MS', 12, "bold"))
+        Type16.insert("end", cast_n)
         Type16.place(relx=0.26, rely=0.658, relheight=0.026, relwidth=0.68)
 
         Type6 = tk.Label(large_frame, bg=color_bg, fg='gray', text="Plot : ", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
