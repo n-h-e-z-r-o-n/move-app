@@ -26,13 +26,13 @@ def proc():
 
     # Fade the top region to dark.
     for y in range(top_fade_height):
-    alpha = int((y / top_fade_height) * 255)
+       alpha = int((y / top_fade_height) * 255)
     for x in range(width):
         pixels[x, y] = pixels[x, y][:3] + (alpha,)
 
     # Fade the bottom region to dark.
     for y in range(height - bottom_fade_height, height):
-    alpha = int(((height - y) / bottom_fade_height) * 255)
+        alpha = int(((height - y) / bottom_fade_height) * 255)
     for x in range(width):
         pixels[x, y] = pixels[x, y][:3] + (alpha,)
 
