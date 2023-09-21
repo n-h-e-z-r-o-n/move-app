@@ -231,15 +231,15 @@ def main():
                 country_str += str(i) + ', '
             return country_str
 
-        def genres():
-            genres_str = ''
+        def plot():
+            plot_str = ''
             for i in movies[0]["plot"]:
-                genres_str += str(i) + ', '
-            return genres_str
+                plot_str += str(i) + ', '
+            return plot_str
 
 
-        movies[0]['']
 
+        plot_n = plot()
         country_n = country()
         genres_n = genres()
         cast_n = cast()
@@ -302,7 +302,7 @@ def main():
         Type6 = tk.Label(large_frame, bg='green', fg='gray', text="Plot : ", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
         Type6.place(relx=0.19, rely=0.689, relheight=0.016, relwidth=0.06)
 
-        Type16 = tk.Label(large_frame, bg='green', fg='white', text=f"{movies[0]['plot']}", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12), wraplength=1200)
+        Type16 = tk.Label(large_frame, bg='green', fg='white', text=plot_n, justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12), wraplength=1200)
         Type16.place(relx=0.26, rely=0.689, relheight=0.026, relwidth=0.68)
 
         #  content:
