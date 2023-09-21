@@ -13,7 +13,7 @@ if search_results:
     movie = ia.get_movie(movie_id)
 
     # Get the release date of the movie
-    release_date = movie.get("date")
+    release_date = movie.get("year")
 
     if release_date:
         print("Release Date:", release_date)
