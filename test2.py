@@ -36,11 +36,15 @@ def proc():
     for x in range(width):
         pixels[x, y] = pixels[x, y][:3] + (alpha,)
 
-    # Save the modified image.
-    im.save('birdfade.png')
+
     # Resize the image to match the frame's dimensions
-    image = image.resize((4000, (400)), Image.LANCZOS)
+    image = im.resize((4000, (400)), Image.LANCZOS)
 
     # Create a PhotoImage object from the PIL Image
     photo = ImageTk.PhotoImage(image)
+
+    # Save the modified image.
+    image.save('birdfade.png')
+
     return photo
+proc()
