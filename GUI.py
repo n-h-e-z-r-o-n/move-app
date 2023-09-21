@@ -149,6 +149,9 @@ def main():
             if not widget.get():
                 widget.insert(0, "Search")
                 widget.config(fg='gray')  # Change text color to gray
+        def play(wid):
+            video_box
+
 
         #  content:
 
