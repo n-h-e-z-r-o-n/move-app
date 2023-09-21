@@ -231,6 +231,15 @@ def main():
                 country_str += str(i) + ', '
             return country_str
 
+        def genres():
+            genres_str = ''
+            for i in movies[0]["plot"]:
+                genres_str += str(i) + ', '
+            return genres_str
+
+
+        movies[0]['']
+
         country_n = country()
         genres_n = genres()
         cast_n = cast()
