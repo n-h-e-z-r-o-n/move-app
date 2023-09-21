@@ -1,33 +1,29 @@
-import tkinter as tk
-import time
-from colorsys import rgb_to_hsv, hsv_to_rgb
+import cv2
+import numpy as np
 
-def rgb_to_hex(rgb):
-    """Convert RGB color tuple to hexadecimal string."""
-    return "#{:02X}{:02X}{:02X}".format(*rgb)
+# Load the image
+image_path = 'your_image.jpg'
+image = cv2.imread(image_path)
 
-def pulsing_color(label):
+# Define the number of steps for the fading effect (more steps for smoother transition)
+num_steps = 100
 
+# Loop through the steps and decrease brightness gradually
+for step in range(num_steps):
+    # Calculate the alpha value for blending
+    alpha = 1.0 - (step / num_steps)
 
-    for i in range(360):  # Transition through hue values (0 to 359)
-        hue = i / 360.0
-        rgb_color = hsv_to_rgb(hue, 1, 1)  # Convert hue to RGB
-        hex_color = rgb_to_hex(tuple(int(val * 255) for val in rgb_color))
-        if hex_color == "#0000FF":
-            print("found")
-            continue
-        label.config(bg=hex_color)
-        label.update()  # Update the label's appearance
-        time.sleep(0.04)  # Adjust the delay as needed for the desired pulsing speed
-    root.after(1000, lambda :pulsing_color(label))
+    # Create a copy of the original image
+    faded_image = image.copy()
 
-root = tk.Tk()
-root.geometry("400x400")
+    # Multiply each pixel by the alpha value to decrease brightness
+    faded_image = cv2.multiply(faded_image, np.array([alpha]))
 
-label = tk.Label(root, text="Pulsing Color", width=20, height=5)
-label.pack()
+    # Display the faded image (you can save it to a file instead)
+    cv2.imshow('Fading Image', faded_image)
 
-# Start the pulsing color effect
-pulsing_color(label)
+    # Wait for a short time to display the fading effect
+    cv2.waitKey(20)
 
-root.mainloop()
+# Close the window when done
+cv2.destroyAllWindows()
