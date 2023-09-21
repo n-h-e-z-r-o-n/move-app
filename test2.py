@@ -4,7 +4,7 @@ from io import BytesIO
 import requests
 from PIL import Image, ImageTk
 
-def proc():
+def imagen():
         image_url = "https://m.media-amazon.com/images/M/MV5BMzI0NmVkMjEtYmY4MS00ZDMxLTlkZmEtMzU4MDQxYTMzMjU2XkEyXkFqcGdeQXVyMzQ0MzA0NTM@.jpg"  # Replace with the actual image URL
 
         # Download the image from the web
@@ -42,6 +42,10 @@ def proc():
         # Save the modified image.
         im.save('birdfade.png')
 
+        # Create a PhotoImage object from the PIL Image
+        photo = ImageTk.PhotoImage(image)
+        return photo
 
 
-proc()
+
+imagen()
