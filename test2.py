@@ -44,7 +44,4 @@ def proc():
 
 
 
-        # Create a PhotoImage object from the PIL Image
-        photo = ImageTk.PhotoImage(image)
-        return photo
 proc()
