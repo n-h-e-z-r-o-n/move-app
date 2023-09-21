@@ -303,7 +303,7 @@ def main():
         Type6.place(relx=0.19, rely=0.689, relheight=0.016, relwidth=0.06)
 
         Type16 = tk.Text(large_frame, bg='green', fg='white', font=('Comic Sans MS', 12))
-        Type16.insert(plot_n)
+        Type16.insert("end", plot_n)
         Type16.place(relx=0.26, rely=0.689, relheight=0.026, relwidth=0.68)
 
         #  content:
