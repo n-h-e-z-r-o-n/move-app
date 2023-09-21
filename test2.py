@@ -2,8 +2,8 @@ import numpy as np
 from PIL import Image
 
 # Load the two images to be blended.
-image1 = Image.open("")
-image2 = Image.open("image2.png")
+image1 = Image.open(r"C:\Users\HEZRON WEKESA\Pictures\20220819_083721.jpg")
+image2 = Image.open(r"C:\Users\HEZRON WEKESA\Pictures\20220819_083721.jpg")
 
 # Convert the images to NumPy arrays.
 image1_array = np.array(image1)
