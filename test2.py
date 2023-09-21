@@ -15,7 +15,7 @@ def proc():
         image = Image.open(BytesIO(image_data))
 
         # Resize the image to match the frame's dimensions
-        image = image.resize((400, (400)), image.LANCZOS)
+        image = image.resize((1000, (1000)), Image.LANCZOS)
 
         # Ensure the image has an alpha channel.
         im = image.convert("RGBA")
