@@ -20,6 +20,8 @@ global hold
 is_fullscreen = False
 placeholder_text = None
 
+import imdb
+ia = imdb.Cinemagoer()
 
 def main():
         global hold
@@ -35,6 +37,9 @@ def main():
         screen_width = root.winfo_screenwidth()
         screen_height = root.winfo_screenheight()
         large_frame_size = screen_height+700
+        print(screen_width)
+        print(screen_height)
+        print(large_frame_size)
 
         # Create a Canvas widget to hold the frame and enable scrolling
         canvas = tk.Canvas(root, highlightthickness=0)
@@ -49,9 +54,7 @@ def main():
         frame = tk.Frame(canvas)
         canvas.create_window((0, 0), window=frame, anchor=tk.NW)
 
-        # Create a large frame within the canvas frame (replace this with your content)
-        large_frame = tk.Frame(frame, bg='gray', width=screen_width,  height=large_frame_size)
-        large_frame.pack(fill=tk.X)
+
 
         def change_color(widget):
             # Generate a random color in hexadecimal format (#RRGGBB)
@@ -99,7 +102,7 @@ def main():
 
         def Load_Movie(widget, movie_id):
             global hold
-            movie_id = 'tt8385148'
+
             frame2 = WebView2(widget, 500, 5000)
             hold = frame2
             frame2.load_url(f'https://vidsrc.to/embed/movie/{movie_id}')
@@ -120,10 +123,8 @@ def main():
                 widget.place(relx=0, rely=0, x=0, y=0, relwidth=1, relheight=screen_height/large_frame_size)
                 is_fullscreen = True
 
-
-
-        def imagen(widget):
-            image_url = "https://m.media-amazon.com/images/M/MV5BMzI0NmVkMjEtYmY4MS00ZDMxLTlkZmEtMzU4MDQxYTMzMjU2XkEyXkFqcGdeQXVyMzQ0MzA0NTM@.jpg"  # Replace with the actual image URL
+        def imagen(widget, image_url, screen_width, screen_height):
+            # Define the URL of the web image
 
             # Download the image from the web
             response = requests.get(image_url)
@@ -134,6 +135,24 @@ def main():
 
             # Resize the image to match the frame's dimensions
             image = image.resize((screen_width, (screen_height)), Image.LANCZOS)
+
+            # Create a PhotoImage object from the PIL Image
+            photo = ImageTk.PhotoImage(image)
+            return photo
+
+        def imagen_fade(widget, poster_url):
+
+
+            # Download the image from the web
+            response = requests.get(poster_url)
+            image_data = response.content
+
+            # Create a PIL Image object from the image data
+            image = Image.open(BytesIO(image_data))
+
+            # Resize the image to match the frame's dimensions
+            h = screen_height-200
+            image = image.resize((screen_width, (h)), Image.LANCZOS)
 
             # Ensure the image has an alpha channel.
             im = image.convert("RGBA")
@@ -175,15 +194,113 @@ def main():
             if not widget.get():
                 widget.insert(0, "Search")
                 widget.config(fg='gray')  # Change text color to gray
-        def play(widget):
-            widget.place(relx=0.03, rely=0.04, relheight=0.4, relwidth=0.94)
 
+        # ------------
+
+        movies = ia.search_movie('AHSOKA')
+        ia.update(movies[0]) # Fetch additional details, including images
+
+        def cast():
+            i = 0
+            cast_str = ''
+            while i < len(movies[0]["cast"]) :
+                if len(movies[0]["cast"][i]) != 0 and i < 15:
+                    cast_str += str(movies[0]["cast"][i]) + ', '
+                i += 1
+
+            return cast_str
+
+        def production():
+            i = 0
+            production_str = ''
+            while i < len(movies[0]['production companies']):
+                if len(movies[0]['production companies'][i]) != 0 and i < 5:
+                    production_str += str(movies[0]['production companies'][i]) + ', '
+                i += 1
+            return production_str
+
+        def genres():
+            genres_str = ''
+            for i in movies[0]["genres"]:
+                genres_str += str(i) + ', '
+            return genres_str
+
+        def country():
+            country_str = ''
+            for i in movies[0]["countries"]:
+                country_str += str(i) + ', '
+            return country_str
+
+        country_n = country()
+        genres_n = genres()
+        cast_n = cast()
+        production_n = production()
+
+        poster_url = movies[0].get('full-size cover url')
+        # ------------
+
+
+
+        # Create a large frame within the canvas frame (replace this with your content)
+        large_frame = tk.Frame(frame, bg='BLACK', width=screen_width, height=large_frame_size)
+        large_frame.pack(fill=tk.X)
+
+        label3 = tk.Label(large_frame, bg='green', text="This is a label in the large frame")
+        label3.place(relx=0.04, rely=0.52, relheight=0.16, relwidth=0.13)
+        poster = imagen(label3,poster_url, 250, 317)
+        label3.config(image=poster)
+        color_bg = "black"
+
+        Title =  tk.Label(large_frame, bg=color_bg, fg='white', text=f"{movies[0]['title']}", justify=tk.LEFT, anchor=tk.W,  font = ('Algerian', 28))
+        Title.place(relx=0.19, rely=0.52, relheight=0.025, relwidth=0.75)
+
+        Type1 = tk.Label(large_frame, bg=color_bg,fg='gray', text="Type : ", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
+        Type1.place(relx=0.19, rely=0.568, relheight=0.016, relwidth=0.06)
+
+        Type11 = tk.Label(large_frame, bg=color_bg,fg='white', text=f"{movies[0]['kind']}" , justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
+        Type11.place(relx=0.26, rely=0.568, relheight=0.016, relwidth=0.68)
+
+        Type2 = tk.Label(large_frame, bg=color_bg,fg='gray', text="Country : ", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS',  12, "bold"))
+        Type2.place(relx=0.19, rely=0.586, relheight=0.016, relwidth=0.06)
+
+        Type12 = tk.Label(large_frame, bg=color_bg, fg='white', text=country_n, justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
+        Type12.place(relx=0.26, rely=0.586, relheight=0.016, relwidth=0.68)
+
+        Type3 = tk.Label(large_frame, bg=color_bg, fg='gray', text="Genre : ", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS',  12, "bold"))
+        Type3.place(relx=0.19, rely=0.604, relheight=0.016, relwidth=0.06)
+
+        Type13 = tk.Label(large_frame, bg=color_bg, fg='white', text= genres_n, justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
+        Type13.place(relx=0.26, rely=0.604, relheight=0.016, relwidth=0.68)
+
+        Type4 = tk.Label(large_frame, bg=color_bg, fg='gray', text="Release : ", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS',  12, "bold"))
+        Type4.place(relx=0.19, rely=0.622, relheight=0.016, relwidth=0.06)
+
+        Type14 = tk.Label(large_frame, bg=color_bg, fg='white', text=f"{movies[0]['year']}", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
+        Type14.place(relx=0.26, rely=0.622, relheight=0.016, relwidth=0.68)
+
+        Type5 = tk.Label(large_frame, bg=color_bg, fg='gray', text="Production : ", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS',  12, "bold"))
+        Type5.place(relx=0.19, rely=0.64, relheight=0.016, relwidth=0.06)
+
+        Type15 = tk.Label(large_frame, bg=color_bg, fg='white', text= production_n, justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
+        Type15.place(relx=0.26, rely=0.64, relheight=0.016, relwidth=0.68)
+
+        Type6 = tk.Label(large_frame, bg='green', fg='gray', text="Cast : ", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS',  12, "bold"))
+        Type6.place(relx=0.19, rely=0.658, relheight=0.016, relwidth=0.06)
+
+        Type16 = tk.Label(large_frame, bg='green', fg='white', text= cast_n, justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"), wraplength=1200)
+        Type16.place(relx=0.26, rely=0.658, relheight=0.026, relwidth=0.68)
+
+        Type6 = tk.Label(large_frame, bg='green', fg='gray', text="Plot : ", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
+        Type6.place(relx=0.19, rely=0.689, relheight=0.016, relwidth=0.06)
+
+        Type16 = tk.Label(large_frame, bg='green', fg='white', text=f"{movies[0]['plot']}", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12), wraplength=1200)
+        Type16.place(relx=0.26, rely=0.689, relheight=0.026, relwidth=0.68)
 
         #  content:
 
-        image_label = tk.Button(large_frame, bg='black', fg='white', borderwidth=0, border=0, activebackground='black', activeforeground='yellow', relief=tk.FLAT, font = ('Arial Black', 76))
+        image_label = tk.Button(large_frame, bg='black', fg='white', borderwidth=0, border=0, activebackground='black', activeforeground='yellow', relief=tk.FLAT, font = ('Arial Black', 76 ,'bold'))
         image_label.place(relx=0, rely=0.0, relheight=0.5, relwidth=1)
-        photo = imagen(image_label)
+        photo = imagen_fade(image_label, poster_url)
         image_label.config(image=photo, compound=tk.CENTER, text='▷')
         #change_fg_OnHover(image_label,'Blue', 'white')
         change_color(image_label)
@@ -201,14 +318,14 @@ def main():
 
         video_box = tk.Frame(large_frame, bg='green')
         #video_box.place(relx=0.03, rely=0.04, relheight=0.4, relwidth=0.94)
-        #Load_Movie(video_box, None)
+        #Load_Movie(video_box, movies[0].movieID)
 
         original_x = video_box.winfo_x()
         original_y = video_box.winfo_y()
         original_width = video_box.winfo_width()
         original_height = video_box.winfo_height()
 
-        #video_box.forget()
+
 
         fullscreen_button = tk.Button(video_box, border=0, borderwidth=0, text="⤢",  bg='black', justify='center', activebackground='black', activeforeground='white',fg='white', font = ('Arial Black', 26),  command=lambda: toggle_fullscreen(video_box))
         fullscreen_button.place(relx=0.97, rely=0.95, relheight=0.05, relwidth=0.03)
@@ -217,7 +334,7 @@ def main():
 
 
 
-        label2 = tk.Button(large_frame, bg='green',text="This is a label in the large frame", command=lambda:hold.full_screeen())
+        label2 = tk.Button(large_frame, bg='green',text="This is a label in the large frame")
         label2.place(x = 0.1, rely=0.7, relheight = 0.1)
 
 
