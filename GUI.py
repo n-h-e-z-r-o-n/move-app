@@ -304,7 +304,7 @@ def main():
 
         Type16 = tk.Text(large_frame, bg='green', fg='white', borderwidth = 0, border=0, wrap=tk.WORD, font=('Comic Sans MS', 12))
         Type16.insert("end", plot_n)
-        Type16.st
+        Type16.sta
 
         Type16.place(relx=0.26, rely=0.689, relheight=0.026, relwidth=0.68)
 
