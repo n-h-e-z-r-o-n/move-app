@@ -1,29 +1,21 @@
-import cv2
-import numpy as np
+from PIL import Image, ImageEnhance
 
 # Load the image
-image_path = 'your_image.jpg'
-image = cv2.imread(image_path)
+input_image_path = "input_image.jpg"
+output_image_path = "output_image.jpg"
+image =  Image.open(r"C:\Users\HEZRON WEKESA\Pictures\20220819_083721.jpg")
 
-# Define the number of steps for the fading effect (more steps for smoother transition)
-num_steps = 100
+# Define the number of steps for the fade effect
+num_steps = 10
 
-# Loop through the steps and decrease brightness gradually
-for step in range(num_steps):
-    # Calculate the alpha value for blending
-    alpha = 1.0 - (step / num_steps)
+# Create a list of images with gradually reduced brightness
+fade_images = []
+for step in range(num_steps + 1):
+    # Adjust brightness using ImageEnhance
+    brightness_factor = 1.0 - (step / num_steps)  # Decrease brightness
+    enhanced_image = ImageEnhance.Brightness(image).enhance(brightness_factor)
+    fade_images.append(enhanced_image)
 
-    # Create a copy of the original image
-    faded_image = image.copy()
+# Save the faded images as a GIF or another format
+fade_images[0].save(output_image_path, save_all=True, append_images=fade_images[1:], duration=100, loop=0)
 
-    # Multiply each pixel by the alpha value to decrease brightness
-    faded_image = cv2.multiply(faded_image, np.array([alpha]))
-
-    # Display the faded image (you can save it to a file instead)
-    cv2.imshow('Fading Image', faded_image)
-
-    # Wait for a short time to display the fading effect
-    cv2.waitKey(20)
-
-# Close the window when done
-cv2.destroyAllWindows()
