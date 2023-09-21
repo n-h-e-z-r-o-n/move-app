@@ -1,11 +1,24 @@
-import tkinter as tk
+import imdb
 
-root = tk.Tk()
-root.title("Text Alignment Example")
+# Create an IMDbPY instance
+ia = imdb.IMDb()
 
-# Create a Label widget with left-aligned and top-aligned text
-label = tk.Label(root, bg='blue', text="To", anchor="nw")
+# Search for a movie by its title
+movie_title = "The Shawshank Redemption"  # Replace with the title of the movie you're interested in
+search_results = ia.search_movie(movie_title)
 
-label.pack()
+# Check if search results are available and get the first result
+if search_results:
+    movie_id = search_results[0].getID()
+    movie = ia.get_movie(movie_id)
 
-root.mainloop()
+    # Get the release date of the movie
+    release_date = movie.get("original air date")
+
+    if release_date:
+        print("Release Date:", release_date)
+    else:
+        print("Release date information not available for this movie.")
+else:
+    print("Movie not found.")
+
