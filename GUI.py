@@ -264,7 +264,7 @@ def main():
         Title.place(relx=0.19, rely=0.52, relheight=0.025, relwidth=0.75)
 
         Title = tk.Label(large_frame, bg="green", fg='white', text=f"Hezron ", justify=tk.LEFT, anchor=tk.W, font=('Algerian', 28))
-        Title.place(relx=0.19, rely=0.52, relheight=0.016, relwidth=0.75)
+        Title.place(relx=0.19, rely=0.541, relheight=0.016, relwidth=0.75)
 
         Type1 = tk.Label(large_frame, bg="green",fg='gray', text="Type : ", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
         Type1.place(relx=0.19, rely=0.568, relheight=0.016, relwidth=0.06)
