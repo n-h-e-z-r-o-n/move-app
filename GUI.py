@@ -264,7 +264,7 @@ def main():
         Title =  tk.Label(large_frame, bg=color_bg, fg='white', text=f"{movies[0]['title']}", justify=tk.LEFT, anchor=tk.W,  font = ('Algerian', 28))
         Title.place(relx=0.19, rely=0.52, relheight=0.025, relwidth=0.75)
 
-        Title = tk.Label(large_frame, bg="green", fg='white', text=f"ᴴᴰ ★ {movies[0]['rating']} ", justify=tk.LEFT, anchor=tk.W, font=('Algerian', 20))
+        Title = tk.Label(large_frame, bg="green", fg='white', text=f"ᴴᴰ ★ {movies[0]['rating']} ", justify=tk.LEFT, anchor=tk.W, font=('Georgia', 20))
         Title.place(relx=0.19, rely=0.549, relheight=0.015, relwidth=0.75)
 
         Type1 = tk.Label(large_frame, bg=color_bg,fg='gray', text="Type : ", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
