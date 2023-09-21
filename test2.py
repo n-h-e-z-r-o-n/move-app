@@ -2,9 +2,8 @@ import numpy as np
 from PIL import Image
 
 # Load the two images to be blended.
-image1 = Image.open(r"C:\Users\HEZRON WEKESA\Pictures\20220819_083721.jpg")
-image2 = Image.open(r"C:\Users\HEZRON WEKESA\Pictures\20220819_083721.jpg")
-im = Image.open('bird.jpg')
+im  = Image.open(r"C:\Users\HEZRON WEKESA\Pictures\20220819_083721.jpg")
+
 im.putalpha(255)
 width, height = im.size
 pixels = im.load()
