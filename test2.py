@@ -1,24 +1,22 @@
-import tkinter as tk
+import numpy as np
+from PIL import Image
 
-def on_entry_click(widget, event):
-    if widget.get() == "Placeholder Text":
-        widget.delete(0, tk.END)
-        widget.config(fg='black')  # Change text color to black
+# Load the two images to be blended.
+image1 = Image.open("")
+image2 = Image.open("image2.png")
 
-def on_focusout(widget, event):
-    if not widget.get():
-        widget.insert(0, "Placeholder Text")
-        widget.config(fg='gray')  # Change text color to gray
+# Convert the images to NumPy arrays.
+image1_array = np.array(image1)
+image2_array = np.array(image2)
 
-root = tk.Tk()
-root.geometry("300x200")
+# Create a new NumPy array to store the blended image.
+blended_image_array = np.zeros_like(image1_array)
 
-placeholder_text = "Placeholder Text"
+# Blend the two images together.
+blended_image_array = Image.blend(image1_array, image2_array, 0.5)
 
-entry = tk.Entry(root, fg='gray')  # Set the initial text color to gray
-entry.insert(0, placeholder_text)
-entry.bind("<FocusIn>", lambda e:  on_entry_click(entry, e))
-entry.bind("<FocusOut>", lambda e: on_focusout(entry, e))
-entry.pack()
+# Convert the NumPy array back to an Image object.
+blended_image = Image.fromarray(blended_image_array.astype(np.uint8))
 
-root.mainloop()
+# Save the blended image.
+blended_image.save("blended_image.png")
