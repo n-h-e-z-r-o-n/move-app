@@ -379,51 +379,51 @@ def main():
 
             label4 = tk.Button(large_frame, bg='green', text="This is a label in the large frame")
             label4.place(relx=0.36, rely=0.78, relheight=0.2, relwidth=0.15)
-            r3_bt1 = tk.Button(label2, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
+            r3_bt1 = tk.Button(label4, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
             r3_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
             p_i = imagen(movie_poster_url, 280, 396)
             r3_bt1.config(image=p_i)
             r3_bt1.image = p_i
             change_bg_OnHover(r3_bt1, hover_text_color, recomendation_tubs_bg_color)
-            r3_bt2 = tk.Button(label2, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text='Range rover land \n 2023 ', font=('Bahnschrift Light', 13, 'bold'))
+            r3_bt2 = tk.Button(label4, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text='Range rover land \n 2023 ', font=('Bahnschrift Light', 13, 'bold'))
             r3_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
             change_fg_OnHover(r3_bt2, hover_text_color, text_color)
 
             label5 = tk.Button(large_frame, bg='green', text="This is a label in the large frame")
             label5.place(relx=0.52, rely=0.78, relheight=0.2, relwidth=0.15)
-            r4_bt1 = tk.Button(label2, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
+            r4_bt1 = tk.Button(label5, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
             r4_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
             p_i = imagen(movie_poster_url, 280, 396)
-            r1_bt1.config(image=p_i)
-            r1_bt1.image = p_i
-            change_bg_OnHover(r1_bt1, hover_text_color, recomendation_tubs_bg_color)
-            r1_bt2 = tk.Button(label2, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text='Range rover land \n 2023 ', font=('Bahnschrift Light', 13, 'bold'))
-            r1_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
-            change_fg_OnHover(r1_bt2, hover_text_color, text_color)
+            r4_bt1.config(image=p_i)
+            r4_bt1.image = p_i
+            change_bg_OnHover(r4_bt1, hover_text_color, recomendation_tubs_bg_color)
+            r4_bt2 = tk.Button(label5, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text='Range rover land \n 2023 ', font=('Bahnschrift Light', 13, 'bold'))
+            r4_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
+            change_fg_OnHover(r4_bt2, hover_text_color, text_color)
 
             label6 = tk.Button(large_frame, bg='green', text="This is a label in the large frame")
             label6.place(relx=0.68, rely=0.78, relheight=0.2, relwidth=0.15)
-            r1_bt1 = tk.Button(label2, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
-            r1_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
+            r5_bt1 = tk.Button(label6, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
+            r5_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
             p_i = imagen(movie_poster_url, 280, 396)
-            r1_bt1.config(image=p_i)
-            r1_bt1.image = p_i
-            change_bg_OnHover(r1_bt1, hover_text_color, recomendation_tubs_bg_color)
-            r1_bt2 = tk.Button(label2, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text='Range rover land \n 2023 ', font=('Bahnschrift Light', 13, 'bold'))
-            r1_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
-            change_fg_OnHover(r1_bt2, hover_text_color, text_color)
+            r5_bt1.config(image=p_i)
+            r5_bt1.image = p_i
+            change_bg_OnHover(r5_bt1, hover_text_color, recomendation_tubs_bg_color)
+            r5_bt2 = tk.Button(label6, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text='Range rover land \n 2023 ', font=('Bahnschrift Light', 13, 'bold'))
+            r5_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
+            change_fg_OnHover(r5_bt2, hover_text_color, text_color)
 
             label7 = tk.Button(large_frame, bg='green', text="This is a label in the large frame")
             label7.place(relx=0.84, rely=0.78, relheight=0.2, relwidth=0.15)
-            r1_bt1 = tk.Button(label2, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
-            r1_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
+            r6_bt1 = tk.Button(label7, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
+            r6_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
             p_i = imagen(movie_poster_url, 280, 396)
-            r1_bt1.config(image=p_i)
-            r1_bt1.image = p_i
-            change_bg_OnHover(r1_bt1, hover_text_color, recomendation_tubs_bg_color)
-            r1_bt2 = tk.Button(label2, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text='Range rover land \n 2023 ', font=('Bahnschrift Light', 13, 'bold'))
-            r1_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
-            change_fg_OnHover(r1_bt2, hover_text_color, text_color)
+            r6_bt1.config(image=p_i)
+            r6_bt1.image = p_i
+            change_bg_OnHover(r6_bt1, hover_text_color, recomendation_tubs_bg_color)
+            r6_bt2 = tk.Button(label7, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text='Range rover land \n 2023 ', font=('Bahnschrift Light', 13, 'bold'))
+            r6_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
+            change_fg_OnHover(r6_bt2, hover_text_color, text_color)
 
 
 
