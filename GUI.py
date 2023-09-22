@@ -268,10 +268,7 @@ def main():
         r6_year = movies[6]['year']
         recomednation_6_poster = movies[6].get('full-size cover url')
 
-        (r1_title, r1_year, recomednation_1_poster, r2_title, r2_year, recomednation_2_poster,
-         r3_title, r3_year, recomednation_3_poster, r4_title, r4_year, recomednation_4_poster, r5_title,
-         r5_year, recomednation_5_poster, r6_title, r6_year, 
-         )
+        #(r1_title, r1_year, recomednation_1_poster, r2_title, r2_year, recomednation_2_poster, r3_title, r3_year, recomednation_3_poster, r4_title, r4_year, recomednation_4_poster, r5_title, r5_year, recomednation_5_poster, r6_title, r6_year, recomednation_6_poster )
 
         # ------------
 
@@ -279,7 +276,7 @@ def main():
 
 
 
-        def watch_page(widget, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url):
+        def watch_page(widget, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url, r1_title, r1_year, recomednation_1_poster, r2_title, r2_year, recomednation_2_poster, r3_title, r3_year, recomednation_3_poster, r4_title, r4_year, recomednation_4_poster, r5_title, r5_year, recomednation_5_poster, r6_title, r6_year, recomednation_6_poster ):
             # Create a large frame within the canvas frame (replace this with your content)
             large_frame = tk.Frame(widget, bg='black', width=screen_width, height=large_frame_size)
             large_frame.pack(fill=tk.X)
@@ -369,25 +366,6 @@ def main():
             recomendation_tubs_bg_color = 'black'
             hover_text_color = 'lightblue'
             text_color = 'gray'
-            r1_title =  None
-            r1_year = None
-            recomednation_1_poster = movie_poster_url
-            r2_title = None
-            r2_year = None
-            recomednation_2_poster = movie_poster_url
-            r3_title = None
-            r3_year = None
-            recomednation_3_poster = movie_poster_url
-            r4_title = None
-            r4_year = None
-            recomednation_4_poster = movie_poster_url
-            r5_title = None
-            r5_year = None
-            recomednation_5_poster = movie_poster_url
-            r6_title = None
-            r6_year = None
-            recomednation_6_poster = movie_poster_url
-
 
             label2 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
             label2.place(relx=0.04, rely=0.78, relheight=0.2, relwidth=0.15)
@@ -479,7 +457,7 @@ def main():
             fullscreen_button = tk.Button(video_box, border=0, borderwidth=0, text="⤢",  bg='black', justify='center', activebackground='black', activeforeground='white',fg='white', font = ('Arial Black', 26),  command=lambda: toggle_fullscreen(video_box))
             fullscreen_button.place(relx=0.97, rely=0.95, relheight=0.05, relwidth=0.03)
 
-        watch_page(frame, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url)
+        watch_page(frame, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url, r1_title, r1_year, recomednation_1_poster, r2_title, r2_year, recomednation_2_poster, r3_title, r3_year, recomednation_3_poster, r4_title, r4_year, recomednation_4_poster, r5_title, r5_year, recomednation_5_poster, r6_title, r6_year, recomednation_6_poster )
 
 
 
