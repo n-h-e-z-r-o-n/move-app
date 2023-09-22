@@ -369,10 +369,10 @@ def main():
             r2_img = imagen(recomednation_2_poster, 280, 396)
             r2_bt1.config(image=r2_img)
             r2_bt1.image = r2_img
-            change_bg_OnHover(r2_bt1, hover_text_color, recomendation_tubs_bg_color)
+            #change_bg_OnHover(r2_bt1, hover_text_color, recomendation_tubs_bg_color)
             r2_bt2 = tk.Button(label3, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text='Range rover land \n 2023 ', font=('Bahnschrift Light', 13, 'bold'))
             r2_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
-            change_fg_OnHover(r2_bt2, hover_text_color, text_color)
+            #change_fg_OnHover(r2_bt2, hover_text_color, text_color)
 
             label4 = tk.Button(large_frame, bg='green')
             label4.place(relx=0.36, rely=0.78, relheight=0.2, relwidth=0.15)
