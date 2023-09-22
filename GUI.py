@@ -357,11 +357,12 @@ def main():
 
         #  content:
 
-        image_label = tk.Button(large_frame, text='▷', bg='black', fg='white', borderwidth=0, border=0, activebackground='black', activeforeground='yellow', relief=tk.FLAT, font=('Arial Black', 76, 'bold'), command=lambda: play(video_box))
+        image_label = tk.Button(large_frame, text='▷', bg='black', fg='white', borderwidth=0, border=0, activebackground='black', activeforeground='black', relief=tk.FLAT, font=('Arial Black', 76, 'bold'), command=lambda: play(video_box))
         image_label.place(relx=0, rely=0.0, relheight=0.5, relwidth=1)
         photo = imagen_fade(movie_poster_url, screen_height, screen_width)
         image_label.config(image=photo, compound=tk.CENTER)
         image_label.image = photo
+        image_label.focus_set()
         change_fg_OnHover(image_label, 'Blue', 'white')
         change_color(root, image_label)
 
@@ -471,7 +472,7 @@ def main():
         r6_bt1.focus_set()
         r6_bt2.focus_set()
 
-        #video_box = tk.Frame(large_frame, bg='black')
+        video_box = tk.Frame(large_frame, bg='black')
         #frame2 = WebView2(video_box, 500, 500)
         #frame2.load_url(f'https://vidsrc.to/embed/movie/tt{movie_id}')
         #frame2.pack(side='left', padx=0, fill='both', expand=True)
