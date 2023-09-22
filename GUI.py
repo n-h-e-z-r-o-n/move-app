@@ -366,7 +366,7 @@ def main():
 
 
 
-            label3 = tk.Button(large_frame, bg='green', text="This is a label in the large frame")
+            label3 = tk.Button(large_frame, bg='green')
             label3.place(relx=0.2, rely=0.78, relheight=0.2, relwidth=0.15)
             r2_bt1 = tk.Button(label3, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
             r2_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
@@ -378,7 +378,7 @@ def main():
             r2_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
             change_fg_OnHover(r2_bt2, hover_text_color, text_color)
 
-            label4 = tk.Button(large_frame, bg='green', text="This is a label in the large frame")
+            label4 = tk.Button(large_frame, bg='green')
             label4.place(relx=0.36, rely=0.78, relheight=0.2, relwidth=0.15)
             r3_bt1 = tk.Button(label4, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
             r3_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
@@ -390,7 +390,7 @@ def main():
             r3_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
             change_fg_OnHover(r3_bt2, hover_text_color, text_color)
 
-            label5 = tk.Button(large_frame, bg='green', text="This is a label in the large frame")
+            label5 = tk.Button(large_frame, bg='green' )
             label5.place(relx=0.52, rely=0.78, relheight=0.2, relwidth=0.15)
             r4_bt1 = tk.Button(label5, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
             r4_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
@@ -402,7 +402,7 @@ def main():
             r4_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
             change_fg_OnHover(r4_bt2, hover_text_color, text_color)
 
-            label6 = tk.Button(large_frame, bg='green', text="This is a label in the large frame")
+            label6 = tk.Button(large_frame, bg='green')
             label6.place(relx=0.68, rely=0.78, relheight=0.2, relwidth=0.15)
             r5_bt1 = tk.Button(label6, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
             r5_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
