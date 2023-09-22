@@ -362,10 +362,6 @@ def main():
             change_fg_OnHover(r1_bt2, hover_text_color, text_color)
 
 
-
-
-
-
             label3 = tk.Button(large_frame, bg='green')
             label3.place(relx=0.2, rely=0.78, relheight=0.2, relwidth=0.15)
             r2_bt1 = tk.Button(label3, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
@@ -414,7 +410,7 @@ def main():
             r5_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
             change_fg_OnHover(r5_bt2, hover_text_color, text_color)
 
-            label7 = tk.Button(large_frame, bg='green', text="This is a label in the large frame")
+            label7 = tk.Button(large_frame, bg='green')
             label7.place(relx=0.84, rely=0.78, relheight=0.2, relwidth=0.15)
             r6_bt1 = tk.Button(label7, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
             r6_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
