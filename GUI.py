@@ -361,7 +361,7 @@ def main():
 
 
             label2 = tk.Button(large_frame, bg='green',text="This is a label in the large frame", command=chan)
-            label2.place(relx=0.04, rely=0.78, relheight=0.2, relwidth=0.95)
+            label2.place(relx=0.04, rely=0.78, relheight=0.2, relwidth=0.15)
 
         watch_page(frame, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url)
 
