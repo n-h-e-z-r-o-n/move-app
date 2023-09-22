@@ -314,7 +314,7 @@ def main():
             plot_wdget = tk.Text(large_frame, bg='green', fg='white', borderwidth=0, border=0, wrap=tk.WORD, font=('Comic Sans MS', 12))
             plot_wdget.insert("end", movie_plot)
             plot_wdget.config(state="disabled")
-            plot_wdget.place(relx=0.04, rely=0.689, relheight=0.078, relwidth=0.68)
+            plot_wdget.place(relx=0.04, rely=0.689, relheight=0.078, relwidth=0.95)
 
 
             #  content:
