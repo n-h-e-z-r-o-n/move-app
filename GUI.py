@@ -364,15 +364,16 @@ def main():
         image_label.image = photo
         change_fg_OnHover(image_label, 'Blue', 'white')
         change_color(root, image_label)
-
-        Search_box = tk.Entry(large_frame, font=('Georgia', 15), justify='center',insertbackground="white", borderwidth=0, border=0, bg='black', fg='white')
+        def search_movie():
+             print('search')
+        Search_box = tk.Entry(large_frame, font=('Georgia', 15), justify='center',insertbackground="lightblue", borderwidth=0, border=0, bg='black', fg='white')
         Search_box.place(relx=0.30, rely=0.007, relheight=0.017, relwidth=0.4)
         placeholder_text = "Search"
         Search_box.insert(0, placeholder_text)
         Search_box.bind("<FocusIn>", lambda e: on_entry_click(Search_box, e))
         Search_box.bind("<FocusOut>", lambda e: on_focusout(Search_box, e))
         change_bg_OnHover(Search_box, '#010127', 'black')
-        #pulsing_color(root, Search_box)
+
 
         recomendation_tubs_bg_color = 'black'
         hover_color = 'lightblue'
