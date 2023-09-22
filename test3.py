@@ -1,37 +1,15 @@
 import tkinter as tk
-import clr
-from tkwebview2.tkwebview2 import WebView2, have_runtime, install_runtime
-clr.AddReference('System.Windows.Forms')
-clr.AddReference('System.Threading')
-from System.Windows.Forms import Control
-from System.Threading import Thread,ApartmentState,ThreadStart
 
-def on_double_click(event):
-  print("yes")
-def main():
-    if not have_runtime():#没有webview2 runtime
-        install_runtime()
-    root=tk.Tk()
-    root.title('pywebview for tkinter test')
-    root.geometry('1200x600+5+5')
+def change_cursor_color():
+    entry.config(insertbackground="red")
 
+root = tk.Tk()
+root.title("Change Entry Cursor Color")
 
-    p = tk.Frame(root)
-    p.place(relheight=1,relwidth=1,rely=0,relx=0)
-    frame2 = WebView2(p,500,500)
-    frame2.pack(side='left',padx=0,fill='both',expand=True)
-    frame2.load_url('https://vidsrc.to/embed/movie/tt4154796')
+entry = tk.Entry(root)
+entry.pack()
 
-    # Bind the double-click event to the frame
-    p.bind("<Double-Button-1>", on_double_click)
-    frame2.bind("<Double-Button-1>", on_double_click)
-    print(dir(frame2))
-    print(frame2.event_info())
-    frame2.web_view.
-    root.mainloop()
+button = tk.Button(root, text="Change Cursor Color", command=change_cursor_color)
+button.pack()
 
-if __name__ == "__main__":
-    t = Thread(ThreadStart(main))
-    t.ApartmentState = ApartmentState.STA
-    t.Start()
-    t.Join()
+root.mainloop()

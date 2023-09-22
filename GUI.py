@@ -130,7 +130,7 @@ def on_entry_click(widget, event):
     global placeholder_text
     if widget.get() == "Search":
         widget.delete(0, tk.END)
-        widget.config(fg='black')  # Change text color to black
+        widget.config(fg='white')  # Change text color to black
 
 
 def on_focusout(widget, event):
@@ -357,10 +357,6 @@ def main():
 
         #  content:
 
-
-
-
-
         image_label = tk.Button(large_frame, text='▷', bg='black', fg='white', borderwidth=0, border=0, activebackground='black', activeforeground='yellow', relief=tk.FLAT, font=('Arial Black', 76, 'bold'), command=lambda: play(video_box))
         image_label.place(relx=0, rely=0.0, relheight=0.5, relwidth=1)
         photo = imagen_fade(movie_poster_url, screen_height, screen_width)
@@ -369,13 +365,14 @@ def main():
         change_fg_OnHover(image_label, 'Blue', 'white')
         change_color(root, image_label)
 
-        Search_box = tk.Entry(large_frame, font=('Georgia', 17), justify='center', borderwidth=0, border=0, fg='gray')
-        Search_box.place(relx=0.30, rely=0.007, relheight=0.02, relwidth=0.4)
+        Search_box = tk.Entry(large_frame, font=('Georgia', 15), justify='center',insertbackground="white", borderwidth=0, border=0, bg='black', fg='white')
+        Search_box.place(relx=0.30, rely=0.007, relheight=0.017, relwidth=0.4)
         placeholder_text = "Search"
         Search_box.insert(0, placeholder_text)
         Search_box.bind("<FocusIn>", lambda e: on_entry_click(Search_box, e))
         Search_box.bind("<FocusOut>", lambda e: on_focusout(Search_box, e))
-        # pulsing_color(Search_box)
+        change_bg_OnHover(Search_box, '#010127', 'black')
+        #pulsing_color(root, Search_box)
 
         recomendation_tubs_bg_color = 'black'
         hover_color = 'lightblue'
@@ -453,14 +450,10 @@ def main():
         r6_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
         change_fg_OnHover(r6_bt2, hover_color, text_color)
 
-        video_box = tk.Frame(large_frame, bg='black')
-        frame2 = WebView2(video_box, 500, 500)
-        frame2.load_url(f'https://vidsrc.to/embed/movie/tt{movie_id}')
-        frame2.pack(side='left', padx=0, fill='both', expand=True)
-
-
-
-
+        #video_box = tk.Frame(large_frame, bg='black')
+        #frame2 = WebView2(video_box, 500, 500)
+        #frame2.load_url(f'https://vidsrc.to/embed/movie/tt{movie_id}')
+        #frame2.pack(side='left', padx=0, fill='both', expand=True)
 
 
     watch_page(frame, movie_id, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url, r1_title, r1_year, recomednation_1_poster, r2_title, r2_year, recomednation_2_poster, r3_title, r3_year, recomednation_3_poster, r4_title, r4_year, recomednation_4_poster, r5_title, r5_year, recomednation_5_poster, r6_title, r6_year, recomednation_6_poster)
@@ -469,7 +462,10 @@ def main():
 
 
 if __name__ == "__main__":
+    main()
+    '''
     t = Thread(ThreadStart(main))
     t.ApartmentState = ApartmentState.STA
     t.Start()
     t.Join()
+    '''
