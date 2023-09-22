@@ -327,7 +327,7 @@ def main():
             photo = imagen_fade(movie_poster_url, screen_height, screen_width )
             image_label.config(image=photo, compound=tk.CENTER)
             image_label.image = photo
-            #change_fg_OnHover(image_label,'Blue', 'white')
+            change_fg_OnHover(image_label,'Blue', 'white')
             change_color(root, image_label)
 
             Search_box =  tk.Entry(large_frame,  font = ('Georgia', 17), justify='center', borderwidth=0, border=0, fg='gray')
