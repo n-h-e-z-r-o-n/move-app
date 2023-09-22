@@ -363,7 +363,10 @@ def main():
             label2 = tk.Button(large_frame, bg='green',text="This is a label in the large frame")
             label2.place(relx=0.04, rely=0.78, relheight=0.2, relwidth=0.15)
 
-            tk.Button(label2).place(relx=0,)
+            p = tk.Button(label2).place(relx=0,rely=0, relwidth=1)
+            p_i = imagen(movie_poster_url, 250, 317)
+            label3.config(image=p_i)
+            label3.image = poster
 
 
 
