@@ -236,6 +236,7 @@ def main():
                 plot_str += str(i)
             return plot_str
 
+        movie_id = movies[0].movieID
         movie_title = movies[0]['title']
         movie_ratting = movies[0]['rating']
         movie_type = movies[0]['kind']
@@ -246,7 +247,7 @@ def main():
         movie_cast_names = cast()
         movie_plot = plot()
 
-        # (widget, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url)
+        # (widget, movie_id, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url)
         movie_poster_url = movies[0].get('full-size cover url')
 
         r1_title = movies[1]['title']
@@ -276,7 +277,7 @@ def main():
 
 
 
-        def watch_page(widget, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url, r1_title, r1_year, recomednation_1_poster, r2_title, r2_year, recomednation_2_poster, r3_title, r3_year, recomednation_3_poster, r4_title, r4_year, recomednation_4_poster, r5_title, r5_year, recomednation_5_poster, r6_title, r6_year, recomednation_6_poster ):
+        def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url, r1_title, r1_year, recomednation_1_poster, r2_title, r2_year, recomednation_2_poster, r3_title, r3_year, recomednation_3_poster, r4_title, r4_year, recomednation_4_poster, r5_title, r5_year, recomednation_5_poster, r6_title, r6_year, recomednation_6_poster ):
             # Create a large frame within the canvas frame (replace this with your content)
             large_frame = tk.Frame(widget, bg='black', width=screen_width, height=large_frame_size)
             large_frame.pack(fill=tk.X)
@@ -445,7 +446,7 @@ def main():
 
             video_box = tk.Frame(large_frame, bg='green')
             video_box.place(relx=0.03, rely=0.04, relheight=0.4, relwidth=0.94)
-            Load_Movie(video_box, movies[0].movieID)
+            Load_Movie(video_box, movie_id)
 
             original_x = video_box.winfo_x()
             original_y = video_box.winfo_y()
@@ -457,7 +458,7 @@ def main():
             fullscreen_button = tk.Button(video_box, border=0, borderwidth=0, text="⤢",  bg='black', justify='center', activebackground='black', activeforeground='white',fg='white', font = ('Arial Black', 26),  command=lambda: toggle_fullscreen(video_box))
             fullscreen_button.place(relx=0.97, rely=0.95, relheight=0.05, relwidth=0.03)
 
-        watch_page(frame, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url, r1_title, r1_year, recomednation_1_poster, r2_title, r2_year, recomednation_2_poster, r3_title, r3_year, recomednation_3_poster, r4_title, r4_year, recomednation_4_poster, r5_title, r5_year, recomednation_5_poster, r6_title, r6_year, recomednation_6_poster )
+        watch_page(frame, movie_id, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url, r1_title, r1_year, recomednation_1_poster, r2_title, r2_year, recomednation_2_poster, r3_title, r3_year, recomednation_3_poster, r4_title, r4_year, recomednation_4_poster, r5_title, r5_year, recomednation_5_poster, r6_title, r6_year, recomednation_6_poster )
 
 
 
