@@ -251,6 +251,9 @@ def main():
         # ------------
 
 
+        
+
+
         def watch_page(widget, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url):
             # Create a large frame within the canvas frame (replace this with your content)
             large_frame = tk.Frame(widget, bg='black', width=screen_width, height=large_frame_size)
