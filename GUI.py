@@ -169,7 +169,7 @@ def main():
             global hold
 
             frame2 = WebView2(widget, 500, 5000)
-            hold = frame2
+            #hold = frame2
             frame2.load_url(f'https://vidsrc.to/embed/movie/{movie_id}')
             frame2.pack(side='left', padx=0, fill='both', expand=True)
 
