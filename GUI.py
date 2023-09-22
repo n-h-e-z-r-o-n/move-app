@@ -332,7 +332,7 @@ def main():
 
         #  content:
 
-        image_label = tk.Button(large_frame, text='▷', bg='black', fg='white', borderwidth=0, border=0, activebackground='black', activeforeground='yellow', relief=tk.FLAT, font=('Arial Black', 76, 'bold'))
+        image_label = tk.Button(large_frame, text='▷', bg='black', fg='white', borderwidth=0, border=0, activebackground='black', activeforeground='yellow', relief=tk.FLAT, font=('Arial Black', 76, 'bold'), command= lambda : play())
         image_label.place(relx=0, rely=0.0, relheight=0.5, relwidth=1)
         photo = imagen_fade(movie_poster_url, screen_height, screen_width)
         image_label.config(image=photo, compound=tk.CENTER)
@@ -423,6 +423,12 @@ def main():
         r6_bt2 = tk.Button(label7, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r6_title}\n{r6_year}', font=('Bahnschrift Light', 13, 'bold'))
         r6_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
         change_fg_OnHover(r6_bt2, hover_color, text_color)
+
+        def play():
+            pass
+
+
+
 
         video_box = tk.Frame(large_frame, bg='green')
         frame2 = WebView2(widget, 500, 5000)
