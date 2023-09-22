@@ -25,6 +25,7 @@ def main():
     # Bind the double-click event to the frame
     p.bind("<Double-Button-1>", on_double_click)
     frame2.bind("<Double-Button-1>", on_double_click)
+    print(dir(frame2))
     root.mainloop()
 
 if __name__ == "__main__":
