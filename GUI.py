@@ -173,7 +173,7 @@ def main():
             frame2.load_url(f'https://vidsrc.to/embed/movie/{movie_id}')
             frame2.pack(side='left', padx=0, fill='both', expand=True)
 
-        def toggle_fullscreen(widget):
+        def toggle_fullscreen(widget, original_x, original_y, original_width, original_height):
             global is_fullscreen
             if is_fullscreen:
                 # Restore the video frame to its original size and position
@@ -444,8 +444,8 @@ def main():
 
 
             video_box = tk.Frame(large_frame, bg='green')
-            #video_box.place(relx=0.03, rely=0.04, relheight=0.4, relwidth=0.94)
-            #Load_Movie(video_box, movies[0].movieID)
+            video_box.place(relx=0.03, rely=0.04, relheight=0.4, relwidth=0.94)
+            Load_Movie(video_box, movies[0].movieID)
 
             original_x = video_box.winfo_x()
             original_y = video_box.winfo_y()
