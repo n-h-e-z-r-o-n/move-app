@@ -369,7 +369,7 @@ def main():
             r1_bt1.config(image=r1_img)
             r1_bt1.image = r1_img
             change_bg_OnHover(r1_bt1, hover_text_color, recomendation_tubs_bg_color)
-            r1_bt2 = tk.Button(label2, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activebackground= recomendation_tubs_bg_color, fg=text_color,  text=f'{r1_title}\n {r1_year}', font=('Bahnschrift Light', 13, 'bold') )
+            r1_bt2 = tk.Button(label2, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activebackground= recomendation_tubs_bg_color, fg=text_color,  text=f'{r1_title}\n{r1_year}', font=('Bahnschrift Light', 13, 'bold') )
             r1_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
             change_fg_OnHover(r1_bt2, hover_text_color, text_color)
 
@@ -382,7 +382,7 @@ def main():
             r2_bt1.config(image=r2_img)
             r2_bt1.image = r2_img
             change_bg_OnHover(r2_bt1, hover_text_color, recomendation_tubs_bg_color)
-            r2_bt2 = tk.Button(label3, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text= f'{r2_title}\n {r2_year}', font=('Bahnschrift Light', 13, 'bold'))
+            r2_bt2 = tk.Button(label3, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text= f'{r2_title}\n{r2_year}', font=('Bahnschrift Light', 13, 'bold'))
             r2_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
             change_fg_OnHover(r2_bt2, hover_text_color, text_color)
 
@@ -394,7 +394,7 @@ def main():
             r3_bt1.config(image=r3_img)
             r3_bt1.image = r3_img
             change_bg_OnHover(r3_bt1, hover_text_color, recomendation_tubs_bg_color)
-            r3_bt2 = tk.Button(label4, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text= f'{r3_title}\n {r3_year}', font=('Bahnschrift Light', 13, 'bold'))
+            r3_bt2 = tk.Button(label4, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text= f'{r3_title}\n{r3_year}', font=('Bahnschrift Light', 13, 'bold'))
             r3_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
             change_fg_OnHover(r3_bt2, hover_text_color, text_color)
 
@@ -406,7 +406,7 @@ def main():
             r4_bt1.config(image=r4_img)
             r4_bt1.image = r4_img
             change_bg_OnHover(r4_bt1, hover_text_color, recomendation_tubs_bg_color)
-            r4_bt2 = tk.Button(label5, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text= f'{r4_title}\n {r4_year}', font=('Bahnschrift Light', 13, 'bold'))
+            r4_bt2 = tk.Button(label5, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text= f'{r4_title}\n{r4_year}', font=('Bahnschrift Light', 13, 'bold'))
             r4_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
             change_fg_OnHover(r4_bt2, hover_text_color, text_color)
 
@@ -418,7 +418,7 @@ def main():
             r5_bt1.config(image=r5_img)
             r5_bt1.image = r5_img
             change_bg_OnHover(r5_bt1, hover_text_color, recomendation_tubs_bg_color)
-            r5_bt2 = tk.Button(label6, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r5_title}\n {r5_year}', font=('Bahnschrift Light', 13, 'bold'))
+            r5_bt2 = tk.Button(label6, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r5_title}\n{r5_year}', font=('Bahnschrift Light', 13, 'bold'))
             r5_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
             change_fg_OnHover(r5_bt2, hover_text_color, text_color)
 
@@ -430,7 +430,7 @@ def main():
             r6_bt1.config(image=r6_img)
             r6_bt1.image = r6_img
             change_bg_OnHover(r6_bt1, hover_text_color, recomendation_tubs_bg_color)
-            r6_bt2 = tk.Button(label7, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r6_title}\n {r6_year}', font=('Bahnschrift Light', 13, 'bold'))
+            r6_bt2 = tk.Button(label7, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r6_title}\n{r6_year}', font=('Bahnschrift Light', 13, 'bold'))
             r6_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
             change_fg_OnHover(r6_bt2, hover_text_color, text_color)
 
