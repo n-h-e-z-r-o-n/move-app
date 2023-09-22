@@ -335,7 +335,7 @@ def main():
 
         #  content:
 
-        image_label = tk.Button(large_frame, text='▷', bg='black', fg='white', borderwidth=0, border=0, activebackground='black', activeforeground='yellow', relief=tk.FLAT, font=('Arial Black', 76, 'bold'), command=lambda: play())
+        image_label = tk.Button(large_frame, text='▷', bg='black', fg='white', borderwidth=0, border=0, activebackground='black', activeforeground='yellow', relief=tk.FLAT, font=('Arial Black', 76, 'bold'), command=lambda: play(video_box))
         image_label.place(relx=0, rely=0.0, relheight=0.5, relwidth=1)
         photo = imagen_fade(movie_poster_url, screen_height, screen_width)
         image_label.config(image=photo, compound=tk.CENTER)
