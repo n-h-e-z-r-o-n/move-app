@@ -347,8 +347,8 @@ def main():
             p_i = imagen(movie_poster_url, 280, 396)
             p.config(image=p_i)
             p.image = p_i
-            p2 = tk.Button(label2, borderwidth=0, border=0, fg='black',  text='Range rover land ' )
-            p2.place(relx=0, rely=0.8, relwidth=1, relheight=2)
+            p2 = tk.Button(label2, borderwidth=0, border=0, fg='black',  text='Range rover land \n 2023 ', font = ('Bahnschrift Light', 14 ,'bold') )
+            p2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
 
 
 
