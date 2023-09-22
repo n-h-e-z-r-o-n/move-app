@@ -341,7 +341,7 @@ def main():
             original_y = widget.winfo_y()
             original_width = widget.winfo_width()
             original_height = widget.winfo_height()
-            fullscreen_button = tk.Button(widget, border=0, borderwidth=0, text="⤢", bg='black', justify='center', activebackground='black', activeforeground='white', fg='white', font=('Arial Black', 26), command=lambda: toggle_fullscreen(video_box, original_x, original_y, original_width, original_height))
+            fullscreen_button = tk.Button(widget, border=0, borderwidth=0, text="⤢", bg='black', justify='center', activebackground='black', activeforeground='white', fg='white', font=('Times New Roman', 25), command=lambda: toggle_fullscreen(video_box, original_x, original_y, original_width, original_height))
             fullscreen_button.place(relx=0.97, rely=0.95, relheight=0.05, relwidth=0.03)
 
         video_box = tk.Frame(large_frame, bg='green')
