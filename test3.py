@@ -6,6 +6,8 @@ clr.AddReference('System.Threading')
 from System.Windows.Forms import Control
 from System.Threading import Thread,ApartmentState,ThreadStart
 
+def on_double_click():
+  print("yes")
 def main():
     if not have_runtime():#没有webview2 runtime
         install_runtime()
@@ -18,6 +20,9 @@ def main():
     frame2=WebView2(root,500,500)
     frame2.pack(side='left',padx=0,fill='both',expand=True)
     frame2.load_url('https://vidsrc.to/embed/movie/tt4154796')
+
+    # Bind the double-click event to the frame
+    frame2.bind("<Double-Button-1>", on_double_click)
 
     root.mainloop()
 
