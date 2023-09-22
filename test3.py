@@ -1,4 +1,17 @@
 import nltk
+import imdb
+
+ia = imdb.Cinemagoer()
+# Set up SQLite caching
+movies = ia.search_movie('Avengers: Endgame')
+
+def plot():
+    plot_str = ''
+    for i in movies[0]["plot"]:
+        plot_str += str(i)
+    return plot_str
+
+
 
 # Download the NLTK sentence tokenizer data if not already downloaded
 nltk.download("punkt")
@@ -7,7 +20,7 @@ nltk.download("punkt")
 from nltk.tokenize import sent_tokenize
 
 # Sample text
-text = "This is the first sentence. This is the second sentence. And this is the third sentence."
+text = plot()
 
 # Tokenize the text into sentences
 sentences = sent_tokenize(text)
