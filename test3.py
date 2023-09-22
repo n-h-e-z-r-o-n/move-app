@@ -17,7 +17,7 @@ def main():
 
 
     frame2=WebView2(root,500,500)
-    frame2.pack(side='left',padx=20,fill='both',expand=True)
+    frame2.pack(side='left',padx=0,fill='both',expand=True)
     frame2.load_url('https://vidsrc.to/embed/movie/tt4154796')
 
     root.mainloop()
