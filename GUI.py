@@ -357,12 +357,11 @@ def main():
 
         #  content:
 
-        image_label = tk.Button(large_frame, text='▷', bg='black', fg='white', borderwidth=0, border=0, activebackground='black', activeforeground='black', relief=tk.FLAT, font=('Arial Black', 76, 'bold'), command=lambda: play(video_box))
+        image_label = tk.Button(large_frame, text='▷', bg='black', fg='white', borderwidth=0, border=0, activebackground='black', activeforeground='yellow', relief=tk.FLAT, font=('Arial Black', 76, 'bold'), command=lambda: play(video_box))
         image_label.place(relx=0, rely=0.0, relheight=0.5, relwidth=1)
         photo = imagen_fade(movie_poster_url, screen_height, screen_width)
         image_label.config(image=photo, compound=tk.CENTER)
         image_label.image = photo
-        image_label.focus_set()
         change_fg_OnHover(image_label, 'Blue', 'white')
         change_color(root, image_label)
 
@@ -377,7 +376,6 @@ def main():
         Search_box.bind("<FocusOut>", lambda e: on_focusout(Search_box, e))
         change_bg_OnHover(Search_box, '#010127', 'black')
         Search_box.bind("<Return>", search_movie)
-        image_label.focus_set()
 
         recomendation_tubs_bg_color = 'black'
         hover_color = 'lightblue'
@@ -394,9 +392,6 @@ def main():
         r1_bt2 = tk.Button(label2, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r1_title}\n{r1_year}', font=('Bahnschrift Light', 13, 'bold'))
         r1_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
         change_fg_OnHover(r1_bt2, hover_color, text_color)
-        label2.focus_set()
-        r1_bt1.focus_set()
-        r1_bt2.focus_set()
 
         label3 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
         label3.place(relx=0.2, rely=0.78, relheight=0.2, relwidth=0.15)
@@ -409,9 +404,6 @@ def main():
         r2_bt2 = tk.Button(label3, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r2_title}\n{r2_year}', font=('Bahnschrift Light', 13, 'bold'))
         r2_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
         change_fg_OnHover(r2_bt2, hover_color, text_color)
-        label3.focus_set()
-        r2_bt1.focus_set()
-        r2_bt2.focus_set()
 
         label4 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
         label4.place(relx=0.36, rely=0.78, relheight=0.2, relwidth=0.15)
@@ -424,9 +416,6 @@ def main():
         r3_bt2 = tk.Button(label4, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r3_title}\n{r3_year}', font=('Bahnschrift Light', 13, 'bold'))
         r3_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
         change_fg_OnHover(r3_bt2, hover_color, text_color)
-        label4.focus_set()
-        r3_bt1.focus_set()
-        r3_bt2.focus_set()
 
         label5 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
         label5.place(relx=0.52, rely=0.78, relheight=0.2, relwidth=0.15)
@@ -439,9 +428,6 @@ def main():
         r4_bt2 = tk.Button(label5, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r4_title}\n{r4_year}', font=('Bahnschrift Light', 13, 'bold'))
         r4_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
         change_fg_OnHover(r4_bt2, hover_color, text_color)
-        label5.focus_set()
-        r4_bt1.focus_set()
-        r4_bt2.focus_set()
 
         label6 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
         label6.place(relx=0.68, rely=0.78, relheight=0.2, relwidth=0.15)
@@ -454,9 +440,6 @@ def main():
         r5_bt2 = tk.Button(label6, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r5_title}\n{r5_year}', font=('Bahnschrift Light', 13, 'bold'))
         r5_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
         change_fg_OnHover(r5_bt2, hover_color, text_color)
-        label6.focus_set()
-        r5_bt1.focus_set()
-        r5_bt2.focus_set()
 
         label7 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
         label7.place(relx=0.84, rely=0.78, relheight=0.2, relwidth=0.15)
@@ -469,11 +452,8 @@ def main():
         r6_bt2 = tk.Button(label7, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r6_title}\n{r6_year}', font=('Bahnschrift Light', 13, 'bold'))
         r6_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
         change_fg_OnHover(r6_bt2, hover_color, text_color)
-        label7.focus_set()
-        r6_bt1.focus_set()
-        r6_bt2.focus_set()
 
-        video_box = tk.Frame(large_frame, bg='black')
+        #video_box = tk.Frame(large_frame, bg='black')
         #frame2 = WebView2(video_box, 500, 500)
         #frame2.load_url(f'https://vidsrc.to/embed/movie/tt{movie_id}')
         #frame2.pack(side='left', padx=0, fill='both', expand=True)
