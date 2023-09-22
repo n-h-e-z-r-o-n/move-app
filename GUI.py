@@ -338,6 +338,34 @@ def main():
 
 
 
+
+
+            label2 = tk.Button(large_frame, bg='green', bd=0, border=0)
+            label2.place(relx=0.04, rely=0.78, relheight=0.2, relwidth=0.15)
+            p = tk.Button(label2)
+            p.place(relx=0, rely=0, relwidth=1, relheight=1)
+            p_i = imagen(movie_poster_url, 280, 396)
+            p.config(image=p_i)
+            p.image = p_i
+
+
+
+
+            label3 = tk.Button(large_frame, bg='green', text="This is a label in the large frame")
+            label3.place(relx=0.2, rely=0.78, relheight=0.2, relwidth=0.15)
+            label4 = tk.Button(large_frame, bg='green', text="This is a label in the large frame")
+            label4.place(relx=0.36, rely=0.78, relheight=0.2, relwidth=0.15)
+            label5 = tk.Button(large_frame, bg='green', text="This is a label in the large frame")
+            label5.place(relx=0.52, rely=0.78, relheight=0.2, relwidth=0.15)
+
+            label6 = tk.Button(large_frame, bg='green', text="This is a label in the large frame")
+            label6.place(relx=0.68, rely=0.78, relheight=0.2, relwidth=0.15)
+            label7 = tk.Button(large_frame, bg='green', text="This is a label in the large frame")
+            label7.place(relx=0.84, rely=0.78, relheight=0.2, relwidth=0.15)
+
+
+
+
             video_box = tk.Frame(large_frame, bg='green')
             #video_box.place(relx=0.03, rely=0.04, relheight=0.4, relwidth=0.94)
             #Load_Movie(video_box, movies[0].movieID)
@@ -351,38 +379,6 @@ def main():
 
             fullscreen_button = tk.Button(video_box, border=0, borderwidth=0, text="⤢",  bg='black', justify='center', activebackground='black', activeforeground='white',fg='white', font = ('Arial Black', 26),  command=lambda: toggle_fullscreen(video_box))
             fullscreen_button.place(relx=0.97, rely=0.95, relheight=0.05, relwidth=0.03)
-
-
-
-            def chan():
-                img = imagen_fade('https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@.jpg',screen_height, screen_width )
-                image_label.config(image=img)
-                image_label.image = img
-
-
-            label2 = tk.Button(large_frame, bg='green', bd=0, border=0)
-            label2.place(relx=0.04, rely=0.78, relheight=0.2, relwidth=0.15)
-
-            p = tk.Button(label2)
-            p.place(relx=0,rely=0, relwidth=1, relheight=1)
-            p_i = imagen(movie_poster_url, 280, 396)
-            p.config(image=p_i)
-            p.image = p_i
-
-
-
-
-            label3 = tk.Button(large_frame, bg='green', text="This is a label in the large frame")
-            label3.place(relx=0.2, rely=0.78, relheight=0.2, relwidth=0.15)
-            label4 = tk.Button(large_frame, bg='green', text="This is a label in the large frame", command=chan)
-            label4.place(relx=0.36, rely=0.78, relheight=0.2, relwidth=0.15)
-            label5 = tk.Button(large_frame, bg='green', text="This is a label in the large frame", command=chan)
-            label5.place(relx=0.52, rely=0.78, relheight=0.2, relwidth=0.15)
-
-            label6 = tk.Button(large_frame, bg='green', text="This is a label in the large frame", command=chan)
-            label6.place(relx=0.68, rely=0.78, relheight=0.2, relwidth=0.15)
-            label7 = tk.Button(large_frame, bg='green', text="This is a label in the large frame", command=chan)
-            label7.place(relx=0.84, rely=0.78, relheight=0.2, relwidth=0.15)
 
         watch_page(frame, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url)
 
