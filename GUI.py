@@ -336,6 +336,7 @@ def main():
         #  content:
 
         def play(widget):
+            print('not')
             widget.place(relx=0.03, rely=0.04, relheight=0.4, relwidth=0.94)
             original_x = widget.winfo_x()
             original_y = widget.winfo_y()
