@@ -360,7 +360,7 @@ def main():
                 image_label.image = img
 
 
-            label2 = tk.Button(large_frame, bg='green',text="This is a label in the large frame")
+            label2 = tk.Button(large_frame, bg='green')
             label2.place(relx=0.04, rely=0.78, relheight=0.2, relwidth=0.15)
 
             p = tk.Button(label2)
