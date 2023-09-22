@@ -362,7 +362,7 @@ def main():
             change_fg_OnHover(r1_bt2, hover_text_color, text_color)
 
 
-            label3 = tk.Button(large_frame, bg='green')
+            label3 = tk.Button(large_frame)
             label3.place(relx=0.2, rely=0.78, relheight=0.2, relwidth=0.15)
             r2_bt1 = tk.Button(label3, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
             r2_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
