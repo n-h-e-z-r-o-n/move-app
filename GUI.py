@@ -333,24 +333,6 @@ def main():
         plot_wdget.config(state="disabled")
         plot_wdget.place(relx=0.04, rely=0.689, relheight=0.078, relwidth=0.95)
 
-        #  content:
-
-        image_label = tk.Button(large_frame, text='▷', bg='black', fg='white', borderwidth=0, border=0, activebackground='black', activeforeground='yellow', relief=tk.FLAT, font=('Arial Black', 76, 'bold'), command=lambda: play(video_box))
-        image_label.place(relx=0, rely=0.0, relheight=0.5, relwidth=1)
-        photo = imagen_fade(movie_poster_url, screen_height, screen_width)
-        image_label.config(image=photo, compound=tk.CENTER)
-        image_label.image = photo
-        change_fg_OnHover(image_label, 'Blue', 'white')
-        change_color(root, image_label)
-
-        Search_box = tk.Entry(large_frame, font=('Georgia', 17), justify='center', borderwidth=0, border=0, fg='gray')
-        Search_box.place(relx=0.30, rely=0.007, relheight=0.02, relwidth=0.4)
-        placeholder_text = "Search"
-        Search_box.insert(0, placeholder_text)
-        Search_box.bind("<FocusIn>", lambda e: on_entry_click(Search_box, e))
-        Search_box.bind("<FocusOut>", lambda e: on_focusout(Search_box, e))
-        # pulsing_color(Search_box)
-
         recomendation_tubs_bg_color = 'black'
         hover_color = 'lightblue'
         text_color = 'gray'
@@ -427,6 +409,8 @@ def main():
         r6_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
         change_fg_OnHover(r6_bt2, hover_color, text_color)
 
+        #  content:
+
         def play(widget):
             widget.place(relx=0.03, rely=0.04, relheight=0.4, relwidth=0.94)
             original_x = widget.winfo_x()
@@ -438,14 +422,30 @@ def main():
 
 
 
-
-
-
-
         video_box = tk.Frame(large_frame, bg='green')
         frame2 = WebView2(video_box, 500, 500)
         frame2.load_url(f'https://vidsrc.to/embed/movie/tt{movie_id}')
         frame2.pack(side='left', padx=0, fill='both', expand=True)
+
+        image_label = tk.Button(large_frame, text='▷', bg='black', fg='white', borderwidth=0, border=0, activebackground='black', activeforeground='yellow', relief=tk.FLAT, font=('Arial Black', 76, 'bold'), command=lambda: play(video_box))
+        image_label.place(relx=0, rely=0.0, relheight=0.5, relwidth=1)
+        photo = imagen_fade(movie_poster_url, screen_height, screen_width)
+        image_label.config(image=photo, compound=tk.CENTER)
+        image_label.image = photo
+        change_fg_OnHover(image_label, 'Blue', 'white')
+        change_color(root, image_label)
+
+        Search_box = tk.Entry(large_frame, font=('Georgia', 17), justify='center', borderwidth=0, border=0, fg='gray')
+        Search_box.place(relx=0.30, rely=0.007, relheight=0.02, relwidth=0.4)
+        placeholder_text = "Search"
+        Search_box.insert(0, placeholder_text)
+        Search_box.bind("<FocusIn>", lambda e: on_entry_click(Search_box, e))
+        Search_box.bind("<FocusOut>", lambda e: on_focusout(Search_box, e))
+        # pulsing_color(Search_box)
+
+
+
+
 
 
 
