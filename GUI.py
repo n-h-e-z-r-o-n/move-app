@@ -150,7 +150,8 @@ def play(widget):
     fullscreen_button = tk.Button(widget, border=0, borderwidth=0, text="⤢", bg='black', justify='center', activebackground='black', activeforeground='white', fg='white', font=('Times New Roman', 25), command=lambda: toggle_fullscreen(root, widget, original_x, original_y, original_width, original_height))
     fullscreen_button.place(relx=0.97, rely=0.95, relheight=0.05, relwidth=0.03)
 
-def toggle_fullscreen(main_widget,   widget, original_x, original_y, original_width, original_height):
+
+def toggle_fullscreen(main_widget,  widget, original_x, original_y, original_width, original_height):
     global is_fullscreen
     if is_fullscreen:
         # Restore the video frame to its original size and position
@@ -164,6 +165,7 @@ def toggle_fullscreen(main_widget,   widget, original_x, original_y, original_wi
         widget.forget()
         widget.place(relx=0, rely=0, x=0, y=0, relwidth=1, relheight=screen_height / large_frame_size)
         is_fullscreen = True
+
 
 def main():
     global hold
