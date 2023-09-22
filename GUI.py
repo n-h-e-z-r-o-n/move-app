@@ -341,18 +341,19 @@ def main():
             recomendation_tubs_bg_color = 'black'
             hover_text_color = 'lightblue'
             text_color = 'gray'
-            recomednation_1 = movie_poster_url
-            recomednation_2 = movie_poster_url
-            recomednation_3 = movie_poster_url
-            recomednation_4 = movie_poster_url
-            recomednation_5 = movie_poster_url
+            recomednation_1_poster = movie_poster_url
+            recomednation_2_poster = movie_poster_url
+            recomednation_3_poster = movie_poster_url
+            recomednation_4_poster = movie_poster_url
+            recomednation_5_poster = movie_poster_url
+            recomednation_6_poster = movie_poster_url
 
 
             label2 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
             label2.place(relx=0.04, rely=0.78, relheight=0.2, relwidth=0.15)
             r1_bt1 = tk.Button(label2, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
             r1_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
-            r1_img = imagen(movie_poster_url, 280, 396)
+            r1_img = imagen(recomednation_1_poster, 280, 396)
             r1_bt1.config(image=r1_img)
             r1_bt1.image = r1_img
             change_bg_OnHover(r1_bt1, hover_text_color, recomendation_tubs_bg_color)
@@ -369,7 +370,7 @@ def main():
             label3.place(relx=0.2, rely=0.78, relheight=0.2, relwidth=0.15)
             r2_bt1 = tk.Button(label3, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
             r2_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
-            r2_img = imagen(movie_poster_url, 280, 396)
+            r2_img = imagen(recomednation_2_poster, 280, 396)
             r2_bt1.config(image=r2_img)
             r2_bt1.image = r2_img
             change_bg_OnHover(r2_bt1, hover_text_color, recomendation_tubs_bg_color)
@@ -381,7 +382,7 @@ def main():
             label4.place(relx=0.36, rely=0.78, relheight=0.2, relwidth=0.15)
             r3_bt1 = tk.Button(label4, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
             r3_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
-            r3_img = imagen(movie_poster_url, 280, 396)
+            r3_img = imagen(recomednation_3_poster, 280, 396)
             r3_bt1.config(image=r3_img)
             r3_bt1.image = r3_img
             change_bg_OnHover(r3_bt1, hover_text_color, recomendation_tubs_bg_color)
@@ -393,7 +394,7 @@ def main():
             label5.place(relx=0.52, rely=0.78, relheight=0.2, relwidth=0.15)
             r4_bt1 = tk.Button(label5, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
             r4_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
-            r4_img = imagen(movie_poster_url, 280, 396)
+            r4_img = imagen(recomednation_4_poster, 280, 396)
             r4_bt1.config(image=r4_img)
             r4_bt1.image = r4_img
             change_bg_OnHover(r4_bt1, hover_text_color, recomendation_tubs_bg_color)
@@ -405,7 +406,7 @@ def main():
             label6.place(relx=0.68, rely=0.78, relheight=0.2, relwidth=0.15)
             r5_bt1 = tk.Button(label6, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
             r5_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
-            r5_img = imagen(movie_poster_url, 280, 396)
+            r5_img = imagen(recomednation_5_poster, 280, 396)
             r5_bt1.config(image=r5_img)
             r5_bt1.image = r5_img
             change_bg_OnHover(r5_bt1, hover_text_color, recomendation_tubs_bg_color)
@@ -417,9 +418,9 @@ def main():
             label7.place(relx=0.84, rely=0.78, relheight=0.2, relwidth=0.15)
             r6_bt1 = tk.Button(label7, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
             r6_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
-            p_i = imagen(movie_poster_url, 280, 396)
-            r6_bt1.config(image=p_i)
-            r6_bt1.image = p_i
+            r6_img = imagen(recomednation_6_poster, 280, 396)
+            r6_bt1.config(image=r6_img)
+            r6_bt1.image = r6_img
             change_bg_OnHover(r6_bt1, hover_text_color, recomendation_tubs_bg_color)
             r6_bt2 = tk.Button(label7, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text='Range rover land \n 2023 ', font=('Bahnschrift Light', 13, 'bold'))
             r6_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
