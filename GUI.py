@@ -307,12 +307,12 @@ def main():
             Type6.place(relx=0.19, rely=0.658, relheight=0.016, relwidth=0.06)
 
             Type16 = tk.Text(large_frame, bg=color_bg, fg='white', borderwidth=0, border=0, wrap=tk.WORD, font=('Comic Sans MS', 12))
-            Type16.insert("end", movie_cast_names)
+            Type16.insert("1.0", movie_cast_names)
             Type16.config(state="disabled")
             Type16.place(relx=0.26, rely=0.658, relheight=0.026, relwidth=0.68)
 
-            plot_wdget = tk.Text(large_frame, bg='green', fg='white', borderwidth=0, border=0, wrap=tk.WORD, font=('Comic Sans MS', 12))
-            plot_wdget.insert("end", movie_plot)
+            plot_wdget = tk.Text(large_frame, bg=color_bg, fg='white', borderwidth=0, border=0, wrap=tk.WORD, font=('Comic Sans MS', 12))
+            plot_wdget.insert("1.0", movie_plot)
             plot_wdget.config(state="disabled")
             plot_wdget.place(relx=0.04, rely=0.689, relheight=0.078, relwidth=0.95)
 
@@ -361,7 +361,7 @@ def main():
 
 
             label2 = tk.Button(large_frame, bg='green',text="This is a label in the large frame", command=chan)
-            label2.place(relx=0.04, rely=0.768, relheight=0.078, relwidth=0.95)
+            label2.place(relx=0.04, rely=0.77, relheight=0.078, relwidth=0.95)
 
         watch_page(frame, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url)
 
