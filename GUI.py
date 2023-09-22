@@ -251,24 +251,27 @@ def main():
 
         r1_title = movies[1]['title']
         r1_year = movies[1]['year']
-        recomednation_1_poster = movies[0].get('full-size cover url')
+        recomednation_1_poster = movies[1].get('full-size cover url')
         r2_title =  movies[2]['title']
         r2_year = movies[2]['year']
-        recomednation_2_poster = movie_poster_url
+        recomednation_2_poster = movies[2].get('full-size cover url')
         r3_title = movies[3]['title']
         r3_year = movies[3]['year']
-        recomednation_3_poster = movie_poster_url
+        recomednation_3_poster = movies[3].get('full-size cover url')
         r4_title = movies[4]['title']
         r4_year = movies[4]['year']
-        recomednation_4_poster = movie_poster_url
+        recomednation_4_poster = movies[4].get('full-size cover url')
         r5_title = movies[5]['title']
         r5_year = movies[5]['year']
-        recomednation_5_poster = movie_poster_url
+        recomednation_5_poster = movies[5].get('full-size cover url')
         r6_title = movies[6]['title']
         r6_year = movies[6]['year']
-        recomednation_6_poster = movie_poster_url
+        recomednation_6_poster = movies[6].get('full-size cover url')
 
-        (  )
+        (r1_title, r1_year, recomednation_1_poster, r2_title, r2_year, recomednation_2_poster,
+         r3_title, r3_year, recomednation_3_poster, r4_title, r4_year, recomednation_4_poster, r5_title,
+         r5_year, recomednation_5_poster, r6_title, r6_year, 
+         )
 
         # ------------
 
