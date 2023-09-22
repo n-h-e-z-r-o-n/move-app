@@ -171,11 +171,7 @@ def main():
     canvas.bind_all("<MouseWheel>", lambda e: on_mouse_wheel(canvas, e))  # Bind the mouse wheel event to the canvas
     canvas.configure(scrollregion=canvas.bbox("all"))  # Configure the canvas scrolling region to hide scrollbars
 
-    def Load_Movie(widget, movie_id):
-        print(movie_id)
-        frame2 = WebView2(widget, 500, 5000)
-        frame2.load_url(f'https://vidsrc.to/embed/movie/tt{movie_id}')
-        frame2.pack(side='left', padx=0, fill='both', expand=True)
+
 
     def toggle_fullscreen(widget, original_x, original_y, original_width, original_height):
         global is_fullscreen
@@ -429,8 +425,11 @@ def main():
         change_fg_OnHover(r6_bt2, hover_color, text_color)
 
         video_box = tk.Frame(large_frame, bg='green')
+            frame2 = WebView2(widget, 500, 5000)
+            frame2.load_url(f'https://vidsrc.to/embed/movie/tt{movie_id}')
+            frame2.pack(side='left', padx=0, fill='both', expand=True)
         video_box.place(relx=0.03, rely=0.04, relheight=0.4, relwidth=0.94)
-        Load_Movie(video_box, movie_id)
+
 
         original_x = video_box.winfo_x()
         original_y = video_box.winfo_y()
