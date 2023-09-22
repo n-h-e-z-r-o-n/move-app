@@ -1,4 +1,5 @@
 from tkinter import Tk
+import clr
 from tkwebview2.tkwebview2 import WebView2, have_runtime, install_runtime
 clr.AddReference('System.Windows.Forms')
 clr.AddReference('System.Threading')
@@ -13,13 +14,11 @@ def main():
     root.title('pywebview for tkinter test')
     root.geometry('1200x600+5+5')
 
-    frame=WebView2(root,500,500)
-    frame.pack(side='left')
-    frame.load_html('<h1>hi hi</h1>')
+
 
     frame2=WebView2(root,500,500)
     frame2.pack(side='left',padx=20,fill='both',expand=True)
-    frame2.load_url('https://smart-space.com.cn/')
+    frame2.load_url('https://vidsrc.to/embed/movie/tt4154796')
 
     root.mainloop()
 

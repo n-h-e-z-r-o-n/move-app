@@ -431,7 +431,7 @@ def main():
 
 
         video_box = tk.Frame(large_frame, bg='green')
-        frame2 = WebView2(video_box, 500, 5000)
+        frame2 = WebView2(video_box, 500, 500)
         frame2.load_url(f'https://vidsrc.to/embed/movie/tt{movie_id}')
         frame2.pack(side='left', padx=0, fill='both', expand=True)
         video_box.place(relx=0.03, rely=0.04, relheight=0.4, relwidth=0.94)
