@@ -272,7 +272,7 @@ def main():
         large_frame = tk.Frame(widget, bg='black', width=screen_width, height=large_frame_size)
         large_frame.pack(fill=tk.X)
 
-        label3 = tk.Label(large_frame, bg='green', text="This is a label in the large frame")
+        label3 = tk.Label(large_frame )
         label3.place(relx=0.04, rely=0.52, relheight=0.16, relwidth=0.13)
         poster = imagen(movie_poster_url, 250, 317)
         label3.config(image=poster)
