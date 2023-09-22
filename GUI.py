@@ -311,7 +311,7 @@ def main():
             Type16.config(state="disabled")
             Type16.place(relx=0.26, rely=0.658, relheight=0.026, relwidth=0.68)
 
-            plot_wdget = tk.Text(large_frame, bg=color_bg, fg='white', borderwidth=0, border=0, wrap=tk.WORD, font=('Comic Sans MS', 12))
+            plot_wdget = tk.Text(large_frame, bg=color_bg, fg='gray', borderwidth=0, border=0, wrap=tk.WORD, font=('Comic Sans MS', 12))
             plot_wdget.insert("1.0", movie_plot)
             plot_wdget.config(state="disabled")
             plot_wdget.place(relx=0.04, rely=0.689, relheight=0.078, relwidth=0.95)
