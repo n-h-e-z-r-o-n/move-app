@@ -248,10 +248,32 @@ def main():
 
         # (widget, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url)
         movie_poster_url = movies[0].get('full-size cover url')
+
+        r1_title = movies[1]['title']
+        r1_year = movies[1]['year']
+        recomednation_1_poster = movies[0].get('full-size cover url')
+        r2_title =  movies[2]['title']
+        r2_year = movies[2]['year']
+        recomednation_2_poster = movie_poster_url
+        r3_title = movies[3]['title']
+        r3_year = movies[3]['year']
+        recomednation_3_poster = movie_poster_url
+        r4_title = movies[4]['title']
+        r4_year = movies[4]['year']
+        recomednation_4_poster = movie_poster_url
+        r5_title = movies[5]['title']
+        r5_year = movies[5]['year']
+        recomednation_5_poster = movie_poster_url
+        r6_title = movies[6]['title']
+        r6_year = movies[6]['year']
+        recomednation_6_poster = movie_poster_url
+
+        (  )
+
         # ------------
 
 
-        
+
 
 
         def watch_page(widget, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url):
