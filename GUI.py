@@ -392,6 +392,7 @@ def main():
         r1_bt2 = tk.Button(label2, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r1_title}\n{r1_year}', font=('Bahnschrift Light', 13, 'bold'))
         r1_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
         change_fg_OnHover(r1_bt2, hover_color, text_color)
+        label2.focus_set()
 
         label3 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
         label3.place(relx=0.2, rely=0.78, relheight=0.2, relwidth=0.15)
