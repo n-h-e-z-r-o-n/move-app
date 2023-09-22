@@ -27,6 +27,7 @@ def main():
     frame2.bind("<Double-Button-1>", on_double_click)
     print(dir(frame2))
     print(frame2.event_info())
+    frame2.web_view.
     root.mainloop()
 
 if __name__ == "__main__":
