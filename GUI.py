@@ -362,14 +362,14 @@ def main():
             change_fg_OnHover(r1_bt2, hover_text_color, text_color)
 
 
-            label3 = tk.Label(large_frame)
+            label3 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
             label3.place(relx=0.2, rely=0.78, relheight=0.2, relwidth=0.15)
             r2_bt1 = tk.Button(label3, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
             r2_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
             r2_img = imagen(recomednation_2_poster, 280, 396)
             r2_bt1.config(image=r2_img)
             r2_bt1.image = r2_img
-            #change_bg_OnHover(r2_bt1, hover_text_color, recomendation_tubs_bg_color)
+            change_bg_OnHover(r2_bt1, hover_text_color, recomendation_tubs_bg_color)
             r2_bt2 = tk.Button(label3, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text='Range rover land \n 2023 ', font=('Bahnschrift Light', 13, 'bold'))
             r2_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
             #change_fg_OnHover(r2_bt2, hover_text_color, text_color)
@@ -386,7 +386,7 @@ def main():
             r3_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
             change_fg_OnHover(r3_bt2, hover_text_color, text_color)
 
-            label5 = tk.Label(large_frame, bg='green' )
+            label5 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0 )
             label5.place(relx=0.52, rely=0.78, relheight=0.2, relwidth=0.15)
             r4_bt1 = tk.Button(label5, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
             r4_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
@@ -398,7 +398,7 @@ def main():
             r4_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
             change_fg_OnHover(r4_bt2, hover_text_color, text_color)
 
-            label6 = tk.Label(large_frame, bg='green')
+            label6 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
             label6.place(relx=0.68, rely=0.78, relheight=0.2, relwidth=0.15)
             r5_bt1 = tk.Button(label6, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
             r5_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
@@ -410,7 +410,7 @@ def main():
             r5_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
             change_fg_OnHover(r5_bt2, hover_text_color, text_color)
 
-            label7 = tk.Label(large_frame, bg='green')
+            label7 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
             label7.place(relx=0.84, rely=0.78, relheight=0.2, relwidth=0.15)
             r6_bt1 = tk.Button(label7, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
             r6_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
