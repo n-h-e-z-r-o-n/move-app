@@ -22,7 +22,8 @@ is_fullscreen = False
 placeholder_text = None
 screen_width = None
 screen_height = None
-    global large_frame_size = None
+large_frame_size = None
+root = None
 
 import imdb
 
@@ -146,20 +147,20 @@ def play(widget):
     original_y = widget.winfo_y()
     original_width = widget.winfo_width()
     original_height = widget.winfo_height()
-    fullscreen_button = tk.Button(widget, border=0, borderwidth=0, text="⤢", bg='black', justify='center', activebackground='black', activeforeground='white', fg='white', font=('Times New Roman', 25), command=lambda: toggle_fullscreen(video_box, original_x, original_y, original_width, original_height))
+    fullscreen_button = tk.Button(widget, border=0, borderwidth=0, text="⤢", bg='black', justify='center', activebackground='black', activeforeground='white', fg='white', font=('Times New Roman', 25), command=lambda: toggle_fullscreen(root, widget, original_x, original_y, original_width, original_height))
     fullscreen_button.place(relx=0.97, rely=0.95, relheight=0.05, relwidth=0.03)
 
 def toggle_fullscreen(main_widget,   widget, original_x, original_y, original_width, original_height):
     global is_fullscreen
     if is_fullscreen:
         # Restore the video frame to its original size and position
-        root.overrideredirect(False)
+        main_widget.overrideredirect(False)
         widget.forget()
         widget.place(relx=0.03, rely=0.04, relheight=0.4, relwidth=0.94, x=original_x, y=original_y, width=original_width, height=original_height)
         is_fullscreen = False
     else:
         # Expand the video frame to full screen
-        root.overrideredirect(True)
+        main_widget.overrideredirect(True)
         widget.forget()
         widget.place(relx=0, rely=0, x=0, y=0, relwidth=1, relheight=screen_height / large_frame_size)
         is_fullscreen = True
@@ -171,6 +172,7 @@ def main():
     global screen_width
     global screen_height
     global large_frame_size
+    global root
 
     if not have_runtime():#没有webview2 runtime
         install_runtime()
