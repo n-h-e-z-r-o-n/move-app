@@ -377,6 +377,7 @@ def main():
         Search_box.bind("<FocusOut>", lambda e: on_focusout(Search_box, e))
         change_bg_OnHover(Search_box, '#010127', 'black')
         Search_box.bind("<Return>", search_movie)
+        image_label.focus_set()
 
         recomendation_tubs_bg_color = 'black'
         hover_color = 'lightblue'
