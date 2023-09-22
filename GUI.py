@@ -360,9 +360,15 @@ def main():
                 image_label.image = img
 
 
-            label2 = tk.Button(large_frame, bg='green',text="This is a label in the large frame", command=chan)
+            label2 = tk.Button(large_frame, bg='green',text="This is a label in the large frame")
             label2.place(relx=0.04, rely=0.78, relheight=0.2, relwidth=0.15)
-            label3 = tk.Button(large_frame, bg='green', text="This is a label in the large frame", command=chan)
+
+            tk.Button(label2).place(relx=0,)
+
+
+
+
+            label3 = tk.Button(large_frame, bg='green', text="This is a label in the large frame")
             label3.place(relx=0.2, rely=0.78, relheight=0.2, relwidth=0.15)
             label4 = tk.Button(large_frame, bg='green', text="This is a label in the large frame", command=chan)
             label4.place(relx=0.36, rely=0.78, relheight=0.2, relwidth=0.15)
