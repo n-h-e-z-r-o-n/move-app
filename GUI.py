@@ -12,10 +12,10 @@ from tkwebview2.tkwebview2 import WebView2, have_runtime, install_runtime
 clr.AddReference('System.Windows.Forms')
 clr.AddReference('System.Threading')
 from System.Windows.Forms import Control
-#from System.Threading import Thread,ApartmentState,ThreadStart
+from System.Threading import Thread,ApartmentState,ThreadStart
 
-#if not have_runtime():  # 没有webview2 runtime
- #   install_runtime()
+if not have_runtime():  # 没有webview2 runtime
+   install_runtime()
 global hold
 is_fullscreen = False
 placeholder_text = None
