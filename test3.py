@@ -4,14 +4,18 @@ import imdb
 ia = imdb.Cinemagoer()
 # Set up SQLite caching
 movies = ia.search_movie('Avengers: Endgame')
-
-def plot():
+# Fetch additional details, including images
+ia.update(movies[0])
+def plotp():
     plot_str = ''
     for i in movies[0]["plot"]:
         plot_str += str(i)
     return plot_str
 
+# Sample text
+text = plotp()
 
+print(text)
 
 # Download the NLTK sentence tokenizer data if not already downloaded
 nltk.download("punkt")
@@ -19,8 +23,7 @@ nltk.download("punkt")
 # Import the NLTK sentence tokenizer
 from nltk.tokenize import sent_tokenize
 
-# Sample text
-text = plot()
+
 
 # Tokenize the text into sentences
 sentences = sent_tokenize(text)
