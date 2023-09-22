@@ -16,7 +16,7 @@ from System.Threading import Thread,ApartmentState,ThreadStart
 
 if not have_runtime():  # 没有webview2 runtime
    install_runtime()
-global hold
+
 is_fullscreen = False
 placeholder_text = None
 
@@ -168,7 +168,7 @@ def main():
         def Load_Movie(widget, movie_id):
             print(movie_id)
             frame2 = WebView2(widget, 500, 5000)
-            frame2.load_url(f'https://vidsrc.to/embed/movie/{movie_id}')
+            frame2.load_url(f'https://vidsrc.to/embed/movie/tt{movie_id}')
             frame2.pack(side='left', padx=0, fill='both', expand=True)
 
         def toggle_fullscreen(widget, original_x, original_y, original_width, original_height):
