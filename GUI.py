@@ -350,7 +350,7 @@ def main():
 
 
             label2 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
-            label2.place(relx=0.04, rely=0.78, relheight=0.2, relwidth=0.15)
+            #label2.place(relx=0.04, rely=0.78, relheight=0.2, relwidth=0.15)
             r1_bt1 = tk.Button(label2, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
             r1_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
             r1_img = imagen(recomednation_1_poster, 280, 396)
