@@ -6,7 +6,6 @@ clr.AddReference('System.Threading')
 from System.Windows.Forms import Control
 from System.Threading import Thread,ApartmentState,ThreadStart
 
-#范例
 def main():
     if not have_runtime():#没有webview2 runtime
         install_runtime()

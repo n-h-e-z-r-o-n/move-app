@@ -141,6 +141,9 @@ def main():
     global is_fullscreen
     global placeholder_text
 
+    if not have_runtime():#没有webview2 runtime
+        install_runtime()
+
     root = tk.Tk()
     root.title("Move App")
     root.state('zoomed')  # this creates a window that takes over the screen
