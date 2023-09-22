@@ -7,11 +7,11 @@ import customtkinter
 import random
 import time
 
-#import clr
-#from tkwebview2.tkwebview2 import WebView2, have_runtime, install_runtime
-#clr.AddReference('System.Windows.Forms')
-#clr.AddReference('System.Threading')
-#from System.Windows.Forms import Control
+import clr
+from tkwebview2.tkwebview2 import WebView2, have_runtime, install_runtime
+clr.AddReference('System.Windows.Forms')
+clr.AddReference('System.Threading')
+from System.Windows.Forms import Control
 #from System.Threading import Thread,ApartmentState,ThreadStart
 
 #if not have_runtime():  # 没有webview2 runtime
