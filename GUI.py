@@ -342,14 +342,14 @@ def main():
 
             label2 = tk.Label(large_frame, bg='green', borderwidth=0, border=0)
             label2.place(relx=0.04, rely=0.78, relheight=0.2, relwidth=0.15)
-            p = tk.Button(label2, borderwidth=0, border=0)
+            p = tk.Button(label2, bg='red', borderwidth=0, border=0)
             p.place(relx=0, rely=0, relwidth=1, relheight=1)
             p_i = imagen(movie_poster_url, 280, 396)
             p.config(image=p_i)
             p.image = p_i
             p2 = tk.Button(label2, borderwidth=0, border=0, fg='black',  text='Range rover land \n 2023 ', font = ('Bahnschrift Light', 13 ,'bold') )
             p2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
-            change_fg_OnHover()
+            change_fg_OnHover(p2, 'lightblue', 'black')
 
 
 
