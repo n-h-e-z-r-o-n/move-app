@@ -1,15 +1,16 @@
 import tkinter as tk
 
-def change_cursor_color():
-    entry.config(insertbackground="red")
+def switch_focus():
+    # Set focus to the button when it's clicked
+    button.focus_set()
 
 root = tk.Tk()
-root.title("Change Entry Cursor Color")
+root.title("Switch Focus Example")
 
 entry = tk.Entry(root)
 entry.pack()
 
-button = tk.Button(root, text="Change Cursor Color", command=change_cursor_color)
+button = tk.Button(root, text="Switch Focus", command=switch_focus)
 button.pack()
 
 root.mainloop()
