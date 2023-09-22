@@ -364,20 +364,20 @@ def main():
 
 
             recomendation_tubs_bg_color = 'black'
-            hover_text_color = 'lightblue'
+            hover_color = 'lightblue'
             text_color = 'gray'
 
             label2 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
             label2.place(relx=0.04, rely=0.78, relheight=0.2, relwidth=0.15)
-            r1_bt1 = tk.Button(label2, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
+            r1_bt1 = tk.Button(label2, bg=recomendation_tubs_bg_color, borderwidth=0, activebackground= hover_color,   border=0)
             r1_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
             r1_img = imagen(recomednation_1_poster, 280, 396)
             r1_bt1.config(image=r1_img)
             r1_bt1.image = r1_img
-            change_bg_OnHover(r1_bt1, hover_text_color, recomendation_tubs_bg_color)
+            change_bg_OnHover(r1_bt1, hover_color, recomendation_tubs_bg_color)
             r1_bt2 = tk.Button(label2, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activebackground= recomendation_tubs_bg_color, fg=text_color,  text=f'{r1_title}\n{r1_year}', font=('Bahnschrift Light', 13, 'bold') )
             r1_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
-            change_fg_OnHover(r1_bt2, hover_text_color, text_color)
+            change_fg_OnHover(r1_bt2, hover_color, text_color)
 
 
             label3 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
@@ -387,7 +387,7 @@ def main():
             r2_img = imagen(recomednation_2_poster, 280, 396)
             r2_bt1.config(image=r2_img)
             r2_bt1.image = r2_img
-            change_bg_OnHover(r2_bt1, hover_text_color, recomendation_tubs_bg_color)
+            change_bg_OnHover(r2_bt1, hover_color, recomendation_tubs_bg_color)
             r2_bt2 = tk.Button(label3, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text= f'{r2_title}\n{r2_year}', font=('Bahnschrift Light', 13, 'bold'))
             r2_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
             change_fg_OnHover(r2_bt2, hover_text_color, text_color)
