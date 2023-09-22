@@ -342,15 +342,15 @@ def main():
             hover_text_color = 'lightblue'
             text_color = 'gray'
             recomednation_1 = movie_poster_url
-            recomednation_1 = movie_poster_url
-            recomednation_1 = movie_poster_url
-            recomednation_1 = movie_poster_url
-            recomednation_1 = movie_poster_url
+            recomednation_2 = movie_poster_url
+            recomednation_3 = movie_poster_url
+            recomednation_4 = movie_poster_url
+            recomednation_5 = movie_poster_url
 
 
             label2 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
             label2.place(relx=0.04, rely=0.78, relheight=0.2, relwidth=0.15)
-            p = tk.Button(label2, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
+            r1 = tk.Button(label2, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
             p.place(relx=0, rely=0, relwidth=1, relheight=1)
             p_i = imagen(movie_poster_url, 280, 396)
             p.config(image=p_i)
@@ -370,12 +370,13 @@ def main():
 
             label4 = tk.Button(large_frame, bg='green', text="This is a label in the large frame")
             label4.place(relx=0.36, rely=0.78, relheight=0.2, relwidth=0.15)
-            
+
             label5 = tk.Button(large_frame, bg='green', text="This is a label in the large frame")
             label5.place(relx=0.52, rely=0.78, relheight=0.2, relwidth=0.15)
 
             label6 = tk.Button(large_frame, bg='green', text="This is a label in the large frame")
             label6.place(relx=0.68, rely=0.78, relheight=0.2, relwidth=0.15)
+
             label7 = tk.Button(large_frame, bg='green', text="This is a label in the large frame")
             label7.place(relx=0.84, rely=0.78, relheight=0.2, relwidth=0.15)
 
