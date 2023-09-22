@@ -427,8 +427,15 @@ def main():
         r6_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
         change_fg_OnHover(r6_bt2, hover_color, text_color)
 
-        def play():
-            pass
+        def play(widget):
+            widget.place(relx=0.03, rely=0.04, relheight=0.4, relwidth=0.94)
+            original_x = widget.winfo_x()
+            original_y = widget.winfo_y()
+            original_width = widget.winfo_width()
+            original_height = widget.winfo_height()
+
+            
+
 
 
 
@@ -440,10 +447,7 @@ def main():
         video_box.place(relx=0.03, rely=0.04, relheight=0.4, relwidth=0.94)
 
 
-        original_x = video_box.winfo_x()
-        original_y = video_box.winfo_y()
-        original_width = video_box.winfo_width()
-        original_height = video_box.winfo_height()
+
 
         fullscreen_button = tk.Button(video_box, border=0, borderwidth=0, text="⤢", bg='black', justify='center', activebackground='black', activeforeground='white', fg='white', font=('Arial Black', 26), command=lambda: toggle_fullscreen(video_box, original_x, original_y, original_width, original_height))
         fullscreen_button.place(relx=0.97, rely=0.95, relheight=0.05, relwidth=0.03)
