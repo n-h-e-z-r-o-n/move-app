@@ -335,21 +335,9 @@ def main():
 
         #  content:
 
-        def play(widget):
-            print('not')
-            widget.forget()
-            widget.place(relx=0.03, rely=0.04, relheight=0.4, relwidth=0.94)
-            original_x = widget.winfo_x()
-            original_y = widget.winfo_y()
-            original_width = widget.winfo_width()
-            original_height = widget.winfo_height()
-            fullscreen_button = tk.Button(widget, border=0, borderwidth=0, text="⤢", bg='black', justify='center', activebackground='black', activeforeground='white', fg='white', font=('Times New Roman', 25), command=lambda: toggle_fullscreen(video_box, original_x, original_y, original_width, original_height))
-            fullscreen_button.place(relx=0.97, rely=0.95, relheight=0.05, relwidth=0.03)
+        
 
-        video_box = tk.Frame(large_frame, bg='green')
-        frame2 = WebView2(video_box, 500, 500)
-        frame2.load_url(f'https://vidsrc.to/embed/movie/tt{movie_id}')
-        frame2.pack(side='left', padx=0, fill='both', expand=True)
+
 
         image_label = tk.Button(large_frame, text='▷', bg='black', fg='white', borderwidth=0, border=0, activebackground='black', activeforeground='yellow', relief=tk.FLAT, font=('Arial Black', 76, 'bold'), command=lambda: play(video_box))
         image_label.place(relx=0, rely=0.0, relheight=0.5, relwidth=1)
@@ -443,7 +431,10 @@ def main():
         r6_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
         change_fg_OnHover(r6_bt2, hover_color, text_color)
 
-
+        video_box = tk.Frame(large_frame, bg='black')
+        frame2 = WebView2(video_box, 500, 500)
+        frame2.load_url(f'https://vidsrc.to/embed/movie/tt{movie_id}')
+        frame2.pack(side='left', padx=0, fill='both', expand=True)
 
 
 
