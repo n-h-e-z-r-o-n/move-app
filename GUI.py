@@ -196,7 +196,7 @@ def main():
 
         # ------------
 
-        movies = ia.search_movie('Avengers: Endgame')
+        movies = ia.search_movie('Avengers')
         ia.update(movies[0]) # Fetch additional details, including images
 
         def cast():
