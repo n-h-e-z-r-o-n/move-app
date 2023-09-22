@@ -337,7 +337,7 @@ def main():
 
 
 
-`
+
 
 
             label2 = tk.Label(large_frame, bg='green', borderwidth=0, border=0)
@@ -347,6 +347,7 @@ def main():
             p_i = imagen(movie_poster_url, 280, 396)
             p.config(image=p_i)
             p.image = p_i
+            
 
 
 
