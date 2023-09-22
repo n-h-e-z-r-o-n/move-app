@@ -341,6 +341,12 @@ def main():
             recomendation_tubs_bg_color = 'black'
             hover_text_color = 'lightblue'
             text_color = 'gray'
+            recomednation_1 = movie_poster_url
+            recomednation_1 = movie_poster_url
+            recomednation_1 = movie_poster_url
+            recomednation_1 = movie_poster_url
+            recomednation_1 = movie_poster_url
+
 
             label2 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
             label2.place(relx=0.04, rely=0.78, relheight=0.2, relwidth=0.15)
@@ -361,8 +367,10 @@ def main():
 
             label3 = tk.Button(large_frame, bg='green', text="This is a label in the large frame")
             label3.place(relx=0.2, rely=0.78, relheight=0.2, relwidth=0.15)
+
             label4 = tk.Button(large_frame, bg='green', text="This is a label in the large frame")
             label4.place(relx=0.36, rely=0.78, relheight=0.2, relwidth=0.15)
+            
             label5 = tk.Button(large_frame, bg='green', text="This is a label in the large frame")
             label5.place(relx=0.52, rely=0.78, relheight=0.2, relwidth=0.15)
 
