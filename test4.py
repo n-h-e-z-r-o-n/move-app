@@ -28,6 +28,7 @@ root = None
 top_search_page = None
 top_watch_page = None
 top_frame_main = None
+widget_track_position = []
 
 import imdb
 
@@ -177,7 +178,7 @@ def main():
     global screen_height
     global large_frame_size
     global root
-    global top_search_page, top_watch_page
+    global top_search_page, top_watch_page, widget_track_position
 
     if not have_runtime():  # 没有webview2 runtime
         install_runtime()
@@ -404,7 +405,7 @@ def main():
 
     def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url, r1_title, r1_year, recomednation_1_poster, r2_title, r2_year, recomednation_2_poster, r3_title, r3_year, recomednation_3_poster, r4_title, r4_year, recomednation_4_poster, r5_title, r5_year, recomednation_5_poster, r6_title, r6_year, recomednation_6_poster, r1_id, r2_id, r3_id, r4_id, r5_id, r6_id):
         global top_watch_page
-        print('Watching ')
+        print('Watching ', movie_id)
         # Create a large frame within the canvas frame (replace this with your content)
         large_frame = tk.Frame(top_frame_main, bg='black', width=screen_width, height=large_frame_size)
         large_frame.place(relwidth=1, relheight=1, relx=0, rely=0)
@@ -429,31 +430,31 @@ def main():
         Type1_wdget = tk.Label(large_frame, bg=color_bg, fg='gray', text="Type : ", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
         Type1_wdget.place(relx=0.19, rely=0.568, relheight=0.016, relwidth=0.06)
 
-        Type2_wdget = tk.Label(large_frame, bg=color_bg, fg='white', text=f"{movie_type}", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
+        Type2_wdget = tk.Label(large_frame, bg=color_bg, fg='white', text=f"{movie_type}", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12))
         Type2_wdget.place(relx=0.26, rely=0.568, relheight=0.016, relwidth=0.68)
 
         Country1_wdget = tk.Label(large_frame, bg=color_bg, fg='gray', text="Country : ", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
         Country1_wdget.place(relx=0.19, rely=0.586, relheight=0.016, relwidth=0.06)
 
-        Country2_wdget = tk.Label(large_frame, bg=color_bg, fg='white', text=movie_country, justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
+        Country2_wdget = tk.Label(large_frame, bg=color_bg, fg='white', text=movie_country, justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, ))
         Country2_wdget.place(relx=0.26, rely=0.586, relheight=0.016, relwidth=0.68)
 
         Genre1_wdget = tk.Label(large_frame, bg=color_bg, fg='gray', text="Genre : ", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
         Genre1_wdget.place(relx=0.19, rely=0.604, relheight=0.016, relwidth=0.06)
 
-        Genre2_wdget = tk.Label(large_frame, bg=color_bg, fg='white', text=movie_genres, justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
+        Genre2_wdget = tk.Label(large_frame, bg=color_bg, fg='white', text=movie_genres, justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12))
         Genre2_wdget.place(relx=0.26, rely=0.604, relheight=0.016, relwidth=0.68)
 
         Release_date1_wdget = tk.Label(large_frame, bg=color_bg, fg='gray', text="Release : ", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
         Release_date1_wdget.place(relx=0.19, rely=0.622, relheight=0.016, relwidth=0.06)
 
-        Release_date2_wdget = tk.Label(large_frame, bg=color_bg, fg='white', text=f"{movie_year}", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
+        Release_date2_wdget = tk.Label(large_frame, bg=color_bg, fg='white', text=f"{movie_year}", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12))
         Release_date2_wdget.place(relx=0.26, rely=0.622, relheight=0.016, relwidth=0.68)
 
         Production1_wdget = tk.Label(large_frame, bg=color_bg, fg='gray', text="Production : ", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
         Production1_wdget.place(relx=0.19, rely=0.64, relheight=0.016, relwidth=0.06)
 
-        Production2_wdget = tk.Label(large_frame, bg=color_bg, fg='white', text=movie_production_company, justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
+        Production2_wdget = tk.Label(large_frame, bg=color_bg, fg='white', text=movie_production_company, justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12))
         Production2_wdget.place(relx=0.26, rely=0.64, relheight=0.016, relwidth=0.68)
 
         Cast1_wdget = tk.Label(large_frame, bg=color_bg, fg='gray', text="Cast : ", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
@@ -503,7 +504,7 @@ def main():
         #r1_bt1.config(image=r1_img)
         #r1_bt1.image = r1_img
         change_bg_OnHover(r1_bt1, hover_color, recomendation_tubs_bg_color)
-        r1_bt2 = tk.Button(label2, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r1_title}\n{r1_year}', font=('Bahnschrift Light', 13, 'bold'), command=lambda id=r1_id: selected_movie_detail(id))
+        r1_bt2 = tk.Button(label2, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r1_title}\n{r1_year}', font=('Bahnschrift Light', 12, 'bold'), command=lambda id=r1_id: selected_movie_detail(id))
         r1_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
         change_fg_OnHover(r1_bt2, hover_color, text_color)
 
@@ -515,7 +516,7 @@ def main():
         #r2_bt1.config(image=r2_img)
         #r2_bt1.image = r2_img
         change_bg_OnHover(r2_bt1, hover_color, recomendation_tubs_bg_color)
-        r2_bt2 = tk.Button(label3, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r2_title}\n{r2_year}', font=('Bahnschrift Light', 13, 'bold'), command=lambda id=r2_id: selected_movie_detail(id))
+        r2_bt2 = tk.Button(label3, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r2_title}\n{r2_year}', font=('Bahnschrift Light', 12, 'bold'), command=lambda id=r2_id: selected_movie_detail(id))
         r2_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
         change_fg_OnHover(r2_bt2, hover_color, text_color)
 
@@ -527,7 +528,7 @@ def main():
         #r3_bt1.config(image=r3_img)
         #r3_bt1.image = r3_img
         change_bg_OnHover(r3_bt1, hover_color, recomendation_tubs_bg_color)
-        r3_bt2 = tk.Button(label4, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r3_title}\n{r3_year}', font=('Bahnschrift Light', 13, 'bold'), command=lambda id=r3_id: selected_movie_detail(id))
+        r3_bt2 = tk.Button(label4, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r3_title}\n{r3_year}', font=('Bahnschrift Light', 12, 'bold'), command=lambda id=r3_id: selected_movie_detail(id))
         r3_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
         change_fg_OnHover(r3_bt2, hover_color, text_color)
 
@@ -539,7 +540,7 @@ def main():
         #r4_bt1.config(image=r4_img)
         #r4_bt1.image = r4_img
         change_bg_OnHover(r4_bt1, hover_color, recomendation_tubs_bg_color)
-        r4_bt2 = tk.Button(label5, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r4_title}\n{r4_year}', font=('Bahnschrift Light', 13, 'bold'), command=lambda id=r4_id: selected_movie_detail(id))
+        r4_bt2 = tk.Button(label5, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r4_title}\n{r4_year}', font=('Bahnschrift Light', 12, 'bold'), command=lambda id=r4_id: selected_movie_detail(id))
         r4_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
         change_fg_OnHover(r4_bt2, hover_color, text_color)
 
@@ -551,7 +552,7 @@ def main():
         #r5_bt1.config(image=r5_img)
         #r5_bt1.image = r5_img
         change_bg_OnHover(r5_bt1, hover_color, recomendation_tubs_bg_color)
-        r5_bt2 = tk.Button(label6, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r5_title}\n{r5_year}', font=('Bahnschrift Light', 13, 'bold'), command=lambda id=r5_id: selected_movie_detail(id))
+        r5_bt2 = tk.Button(label6, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r5_title}\n{r5_year}', font=('Bahnschrift Light', 12, 'bold'), command=lambda id=r5_id: selected_movie_detail(id))
         r5_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
         change_fg_OnHover(r5_bt2, hover_color, text_color)
 
@@ -563,7 +564,7 @@ def main():
         #r6_bt1.config(image=r6_img)
         #r6_bt1.image = r6_img
         change_bg_OnHover(r6_bt1, hover_color, recomendation_tubs_bg_color)
-        r6_bt2 = tk.Button(label7, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r6_title}\n{r6_year}', font=('Bahnschrift Light', 13, 'bold'), command=lambda id=r6_id: selected_movie_detail(id))
+        r6_bt2 = tk.Button(label7, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r6_title}\n{r6_year}', font=('Bahnschrift Light', 12, 'bold'), command=lambda id=r6_id: selected_movie_detail(id))
         r6_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
         change_fg_OnHover(r6_bt2, hover_color, text_color)
 

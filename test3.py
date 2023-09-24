@@ -1,11 +1,25 @@
-text = "This : is a sample text. It contains some information."
+import imdb
+# 13622776
+# 4154796
+# creating instance of IMDb
+ia = imdb.Cinemagoer()
 
-# Find the index of the first full stop
-index_of_full_stop = text.find('.')
+# id
+code = "13622776"
 
-# Check if a full stop was found and print accordingly
-if index_of_full_stop != -1:
-    text_up_to_full_stop = text[:index_of_full_stop + 1]  # Include the full stop
-    print(text_up_to_full_stop)
-else:
-    print("No full stop found in the text.")
+# getting information
+series = ia.get_movie(code)
+
+episode_ids = ia.get_movie_episodes(series, 1)
+
+# getting seasons of the series
+season = series.data['seasons']
+
+# printing the object i.e name
+print(series['series years'])
+print(series['number of seasons'])
+print(series['seasons'])
+
+# print the seasons
+print(series.infoset2keys)
+# adding new info set
