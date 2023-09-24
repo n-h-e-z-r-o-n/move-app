@@ -1,6 +1,7 @@
 import colorsys
 import tkinter as tk
 from PIL import Image, ImageTk
+from tkinter import PhotoImage
 import requests
 from io import BytesIO
 import customtkinter
@@ -25,6 +26,8 @@ screen_height = None
 large_frame_size = None
 root = None
 top_search_page = None
+top_watch_page = None
+top_frame_main = None
 
 import imdb
 
@@ -54,18 +57,15 @@ def on_mouse_wheel(widget, event):  # Function to handle mouse wheel scrolling
 
 
 def imagen(image_url, screen_width, screen_height):
-    # Download the image from the web
-    response = requests.get(image_url)
-    image_data = response.content
+    if image_url is None:
+        image = (Image.open("./Default.png"))
+    else:  # Download the image from the web
+        response = requests.get(image_url)
+        image_data = response.content
+        image = Image.open(BytesIO(image_data))  # Create a PIL Image object from the image data
 
-    # Create a PIL Image object from the image data
-    image = Image.open(BytesIO(image_data))
-
-    # Resize the image to match the frame's dimensions
-    image = image.resize((screen_width, (screen_height)), Image.LANCZOS)
-
-    # Create a PhotoImage object from the PIL Image
-    photo = ImageTk.PhotoImage(image)
+    image = image.resize((screen_width, (screen_height)), Image.LANCZOS) # Resize the image to match the frame's dimensions
+    photo = ImageTk.PhotoImage(image)  # Create a PhotoImage object from the PIL Image
     return photo
 
 
@@ -177,6 +177,7 @@ def main():
     global screen_height
     global large_frame_size
     global root
+    global top_search_page, top_watch_page
 
     if not have_runtime():  # 没有webview2 runtime
         install_runtime()
@@ -212,6 +213,11 @@ def main():
     canvas.bind_all("<MouseWheel>", lambda e: on_mouse_wheel(canvas, e))  # Bind the mouse wheel event to the canvas
     canvas.configure(scrollregion=canvas.bbox("all"))  # Configure the canvas scrolling region to hide scrollbars
 
+
+    large_frame = tk.Frame(frame, bg='black', width=screen_width, height=large_frame_size)
+    large_frame.pack(fill=tk.X)
+    top_frame_main = frame
+
     def search_movie(search_widget, event):
         search_query = search_widget.get()
         print("Text entered:", search_query)
@@ -221,87 +227,189 @@ def main():
 
     # ------------
 
-    movies = ia.search_movie('Avengers')
-    ia.update(movies[0])  # Fetch additional details, including images
+    def selected_movie_detail(movie_id):
+        global top_frame_main
+        movies = ia.get_movie(movie_id)
 
-    def cast():
-        i = 0
-        cast_str = ''
-        while i < len(movies[0]["cast"]):
-            if len(movies[0]["cast"][i]) != 0 and i < 15:
-                cast_str += str(movies[0]["cast"][i]) + ', '
-            i += 1
+        # ia.update(movies)
+        def cast():
+            i = 0
+            cast_str = ''
+            while i < len(movies["cast"]):
+                if len(movies["cast"][i]) != 0 and i < 15:
+                    cast_str += str(movies["cast"][i]) + ', '
+                i += 1
 
-        return cast_str
+            return cast_str
 
-    def production():
-        i = 0
-        production_str = ''
-        while i < len(movies[0]['production companies']):
-            if len(movies[0]['production companies'][i]) != 0 and i < 5:
-                production_str += str(movies[0]['production companies'][i]) + ', '
-            i += 1
-        return production_str
+        def production():
+            i = 0
+            production_str = ''
+            while i < len(movies['production companies']):
+                if len(movies['production companies'][i]) != 0 and i < 5:
+                    production_str += str(movies['production companies'][i]) + ', '
+                i += 1
+            return production_str
 
-    def genres():
-        genres_str = ''
-        for i in movies[0]["genres"]:
-            genres_str += str(i) + ', '
-        return genres_str
+        def genres():
+            genres_str = ''
+            for i in movies["genres"]:
+                genres_str += str(i) + ', '
+            return genres_str
 
-    def country():
-        country_str = ''
-        for i in movies[0]["countries"]:
-            country_str += str(i) + '. '
-        return country_str
+        def country():
+            country_str = ''
+            for i in movies["countries"]:
+                country_str += str(i) + '. '
+            return country_str
 
-    def plot():
-        plot_str = ''
-        for i in movies[0]["plot"]:
-            plot_str += str(i)
-        return plot_str
+        def plot():
+            plot_str = ''
+            for i in movies["plot"]:
+                plot_str += str(i)
 
-    movie_id = movies[0].movieID
-    movie_title = movies[0]['title']
-    movie_ratting = movies[0]['rating']
-    movie_type = movies[0]['kind']
-    movie_country = country()
-    movie_genres = genres()
-    movie_year = movies[0]['year']
-    movie_production_company = production()
-    movie_cast_names = cast()
-    movie_plot = plot()
+            index_of_full_stop = plot_str.find('.')
+            # Check if a full stop was found and print accordingly
+            if index_of_full_stop != -1:
+                plot_str = plot_str[:index_of_full_stop + 1]  # Include the full stop
 
-    # (widget, movie_id, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url)
-    movie_poster_url = movies[0].get('full-size cover url')
+            return plot_str
 
-    r1_title = movies[1]['title']
-    r1_year = movies[1]['year']
-    recomednation_1_poster = movies[1].get('full-size cover url')
-    r2_title = movies[2]['title']
-    r2_year = movies[2]['year']
-    recomednation_2_poster = movies[2].get('full-size cover url')
-    r3_title = movies[3]['title']
-    r3_year = movies[3]['year']
-    recomednation_3_poster = movies[3].get('full-size cover url')
-    r4_title = movies[4]['title']
-    r4_year = movies[4]['year']
-    recomednation_4_poster = movies[4].get('full-size cover url')
-    r5_title = movies[5]['title']
-    r5_year = movies[5]['year']
-    recomednation_5_poster = movies[5].get('full-size cover url')
-    r6_title = movies[6]['title']
-    r6_year = movies[6]['year']
-    recomednation_6_poster = movies[6].get('full-size cover url')
+        def relese_year(move_choice):
+            try:
+                year = move_choice['year']
+            except:
+                try:
+                    year = ia.get_movie(move_choice.movieID).data['series years']
+                except:
+                    year = ''
+            return year
 
-    # (r1_title, r1_year, recomednation_1_poster, r2_title, r2_year, recomednation_2_poster, r3_title, r3_year, recomednation_3_poster, r4_title, r4_year, recomednation_4_poster, r5_title, r5_year, recomednation_5_poster, r6_title, r6_year, recomednation_6_poster )
+        movie_id = movies.movieID
+        movie_title = movies['title']
+        try:
+            movie_ratting = movies['rating']
+        except:
+            movie_ratting = 'N\A'
+
+        movie_type = movies['kind']
+        try:
+            movie_country = country()
+        except:
+            movie_country = 'N\A'
+        try:
+            movie_genres = genres()
+        except:
+            movie_genres = ''
+        try:
+            movie_year = relese_year(movies)
+        except:
+            movie_year = ''
+        try:
+            movie_production_company = production()
+        except:
+            movie_production_company = 'N\A'
+        try:
+            movie_cast_names = cast()
+        except:
+            movie_cast_names = 'N\A'
+        try:
+            movie_plot = plot()
+        except:
+            movie_plot = ''
+        cover_url = movies['cover url']
+        languages = movies['languages']
+        original_title = movies['original title']
+
+        movie_poster_url = movies.get('full-size cover url')
+
+        related_other = ia.search_movie(movie_title)
+
+        r1_title = related_other[1]['title']
+        r1_year = relese_year(related_other[1])
+        recomednation_1_poster = related_other[1].get('full-size cover url')
+        r1_id = related_other[1].movieID
+
+        r2_title = related_other[2]['title']
+        r2_year = relese_year(related_other[2])
+        recomednation_2_poster = related_other[2].get('full-size cover url')
+        r2_id = related_other[2].movieID
+
+        r3_title = related_other[3]['title']
+        r3_year = relese_year(related_other[3])
+        recomednation_3_poster = related_other[3].get('full-size cover url')
+        r3_id = related_other[3].movieID
+
+        r4_title = related_other[4]['title']
+        r4_year = relese_year(related_other[4])
+        recomednation_4_poster = related_other[4].get('full-size cover url')
+        r4_id = related_other[4].movieID
+
+        r5_title = related_other[5]['title']
+        r5_year = relese_year(related_other[5])
+        recomednation_5_poster = related_other[5].get('full-size cover url')
+        r5_id = related_other[5].movieID
+
+        r6_title = related_other[6]['title']
+        r6_year = relese_year(related_other[6])
+        recomednation_6_poster = related_other[6].get('full-size cover url')
+        r6_id = related_other[6].movieID
+
+
+        print("title", movie_title)
+        print("kind", movie_type)
+        print("year", movie_country)
+        print("countries", movie_country)
+        print("rating", movie_ratting)
+        print('movie_poster_url', movie_poster_url)
+        print("ID", movie_id)
+        print("Year:", movie_year)
+        print("Plot:", movie_plot)
+        print("Genres:", movie_genres)
+        print("Cast:", movie_cast_names)
+
+        print('\n')
+        print("r1_title", r1_title)
+        print("r1_year", r1_year)
+        print("recomednation_1_poster", recomednation_1_poster)
+        print('\n')
+        print("r2_title", r2_title)
+        print("r2_year", r2_year)
+        print("recomednation_2_poster", recomednation_2_poster)
+        print('\n')
+        print("r3_title", r3_title)
+        print("r3_year", r3_year)
+        print("recomednation_3_poster", recomednation_3_poster)
+        print('\n')
+        print("r4_title", r4_title)
+        print("r4_year", r4_year)
+        print("recomednation_4_poster", recomednation_4_poster)
+        print('\n')
+        print("r5_title", r5_title)
+        print("r5_year", r5_year)
+        print("recomednation_5_poster", recomednation_5_poster)
+        print('\n')
+        print("r6_title", r6_title)
+        print("r6_year", r6_year)
+        print("recomednation_6_poster", recomednation_6_poster)
+
+        # movie_id, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url, r1_title, r1_year, recomednation_1_poster, r2_title, r2_year, recomednation_2_poster, r3_title, r3_year, recomednation_3_poster, r4_title, r4_year, recomednation_4_poster, r5_title, r5_year, recomednation_5_poster, r6_title, r6_year, recomednation_6_poster
+        # r1_id, r2_id, r3_id, r4_id, r5_id, r6_id
+        watch_page(top_frame_main, movie_id, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url, r1_title, r1_year, recomednation_1_poster, r2_title, r2_year, recomednation_2_poster, r3_title, r3_year, recomednation_3_poster, r4_title, r4_year, recomednation_4_poster, r5_title, r5_year, recomednation_5_poster, r6_title, r6_year, recomednation_6_poster, r1_id, r2_id, r3_id, r4_id, r5_id, r6_id)
+
+
+
 
     # ------------
 
-    def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url, r1_title, r1_year, recomednation_1_poster, r2_title, r2_year, recomednation_2_poster, r3_title, r3_year, recomednation_3_poster, r4_title, r4_year, recomednation_4_poster, r5_title, r5_year, recomednation_5_poster, r6_title, r6_year, recomednation_6_poster):
+    def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url, r1_title, r1_year, recomednation_1_poster, r2_title, r2_year, recomednation_2_poster, r3_title, r3_year, recomednation_3_poster, r4_title, r4_year, recomednation_4_poster, r5_title, r5_year, recomednation_5_poster, r6_title, r6_year, recomednation_6_poster, r1_id, r2_id, r3_id, r4_id, r5_id, r6_id):
+        global top_watch_page
+        print('Watching ')
         # Create a large frame within the canvas frame (replace this with your content)
-        large_frame = tk.Frame(widget, bg='black', width=screen_width, height=large_frame_size)
-        large_frame.pack(fill=tk.X)
+        large_frame = tk.Frame(top_frame_main, bg='black', width=screen_width, height=large_frame_size)
+        large_frame.place(relwidth=1, relheight=1, relx=0, rely=0)
+        top_watch_page = large_frame
+        large_frame.tkraise()
 
         label3 = tk.Label(large_frame)
         label3.place(relx=0.04, rely=0.52, relheight=0.16, relwidth=0.13)
@@ -311,63 +419,66 @@ def main():
 
         color_bg = "black"
 
-        Title = tk.Label(large_frame, bg=color_bg, fg='white', text=f"{movie_title}", justify=tk.LEFT, anchor=tk.W, font=('Algerian', 28))
-        Title.place(relx=0.19, rely=0.52, relheight=0.025, relwidth=0.75)
+        Title_wdget = tk.Label(large_frame, bg=color_bg, fg='white', text=f"{movie_title}", justify=tk.LEFT, anchor=tk.W, font=('Algerian', 28))
+        Title_wdget.place(relx=0.19, rely=0.52, relheight=0.025, relwidth=0.75)
 
         tk.Label(large_frame, bg=color_bg, fg='lightblue', text=f"HD", font=('Colonna MT', 24, 'bold')).place(relx=0.19, rely=0.549, relheight=0.015, relwidth=0.04)
         tk.Label(large_frame, bg=color_bg, fg='gray', text=f"✯✯✯✩", anchor=tk.E, font=('Arial Black', 20, 'bold')).place(relx=0.24, rely=0.549, relheight=0.015, relwidth=0.1)
         tk.Label(large_frame, bg=color_bg, fg='gray', text=f"{movie_ratting}", anchor=tk.SW, font=('Calibri', 16)).place(relx=0.34, rely=0.55, relheight=0.015, relwidth=0.04)
 
-        Type1 = tk.Label(large_frame, bg=color_bg, fg='gray', text="Type : ", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
-        Type1.place(relx=0.19, rely=0.568, relheight=0.016, relwidth=0.06)
+        Type1_wdget = tk.Label(large_frame, bg=color_bg, fg='gray', text="Type : ", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
+        Type1_wdget.place(relx=0.19, rely=0.568, relheight=0.016, relwidth=0.06)
 
-        Type11 = tk.Label(large_frame, bg=color_bg, fg='white', text=f"{movie_type}", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
-        Type11.place(relx=0.26, rely=0.568, relheight=0.016, relwidth=0.68)
+        Type2_wdget = tk.Label(large_frame, bg=color_bg, fg='white', text=f"{movie_type}", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
+        Type2_wdget.place(relx=0.26, rely=0.568, relheight=0.016, relwidth=0.68)
 
-        Type2 = tk.Label(large_frame, bg=color_bg, fg='gray', text="Country : ", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
-        Type2.place(relx=0.19, rely=0.586, relheight=0.016, relwidth=0.06)
+        Country1_wdget = tk.Label(large_frame, bg=color_bg, fg='gray', text="Country : ", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
+        Country1_wdget.place(relx=0.19, rely=0.586, relheight=0.016, relwidth=0.06)
 
-        Type12 = tk.Label(large_frame, bg=color_bg, fg='white', text=movie_country, justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
-        Type12.place(relx=0.26, rely=0.586, relheight=0.016, relwidth=0.68)
+        Country2_wdget = tk.Label(large_frame, bg=color_bg, fg='white', text=movie_country, justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
+        Country2_wdget.place(relx=0.26, rely=0.586, relheight=0.016, relwidth=0.68)
 
-        Type3 = tk.Label(large_frame, bg=color_bg, fg='gray', text="Genre : ", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
-        Type3.place(relx=0.19, rely=0.604, relheight=0.016, relwidth=0.06)
+        Genre1_wdget = tk.Label(large_frame, bg=color_bg, fg='gray', text="Genre : ", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
+        Genre1_wdget.place(relx=0.19, rely=0.604, relheight=0.016, relwidth=0.06)
 
-        Type13 = tk.Label(large_frame, bg=color_bg, fg='white', text=movie_genres, justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
-        Type13.place(relx=0.26, rely=0.604, relheight=0.016, relwidth=0.68)
+        Genre2_wdget = tk.Label(large_frame, bg=color_bg, fg='white', text=movie_genres, justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
+        Genre2_wdget.place(relx=0.26, rely=0.604, relheight=0.016, relwidth=0.68)
 
-        Type4 = tk.Label(large_frame, bg=color_bg, fg='gray', text="Release : ", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
-        Type4.place(relx=0.19, rely=0.622, relheight=0.016, relwidth=0.06)
+        Release_date1_wdget = tk.Label(large_frame, bg=color_bg, fg='gray', text="Release : ", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
+        Release_date1_wdget.place(relx=0.19, rely=0.622, relheight=0.016, relwidth=0.06)
 
-        Type14 = tk.Label(large_frame, bg=color_bg, fg='white', text=f"{movie_year}", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
-        Type14.place(relx=0.26, rely=0.622, relheight=0.016, relwidth=0.68)
+        Release_date2_wdget = tk.Label(large_frame, bg=color_bg, fg='white', text=f"{movie_year}", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
+        Release_date2_wdget.place(relx=0.26, rely=0.622, relheight=0.016, relwidth=0.68)
 
-        Type5 = tk.Label(large_frame, bg=color_bg, fg='gray', text="Production : ", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
-        Type5.place(relx=0.19, rely=0.64, relheight=0.016, relwidth=0.06)
+        Production1_wdget = tk.Label(large_frame, bg=color_bg, fg='gray', text="Production : ", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
+        Production1_wdget.place(relx=0.19, rely=0.64, relheight=0.016, relwidth=0.06)
 
-        Type15 = tk.Label(large_frame, bg=color_bg, fg='white', text=movie_production_company, justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
-        Type15.place(relx=0.26, rely=0.64, relheight=0.016, relwidth=0.68)
+        Production2_wdget = tk.Label(large_frame, bg=color_bg, fg='white', text=movie_production_company, justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
+        Production2_wdget.place(relx=0.26, rely=0.64, relheight=0.016, relwidth=0.68)
 
-        Type6 = tk.Label(large_frame, bg=color_bg, fg='gray', text="Cast : ", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
-        Type6.place(relx=0.19, rely=0.658, relheight=0.016, relwidth=0.06)
+        Cast1_wdget = tk.Label(large_frame, bg=color_bg, fg='gray', text="Cast : ", justify=tk.LEFT, anchor=tk.W, font=('Comic Sans MS', 12, "bold"))
+        Cast1_wdget.place(relx=0.19, rely=0.658, relheight=0.016, relwidth=0.06)
 
-        Type16 = tk.Text(large_frame, bg=color_bg, fg='white', borderwidth=0, border=0, wrap=tk.WORD, font=('Comic Sans MS', 12))
-        Type16.insert("1.0", movie_cast_names)
-        Type16.config(state="disabled")
-        Type16.place(relx=0.26, rely=0.658, relheight=0.026, relwidth=0.68)
+        Cast2_wdget = tk.Text(large_frame, bg=color_bg, fg='white', borderwidth=0, border=0, wrap=tk.WORD, font=('Comic Sans MS', 12))
+        Cast2_wdget.insert("1.0", movie_cast_names)
+        Cast2_wdget.config(state="disabled")
+        Cast2_wdget.place(relx=0.26, rely=0.658, relheight=0.026, relwidth=0.68)
 
         plot_wdget = tk.Text(large_frame, bg=color_bg, fg='gray', borderwidth=0, border=0, wrap=tk.WORD, font=('Comic Sans MS', 12))
         plot_wdget.insert("1.0", movie_plot)
         plot_wdget.config(state="disabled")
-        plot_wdget.place(relx=0.04, rely=0.689, relheight=0.078, relwidth=0.95)
+        plot_wdget.place(relx=0.04, rely=0.689, relheight=0.035, relwidth=0.95)
+
+        plot_wdget1 = tk.Text(large_frame, bg='green', fg='gray', borderwidth=0, border=0, wrap=tk.WORD, font=('Comic Sans MS', 12))
+        plot_wdget1.place(relx=0.04, rely=0.727, relheight=0.037, relwidth=0.95)
 
         #  content:
 
         image_label = tk.Button(large_frame, text='▷', bg='black', fg='white', borderwidth=0, border=0, activebackground='black', activeforeground='yellow', relief=tk.FLAT, font=('Arial Black', 76, 'bold'), command=lambda: play(video_box))
         image_label.place(relx=0, rely=0.0, relheight=0.5, relwidth=1)
-        photo = imagen_fade(movie_poster_url, screen_height, screen_width)
-        image_label.config(image=photo, compound=tk.CENTER)
-        image_label.image = photo
+        #photo = imagen_fade(movie_poster_url, screen_height, screen_width)
+        #image_label.config(image=photo, compound=tk.CENTER)
+        #image_label.image = photo
         change_fg_OnHover(image_label, 'Blue', 'white')
         change_color(root, image_label)
 
@@ -386,74 +497,73 @@ def main():
 
         label2 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
         label2.place(relx=0.04, rely=0.78, relheight=0.2, relwidth=0.15)
-        r1_bt1 = tk.Button(label2, bg=recomendation_tubs_bg_color, borderwidth=0, activebackground=hover_color, border=0, command=lambda: jump(r1_bt1))
+        r1_bt1 = tk.Button(label2, bg=recomendation_tubs_bg_color, borderwidth=0, activebackground=hover_color, border=0, command=lambda id=r1_id: selected_movie_detail(id))
         r1_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
-        r1_img = imagen(recomednation_1_poster, 280, 396)
-        r1_bt1.config(image=r1_img)
-        r1_bt1.image = r1_img
+        #r1_img = imagen(recomednation_1_poster, 280, 396)
+        #r1_bt1.config(image=r1_img)
+        #r1_bt1.image = r1_img
         change_bg_OnHover(r1_bt1, hover_color, recomendation_tubs_bg_color)
-        r1_bt2 = tk.Button(label2, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r1_title}\n{r1_year}', font=('Bahnschrift Light', 13, 'bold'), command=lambda: jump(r1_bt2))
+        r1_bt2 = tk.Button(label2, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r1_title}\n{r1_year}', font=('Bahnschrift Light', 13, 'bold'), command=lambda id=r1_id: selected_movie_detail(id))
         r1_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
         change_fg_OnHover(r1_bt2, hover_color, text_color)
 
         label3 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
         label3.place(relx=0.2, rely=0.78, relheight=0.2, relwidth=0.15)
-        r2_bt1 = tk.Button(label3, bg=recomendation_tubs_bg_color, activebackground=hover_color, borderwidth=0, border=0, command=lambda: jump(r2_bt1))
+        r2_bt1 = tk.Button(label3, bg=recomendation_tubs_bg_color, activebackground=hover_color, borderwidth=0, border=0, command=lambda id=r2_id: selected_movie_detail(id))
         r2_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
-        r2_img = imagen(recomednation_2_poster, 280, 396)
-        r2_bt1.config(image=r2_img)
-        r2_bt1.image = r2_img
+        #r2_img = imagen(recomednation_2_poster, 280, 396)
+        #r2_bt1.config(image=r2_img)
+        #r2_bt1.image = r2_img
         change_bg_OnHover(r2_bt1, hover_color, recomendation_tubs_bg_color)
-        r2_bt2 = tk.Button(label3, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r2_title}\n{r2_year}', font=('Bahnschrift Light', 13, 'bold'), command=lambda: jump(r2_bt2))
+        r2_bt2 = tk.Button(label3, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r2_title}\n{r2_year}', font=('Bahnschrift Light', 13, 'bold'), command=lambda id=r2_id: selected_movie_detail(id))
         r2_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
         change_fg_OnHover(r2_bt2, hover_color, text_color)
 
         label4 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
         label4.place(relx=0.36, rely=0.78, relheight=0.2, relwidth=0.15)
-        r3_bt1 = tk.Button(label4, bg=recomendation_tubs_bg_color, activebackground=hover_color, borderwidth=0, border=0, command=lambda: jump(r3_bt1))
+        r3_bt1 = tk.Button(label4, bg=recomendation_tubs_bg_color, activebackground=hover_color, borderwidth=0, border=0, command=lambda id=r3_id: selected_movie_detail(id))
         r3_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
-        r3_img = imagen(recomednation_3_poster, 280, 396)
-        r3_bt1.config(image=r3_img)
-        r3_bt1.image = r3_img
+        #r3_img = imagen(recomednation_3_poster, 280, 396)
+        #r3_bt1.config(image=r3_img)
+        #r3_bt1.image = r3_img
         change_bg_OnHover(r3_bt1, hover_color, recomendation_tubs_bg_color)
-        r3_bt2 = tk.Button(label4, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r3_title}\n{r3_year}', font=('Bahnschrift Light', 13, 'bold'), command=lambda: jump(r3_bt2))
+        r3_bt2 = tk.Button(label4, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r3_title}\n{r3_year}', font=('Bahnschrift Light', 13, 'bold'), command=lambda id=r3_id: selected_movie_detail(id))
         r3_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
         change_fg_OnHover(r3_bt2, hover_color, text_color)
 
         label5 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
         label5.place(relx=0.52, rely=0.78, relheight=0.2, relwidth=0.15)
-        r4_bt1 = tk.Button(label5, bg=recomendation_tubs_bg_color, activebackground=hover_color, borderwidth=0, border=0, command=lambda: jump(r4_bt1))
+        r4_bt1 = tk.Button(label5, bg=recomendation_tubs_bg_color, activebackground=hover_color, borderwidth=0, border=0, command=lambda id=r4_id: selected_movie_detail(id))
         r4_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
-        r4_img = imagen(recomednation_4_poster, 280, 396)
-        r4_bt1.config(image=r4_img)
-        r4_bt1.image = r4_img
+        #r4_img = imagen(recomednation_4_poster, 280, 396)
+        #r4_bt1.config(image=r4_img)
+        #r4_bt1.image = r4_img
         change_bg_OnHover(r4_bt1, hover_color, recomendation_tubs_bg_color)
-        r4_bt2 = tk.Button(label5, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r4_title}\n{r4_year}', font=('Bahnschrift Light', 13, 'bold'), command=lambda: jump(r4_bt2))
+        r4_bt2 = tk.Button(label5, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r4_title}\n{r4_year}', font=('Bahnschrift Light', 13, 'bold'), command=lambda id=r4_id: selected_movie_detail(id))
         r4_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
         change_fg_OnHover(r4_bt2, hover_color, text_color)
 
         label6 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
         label6.place(relx=0.68, rely=0.78, relheight=0.2, relwidth=0.15)
-        r5_bt1 = tk.Button(label6, bg=recomendation_tubs_bg_color, activebackground=hover_color, borderwidth=0, border=0, command=lambda: jump(r5_bt1))
+        r5_bt1 = tk.Button(label6, bg=recomendation_tubs_bg_color, activebackground=hover_color, borderwidth=0, border=0, command=lambda id=r5_id: selected_movie_detail(id))
         r5_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
-        r5_img = imagen(recomednation_5_poster, 280, 396)
-        r5_bt1.config(image=r5_img)
-        r5_bt1.image = r5_img
+        #r5_img = imagen(recomednation_5_poster, 280, 396)
+        #r5_bt1.config(image=r5_img)
+        #r5_bt1.image = r5_img
         change_bg_OnHover(r5_bt1, hover_color, recomendation_tubs_bg_color)
-        r5_bt2 = tk.Button(label6, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r5_title}\n{r5_year}', font=('Bahnschrift Light', 13, 'bold'), command=lambda: jump(r5_bt2))
+        r5_bt2 = tk.Button(label6, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r5_title}\n{r5_year}', font=('Bahnschrift Light', 13, 'bold'), command=lambda id=r5_id: selected_movie_detail(id))
         r5_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
         change_fg_OnHover(r5_bt2, hover_color, text_color)
 
         label7 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
         label7.place(relx=0.84, rely=0.78, relheight=0.2, relwidth=0.15)
-        r6_bt1 = tk.Button(label7, bg=recomendation_tubs_bg_color, activebackground=hover_color, borderwidth=0, border=0, command=lambda: jump(r6_bt1))
+        r6_bt1 = tk.Button(label7, bg=recomendation_tubs_bg_color, activebackground=hover_color, borderwidth=0, border=0, command=lambda id=r6_id: selected_movie_detail(id))
         r6_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
-        r6_img = imagen(recomednation_6_poster, 280, 396)
-        r6_bt1.config(image=r6_img)
-        r6_bt1.image = r6_img
-
+        #r6_img = imagen(recomednation_6_poster, 280, 396)
+        #r6_bt1.config(image=r6_img)
+        #r6_bt1.image = r6_img
         change_bg_OnHover(r6_bt1, hover_color, recomendation_tubs_bg_color)
-        r6_bt2 = tk.Button(label7, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r6_title}\n{r6_year}', font=('Bahnschrift Light', 13, 'bold'), command=lambda: jump(r6_bt2))
+        r6_bt2 = tk.Button(label7, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r6_title}\n{r6_year}', font=('Bahnschrift Light', 13, 'bold'), command=lambda id=r6_id: selected_movie_detail(id))
         r6_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
         change_fg_OnHover(r6_bt2, hover_color, text_color)
 
@@ -466,8 +576,6 @@ def main():
 
     def search_movies_request(widget, e):
         global top_search_page
-        if top_search_page != None:
-            top_search_page.destroy()
 
         user_search_query = search_q.get()
         search_results = ia.search_movie(user_search_query)
@@ -496,7 +604,7 @@ def main():
         movie_list_grid = []
 
         Search_result_frame = tk.Frame(widget, bg='gray', width=screen_width, height=large_frame_size)
-        Search_result_frame.pack(fill=tk.X)
+        Search_result_frame.place(relwidth=1, relheight=1, relx=0, rely=0)
         top_search_page = Search_result_frame
 
         Search_box = tk.Entry(Search_result_frame, font=('Georgia', 15), justify='center', insertbackground="lightblue", textvariable=search_q, borderwidth=0, border=0, bg='black', fg='white')
@@ -530,13 +638,13 @@ def main():
                         break
                     label1 = tk.Label(widget, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
                     label1.place(relx=x_pos, rely=y_pos, relheight=0.2, relwidth=0.15)
-                    r1_bt1 = tk.Button(label1, bg=recomendation_tubs_bg_color, borderwidth=0, activebackground=hover_color, border=0, command=lambda: jump(r1_bt1))
+                    r1_bt1 = tk.Button(label1, bg=recomendation_tubs_bg_color, borderwidth=0, activebackground=hover_color, border=0, command=lambda id=movies_list_result[track][3]: selected_movie_detail(id))
                     r1_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
                     #r1_img = imagen(movies_list_result[track][2], 280, 396)
                     #r1_bt1.config(image=r1_img)
                     #r1_bt1.image = r1_img
                     change_bg_OnHover(r1_bt1, hover_color, recomendation_tubs_bg_color)
-                    r1_bt2 = tk.Button(label1, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg='gray', text=f'{movies_list_result[track][0]}\n{movies_list_result[track][1]}', font=('Bahnschrift Light', 12), command=lambda: jump(r1_bt2))
+                    r1_bt2 = tk.Button(label1, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg='gray', text=f'{movies_list_result[track][0]}\n{movies_list_result[track][1]}', font=('Bahnschrift Light', 12),  command=lambda id=movies_list_result[track][3]: selected_movie_detail(id))
                     r1_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
                     r1_bt2.focus_set()
                     change_fg_OnHover(r1_bt2, hover_color, 'gray')
@@ -577,8 +685,8 @@ def main():
 
         grid(Search_result_frame, m_list, len(m_list), 0)
 
-    Search_result(frame, [('The Originals', 2013, 'https://m.media-amazon.com/images/M/MV5BNDllZjc2NjEtOGMwZS00ZmNkLTg2NDgtZjJkYjg0YjMxM2FmXkEyXkFqcGdeQXVyNzA5NjUyNjM@.jpg', '2632424'), ('The Originals: Awakening', 2013, 'https://m.media-amazon.com/images/M/MV5BNTQzMTExNzU0NV5BMl5BanBnXkFtZTgwMjgzNDIxMDE@.jpg', '4151288')])
-
+    #Search_result(large_frame, [('The Originals', 2013, 'https://m.media-amazon.com/images/M/MV5BNDllZjc2NjEtOGMwZS00ZmNkLTg2NDgtZjJkYjg0YjMxM2FmXkEyXkFqcGdeQXVyNzA5NjUyNjM@.jpg', '2632424'), ('The Originals: Awakening', 2013, 'https://m.media-amazon.com/images/M/MV5BNTQzMTExNzU0NV5BMl5BanBnXkFtZTgwMjgzNDIxMDE@.jpg', '4151288')])
+    selected_movie_detail(13622776)
 
 
 
