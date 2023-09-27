@@ -32,6 +32,7 @@ page_count = -1
 search_q = None
 root = None
 FRAME_1_canvas = canvas_FRAME_2 = FRAME_1 = FRAME_2 = None
+large_frame_size = None
 
 from imdbmovies import IMDB
 import imdb
@@ -48,7 +49,7 @@ def clean_url(url):
     url = url.replace('_UY98_', '_UY1000_')
     url = url.replace('_CR0,0,67,98_', '_CR0,0,0,0_')  # Replace '_CR0,0,67,98_' with '_CR0,0,0,0_'
     url = url.replace('_CR5,0,67,98_', '_CR0,0,0,0_')  # Replace '_CR5,0,67,98_' with '_CR0,0,0,0_'
-    url.replace('_CR1,0,67,98_', '_CR0,0,0,0_')  # Replace '_CR1,0,67,98_' with '_CR0,0,0,0_'
+    url = url.replace('_CR1,0,67,98_', '_CR0,0,0,0_')  # Replace '_CR1,0,67,98_' with '_CR0,0,0,0_'
     return url
 
 def on_frame_configure(widget, event):  # Update the canvas scrolling region when the large frame changes size
@@ -151,16 +152,16 @@ def pulsing_color(main_widget, widget):
     main_widget.after(3000, lambda: pulsing_color(widget))
 
 
+
 def on_entry_click(widget, event):
-    global placeholder_text
-    if widget.get() == "Search":
+    if widget.get() == "Search" or widget.get().isspace():
         widget.delete(0, tk.END)
         widget.config(fg='white')  # Change text color to black
 
 
 def on_focusout(widget, event):
-    global placeholder_text
-    if not widget.get():
+    if not widget.get() or widget.get().isspace():
+        widget.delete(0, tk.END)
         widget.insert(0, "Search")
         widget.config(fg='gray')  # Change text color to gray
 
@@ -410,7 +411,7 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     global screen_height
     global large_frame_size
     global top_frame_main
-    global widget_track_position
+    global widget_track_position, search_q
     global page_count, FRAME_1, FRAME_2, canvas_FRAME_2, FRAME_1_canvas
 
     FRAME_2.tkraise()
@@ -502,14 +503,13 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     froward_tracking_widget.place(relx=0.021, rely=0, relheight=0.017, relwidth=0.021)
     change_fg_OnHover(froward_tracking_widget, 'yellow', 'gray')
 
-    Search_box = tk.Entry(large_frame, font=('Georgia', 15), justify='center', insertbackground="lightblue", borderwidth=0, border=0, bg='black', fg='white')
+    Search_box = tk.Entry(large_frame, font=('Georgia', 15), justify='center',   insertbackground="lightblue", borderwidth=0, border=0, bg='black', fg='white')
     Search_box.place(relx=0.30, rely=0.007, relheight=0.017, relwidth=0.4)
-    placeholder_text = "Search"
-    Search_box.insert(0, placeholder_text)
+    Search_box.insert(0, 'Search')
     Search_box.bind("<FocusIn>", lambda e: on_entry_click(Search_box, e))
     Search_box.bind("<FocusOut>", lambda e: on_focusout(Search_box, e))
     change_bg_OnHover(Search_box, '#010127', 'black')
-    Search_box.bind("<Return>", lambda e: search_movie(Search_box, e))
+    Search_box.bind("<Return>", lambda event: search_movies_request(top_frame_main, Search_box, event))
 
     recomendation_tubs_bg_color = '#1A2421'
     hover_color = 'lightblue'
@@ -523,8 +523,8 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     # r1_bt1.config(image=r1_img)
     # r1_bt1.image = r1_img
     change_bg_OnHover(r1_bt1, hover_color, recomendation_tubs_bg_color)
-    r1_bt2 = tk.Button(label2, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r1_title}\n{r1_year}', font=('Bahnschrift Light', 12, 'bold'), command=lambda id=r1_id: selected_movie_detail(id))
-    r1_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
+    r1_bt2 = tk.Button(label2, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r1_title}\n{r1_year}', font=('Calibri', 11, 'bold'), command=lambda id=r1_id: selected_movie_detail(id))
+    r1_bt2.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
     change_fg_OnHover(r1_bt2, hover_color, text_color)
 
     label3 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
@@ -535,8 +535,8 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     # r2_bt1.config(image=r2_img)
     # r2_bt1.image = r2_img
     change_bg_OnHover(r2_bt1, hover_color, recomendation_tubs_bg_color)
-    r2_bt2 = tk.Button(label3, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r2_title}\n{r2_year}', font=('Bahnschrift Light', 12, 'bold'), command=lambda id=r2_id: selected_movie_detail(id))
-    r2_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
+    r2_bt2 = tk.Button(label3, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r2_title}\n{r2_year}', font=('Calibri', 11, 'bold'), command=lambda id=r2_id: selected_movie_detail(id))
+    r2_bt2.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
     change_fg_OnHover(r2_bt2, hover_color, text_color)
 
     label4 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
@@ -547,8 +547,8 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     # r3_bt1.config(image=r3_img)
     # r3_bt1.image = r3_img
     change_bg_OnHover(r3_bt1, hover_color, recomendation_tubs_bg_color)
-    r3_bt2 = tk.Button(label4, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r3_title}\n{r3_year}', font=('Bahnschrift Light', 12, 'bold'), command=lambda id=r3_id: selected_movie_detail(id))
-    r3_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
+    r3_bt2 = tk.Button(label4, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r3_title}\n{r3_year}', font=('Calibri', 11, 'bold'), command=lambda id=r3_id: selected_movie_detail(id))
+    r3_bt2.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
     change_fg_OnHover(r3_bt2, hover_color, text_color)
 
     label5 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
@@ -559,8 +559,8 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     # r4_bt1.config(image=r4_img)
     # r4_bt1.image = r4_img
     change_bg_OnHover(r4_bt1, hover_color, recomendation_tubs_bg_color)
-    r4_bt2 = tk.Button(label5, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r4_title}\n{r4_year}', font=('Bahnschrift Light', 12, 'bold'), command=lambda id=r4_id: selected_movie_detail(id))
-    r4_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
+    r4_bt2 = tk.Button(label5, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r4_title}\n{r4_year}', font=('Calibri', 11, 'bold'), command=lambda id=r4_id: selected_movie_detail(id))
+    r4_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.1)
     change_fg_OnHover(r4_bt2, hover_color, text_color)
 
     label6 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
@@ -571,8 +571,8 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     # r5_bt1.config(image=r5_img)
     # r5_bt1.image = r5_img
     change_bg_OnHover(r5_bt1, hover_color, recomendation_tubs_bg_color)
-    r5_bt2 = tk.Button(label6, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r5_title}\n{r5_year}', font=('Bahnschrift Light', 12, 'bold'), command=lambda id=r5_id: selected_movie_detail(id))
-    r5_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
+    r5_bt2 = tk.Button(label6, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r5_title}\n{r5_year}', font=('Calibri', 11, 'bold'), command=lambda id=r5_id: selected_movie_detail(id))
+    r5_bt2.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
     change_fg_OnHover(r5_bt2, hover_color, text_color)
 
     label7 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
@@ -583,8 +583,8 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     # r6_bt1.config(image=r6_img)
     # r6_bt1.image = r6_img
     change_bg_OnHover(r6_bt1, hover_color, recomendation_tubs_bg_color)
-    r6_bt2 = tk.Button(label7, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r6_title}\n{r6_year}', font=('Bahnschrift Light', 12, 'bold'), command=lambda id=r6_id: selected_movie_detail(id))
-    r6_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
+    r6_bt2 = tk.Button(label7, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r6_title}\n{r6_year}', font=('Calibri', 11, 'bold'), command=lambda id=r6_id: selected_movie_detail(id))
+    r6_bt2.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
     change_fg_OnHover(r6_bt2, hover_color, text_color)
 
     # video_box = tk.Frame(large_frame, bg='black')
@@ -595,10 +595,9 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
 
 # watch_page(frame, movie_id, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url, r1_title, r1_year, recomednation_1_poster, r2_title, r2_year, recomednation_2_poster, r3_title, r3_year, recomednation_3_poster, r4_title, r4_year, recomednation_4_poster, r5_title, r5_year, recomednation_5_poster, r6_title, r6_year, recomednation_6_poster)
 
-def search_movies_request(widget, e):
-    global search_q
+def search_movies_request(widget, user_query, event):
 
-    user_search_query = search_q.get()
+    user_search_query = user_query.get()
     search_results = ia.search_movie(user_search_query)
     print(len(search_results))
     total_results = len(search_results)
@@ -660,7 +659,7 @@ def previous_forwad_track_page_display():
 
 
 def Search_result(widget, m_list):
-    global top_search_page, widget_track_position, page_count, top_frame_main, search_q, FRAME_1, FRAME_2, canvas_FRAME_2
+    global top_search_page, widget_track_position, page_count, top_frame_main, search_q, FRAME_1, FRAME_2, canvas_FRAME_2, large_frame_size
     FRAME_2.tkraise()
     widget_scroll_bind(canvas_FRAME_2)
 
@@ -679,16 +678,16 @@ def Search_result(widget, m_list):
     froward_tracking_widget.place(relx=0.021, rely=0, relheight=0.017, relwidth=0.021)
     change_fg_OnHover(froward_tracking_widget, 'yellow', 'gray')
 
-    Search_box = tk.Entry(Search_result_frame, font=('Georgia', 15), justify='center', insertbackground="lightblue", textvariable=search_q, borderwidth=0, border=0, bg='black', fg='white')
+    Search_box = tk.Entry(Search_result_frame, font=('Georgia', 15), justify='center', insertbackground="lightblue", borderwidth=0, border=0, bg='black', fg='white')
     Search_box.place(relx=0.30, rely=0.007, relheight=0.017, relwidth=0.4)
     placeholder_text = "Search"
     Search_box.insert(0, placeholder_text)
     Search_box.bind("<FocusIn>", lambda e: on_entry_click(Search_box, e))
     Search_box.bind("<FocusOut>", lambda e: on_focusout(Search_box, e))
     change_bg_OnHover(Search_box, '#010127', 'black')
-    Search_box.bind("<Return>", lambda e: search_movies_request(widget, e))
+    Search_box.bind("<Return>", lambda event: search_movies_request(top_frame_main, Search_box, event))
 
-    recomendation_tubs_bg_color = '#1A2421'
+    recomendation_tubs_bg_color = 'black'
     hover_color = 'lightblue'
 
     def grid(widget, movies_list_result, total_movies, track):
@@ -696,6 +695,10 @@ def Search_result(widget, m_list):
         global hold
         for i in movie_list_grid:
             i.destroy()
+        i_high = int(large_frame_size * 0.2) - 10
+        i_widh = int(screen_width * 0.15) - 10
+        print("i_high :", i_high)
+        print("i_widh :", i_widh)
         current_widgets = 0
         column = 0
         row = 0
@@ -709,15 +712,15 @@ def Search_result(widget, m_list):
                     break
                 label1 = tk.Label(widget, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
                 label1.place(relx=x_pos, rely=y_pos, relheight=0.2, relwidth=0.15)
-                r1_bt1 = tk.Button(label1, bg=recomendation_tubs_bg_color, borderwidth=0, activebackground=hover_color, border=0, command=lambda id=movies_list_result[track][3]: selected_movie_detail(id))
+                r1_bt1 = tk.Button(label1, bg='#1A2421', borderwidth=0, activebackground=hover_color, border=0, command=lambda id=movies_list_result[track][3]: selected_movie_detail(id))
                 r1_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
                 # r1_img = imagen(movies_list_result[track][2], 280, 396)
-                # r1_bt1.config(image=r1_img)
-                # r1_bt1.image = r1_img
-                change_bg_OnHover(r1_bt1, hover_color, recomendation_tubs_bg_color)
-                r1_bt2 = tk.Button(label1, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg='gray', text=f'{movies_list_result[track][0]}\n{movies_list_result[track][1]}', font=('Bahnschrift Light', 12), command=lambda id=movies_list_result[track][3]: selected_movie_detail(id))
-                r1_bt2.place(relx=0, rely=0.8, relwidth=1, relheight=0.2)
-                r1_bt2.focus_set()
+                r1_img = imagen(movies_list_result[track][2], i_widh, i_high)
+                r1_bt1.config(image=r1_img)
+                r1_bt1.image = r1_img
+                change_bg_OnHover(r1_bt1, hover_color, '#1A2421')
+                r1_bt2 = tk.Button(label1, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg='gray', text=f'{movies_list_result[track][0]}\n{movies_list_result[track][1]}', font=('Calibri', 11), command=lambda id=movies_list_result[track][3]: selected_movie_detail(id))
+                r1_bt2.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
                 change_fg_OnHover(r1_bt2, hover_color, 'gray')
                 movie_list_grid.append(label1)
 
@@ -754,6 +757,125 @@ def Search_result(widget, m_list):
             change_fg_OnHover(pages1, 'lightblue', 'gray')
 
     grid(Search_result_frame, m_list, len(m_list), 0)
+
+def Home_Page(widget):
+        global widget_track_position, page_count, screen_height, screen_width, canvas_FRAME_2, FRAME_1_canvas, top_frame_main
+
+        FRAME_1.tkraise()
+        widget_scroll_bind(FRAME_1_canvas)
+        Home_frame_hight = screen_height * 5
+
+        # Section 1 ===============================================================================
+
+        Suggestion = tk.Frame(widget,  borderwidth=0, border=0, bg='black')
+        Suggestion.place(relx=0, rely=0, relheight=0.15, relwidth=1)
+
+        back_tracking_widget = tk.Button(widget, font=('Georgia', 20), justify='center', fg='gray', text='⤽', activebackground='black', activeforeground='yellow', borderwidth=0, border=0, bg='black', command=previous_back_track_page_display)
+        back_tracking_widget.place(relx=0, rely=0, relheight=0.005, relwidth=0.021)
+        change_fg_OnHover(back_tracking_widget, 'yellow', 'gray')
+
+        froward_tracking_widget = tk.Button(widget, font=('Georgia', 20), justify='center', fg='gray', text='⤼', activebackground='black', activeforeground='yellow', borderwidth=0, border=0, bg='black', command=previous_forwad_track_page_display)
+        froward_tracking_widget.place(relx=0.021, rely=0, relheight=0.005, relwidth=0.021)
+        change_fg_OnHover(froward_tracking_widget, 'yellow', 'gray')
+
+        Search_box = tk.Entry(widget, font=('Georgia', 13), justify='center',   insertbackground="lightblue", borderwidth=0, border=0, bg='black', fg='gray')
+        Search_box.place(relx=0.30, rely=0, relheight=0.007, relwidth=0.4)
+        Search_box.insert(0, 'Search')
+        Search_box.bind("<FocusIn>", lambda e: on_entry_click(Search_box, e))
+        Search_box.bind("<FocusOut>", lambda e: on_focusout(Search_box, e))
+        change_bg_OnHover(Search_box, '#010127', 'black')
+        Search_box.bind("<Return>", lambda event: search_movies_request(top_frame_main, Search_box, event))
+
+        # Section 2 ==================================================================================================================================================
+
+        Suggestion1 = tk.Frame(Home_frame, borderwidth=0, border=0, bg='black')
+        Suggestion1.place(relx=0, rely=0.151, relheight=0.17, relwidth=1)
+
+        recomendation_tubs_bg_color = 'black'
+        hover_color = 'lightblue'
+
+        movies = imdb_other.popular_movies(genre=None, start_id=1, sort_by=None)  # returns top 50 popular movies starting from start id
+
+        populer_movie_list = []
+        for movie in movies['results']:
+            movie_poster = clean_url(movie['poster'])
+            populer_movie_list.append(( movie['name'], movie['year'], movie_poster, movie['id'].strip('t')))
+
+        tk.Button(Suggestion1, font=('Georgia', 16), justify='center', anchor=tk.W, fg='gray', text='⍚ RECOMMENDED MOVIE', borderwidth=0, border=0, bg='black', command=lambda: Search_result(top_frame_main, populer_movie_list)).place(relx=0, rely=0, relheight=0.04, relwidth=1)
+
+        PX_hight = int(Home_frame_hight * 0.17 * 0.31) - 1
+        PY_width = int(screen_width * 1 * 0.12) - 1
+        column = 0
+        row = 0
+        x_pos = 0.005
+        y_pos = 0.05
+        track = 0
+        while row < 4: # 3
+            while column < 8: # 8
+
+                label1 = tk.Label(Suggestion1, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
+                label1.place(relx=x_pos, rely=y_pos, relheight=0.31, relwidth=0.12)
+                r1_bt1 = tk.Button(label1, bg='#1A2421', borderwidth=0, justify=tk.CENTER,  activebackground=hover_color, border=0, command=lambda id = populer_movie_list[track][3]: selected_movie_detail(id))
+                r1_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
+                # r1_img = imagen(populer_movie_list[track][2], PY_width, PX_hight)
+                # r1_bt1.config(image=r1_img)
+                # r1_bt1.image = r1_img
+                change_bg_OnHover(r1_bt1, hover_color, '#1A2421')
+                r1_bt2 = tk.Button(label1, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, text=f'{populer_movie_list[track][0]}', activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg='gray',  font=('Calibri', 11), command=lambda id=populer_movie_list[track]: selected_movie_detail(id))
+                r1_bt2.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
+                change_fg_OnHover(r1_bt2, hover_color, 'gray')
+                x_pos += 0.125
+                column += 1
+                track += 1
+
+            column = 0
+            x_pos = 0.005
+            y_pos += 0.32
+            row += 1
+
+        # Section 3 ==========================================================================================================================================================
+
+        Suggestion2 = tk.Frame(Home_frame, borderwidth=0, border=0, bg='black')
+        Suggestion2.place(relx=0, rely=0.322, relheight=0.17, relwidth=1)
+
+        series = imdb_other.popular_tv(genre=None, start_id=1, sort_by=None)  # returns top 50 popular TV Series starting from start id
+
+        populer_series_list = []
+
+        for TV in series['results']:
+            TV_poster = clean_url(TV['poster'])
+            populer_series_list.append(( TV['name'], TV['year'], TV_poster, TV['id'].strip('t')))
+
+        tk.Button(Suggestion2, font=('Georgia', 16), justify='center', anchor=tk.W, fg='gray', text='⍚ RECOMMENDED SERIES', borderwidth=0, border=0, bg='black', command=lambda: Search_result(top_frame_main, populer_series_list)).place(relx=0, rely=0, relheight=0.04, relwidth=1)
+
+        column = 0
+        row = 0
+        x_pos = 0.005
+        y_pos = 0.05
+        track = 0
+        while row < 4:  # 3 rows
+            while column < 8:  # 8 columns
+
+                label3 = tk.Label(Suggestion2, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
+                label3.place(relx=x_pos, rely=y_pos, relheight=0.31, relwidth=0.12)
+                r1_bt3 = tk.Button(label3, bg='#1A2421', borderwidth=0, justify=tk.CENTER,  activebackground=hover_color, border=0, command=lambda id = populer_series_list[track][3]: selected_movie_detail(id))
+                r1_bt3.place(relx=0, rely=0, relwidth=1, relheight=1)
+                r3_img = imagen(populer_series_list[track][2], PY_width, PX_hight)
+                r1_bt3.config(image=r3_img)
+                r1_bt3.image = r3_img
+                change_bg_OnHover(r1_bt3, hover_color, '#1A2421')
+                r1_bt3 = tk.Button(label3, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, text=f'{populer_series_list[track][0]}', activeforeground=hover_color, activebackground='#1A2421', fg='gray',  font=('Calibri', 11), command=lambda id= populer_movie_list[track]: selected_movie_detail(id))
+                r1_bt3.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
+
+                change_fg_OnHover(r1_bt3, hover_color, 'gray')
+                x_pos += 0.125
+                column += 1
+                track += 1
+
+            column = 0
+            x_pos = 0.005
+            y_pos += 0.32
+            row += 1
 
 
 def main():
@@ -814,138 +936,6 @@ def main():
     main_frame.pack(fill=tk.BOTH, expand=True)
     top_frame_main = main_frame
 
-    FRAME_1.tkraise()
-
-
-
-    # ------------
-
-    # Search_result(top_frame_main, [('The Originals', 2013, 'https://m.media-amazon.com/images/M/MV5BNDllZjc2NjEtOGMwZS00ZmNkLTg2NDgtZjJkYjg0YjMxM2FmXkEyXkFqcGdeQXVyNzA5NjUyNjM@.jpg', '2632424'), ('The Originals: Awakening', 2013, 'https://m.media-amazon.com/images/M/MV5BNTQzMTExNzU0NV5BMl5BanBnXkFtZTgwMjgzNDIxMDE@.jpg', '4151288')])
-    # selected_movie_detail(13622776)
-
-    def Home_Page(widget):
-        global widget_track_position, page_count, screen_height, screen_width, canvas_FRAME_2, FRAME_1_canvas, top_frame_main
-
-        widget_scroll_bind(FRAME_1_canvas)
-
-
-        # Section 1 ===============================================================================
-
-        Suggestion = tk.Frame(widget,  borderwidth=0, border=0, bg='black')
-        Suggestion.place(relx=0, rely=0, relheight=0.15, relwidth=1)
-
-        back_tracking_widget = tk.Button(widget, font=('Georgia', 20), justify='center', fg='gray', text='⤽', activebackground='black', activeforeground='yellow', borderwidth=0, border=0, bg='black', command=previous_back_track_page_display)
-        back_tracking_widget.place(relx=0, rely=0, relheight=0.005, relwidth=0.021)
-        change_fg_OnHover(back_tracking_widget, 'yellow', 'gray')
-
-        froward_tracking_widget = tk.Button(widget, font=('Georgia', 20), justify='center', fg='gray', text='⤼', activebackground='black', activeforeground='yellow', borderwidth=0, border=0, bg='black', command=previous_forwad_track_page_display)
-        froward_tracking_widget.place(relx=0.021, rely=0, relheight=0.005, relwidth=0.021)
-        change_fg_OnHover(froward_tracking_widget, 'yellow', 'gray')
-
-        Search_box = tk.Entry(widget, font=('Georgia', 13), justify='center',  textvariable=search_q, insertbackground="lightblue", borderwidth=0, border=0, bg='black', fg='gray')
-        Search_box.place(relx=0.30, rely=0, relheight=0.007, relwidth=0.4)
-        placeholder_text = "Search"
-        Search_box.insert(0, placeholder_text)
-        Search_box.bind("<FocusIn>", lambda e: on_entry_click(Search_box, e))
-        Search_box.bind("<FocusOut>", lambda e: on_focusout(Search_box, e))
-        change_bg_OnHover(Search_box, '#010127', 'black')
-        Search_box.bind("<Return>", lambda e: search_movies_request(widget, e))
-
-        # Section 2 ===============================================================================
-
-        Suggestion1 = tk.Frame(Home_frame, borderwidth=0, border=0, bg='black')
-        Suggestion1.place(relx=0, rely=0.151, relheight=0.17, relwidth=1)
-
-        tk.Button(Suggestion1, font=('Georgia', 16), justify='center', anchor=tk.W, fg='gray', text='⍚ RECOMMENDED MOVIE', borderwidth=0, border=0, bg='black').place(relx=0, rely=0, relheight=0.04, relwidth=1)
-
-        recomendation_tubs_bg_color = '#1A2421'
-        hover_color = 'lightblue'
-
-        movies = imdb_other.popular_movies(genre=None, start_id=1, sort_by=None)  # returns top 50 popular movies starting from start id
-
-
-        populer_movie_list = []
-        for movie in movies['results']:
-            movie_poster = clean_url(movie['poster'])
-
-            populer_movie_list.append((movie['id'].strip('t'), movie['name'], movie_poster))
-
-        PX_hight = int(Home_frame_hight * 0.17 * 0.31) - 1
-        PY_width = int(screen_width * 1 * 0.12) - 1
-        column = 0
-        row = 0
-        x_pos = 0.005
-        y_pos = 0.05
-        track = 0
-        while row < 4: # 3
-            while column < 8: # 8
-
-                label1 = tk.Label(Suggestion1, bg='#1A2421', borderwidth=0, border=0)
-                label1.place(relx=x_pos, rely=y_pos, relheight=0.31, relwidth=0.12)
-                r1_bt1 = tk.Button(label1, bg='#1A2421', borderwidth=0, justify=tk.CENTER,  activebackground=hover_color, border=0, command=lambda id = populer_movie_list[track][0]: selected_movie_detail(id))
-                r1_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
-                # r1_img = imagen(populer_movie_list[track][2], PY_width, PX_hight)
-                # r1_bt1.config(image=r1_img)
-                # r1_bt1.image = r1_img
-                change_bg_OnHover(r1_bt1, hover_color, '#1A2421')
-                r1_bt2 = tk.Button(label1, borderwidth=0, border=0, bg='#1A2421', text=f'{populer_movie_list[track][1]}', activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg='gray',  font=('Calibri', 11), command=lambda id=populer_movie_list[track]: selected_movie_detail(id))
-                r1_bt2.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
-                change_fg_OnHover(r1_bt2, hover_color, 'gray')
-                x_pos += 0.125
-                column += 1
-                track += 1
-
-            column = 0
-            x_pos = 0.005
-            y_pos += 0.32
-            row += 1
-
-        # Section 3 ==========================================================================================================================================================
-
-        Suggestion2 = tk.Frame(Home_frame, borderwidth=0, border=0, bg='black')
-        Suggestion2.place(relx=0, rely=0.322, relheight=0.17, relwidth=1)
-
-        #  Search_result(widget, m_list)
-        hover_color = 'lightblue'
-        series = imdb_other.popular_tv(genre=None, start_id=1, sort_by=None)  # returns top 50 popular TV Series starting from start id
-
-        populer_series_list = []
-
-        for TV in series['results']:
-            TV_poster = clean_url(TV['poster'])
-            populer_series_list.append(( TV['name'], TV['year'], TV_poster, TV['id'].strip('t')))
-
-        tk.Button(Suggestion2, font=('Georgia', 16), justify='center', anchor=tk.W, fg='gray', text='⍚ RECOMMENDED SERIES', borderwidth=0, border=0, bg='black', command=lambda: Search_result(top_frame_main, populer_series_list)).place(relx=0, rely=0, relheight=0.04, relwidth=1)
-
-
-        column = 0
-        row = 0
-        x_pos = 0.005
-        y_pos = 0.05
-        track = 0
-        while row < 4:  # 3 rows
-            while column < 8:  # 8 columns
-
-                label3 = tk.Label(Suggestion2, bg='#1A2421', borderwidth=0, border=0)
-                label3.place(relx=x_pos, rely=y_pos, relheight=0.31, relwidth=0.12)
-                r1_bt3 = tk.Button(label3, bg='#1A2421', borderwidth=0, justify=tk.CENTER,  activebackground=hover_color, border=0, command=lambda id = populer_series_list[track][3]: selected_movie_detail(id))
-                r1_bt3.place(relx=0, rely=0, relwidth=1, relheight=1)
-                r3_img = imagen(populer_series_list[track][2], PY_width, PX_hight)
-                r1_bt3.config(image=r3_img)
-                r1_bt3.image = r3_img
-                change_bg_OnHover(r1_bt3, hover_color, '#1A2421')
-                r1_bt3 = tk.Button(label3, borderwidth=0, border=0, bg='#1A2421', text=f'{populer_series_list[track][0]}', activeforeground=hover_color, activebackground='#1A2421', fg='gray',  font=('Calibri', 11), command=lambda id= populer_movie_list[track]: selected_movie_detail(id))
-                r1_bt3.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
-
-                change_fg_OnHover(r1_bt3, hover_color, 'gray')
-                x_pos += 0.125
-                column += 1
-                track += 1
-
-            column = 0
-            x_pos = 0.005
-            y_pos += 0.32
-            row += 1
 
 
     Home_Page(Home_frame)
