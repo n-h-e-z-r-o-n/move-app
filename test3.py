@@ -1,41 +1,31 @@
+import threading
+import multiprocessing
 
-# 13622776
-# 4154796
-import imdb
-from imdbmovies import IMDB
-imdb_other = IMDB()
-ia = imdb.Cinemagoer()
+def io_bound_function():
+    print("I/O-bound task")
 
+def cpu_bound_function():
+    print("CPU-bound task")
 
-# res = imdb.upcoming(region=None)
+def thread_task():
+    # Run an I/O-bound task in a thread
+    io_bound_function()
 
-# print(res)
+def process_task():
+    # Run a CPU-bound task in a separate process
+    cpu_bound_function()
 
-# res = imdb_other.popular_movies(genre=None, start_id=1, sort_by=None) # returns top 50 popular movies starting from start id
+if __name__ == "__main__":
+    # Create and start a thread
+    thread = threading.Thread(target=thread_task)
+    thread.start()
 
-res = imdb_other.popular_tv(genre=None, start_id=1, sort_by=None) # returns top 50 popular TV Series starting from start id
+    # Create and start a process
+    process = multiprocessing.Process(target=process_task)
+    process.start()
 
-print(res)
-print(res['results'][0])
-def clean(url):
-    movie_poster = url
-    movie_poster = movie_poster.replace('_V1_', '_V1000_')  # Replace '_V1_' with '_V1000_'
-    movie_poster = movie_poster.replace('_UX67_', '_UX1000_')  # Replace '_UX67_' with '_UX1000_'
-    movie_poster = movie_poster.replace('_UY98_', '_UY1000_')
-    movie_poster = movie_poster.replace('_CR0,0,67,98_', '_CR0,0,0,0_')  # Replace '_CR0,0,67,98_' with '_CR0,0,0,0_'
-    movie_poster = movie_poster.replace('_CR5,0,67,98_', '_CR0,0,0,0_')  # Replace '_CR5,0,67,98_' with '_CR0,0,0,0_'
-    movie_poster = movie_poster.replace('_CR1,0,67,98_', '_CR0,0,0,0_')  # Replace '_CR1,0,67,98_' with '_CR0,0,0,0_'
+    # Wait for the thread and process to finish
+    thread.join()
+    process.join()
 
-    return movie_poster
-
-for i in res['results']:
-
-    print(i['id'])
-    print(i['name'])
-    print(i['year'])
-    # print(clean(i['poster']), '\n')
-    print(i['poster'], '\n')
-
-
-
-# print(res)
+    print("Main thread continues")
