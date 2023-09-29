@@ -1,3 +1,5 @@
+# ================= libraries imports ==============================================================================================================
+# =====================================================================================================================================================
 import colorsys
 import tkinter as tk
 from PIL import Image, ImageTk
@@ -12,12 +14,17 @@ import threading
 import clr
 from tkwebview2.tkwebview2 import WebView2, have_runtime, install_runtime
 
+from imdbmovies import IMDB
+import imdb
+
 clr.AddReference('System.Windows.Forms')
 clr.AddReference('System.Threading')
 from System.Windows.Forms import Control
 from System.Threading import Thread, ApartmentState, ThreadStart
 
 
+# ================= Global Variables Definition =======================================================================================================
+# =====================================================================================================================================================
 
 is_fullscreen = False
 placeholder_text = None
@@ -34,13 +41,12 @@ root = None
 FRAME_1_canvas = canvas_FRAME_2 = FRAME_1 = FRAME_2 = None
 large_frame_size = None
 
-from imdbmovies import IMDB
-import imdb
-
 ia = imdb.Cinemagoer()
 
 imdb_other = IMDB()
 
+# ================= Functions Definition ==============================================================================================================
+# =====================================================================================================================================================
 
 def clean_url(url):
     url = url
@@ -53,6 +59,7 @@ def clean_url(url):
     url = url.replace('_CR5,0,67,98_', '_CR0,0,0,0_')  # Replace '_CR5,0,67,98_' with '_CR0,0,0,0_'
     url = url.replace('_CR1,0,67,98_', '_CR0,0,0,0_')  # Replace '_CR1,0,67,98_' with '_CR0,0,0,0_'
     return url
+
 
 def on_frame_configure(widget, event):  # Update the canvas scrolling region when the large frame changes size
     widget.configure(scrollregion=widget.bbox("all"))
@@ -99,15 +106,11 @@ def imagen(image_url, screen_width, screen_height, widget):
                 widget.image = photo  # Keep a reference to the PhotoImage to prevent it from being garbage collected
                 retry = 7 # End  while looop
             except :
-                print(f"Error loading image: ")
                 retry += 1
                 time.sleep(5)
 
     image_thread = threading.Thread(target=load_image)  # Create a thread to load the image asynchronously
     image_thread.start()
-
-
-
 
 
 def imagen_fade(poster_url, screen_height, screen_width, widget):
@@ -151,16 +154,12 @@ def imagen_fade(poster_url, screen_height, screen_width, widget):
                 widget.config(image=photo, compound=tk.CENTER)
                 widget.image = photo  # Keep a reference to the PhotoImage to prevent it from being garbage collected
                 retry = 7
-                print('complited')
             except :
-
-                print(f"Error loading image Fade")
                 retry += 1
                 time.sleep(5)
 
     image_thread = threading.Thread(target=load_img_url)  # Create a thread
     image_thread.start()
-    print('exited')
 
 
 def change_color(main_widget, widget):
@@ -185,7 +184,6 @@ def pulsing_color(main_widget, widget):
             widget.update()  # Update the label's appearance
         time.sleep(0.04)  # Adjust the delay as needed for the desired pulsing speed
     main_widget.after(3000, lambda: pulsing_color(widget))
-
 
 
 def on_entry_click(widget, event):
@@ -229,10 +227,9 @@ def toggle_fullscreen(main_widget, widget, original_x, original_y, original_widt
         is_fullscreen = True
 
 
-
-
 def selected_movie_detail(movie_id):
     global top_frame_main
+
     def get_specific_movie_details(movie_id=movie_id):
             movies = ia.get_movie(movie_id)
 
@@ -434,14 +431,12 @@ def selected_movie_detail(movie_id):
 
             # movie_id, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url, r1_title, r1_year, recomednation_1_poster, r2_title, r2_year, recomednation_2_poster, r3_title, r3_year, recomednation_3_poster, r4_title, r4_year, recomednation_4_poster, r5_title, r5_year, recomednation_5_poster, r6_title, r6_year, recomednation_6_poster
             # r1_id, r2_id, r3_id, r4_id, r5_id, r6_id
-            print(list[top_frame_main, movie_id, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url, r1_title, r1_year, recomednation_1_poster, r2_title, r2_year, recomednation_2_poster, r3_title, r3_year, recomednation_3_poster, r4_title, r4_year, recomednation_4_poster, r5_title, r5_year, recomednation_5_poster, r6_title, r6_year, recomednation_6_poster, r1_id, r2_id, r3_id, r4_id, r5_id, r6_id])
+            #print(list[top_frame_main, movie_id, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url, r1_title, r1_year, recomednation_1_poster, r2_title, r2_year, recomednation_2_poster, r3_title, r3_year, recomednation_3_poster, r4_title, r4_year, recomednation_4_poster, r5_title, r5_year, recomednation_5_poster, r6_title, r6_year, recomednation_6_poster, r1_id, r2_id, r3_id, r4_id, r5_id, r6_id])
             watch_page(top_frame_main, movie_id, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url, r1_title, r1_year, recomednation_1_poster, r2_title, r2_year, recomednation_2_poster, r3_title, r3_year, recomednation_3_poster, r4_title, r4_year, recomednation_4_poster, r5_title, r5_year, recomednation_5_poster, r6_title, r6_year, recomednation_6_poster, r1_id, r2_id, r3_id, r4_id, r5_id, r6_id)
 
     get_specific_movie_details()
     #t = threading.Thread(target=get_specific_movie_details)
     #t.start()
-
-
 
 
 def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url, r1_title, r1_year, recomednation_1_poster, r2_title, r2_year, recomednation_2_poster, r3_title, r3_year, recomednation_3_poster, r4_title, r4_year, recomednation_4_poster, r5_title, r5_year, recomednation_5_poster, r6_title, r6_year, recomednation_6_poster, r1_id, r2_id, r3_id, r4_id, r5_id, r6_id):
@@ -467,7 +462,7 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     large_frame.tkraise()
     page_count += 1
 
-    label3 = tk.Label(large_frame)
+    label3 = tk.Label(large_frame, bg='black')
     label3.place(relx=0.04, rely=0.52, relheight=0.16, relwidth=0.13)
     imagen(movie_poster_url, pi_widh, pi_high, label3)
 
@@ -524,20 +519,14 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     plot_wdget.config(state="disabled")
     plot_wdget.place(relx=0.04, rely=0.689, relheight=0.035, relwidth=0.95)
 
-    plot_wdget1 = tk.Text(large_frame, bg='green', fg='gray', borderwidth=0, border=0, wrap=tk.WORD, font=('Comic Sans MS', 12))
-    plot_wdget1.place(relx=0.04, rely=0.727, relheight=0.037, relwidth=0.95)
+    #Add = tk.Text(large_frame, bg='green', fg='gray', borderwidth=0, border=0, wrap=tk.WORD, font=('Comic Sans MS', 12))
+    #Add.place(relx=0.04, rely=0.727, relheight=0.037, relwidth=0.95)
 
     #  content:
-    '''
-    
-    '''
-
     image_label = tk.Button(large_frame, text='▷', bg='black', fg='white', borderwidth=0, border=0, activebackground='black', activeforeground='yellow', relief=tk.FLAT, font=('Arial Black', 76, 'bold'), command=lambda: play(video_box))
     image_label.place(relx=0, rely=0.0, relheight=0.5, relwidth=1)
     imagen_fade(movie_poster_url, screen_height, screen_width, image_label)
     change_fg_OnHover(image_label, 'Blue', 'white')
-
-
 
     back_tracking_widget = tk.Button(large_frame, font=('Georgia', 20), justify='center', fg='gray', text='⤽', activebackground='black', activeforeground='yellow', borderwidth=0, border=0, bg='black', command=previous_back_track_page_display)
     back_tracking_widget.place(relx=0, rely=0, relheight=0.017, relwidth=0.021)
@@ -546,6 +535,9 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     froward_tracking_widget = tk.Button(large_frame, font=('Georgia', 20), justify='center', fg='gray', text='⤼', activebackground='black', activeforeground='yellow', borderwidth=0, border=0, bg='black', command=previous_forwad_track_page_display)
     froward_tracking_widget.place(relx=0.021, rely=0, relheight=0.017, relwidth=0.021)
     change_fg_OnHover(froward_tracking_widget, 'yellow', 'gray')
+
+    reload = tk.Button(large_frame, font=('Georgia', 20), justify='center', fg='gray', text='⥁', activebackground='black', activeforeground='yellow', borderwidth=0, border=0, bg='black', command= lambda: frame2.reload())
+    reload.place(relx=0.042, rely=0, relheight=0.017, relwidth=0.021)
 
     Search_box = tk.Entry(large_frame, font=('Georgia', 15), justify='center',   insertbackground="lightblue", borderwidth=0, border=0, bg='black', fg='white')
     Search_box.place(relx=0.30, rely=0, relheight=0.017, relwidth=0.4)
@@ -558,8 +550,6 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     recomendation_tubs_bg_color = '#1A2421'
     hover_color = 'lightblue'
     text_color = 'gray'
-
-
 
     label2 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
     label2.place(relx=0.04, rely=0.78, relheight=0.2, relwidth=0.15)
@@ -627,10 +617,9 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     frame2.place(relheight=1, relwidth=1, relx=0, rely=0)
 
 
-
 def Animation(wid):
     # Load the animated GIF using Pillow
-    gif = Image.open("827.gif")
+    gif = Image.open("search_animation.gif")
     frames = []
     frame_index = 0
     # Split the GIF into frames
@@ -650,10 +639,11 @@ def Animation(wid):
                 index = (index + 1) % len(frames)
                 root.after(100, lambda c=index: update_image(c))  # Change the delay (in milliseconds) to control the animation speed
         except Exception as e:
-            print(f"Error updating image: {e}")
+            #print(f"Error updating image: {e}")
             return
 
     update_image(frame_index)
+
 
 def search_movies_request(widget, user_query, wig_tp, i, event):
     load_animation = tk.Label(wig_tp, bg='black', border=0, borderwidth=0)
@@ -702,7 +692,6 @@ def previous_back_track_page_display():
         widget_track_position[page_count].tkraise()
 
 
-
 def previous_forwad_track_page_display():
     global page_count, widget_track_position,  FRAME_1, FRAME_2,  FRAME_1_canvas, canvas_FRAME_2
     if page_count < (len(widget_track_position) - 1):
@@ -714,7 +703,6 @@ def previous_forwad_track_page_display():
             FRAME_2.tkraise()
             widget_scroll_bind(canvas_FRAME_2)
         widget_track_position[page_count].tkraise()
-
 
 
 def Search_result(widget, m_list):
@@ -808,8 +796,6 @@ def Search_result(widget, m_list):
     grid(Search_result_frame, m_list, len(m_list), 0)
 
 
-
-
 def slide_show(widget):
     global screen_height, screen_width, root
     def Home_page_Background_changer(list, x=0):
@@ -839,32 +825,29 @@ def slide_show(widget):
         movie_poster = clean_url(movie['poster'])
         show_movie_list.append((movie['name'], movie['year'], movie_poster, movie['id'].strip('t')))
 
-    f1 = tk.Button(widget,  borderwidth=0, border=0, activebackground='black', bg='black')
+    f1 = tk.Button(widget,  borderwidth=0, border=0, activebackground='black', bg='black', command=lambda id=show_movie_list[1][3]: selected_movie_detail(id))
     f1.place(relx=0, rely=0, relheight=1, relwidth=1)
     imagen_fade(show_movie_list[1][2], screen_height, screen_width, f1)
 
-    f2 = tk.Button(widget,  borderwidth=0, border=0, activebackground='black', bg='black')
+    f2 = tk.Button(widget,  borderwidth=0, border=0, activebackground='black', bg='black', command=lambda id=show_movie_list[2][3]: selected_movie_detail(id))
     f2.place(relx=0, rely=0, relheight=1, relwidth=1)
     imagen_fade(show_movie_list[2][2], screen_height, screen_width, f2)
 
-    f3 = tk.Button(widget,  borderwidth=0, border=0,activebackground='black', bg='black')
+    f3 = tk.Button(widget,  borderwidth=0, border=0,activebackground='black', bg='black', command=lambda id=show_movie_list[3][3]: selected_movie_detail(id))
     f3.place(relx=0, rely=0, relheight=1, relwidth=1)
     imagen_fade(show_movie_list[3][2], screen_height, screen_width, f3)
 
-    f4 = tk.Button(widget,  borderwidth=0, border=0, activebackground='black',bg='black')
+    f4 = tk.Button(widget,  borderwidth=0, border=0, activebackground='black', bg='black', command=lambda id=show_movie_list[4][3]: selected_movie_detail(id))
     f4.place(relx=0, rely=0, relheight=1, relwidth=1)
     imagen_fade(show_movie_list[4][2], screen_height, screen_width, f4)
 
-    f5 = tk.Button(widget,  borderwidth=0, border=0, activebackground='black',bg='black')
+    f5 = tk.Button(widget,  borderwidth=0, border=0, activebackground='black', bg='black', command=lambda id=show_movie_list[5][3]: selected_movie_detail(id))
     f5.place(relx=0, rely=0, relheight=1, relwidth=1)
     imagen_fade(show_movie_list[5][2], screen_height, screen_width, f5)
 
     list = [f1, f2, f3, f4, f5]
 
     Home_page_Background_changer(list)
-
-
-
 
 
 def Home_Page(widget):
@@ -912,7 +895,9 @@ def Home_Page(widget):
             movie_poster = clean_url(movie['poster'])
             populer_movie_list.append(( movie['name'], movie['year'], movie_poster, movie['id'].strip('t')))
 
-        tk.Button(Suggestion1, font=('Georgia', 16), justify='center', anchor=tk.W, fg='gray', text='⍚ RECOMMENDED MOVIE', borderwidth=0, border=0, bg='black', command=lambda: Search_result(top_frame_main, populer_movie_list)).place(relx=0, rely=0, relheight=0.04, relwidth=1)
+        p_ms = tk.Button(Suggestion1, font=('Georgia', 16), justify='center', anchor=tk.W, activeforeground='lightblue', fg='gray', text=' ⍚ POPULAR MOVIES', borderwidth=0, border=0, bg='black', command=lambda: Search_result(top_frame_main, populer_movie_list))
+        p_ms.place(relx=0, rely=0, relheight=0.04, relwidth=1)
+        change_fg_OnHover(p_ms, 'lightblue', 'gray')
 
         PX_hight = int(Home_frame_hight * 0.17 * 0.31) - 1
         PY_width = int(screen_width * 1 * 0.12) - 1
@@ -955,7 +940,10 @@ def Home_Page(widget):
             TV_poster = clean_url(TV['poster'])
             populer_series_list.append(( TV['name'], TV['year'], TV_poster, TV['id'].strip('t')))
 
-        tk.Button(Suggestion2, font=('Georgia', 16), justify='center', anchor=tk.W, fg='gray', text='⍚ RECOMMENDED SERIES', borderwidth=0, border=0, bg='black', command=lambda: Search_result(top_frame_main, populer_series_list)).place(relx=0, rely=0, relheight=0.04, relwidth=1)
+        p_Ss = tk.Button(Suggestion2, font=('Georgia', 16), justify='center', anchor=tk.W, fg='gray', activeforeground='lightblue', text=' ⍚ POPULAR SERIES', borderwidth=0, border=0, bg='black', command=lambda: Search_result(top_frame_main, populer_series_list))
+        p_Ss.place(relx=0, rely=0, relheight=0.04, relwidth=1)
+        change_fg_OnHover(p_Ss, 'lightblue', 'gray')
+
 
         column = 0
         row = 0
@@ -991,6 +979,9 @@ def Home_Page(widget):
         video_box.place(relx=0, rely=0.5, relheight=0.17, relwidth=1)
         """
 
+# ================= Main Definition ===================================================================================================================
+# =====================================================================================================================================================
+
 def main():
     global page_count, Home_frame
     global is_fullscreen
@@ -1012,12 +1003,9 @@ def main():
     screen_width = root.winfo_screenwidth()
     screen_height = root.winfo_screenheight()
     large_frame_size = screen_height + 700
-    print(screen_width)
-    print(screen_height)
-    print(large_frame_size)
     search_q = tk.StringVar()
 
-    FRAME_1 = tk.Frame(root, bg='yellow')
+    FRAME_1 = tk.Frame(root, bg='black')
     FRAME_1.place(relx=0, rely=0, relwidth=1, relheight=1)
     FRAME_1_canvas = tk.Canvas(FRAME_1)
     FRAME_1_canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
@@ -1033,8 +1021,7 @@ def main():
     widget_track_position.append(Home_frame)
     page_count += 1
 
-
-    FRAME_2 = tk.Frame(root)
+    FRAME_2 = tk.Frame(root, bg='black')
     FRAME_2.place(relwidth=1, relheight=1, relx=0, rely=0)
     canvas_FRAME_2 = tk.Canvas(FRAME_2, highlightthickness=0) # Create a Canvas widget to hold the frame and enable scrolling
     canvas_FRAME_2.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
@@ -1050,21 +1037,21 @@ def main():
 
 
 
-    Home_Page(Home_frame)
+    #Home_Page(Home_frame)
     #selected_movie_detail(10638522)
-    #watch_page(main_frame, '10638522', 'Talk to Me', 7.2, 'movie', 'Australia. United Kingdom. ', 'Horror, Thriller, ', 2022, 'Causeway Films, Head Gear Films, Metrol Technology, Screen Australia, Talk to Me Holdings, ', 'Ari McCarthy, Hamish Phillips, Kit Erhart-Bruce, Sarah Brokensha, Jayden Davison, Sunny Johnson, Sophie Wilde, Marcus Johnson, Kidaan Zelleke, James Oliver, Joe Bird, Jett Gazley, Alexandra Jensen, Dog, Helene Philippou, ', 'When a group of friends discover how to conjure spirits using an embalmed hand, they become hooked on the new thrill, until one of them goes too far and unleashes terrifying supernatural forces.', 'https://m.media-amazon.com/images/M/MV5BMmY5ZGE4NmUtZWI4OS00ZWJmLWFjMzgtOWUyZjI4NDg3Y2E5XkEyXkFqcGdeQXVyMTkxNjUyNQ@@.jpg', 'Talk to Me', 2023, None, 'Talk to Me', 2007, 'https://m.media-amazon.com/images/M/MV5BMzgyMTMxNjg4OF5BMl5BanBnXkFtZTYwMDkwNDc3.jpg', 'Talk to Me, Sweet Darling', 2020, 'https://m.media-amazon.com/images/M/MV5BMDY5ODFmOTktOGYxOC00MGQ0LTk4NmYtYzQ4MDc0NWQzOWViXkEyXkFqcGdeQXVyNTgyMTU3Mjc@.jpg', 'Talk to Me', 2023, 'https://m.media-amazon.com/images/M/MV5BZDg2ZTRjYzMtZDJiYi00MDYxLWFlMDctZWQ4NDI3NTA2NWI1XkEyXkFqcGdeQXVyNjEzNjUxNzI@.jpg', 'Talk to Me', 2007, 'https://m.media-amazon.com/images/M/MV5BMTQ2ODQ5NDAtMjg3Ni00MGFmLWEzMmMtMGFjNjg4MTM4Yjg3XkEyXkFqcGdeQXVyMjExMjk0ODk@.jpg', 'They Talk to Me', 2021, 'https://m.media-amazon.com/images/M/MV5BOGY1YjIxNGUtYjEzYy00YTZmLTk2MTYtMjg0YzNhOTM1OTg5XkEyXkFqcGdeQXVyNTY3NTY1Nzg@.jpg', '27173489', '0796368', '13863990', '28547237', '0941650', '13894060')
+    watch_page(main_frame, '10638522', 'Talk to Me', 7.2, 'movie', 'Australia. United Kingdom. ', 'Horror, Thriller, ', 2022, 'Causeway Films, Head Gear Films, Metrol Technology, Screen Australia, Talk to Me Holdings, ', 'Ari McCarthy, Hamish Phillips, Kit Erhart-Bruce, Sarah Brokensha, Jayden Davison, Sunny Johnson, Sophie Wilde, Marcus Johnson, Kidaan Zelleke, James Oliver, Joe Bird, Jett Gazley, Alexandra Jensen, Dog, Helene Philippou, ', 'When a group of friends discover how to conjure spirits using an embalmed hand, they become hooked on the new thrill, until one of them goes too far and unleashes terrifying supernatural forces.', 'https://m.media-amazon.com/images/M/MV5BMmY5ZGE4NmUtZWI4OS00ZWJmLWFjMzgtOWUyZjI4NDg3Y2E5XkEyXkFqcGdeQXVyMTkxNjUyNQ@@.jpg', 'Talk to Me', 2023, None, 'Talk to Me', 2007, 'https://m.media-amazon.com/images/M/MV5BMzgyMTMxNjg4OF5BMl5BanBnXkFtZTYwMDkwNDc3.jpg', 'Talk to Me, Sweet Darling', 2020, 'https://m.media-amazon.com/images/M/MV5BMDY5ODFmOTktOGYxOC00MGQ0LTk4NmYtYzQ4MDc0NWQzOWViXkEyXkFqcGdeQXVyNTgyMTU3Mjc@.jpg', 'Talk to Me', 2023, 'https://m.media-amazon.com/images/M/MV5BZDg2ZTRjYzMtZDJiYi00MDYxLWFlMDctZWQ4NDI3NTA2NWI1XkEyXkFqcGdeQXVyNjEzNjUxNzI@.jpg', 'Talk to Me', 2007, 'https://m.media-amazon.com/images/M/MV5BMTQ2ODQ5NDAtMjg3Ni00MGFmLWEzMmMtMGFjNjg4MTM4Yjg3XkEyXkFqcGdeQXVyMjExMjk0ODk@.jpg', 'They Talk to Me', 2021, 'https://m.media-amazon.com/images/M/MV5BOGY1YjIxNGUtYjEzYy00YTZmLTk2MTYtMjg0YzNhOTM1OTg5XkEyXkFqcGdeQXVyNTY3NTY1Nzg@.jpg', '27173489', '0796368', '13863990', '28547237', '0941650', '13894060')
 
     root.mainloop()
 
 
 if __name__ == "__main__":
 
-    main()
-    """
+    #main()
+    #"""
     t = Thread(ThreadStart(main))
     t.ApartmentState = ApartmentState.STA
     t.Start()
     t.Join()
-    """
+    #"""
 
 
