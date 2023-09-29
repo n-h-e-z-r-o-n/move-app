@@ -1,14 +1,14 @@
 import colorsys
 import tkinter as tk
 from PIL import Image, ImageTk
-from tkinter import PhotoImage
+
 import requests
 from io import BytesIO
-import customtkinter
+
 import random
 import time
 import threading
-import multiprocessing
+
 import clr
 from tkwebview2.tkwebview2 import WebView2, have_runtime, install_runtime
 
@@ -89,8 +89,7 @@ def imagen(image_url, screen_width, screen_height, widget):
                 if image_url is None:
                     image = Image.open("./Default.png")
                 else:
-
-                    response = requests.get(image_url)
+                    response = requests.get(image_url, timeout=20)
                     image_data = response.content
                     image = Image.open(BytesIO(image_data))
 
@@ -98,12 +97,11 @@ def imagen(image_url, screen_width, screen_height, widget):
                 photo = ImageTk.PhotoImage(image)
                 widget.config(image=photo)
                 widget.image = photo  # Keep a reference to the PhotoImage to prevent it from being garbage collected
-                break
-            except requests.exceptions.RequestException as e:
-                print(f"Error loading image: {e}")
+                retry = 7 # End  while looop
+            except :
+                print(f"Error loading image: ")
                 retry += 1
                 time.sleep(5)
-
 
     image_thread = threading.Thread(target=load_image)  # Create a thread to load the image asynchronously
     image_thread.start()
@@ -113,7 +111,7 @@ def imagen(image_url, screen_width, screen_height, widget):
 
 
 def imagen_fade(poster_url, screen_height, screen_width, widget):
-    def load_img_url():
+    def load_img_url(widget=widget):
         retry = 0
         while retry < 6:
             try:
@@ -121,7 +119,7 @@ def imagen_fade(poster_url, screen_height, screen_width, widget):
                     image = (Image.open("./Default.png"))
                 else:
                     # Download the image from the web
-                    response = requests.get(poster_url, timeout=20)
+                    response = requests.get(poster_url)
                     image_data = response.content
                     image = Image.open(BytesIO(image_data))  # Create a PIL Image object from the image data
 
@@ -130,7 +128,10 @@ def imagen_fade(poster_url, screen_height, screen_width, widget):
                 image = image.resize((screen_width, (h)), Image.LANCZOS)
                 # Ensure the image has an alpha channel.
                 im = image.convert("RGBA")
-                width, height = im.size
+                try:
+                    width, height = im.size
+                except:
+                    continue
                 pixels = im.load()
                 # Define the top and bottom fade heights as a percentage of the image height.
                 top_fade_height = int(height * 0.50)  # Adjust this value for the desired top fade height
@@ -145,21 +146,21 @@ def imagen_fade(poster_url, screen_height, screen_width, widget):
                     alpha = int(((height - y) / bottom_fade_height) * 255)
                     for x in range(width):
                         pixels[x, y] = pixels[x, y][:3] + (alpha,)
-                try:
-                    photo = ImageTk.PhotoImage(im)
-                    widget.config(image=photo, compound=tk.CENTER)
-                    widget.image = photo  # Keep a reference to the PhotoImage to prevent it from being garbage collected
-                except:
-                     pass
 
-            except requests.exceptions.RequestException as e:
-                print(f"Error loading image Fade: {e}")
+                photo = ImageTk.PhotoImage(im)
+                widget.config(image=photo, compound=tk.CENTER)
+                widget.image = photo  # Keep a reference to the PhotoImage to prevent it from being garbage collected
+                retry = 7
+                print('complited')
+            except :
+
+                print(f"Error loading image Fade")
                 retry += 1
                 time.sleep(5)
 
     image_thread = threading.Thread(target=load_img_url)  # Create a thread
     image_thread.start()
-
+    print('exited')
 
 
 def change_color(main_widget, widget):
@@ -806,6 +807,66 @@ def Search_result(widget, m_list):
 
     grid(Search_result_frame, m_list, len(m_list), 0)
 
+
+
+
+def slide_show(widget):
+    global screen_height, screen_width, root
+    def Home_page_Background_changer(list, x=0):
+        global root
+        list = list
+        if x == 4:
+            list[x].tkraise()
+            x = 1
+        elif x == 3:
+            list[x].tkraise()
+            x += 1
+        elif x == 2:
+            list[x].tkraise()
+            x += 1
+        elif x == 1:
+            list[x].tkraise()
+            x += 1
+        else:
+            list[x].tkraise()
+            x += 1
+        root.after(4000, lambda: Home_page_Background_changer(list, x=x))
+
+    movies = imdb_other.popular_movies(genre=None, start_id=1, sort_by=None)  # returns top 50 popular movies starting from start id
+
+    show_movie_list = []
+    for movie in movies['results']:
+        movie_poster = clean_url(movie['poster'])
+        show_movie_list.append((movie['name'], movie['year'], movie_poster, movie['id'].strip('t')))
+
+    f1 = tk.Button(widget,  borderwidth=0, border=0, activebackground='black', bg='black')
+    f1.place(relx=0, rely=0, relheight=1, relwidth=1)
+    imagen_fade(show_movie_list[1][2], screen_height, screen_width, f1)
+
+    f2 = tk.Button(widget,  borderwidth=0, border=0, activebackground='black', bg='black')
+    f2.place(relx=0, rely=0, relheight=1, relwidth=1)
+    imagen_fade(show_movie_list[2][2], screen_height, screen_width, f2)
+
+    f3 = tk.Button(widget,  borderwidth=0, border=0,activebackground='black', bg='black')
+    f3.place(relx=0, rely=0, relheight=1, relwidth=1)
+    imagen_fade(show_movie_list[3][2], screen_height, screen_width, f3)
+
+    f4 = tk.Button(widget,  borderwidth=0, border=0, activebackground='black',bg='black')
+    f4.place(relx=0, rely=0, relheight=1, relwidth=1)
+    imagen_fade(show_movie_list[4][2], screen_height, screen_width, f4)
+
+    f5 = tk.Button(widget,  borderwidth=0, border=0, activebackground='black',bg='black')
+    f5.place(relx=0, rely=0, relheight=1, relwidth=1)
+    imagen_fade(show_movie_list[5][2], screen_height, screen_width, f5)
+
+    list = [f1, f2, f3, f4, f5]
+
+    Home_page_Background_changer(list)
+
+
+
+
+
 def Home_Page(widget):
         global widget_track_position, page_count, screen_height, screen_width, canvas_FRAME_2, FRAME_1_canvas, top_frame_main, Home_frame
 
@@ -833,6 +894,8 @@ def Home_Page(widget):
         Search_box.bind("<FocusOut>", lambda e: on_focusout(Search_box, e))
         change_bg_OnHover(Search_box, '#010127', 'black')
         Search_box.bind("<Return>", lambda event: search_movies_request(top_frame_main, Search_box, widget, 1,  event))
+
+        slide_show(Suggestion)
 
         # Section 2 ==================================================================================================================================================
 
@@ -920,14 +983,13 @@ def Home_Page(widget):
             x_pos = 0.005
             y_pos += 0.32
             row += 1
-
+        """
         video_box = tk.Frame(Home_frame, bg='black')
         frame2 = WebView2(video_box, 500, 500)
-        print("movie_id:", 10638522)
         frame2.load_url(f'https://vidsrc.to/embed/movie/tt{10638522}')  # https://vidsrc.to/embed/movie/tt10638522
         frame2.pack(side='left', padx=0, fill='both', expand=True)
         video_box.place(relx=0, rely=0.5, relheight=0.17, relwidth=1)
-
+        """
 
 def main():
     global page_count, Home_frame
@@ -997,11 +1059,12 @@ def main():
 
 if __name__ == "__main__":
 
-
+    main()
+    """
     t = Thread(ThreadStart(main))
     t.ApartmentState = ApartmentState.STA
     t.Start()
     t.Join()
-
+    """
 
 
