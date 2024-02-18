@@ -1075,7 +1075,7 @@ def main():
     root.title("Move App")
     root.state('zoomed')  # this creates a window that takes over the screen
     root.minsize(150, 100)
-    root.config(bg='blue')
+    
 
 
     #dark_title_bar(root)
@@ -1095,7 +1095,7 @@ def main():
     photo = ImageTk.PhotoImage(image)
     #imagen("./Assets/12.jpg",screen_width , screen_height, Backround)
 
-    FRAME_1 = tk.Frame(root, bg='')
+    FRAME_1 = tk.Frame(root)
     FRAME_1.place(relx=0, rely=0, relwidth=1, relheight=1)
     FRAME_1_canvas = tk.Canvas(FRAME_1)
     FRAME_1_canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
