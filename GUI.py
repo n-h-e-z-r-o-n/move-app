@@ -168,8 +168,11 @@ def imagen(image_path, screen_width, screen_height, widget): # image processing
     image_thread.start()
 
 
-def poster_url_get(poster_url):
-    response = requests.get(poster_url)
+def poster_image_get(movie_id):
+    movies = ia.get_movie(movie_id[2:])
+    movie_poster_url = movies.get('full-size cover url')
+
+    response = requests.get(movie_poster_url)
     image_data = response.content
     return  BytesIO(image_data)
 
