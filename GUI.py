@@ -173,8 +173,6 @@ def poster_url_get(poster_url):
     image_data = response.content
     return  BytesIO(image_data)
 
-
-
 def imagen_fade(poster_url, screen_height, screen_width, widget):
     def load_img_url(widget=widget):
         retry = 0
