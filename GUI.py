@@ -1090,7 +1090,7 @@ def main():
     search_q = tk.StringVar()
     Home_frame_hight = screen_height * 5
 
-    Backround = tk.Canvas(root, bg='yellow', width=screen_width, height=screen_height)
+    Backround = tk.Canvas(root, bg='yellow', width=screen_width, height=screen_height, borderwidth=0, highlightthickness=0)
     Backround.place(relx=0, rely=0, relwidth=1, relheight=1)
     bg_photo = Image.open("./Assets/12.jpg")
     resized_background_image = bg_photo.resize((screen_width, screen_height), Image.LANCZOS)
