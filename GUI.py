@@ -1089,15 +1089,13 @@ def main():
     search_q = tk.StringVar()
     Home_frame_hight = screen_height * 5
 
-    Backround = tk.Canvas(root, width=screen_width, height=screen_height, borderwidth=0, highlightthickness=0)
-    Backround.place(relx=0, rely=0, relwidth=1, relheight=1)
+
     image = Image.open("./Assets/12.jpg")
     image = image.resize((screen_width, screen_height), Image.LANCZOS)
     photo = ImageTk.PhotoImage(image)
-    Backround.create_image(0, 0, anchor="nw", image=photo)
     #imagen("./Assets/12.jpg",screen_width , screen_height, Backround)
 
-    FRAME_1 = tk.Frame(Backround, bg='')
+    FRAME_1 = tk.Frame(root, bg='')
     FRAME_1.place(relx=0, rely=0, relwidth=1, relheight=1)
     FRAME_1_canvas = tk.Canvas(FRAME_1)
     FRAME_1_canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
