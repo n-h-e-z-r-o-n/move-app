@@ -1094,7 +1094,7 @@ def main():
 
     FRAME_1 = tk.Frame(root)
     FRAME_1.place(relx=0, rely=0, relwidth=1, relheight=1)
-    FRAME_1_canvas = tk.Canvas(FRAME_1)
+    FRAME_1_canvas = tk.Canvas(FRAME_1, borderwidth=0, highlightthickness=0)
     FRAME_1_canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
     FRAME_1_scrollbar = tk.Scrollbar(root, command=FRAME_1_canvas.yview)
     FRAME_1_canvas.config(yscrollcommand=FRAME_1_scrollbar.set)
@@ -1102,10 +1102,10 @@ def main():
     FRAME_1_canvas.create_window((0, 0), window=FRAME_1_screen, anchor=tk.NW)
     widget_scroll_bind(FRAME_1_canvas)  # Bind the mouse wheel event to the canvas
 
-    Home_frame = tk.Frame(FRAME_1_screen, bg='green', width=screen_width, height=Home_frame_hight)
-    Home_frame.pack(fill=tk.BOTH, expand=True)
+    #Home_frame = tk.Frame(FRAME_1_screen, bg='green', width=screen_width, height=Home_frame_hight)
+    #Home_frame.pack(fill=tk.BOTH, expand=True)
 
-    Home_label= tk.Label(Home_frame, bg='blue', width=screen_width, height=Home_frame_hight)
+    Home_label = tk.Label(FRAME_1_screen, bg='blue', width=screen_width, height=Home_frame_hight)
     Home_label.place(relx=0, rely=0, relwidth=1, relheight=1)
     imagen("Assets/12.jpg", screen_width, Home_frame_hight, Home_label)
 
@@ -1116,7 +1116,7 @@ def main():
     """
     FRAME_2 = tk.Frame(root, bg='black')
     FRAME_2.place(relwidth=1, relheight=1, relx=0, rely=0)
-    canvas_FRAME_2 = tk.Canvas(FRAME_2, highlightthickness=0) # Create a Canvas widget to hold the frame and enable scrolling
+    canvas_FRAME_2 = tk.Canvas(FRAME_2, , borderwidth=0, highlightthickness=0) # Create a Canvas widget to hold the frame and enable scrolling
     canvas_FRAME_2.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
     canvas_FRAME_2_scrollbar = tk.Scrollbar(root, command=canvas_FRAME_2.yview) # Create a Scrollbar and connect it to the Canvas
     canvas_FRAME_2.config(yscrollcommand=canvas_FRAME_2_scrollbar.set)
