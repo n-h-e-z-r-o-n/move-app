@@ -159,8 +159,9 @@ def imagen(image_path, screen_width, screen_height, widget): # image processing
         widget.config(image=photo)
         widget.image = photo  # Keep a reference to the PhotoImage to prevent it from being garbage collected
 
-    image_thread = threading.Thread(target=load_image)  # Create a thread to load the image asynchronously
-    image_thread.start()
+    load_image()
+    #image_thread = threading.Thread(target=load_image)  # Create a thread to load the image asynchronously
+    #image_thread.start()
 
 
 def imagen_fade(poster_url, screen_height, screen_width, widget):
