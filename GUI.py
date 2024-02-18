@@ -1105,7 +1105,7 @@ def main():
     Home_frame = tk.Frame(FRAME_1_screen, bg='green', width=screen_width, height=Home_frame_hight)
     Home_frame.pack(fill=tk.BOTH, expand=True)
 
-    Home_label= tk.Frame(Home_frame, bg='blue', width=screen_width, height=Home_frame_hight)
+    Home_label= tk.Label(Home_frame, bg='blue', width=screen_width, height=Home_frame_hight)
     Home_label.place(relx=0, rely=0, relwidth=1, relheight=1)
     imagen("Assets/12.jpg", screen_width, Home_frame_hight, Home_label)
 
