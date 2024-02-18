@@ -916,7 +916,7 @@ def Home_Page(widget):
 
         # Section 1 ===============================================================================
 
-        Suggestion = tk.Frame(widget,  borderwidth=0, border=0, bg='black')
+        Suggestion = tk.Frame(widget,  borderwidth=0, border=0, bg='blue')
         Suggestion.place(relx=0, rely=0, relheight=0.15, relwidth=1)
 
         back_tracking_widget = tk.Button(widget, font=('Georgia', 20), justify='center', fg='gray', text='⤽', activebackground='black', activeforeground='yellow', borderwidth=0, border=0, bg='black', command=previous_back_track_page_display)
@@ -935,7 +935,7 @@ def Home_Page(widget):
         change_bg_OnHover(Search_box, '#010127', 'black')
         Search_box.bind("<Return>", lambda event: search_movies_request(top_frame_main, Search_box, widget, 1,  event))
 
-        #slide_show(Suggestion)
+        slide_show(Suggestion)
 
         # Section 2 ==================================================================================================================================================
 
