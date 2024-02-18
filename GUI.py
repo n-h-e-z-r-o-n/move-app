@@ -1075,7 +1075,12 @@ def main():
     root.title("Move App")
     root.state('zoomed')  # this creates a window that takes over the screen
     root.minsize(150, 100)
-    #root.config(bg='blue')
+    root.config(bg='blue')
+
+    Backround = tk.Frame(root, bg='')
+    Backround.place(relx=0, rely=0, relwidth=1, relheight=1)
+    imagen("./Assets/12.jpg", 500, 100, Backround)
+    
     dark_title_bar(root)
 
     # Get the screen dimensions
@@ -1084,7 +1089,7 @@ def main():
     large_frame_size = screen_height + 700
     search_q = tk.StringVar()
 
-    FRAME_1 = tk.Frame(root, bg='black')
+    FRAME_1 = tk.Frame(root, bg='')
     FRAME_1.place(relx=0, rely=0, relwidth=1, relheight=1)
     FRAME_1_canvas = tk.Canvas(FRAME_1, bg='blue')
     FRAME_1_canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
@@ -1097,7 +1102,7 @@ def main():
     Home_frame_hight = screen_height * 5
     Home_frame = tk.Frame(FRAME_1_screen, bg='', width=screen_width, height=Home_frame_hight)
     Home_frame.pack(fill=tk.BOTH, expand=True)
-    #imagen("./Assets/12.jpg", screen_width, Home_frame_hight, Home_frame)
+
     widget_track_position.append(Home_frame)
     page_count += 1
 
