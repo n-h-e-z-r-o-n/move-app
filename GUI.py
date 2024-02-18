@@ -962,10 +962,10 @@ def Home_Page(widget):
 
         print("===", populer_movie_list)
 
-        imagen("Assets/12.jpg", screen_width, Home_frame_hight, Home_label)
 
-        return
-        """
+
+
+
         p_ms = tk.Button(Suggestion1, font=('Georgia', 16), justify='center', anchor=tk.W, activeforeground='lightblue', fg='gray', text=' ⍚ POPULAR MOVIES', borderwidth=0, border=0, bg='black', command=lambda: Search_result(top_frame_main, populer_movie_list))
         p_ms.place(relx=0, rely=0, relheight=0.04, relwidth=1)
         change_fg_OnHover(p_ms, 'lightblue', 'gray')
@@ -997,7 +997,9 @@ def Home_Page(widget):
             x_pos = 0.005
             y_pos += 0.32
             row += 1
-
+        imagen("Assets/12.jpg", screen_width, Home_frame_hight, Home_label)
+        return
+        """
         # Section 3 ==========================================================================================================================================================
 
         Suggestion2 = tk.Frame(Home_frame, borderwidth=0, border=0, bg='black')
