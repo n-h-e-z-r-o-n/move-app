@@ -4,7 +4,6 @@ import colorsys
 import tkinter as tk
 from PIL import Image, ImageTk
 
-import requests
 from io import BytesIO
 
 import random
@@ -13,7 +12,7 @@ import threading
 
 from imdbmovies import IMDB
 import imdb
-
+import requests
 
 # =====================================================================================================================================================
 # integrating pywebview
