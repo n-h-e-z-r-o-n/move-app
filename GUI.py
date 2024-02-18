@@ -11,17 +11,59 @@ import random
 import time
 import threading
 
-import clr
-from tkwebview2.tkwebview2 import WebView2, have_runtime, install_runtime
-
 from imdbmovies import IMDB
 import imdb
 
-clr.AddReference('System.Windows.Forms')
-clr.AddReference('System.Threading')
-from System.Windows.Forms import Control
-from System.Threading import Thread, ApartmentState, ThreadStart
 
+# =====================================================================================================================================================
+# integrating pywebview
+
+from webview.window import Window
+from webview.platforms.edgechromium import EdgeChrome
+
+from System.Windows.Forms import Control
+from System.Threading import Thread,ApartmentState,ThreadStart,SynchronizationContext,SendOrPostCallback
+
+user32=ctypes.windll.user32
+
+
+class WebView2(Frame):
+    def __init__(self,parent,width:int,height:int,url:str='',**kw):
+        Frame.__init__(self,parent,width=width,height=height,**kw)
+        control=Control()
+        uid = 'master'
+        window=Window(uid,str(id(self)), url=None, html=None, js_api=None, width=width, height=height, x=None, y=None,
+                      resizable=True, fullscreen=False, min_size=(200, 100), hidden=False,
+                      frameless=False, easy_drag=True,
+                      minimized=False, on_top=False, confirm_close=False, background_color='#FFFFFF',
+                      transparent=False, text_select=True, localization=None,
+                      zoomable=True, draggable=True, vibrancy=False)
+        self.window=window
+        self.web_view=EdgeChrome(control,window,None)
+        self.control=control
+        self.web=self.web_view.web_view
+        self.width=width
+        self.height=height
+        self.parent=parent
+        self.chwnd=int(str(self.control.Handle))
+        user32.SetParent(self.chwnd,self.winfo_id())
+        user32.MoveWindow(self.chwnd,0,0,width,height,True)
+        self.loaded=window.events.loaded
+        self.__go_bind()
+        if url!='':
+            self.load_url(url)
+        self.core=None
+
+    def __go_bind(self):
+        self.bind('<Destroy>',lambda event:self.web.Dispose())
+        self.bind('<Configure>',self.__resize_webview)
+        self.newwindow=None
+
+    def __resize_webview(self,event):
+        user32.MoveWindow(self.chwnd,0,0,self.winfo_width(),self.winfo_height(),True)
+
+    def load_url(self,url):
+        self.web_view.load_url(url)
 
 # ================= Global Variables Definition =======================================================================================================
 # =====================================================================================================================================================
@@ -672,7 +714,7 @@ def search_movies_request(widget, user_query, wig_tp, i, event):
             movie_list.append((title, year, post_url, movie_id))
 
         load_animation.destroy()
-        # Search_result(widget, movie_list)
+        Search_result(widget, movie_list)
 
     image_thread = threading.Thread(target=retrieving_movie_data)  # Create a thread to load the image asynchronously
     image_thread.start()
@@ -799,6 +841,8 @@ def Search_result(widget, m_list):
 def slide_show(widget):
     global screen_height, screen_width, root
     def Home_page_Background_changer(list, x=0):
+        if len(list) == 0:
+            return
         global root
         list = list
         if x == 4:
@@ -821,31 +865,35 @@ def slide_show(widget):
     movies = imdb_other.popular_movies(genre=None, start_id=1, sort_by=None)  # returns top 50 popular movies starting from start id
 
     show_movie_list = []
+    list = []
     for movie in movies['results']:
         movie_poster = clean_url(movie['poster'])
         show_movie_list.append((movie['name'], movie['year'], movie_poster, movie['id'].strip('t')))
+        try:
+            f1 = tk.Button(widget,  borderwidth=0, border=0, activebackground='black', bg='black', command=lambda id=show_movie_list[1][3]: selected_movie_detail(id))
+            f1.place(relx=0, rely=0, relheight=1, relwidth=1)
+            imagen_fade(show_movie_list[1][2], screen_height, screen_width, f1)
 
-    f1 = tk.Button(widget,  borderwidth=0, border=0, activebackground='black', bg='black', command=lambda id=show_movie_list[1][3]: selected_movie_detail(id))
-    f1.place(relx=0, rely=0, relheight=1, relwidth=1)
-    imagen_fade(show_movie_list[1][2], screen_height, screen_width, f1)
+            f2 = tk.Button(widget,  borderwidth=0, border=0, activebackground='black', bg='black', command=lambda id=show_movie_list[2][3]: selected_movie_detail(id))
+            f2.place(relx=0, rely=0, relheight=1, relwidth=1)
+            imagen_fade(show_movie_list[2][2], screen_height, screen_width, f2)
 
-    f2 = tk.Button(widget,  borderwidth=0, border=0, activebackground='black', bg='black', command=lambda id=show_movie_list[2][3]: selected_movie_detail(id))
-    f2.place(relx=0, rely=0, relheight=1, relwidth=1)
-    imagen_fade(show_movie_list[2][2], screen_height, screen_width, f2)
+            f3 = tk.Button(widget,  borderwidth=0, border=0,activebackground='black', bg='black', command=lambda id=show_movie_list[3][3]: selected_movie_detail(id))
+            f3.place(relx=0, rely=0, relheight=1, relwidth=1)
+            imagen_fade(show_movie_list[3][2], screen_height, screen_width, f3)
 
-    f3 = tk.Button(widget,  borderwidth=0, border=0,activebackground='black', bg='black', command=lambda id=show_movie_list[3][3]: selected_movie_detail(id))
-    f3.place(relx=0, rely=0, relheight=1, relwidth=1)
-    imagen_fade(show_movie_list[3][2], screen_height, screen_width, f3)
+            f4 = tk.Button(widget,  borderwidth=0, border=0, activebackground='black', bg='black', command=lambda id=show_movie_list[4][3]: selected_movie_detail(id))
+            f4.place(relx=0, rely=0, relheight=1, relwidth=1)
+            imagen_fade(show_movie_list[4][2], screen_height, screen_width, f4)
 
-    f4 = tk.Button(widget,  borderwidth=0, border=0, activebackground='black', bg='black', command=lambda id=show_movie_list[4][3]: selected_movie_detail(id))
-    f4.place(relx=0, rely=0, relheight=1, relwidth=1)
-    imagen_fade(show_movie_list[4][2], screen_height, screen_width, f4)
+            f5 = tk.Button(widget,  borderwidth=0, border=0, activebackground='black', bg='black', command=lambda id=show_movie_list[5][3]: selected_movie_detail(id))
+            f5.place(relx=0, rely=0, relheight=1, relwidth=1)
+            imagen_fade(show_movie_list[5][2], screen_height, screen_width, f5)
 
-    f5 = tk.Button(widget,  borderwidth=0, border=0, activebackground='black', bg='black', command=lambda id=show_movie_list[5][3]: selected_movie_detail(id))
-    f5.place(relx=0, rely=0, relheight=1, relwidth=1)
-    imagen_fade(show_movie_list[5][2], screen_height, screen_width, f5)
+            list = [f1, f2, f3, f4, f5]
+        except Exception as e:
+            pass
 
-    list = [f1, f2, f3, f4, f5]
 
     Home_page_Background_changer(list)
 
@@ -894,6 +942,7 @@ def Home_Page(widget):
         for movie in movies['results']:
             movie_poster = clean_url(movie['poster'])
             populer_movie_list.append(( movie['name'], movie['year'], movie_poster, movie['id'].strip('t')))
+            print("===", populer_movie_list)
 
         p_ms = tk.Button(Suggestion1, font=('Georgia', 16), justify='center', anchor=tk.W, activeforeground='lightblue', fg='gray', text=' ⍚ POPULAR MOVIES', borderwidth=0, border=0, bg='black', command=lambda: Search_result(top_frame_main, populer_movie_list))
         p_ms.place(relx=0, rely=0, relheight=0.04, relwidth=1)
@@ -1047,11 +1096,11 @@ def main():
 if __name__ == "__main__":
 
     #main()
-    #"""
+
     t = Thread(ThreadStart(main))
     t.ApartmentState = ApartmentState.STA
     t.Start()
     t.Join()
-    #"""
+
 
 
