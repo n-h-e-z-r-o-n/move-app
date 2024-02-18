@@ -171,7 +171,7 @@ def poster_image_get(movie_id):
     return  movie_poster_url
 
 def imagen_fade(poster_url, screen_height, screen_width, widget):
-    def load_img_url(widget=widget):
+    def load_img_url(widget=widget, poster_url=poster_url):
         poster_url = poster_image_get(poster_url)
         retry = 0
         while retry < 6:
@@ -889,7 +889,7 @@ def slide_show(widget):
             x += 1
         root.after(4000, lambda: Home_page_Background_changer(list, x=x))
 
-    movies, count = get_new_movies()
+    movies, count = get_new_movies(2)
     list = []
     count = 0
     for movie in movies:
@@ -900,14 +900,15 @@ def slide_show(widget):
             f1.place(relx=0, rely=0, relheight=1, relwidth=1)
             print(poster_image_get(movie['imdb_id']))
             #imagen(poster_image_get(movie['imdb_id']), screen_height, screen_width, f1)
-            imagen_fade(poster_image_get(movie['imdb_id']), screen_height, screen_width, f1)
+            imagen_fade(movie['imdb_id'], screen_height, screen_width, f1)
             count += 1
             list.append(f1)
+            break
 
 
 
 
-    Home_page_Background_changer(list)
+    #Home_page_Background_changer(list)
 
 
 def Home_Page(widget):
