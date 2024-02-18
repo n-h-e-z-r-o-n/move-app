@@ -912,7 +912,6 @@ def Home_Page(widget):
         # background image ======================================================================
         Home_label = tk.Label(widget, bg='blue')
         Home_label.place(relx=0, rely=0, relwidth=1, relheight=1)
-        imagen("Assets/12.jpg", screen_width, Home_frame_hight, Home_label)
 
         # Section 1 ===============================================================================
 
@@ -953,6 +952,8 @@ def Home_Page(widget):
             populer_movie_list.append(( movie['name'], movie['year'], movie_poster, movie['id'].strip('t')))
 
         print("===", populer_movie_list)
+
+        imagen("Assets/12.jpg", screen_width, Home_frame_hight, Home_label)
 
         return
         """"""
