@@ -1095,15 +1095,14 @@ def main():
     photo = ImageTk.PhotoImage(image)
     #imagen("./Assets/12.jpg",screen_width , screen_height, Backround)
 
-    FRAME_1 = tk.Frame(root)
+    FRAME_1 = tk.Frame(root, bg='')
     FRAME_1.place(relx=0, rely=0, relwidth=1, relheight=1)
     FRAME_1_canvas = tk.Canvas(FRAME_1)
     FRAME_1_canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
-    FRAME_1_canvas.create_image(0, 0, anchor="nw", image=photo)
     FRAME_1_scrollbar = tk.Scrollbar(root, command=FRAME_1_canvas.yview)
     FRAME_1_canvas.config(yscrollcommand=FRAME_1_scrollbar.set)
-    FRAME_1_screen = tk.Frame(FRAME_1_canvas, bg='yellow')
-    FRAME_1_canvas.create_window((0, 0), window=FRAME_1_screen)
+    FRAME_1_screen = tk.Frame(FRAME_1_canvas, bg='')
+    FRAME_1_canvas.create_window((0, 0), window=FRAME_1_screen, anchor=tk.NW)
     widget_scroll_bind(FRAME_1_canvas)  # Bind the mouse wheel event to the canvas
 
     Home_frame = tk.Frame(FRAME_1_screen, bg='', width=screen_width, height=Home_frame_hight)
