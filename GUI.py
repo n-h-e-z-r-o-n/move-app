@@ -891,14 +891,12 @@ def slide_show(widget):
     list = []
     count = 0
     for movie in movies:
-            
-            f1 = tk.Button(widget,  borderwidth=0, border=0, activebackground='black', bg='black', command=lambda id=show_movie_list[1][3]: selected_movie_detail(id))
+
+            f1 = tk.Button(widget,  borderwidth=0, border=0, activebackground='black', bg='black', command=lambda id=movie[count]['imdb_id']: selected_movie_detail(id))
             f1.place(relx=0, rely=0, relheight=1, relwidth=1)
             imagen_fade(show_movie_list[1][2], screen_height, screen_width, f1)
-
-
-
-            list = [f1, f2, f3, f4, f5]
+            count += 1
+            list.append(f1)
 
 
 
