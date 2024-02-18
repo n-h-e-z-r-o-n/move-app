@@ -170,6 +170,7 @@ def poster_image_get(movie_id):
     movie_poster_url = movies.get('full-size cover url')
     return  movie_poster_url
 
+
 def imagen_fade(poster_url, screen_height, screen_width, widget):
     def load_img_url(widget=widget, poster_url=poster_url):
         poster_url = poster_image_get(poster_url)
@@ -887,7 +888,7 @@ def slide_show(widget):
         else:
             list[x].tkraise()
             x += 1
-        root.after(4000, lambda: Home_page_Background_changer(list, x=x))
+        root.after(7000, lambda: Home_page_Background_changer(list, x=x))
 
     movies, count = get_new_movies(2)
     list = []
