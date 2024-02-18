@@ -1110,10 +1110,13 @@ def main():
 
 
 if __name__ == "__main__":
+    main()
+    """
     t = Thread(ThreadStart(main))
     t.ApartmentState = ApartmentState.STA
     t.Start()
     t.Join()
+    """
 
 
 
