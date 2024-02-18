@@ -14,5 +14,6 @@ def get_new_movies (page = 1):
 
 
 movies, count = get_new_movies()
-
+print(movies)
+print(movies[0]['imdb_id'])
 
