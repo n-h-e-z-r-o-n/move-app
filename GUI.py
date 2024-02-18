@@ -168,11 +168,6 @@ def imagen(image_path, screen_width, screen_height, widget): # image processing
 def poster_image_get(movie_id):
     movies = ia.get_movie(movie_id[2:])
     movie_poster_url = movies.get('full-size cover url')
-
-    print(movie_poster_url)
-
-    response = requests.get(movie_poster_url)
-    image_data = response.content
     return  movie_poster_url
 
 def imagen_fade(poster_url, screen_height, screen_width, widget):
