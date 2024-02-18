@@ -889,7 +889,7 @@ def slide_show(widget):
     movies, count = get_new_movies()
     show_movie_list = []
     list = []
-    for movie in movies['results']:
+    for movie in movies:
         movie_poster = clean_url(movie['poster'])
         show_movie_list.append((movie['name'], movie['year'], movie_poster, movie['id'].strip('t')))
         try:
