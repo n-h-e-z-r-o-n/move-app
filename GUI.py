@@ -893,7 +893,7 @@ def slide_show(widget):
     for movie in movies:
             if count > 4:
               break
-            f1 = tk.Button(widget,  borderwidth=0, border=0, activebackground='black', bg='black', command=lambda id=movie[count]['imdb_id']: selected_movie_detail(id))
+            f1 = tk.Button(widget,  borderwidth=0, border=0, text=movie[count]['title'], activebackground='black', bg='black') #, command=lambda id=movie[count]['imdb_id']: selected_movie_detail(id))
             f1.place(relx=0, rely=0, relheight=1, relwidth=1)
             #imagen_fade(show_movie_list[1][2], screen_height, screen_width, f1)
             count += 1
@@ -935,7 +935,7 @@ def Home_Page(widget):
         change_bg_OnHover(Search_box, '#010127', 'black')
         Search_box.bind("<Return>", lambda event: search_movies_request(top_frame_main, Search_box, widget, 1,  event))
 
-        slide_show(Suggestion)
+        #slide_show(Suggestion)
 
         # Section 2 ==================================================================================================================================================
 
