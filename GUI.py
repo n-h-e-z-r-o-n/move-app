@@ -1107,7 +1107,7 @@ def main():
 
     Home_label= tk.Label(Home_frame, bg='blue', width=screen_width, height=Home_frame_hight)
     Home_label.place(relx=0, rely=0, relwidth=1, relheight=1)
-    imagen("Assets/12..jpg", screen_width, Home_frame_hight, Home_label)
+    imagen("Assets/12.jpg", screen_width, Home_frame_hight, Home_label)
 
 
     widget_track_position.append(Home_frame)
