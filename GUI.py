@@ -1094,12 +1094,10 @@ def main():
     image = Image.open("./Assets/12.jpg")
     image = image.resize((screen_width, screen_height), Image.LANCZOS)
     photo = ImageTk.PhotoImage(image)
-    Backround.create_image(200, 150, anchor="nw", image=photo)
-    imagen("./Assets/12.jpg",screen_width , screen_height, Backround)
+    Backround.create_image(0, 0, anchor="nw", image=photo)
+    #imagen("./Assets/12.jpg",screen_width , screen_height, Backround)
 
-
-
-    FRAME_1 = tk.Frame(Backround)
+    FRAME_1 = tk.Frame(Backround, bg='')
     FRAME_1.place(relx=0, rely=0, relwidth=1, relheight=1)
     FRAME_1_canvas = tk.Canvas(FRAME_1)
     FRAME_1_canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
