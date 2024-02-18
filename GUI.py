@@ -1100,7 +1100,7 @@ def main():
     #imagen("./Assets/12.jpg",screen_width , Home_frame_hight, Backround)
     """
 
-    FRAME_1 = tk.Frame(Backround)
+    FRAME_1 = tk.Frame(root)
     FRAME_1.place(relx=0, rely=0, relwidth=1, relheight=1)
     FRAME_1_canvas = tk.Canvas(FRAME_1)
     FRAME_1_canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
