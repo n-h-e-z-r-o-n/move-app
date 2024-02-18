@@ -1089,17 +1089,13 @@ def main():
     search_q = tk.StringVar()
     Home_frame_hight = screen_height * 5
 
-    Backround = tk.Label(root, bg='yellow', width=screen_width, height=screen_height, borderwidth=0, highlightthickness=0)
+    Backround = tk.Label(root, width=screen_width, height=screen_height, borderwidth=0, highlightthickness=0)
     Backround.place(relx=0, rely=0, relwidth=1, relheight=1)
-    #bg_photo = Image.open("./Assets/12.jpg")
-    #resized_background_image = bg_photo.resize((screen_width, screen_height), Image.LANCZOS)
-    #bg_photo1 = ImageTk.PhotoImage(resized_background_image)
+    imagen("./Assets/12.jpg",screen_width , screen_height, Backround)
 
 
-    imagen("./Assets/12.jpg",screen_width , Home_frame_hight, Backround)
-    """
 
-    FRAME_1 = tk.Frame(root)
+    FRAME_1 = tk.Frame(Backround)
     FRAME_1.place(relx=0, rely=0, relwidth=1, relheight=1)
     FRAME_1_canvas = tk.Canvas(FRAME_1)
     FRAME_1_canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
@@ -1114,7 +1110,7 @@ def main():
 
     widget_track_position.append(Home_frame)
     page_count += 1
-    """
+
     """
     FRAME_2 = tk.Frame(root, bg='black')
     FRAME_2.place(relwidth=1, relheight=1, relx=0, rely=0)
