@@ -1090,10 +1090,7 @@ def main():
     Home_frame_hight = screen_height * 5
 
 
-    image = Image.open("./Assets/12.jpg")
-    image = image.resize((screen_width, screen_height), Image.LANCZOS)
-    photo = ImageTk.PhotoImage(image)
-    #imagen("./Assets/12.jpg",screen_width , screen_height, Backround)
+
 
     FRAME_1 = tk.Frame(root)
     FRAME_1.place(relx=0, rely=0, relwidth=1, relheight=1)
