@@ -154,7 +154,7 @@ def imagen(image_path, screen_width, screen_height, widget): # image processing
                     print(e)
                     binary_data = base64.b64decode(image_path)  # Decode the string
                     image = Image.open(io.BytesIO(binary_data))
-    
+
             image = image.resize((screen_width, screen_height), Image.LANCZOS)
             try:
                 photo = ImageTk.PhotoImage(image)
