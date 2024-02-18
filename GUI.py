@@ -1090,7 +1090,7 @@ def main():
     search_q = tk.StringVar()
     Home_frame_hight = screen_height * 5
 
-    Backround = tk.Label(root)
+    Backround = tk.Canvas(root)
     Backround.place(relx=0, rely=0, relwidth=1, relheight=1)
     imagen("./Assets/12.jpg",screen_width , Home_frame_hight, Backround)
 
