@@ -940,7 +940,8 @@ def Home_Page(widget):
         for movie in movies['results']:
             movie_poster = clean_url(movie['poster'])
             populer_movie_list.append(( movie['name'], movie['year'], movie_poster, movie['id'].strip('t')))
-            print("===", populer_movie_list)
+
+        print("===", populer_movie_list)
 
         p_ms = tk.Button(Suggestion1, font=('Georgia', 16), justify='center', anchor=tk.W, activeforeground='lightblue', fg='gray', text=' ⍚ POPULAR MOVIES', borderwidth=0, border=0, bg='black', command=lambda: Search_result(top_frame_main, populer_movie_list))
         p_ms.place(relx=0, rely=0, relheight=0.04, relwidth=1)
