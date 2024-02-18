@@ -1092,7 +1092,9 @@ def main():
     Backround = tk.Canvas(root, width=screen_width, height=screen_height, borderwidth=0, highlightthickness=0)
     Backround.place(relx=0, rely=0, relwidth=1, relheight=1)
     image = Image.open("./Assets/12.jpg")
-    Backround.create_image(200, 150, anchor="nw", image=)
+    image = image.resize((screen_width, screen_height), Image.LANCZOS)
+    photo = ImageTk.PhotoImage(image)
+    Backround.create_image(200, 150, anchor="nw", image=photo)
     imagen("./Assets/12.jpg",screen_width , screen_height, Backround)
 
 
