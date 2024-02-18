@@ -1102,8 +1102,8 @@ def main():
     FRAME_1_canvas.create_image(0, 0, anchor="nw", image=photo)
     FRAME_1_scrollbar = tk.Scrollbar(root, command=FRAME_1_canvas.yview)
     FRAME_1_canvas.config(yscrollcommand=FRAME_1_scrollbar.set)
-    FRAME_1_screen = tk.Frame(FRAME_1_canvas, bg='blue')
-    FRAME_1_canvas.create_window((0, 0), window=FRAME_1_screen)
+    FRAME_1_screen = tk.Frame(FRAME_1_canvas, bg='yellow')
+    FRAME_1_canvas.create_window((0, 0), window=FRAME_1_screen, anchor=tk.NW)
     widget_scroll_bind(FRAME_1_canvas)  # Bind the mouse wheel event to the canvas
 
     Home_frame = tk.Frame(FRAME_1_screen, bg='', width=screen_width, height=Home_frame_hight)
