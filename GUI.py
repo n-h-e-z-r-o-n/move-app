@@ -1077,11 +1077,11 @@ def main():
     root.minsize(150, 100)
     root.config(bg='blue')
 
-    Backround = tk.Frame(root, bg='')
-    Backround.place(relx=0, rely=0, relwidth=1, relheight=1)
-    imagen("./Assets/12.jpg", 500, 100, Backround)
-    
+
+
     dark_title_bar(root)
+
+
 
     # Get the screen dimensions
     screen_width = root.winfo_screenwidth()
@@ -1089,6 +1089,12 @@ def main():
     large_frame_size = screen_height + 700
     search_q = tk.StringVar()
 
+    Backround = tk.Label(root)
+    Backround.place(relx=0, rely=0, relwidth=1, relheight=1)
+    imagen("./Assets/12.jpg", , 100, Backro500und)
+    im
+
+    """
     FRAME_1 = tk.Frame(root, bg='')
     FRAME_1.place(relx=0, rely=0, relwidth=1, relheight=1)
     FRAME_1_canvas = tk.Canvas(FRAME_1, bg='blue')
@@ -1105,7 +1111,7 @@ def main():
 
     widget_track_position.append(Home_frame)
     page_count += 1
-
+    """
     """
     FRAME_2 = tk.Frame(root, bg='black')
     FRAME_2.place(relwidth=1, relheight=1, relx=0, rely=0)
