@@ -96,7 +96,7 @@ def dark_title_bar(window):  # dark mode navegation bar
     get_parent = ct.windll.user32.GetParent
     hwnd = get_parent(window.winfo_id())
     rendering_policy = DWMWA_USE_IMMERSIVE_DARK_MODE
-    value = 2
+    value = 1
     value = ct.c_int(value)
     set_window_attribute(hwnd, rendering_policy, ct.byref(value), ct.sizeof(value))
 
@@ -1076,6 +1076,7 @@ def main():
     root.title("Move App")
     root.state('zoomed')  # this creates a window that takes over the screen
     root.minsize(150, 100)
+    dark_title_bar(root)
 
     # Get the screen dimensions
     screen_width = root.winfo_screenwidth()
