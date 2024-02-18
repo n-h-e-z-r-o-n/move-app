@@ -906,6 +906,7 @@ def slide_show(widget):
             imagen(poster_image_get(movie['imdb_id']), screen_height, screen_width, f1)
             count += 1
             list.append(f1)
+            break
 
 
 
