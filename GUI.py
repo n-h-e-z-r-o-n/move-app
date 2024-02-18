@@ -1092,11 +1092,11 @@ def main():
 
     Backround = tk.Canvas(root)
     Backround.place(relx=0, rely=0, relwidth=1, relheight=1)
-    bg_photo = 
+    bg_photo = Image.open("./Assets/12.jpg")
     resized_background_image = bg_photo.resize((screen_width, Home_frame_hight), Image.LANCZOS)
     bg_photo1 = ImageTk.PhotoImage(resized_background_image)
-    Backround.create_image(0,0, image=)
-    imagen("./Assets/12.jpg",screen_width , Home_frame_hight, Backround)
+    Backround.create_image(0,0, image=bg_photo1)
+    #imagen("./Assets/12.jpg",screen_width , Home_frame_hight, Backround)
 
 
     FRAME_1 = tk.Frame(Backround, bg='')
