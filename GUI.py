@@ -1095,7 +1095,7 @@ def main():
     bg_photo = Image.open("./Assets/12.jpg")
     resized_background_image = bg_photo.resize((1000, 1000), Image.LANCZOS)
     bg_photo1 = ImageTk.PhotoImage(resized_background_image)
-    Backround.create_image(0 , 0, image=bg_photo1)
+    Backround.create_image(0 , 0, image=bg_photo1, anchor="center")
     #imagen("./Assets/12.jpg",screen_width , Home_frame_hight, Backround)
 
     """
