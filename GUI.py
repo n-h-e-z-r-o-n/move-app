@@ -172,6 +172,8 @@ def poster_image_get(movie_id):
     movies = ia.get_movie(movie_id[2:])
     movie_poster_url = movies.get('full-size cover url')
 
+    print(movie_poster_url)
+
     response = requests.get(movie_poster_url)
     image_data = response.content
     return  BytesIO(image_data)
@@ -904,7 +906,7 @@ def slide_show(widget):
             f1 = tk.Button(widget,  borderwidth=0, border=0, text=movie['title'], fg='white', activebackground='black', bg='black') #, command=lambda id=movie[count]['imdb_id']: selected_movie_detail(id))
             f1.place(relx=0, rely=0, relheight=1, relwidth=1)
             print(poster_image_get(movie['imdb_id']))
-            imagen(poster_image_get(movie['imdb_id'], screen_height, screen_width, f1))
+            imagen(poster_image_get(movie['imdb_id']), screen_height, screen_width, f1)
             count += 1
             list.append(f1)
 
