@@ -194,8 +194,8 @@ def imagen_fade(poster_url, screen_height, screen_width, widget):
                     continue
                 pixels = im.load()
                 # Define the top and bottom fade heights as a percentage of the image height.
-                top_fade_height = int(height * 0.50)  # Adjust this value for the desired top fade height
-                bottom_fade_height = int(height * 0.50)  # Adjust this value for the desired bottom fade height
+                top_fade_height = int(height * 0.60)  # Adjust this value for the desired top fade height
+                bottom_fade_height = int(height * 6.50)  # Adjust this value for the desired bottom fade height
                 # Fade the top region to dark.
                 for y in range(top_fade_height):
                     alpha = int((y / top_fade_height) * 255)
@@ -902,7 +902,7 @@ def slide_show(widget):
             imagen_fade(poster_image_get(movie['imdb_id']), screen_height, screen_width, f1)
             count += 1
             list.append(f1)
-            break
+
 
 
 
