@@ -186,7 +186,7 @@ def imagen_fade(poster_url, screen_height, screen_width, widget):
                     image = Image.open(BytesIO(image_data))  # Create a PIL Image object from the image data
 
                 # Resize the image to match the frame's dimensions
-                h = screen_height - 200
+                h = screen_height #- 200
                 image = image.resize((screen_width, (h)), Image.LANCZOS)
                 # Ensure the image has an alpha channel.
                 im = image.convert("RGBA")
