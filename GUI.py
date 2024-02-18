@@ -172,6 +172,7 @@ def poster_image_get(movie_id):
 
 def imagen_fade(poster_url, screen_height, screen_width, widget):
     def load_img_url(widget=widget):
+        poster_url = poster_image_get(poster_url)
         retry = 0
         while retry < 6:
             try:
