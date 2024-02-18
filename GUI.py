@@ -1075,7 +1075,7 @@ def main():
     root.title("Move App")
     root.state('zoomed')  # this creates a window that takes over the screen
     root.minsize(150, 100)
-    
+
 
 
     #dark_title_bar(root)
@@ -1106,7 +1106,9 @@ def main():
     widget_scroll_bind(FRAME_1_canvas)  # Bind the mouse wheel event to the canvas
 
     Home_frame = tk.Frame(FRAME_1_screen, bg='', width=screen_width, height=Home_frame_hight)
-    Home_frame.pack(fill=tk.BOTH, expand=True)
+    #Home_frame.pack(fill=tk.BOTH, expand=True)
+    Home_frame.place(relx=0, rely=0, relwidth=1, relheight=1)
+
 
     widget_track_position.append(Home_frame)
     page_count += 1
