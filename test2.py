@@ -9,3 +9,6 @@ if  r.status_code == 200:
 end = time.time()
 
 print(start_run_time_time-end)
+
+def get_new_movies (page = 1):
+    
