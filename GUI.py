@@ -1095,7 +1095,7 @@ def main():
     Home_frame_hight = screen_height * 5
     Home_frame = tk.Frame(FRAME_1_screen, bg='gray', width=screen_width, height=Home_frame_hight)
     Home_frame.pack(fill=tk.BOTH, expand=True)
-    imagen("./Assets/12.jpg", screen_width, Home_frame_hight, Home_frame)
+    #imagen("./Assets/12.jpg", screen_width, Home_frame_hight, Home_frame)
     widget_track_position.append(Home_frame)
     page_count += 1
 
