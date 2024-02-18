@@ -887,13 +887,12 @@ def slide_show(widget):
         root.after(4000, lambda: Home_page_Background_changer(list, x=x))
 
     movies, count = get_new_movies()
-    show_movie_list = []
     list = []
     count = 0
     for movie in movies:
             if count > 4:
               break
-            f1 = tk.Button(widget,  borderwidth=0, border=0, text=movie[count]['title'], activebackground='black', bg='black') #, command=lambda id=movie[count]['imdb_id']: selected_movie_detail(id))
+            f1 = tk.Button(widget) #, command=lambda id=movie[count]['imdb_id']: selected_movie_detail(id))
             f1.place(relx=0, rely=0, relheight=1, relwidth=1)
             #imagen_fade(show_movie_list[1][2], screen_height, screen_width, f1)
             count += 1
@@ -901,7 +900,7 @@ def slide_show(widget):
 
 
 
-    Home_page_Background_changer(list)
+    #Home_page_Background_changer(list)
 
 
 def Home_Page(widget):
