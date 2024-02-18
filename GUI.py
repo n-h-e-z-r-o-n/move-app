@@ -886,8 +886,7 @@ def slide_show(widget):
             x += 1
         root.after(4000, lambda: Home_page_Background_changer(list, x=x))
 
-    movies = imdb_other.popular_movies(genre=None, start_id=1, sort_by=None)  # returns top 50 popular movies starting from start id
-
+    movies, count = get_new_movies()
     show_movie_list = []
     list = []
     for movie in movies['results']:
