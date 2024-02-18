@@ -1105,10 +1105,13 @@ def main():
     Home_frame = tk.Frame(FRAME_1_screen, bg='green', width=screen_width, height=Home_frame_hight)
     Home_frame.pack(fill=tk.BOTH, expand=True)
 
-    Home_label = tk.Label(Home_frame, bg='blue', width=screen_width, height=Home_frame_hight)
-    Home_label.place(relx=0, rely=0, relwidth=1, relheight=1)
-    imagen("Assets/12.jpg", screen_width, Home_frame_hight, Home_label)
+    Home_label = tk.Frame(Home_frame, bg='blue', width=screen_width, height=Home_frame_hight)
+    #Home_label.place(relx=0, rely=0, relwidth=1, relheight=1)
+    #imagen("Assets/12.jpg", screen_width, Home_frame_hight, Home_label)
 
+    g = tk.Canvas(FRAME_1, borderwidth=0, highlightthickness=0)
+    g.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+    g.create_window((0, 0), window=Home_label, anchor=tk.NW)
 
     widget_track_position.append(Home_frame)
     page_count += 1
