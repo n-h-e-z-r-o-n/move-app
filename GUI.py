@@ -1110,6 +1110,7 @@ def main():
 
     main_frame = tk.Frame(canvas_FRAME_2_frame, bg='black', width=screen_width, height=large_frame_size)
     main_frame.pack(fill=tk.BOTH, expand=True)
+    imagen("./Assets/12.jpg", screen_width, screen_height, main_frame)
     top_frame_main = main_frame
 
 
