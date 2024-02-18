@@ -850,6 +850,17 @@ def Search_result(widget, m_list):
 
     grid(Search_result_frame, m_list, len(m_list), 0)
 
+def get_new_movies (page = 1):
+    r = requests.get(f'https://vidsrc.to/vapi/movie/new/{page}')  # latest movies
+    print(r.status_code)
+    movies = None
+    length = 0
+    if r.status_code == 200:
+        data = r.json()
+        length = data['result']['items']
+        movies = data['result']['items']
+    return movies, length
+
 
 def slide_show(widget):
     global screen_height, screen_width, root
