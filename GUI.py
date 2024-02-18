@@ -889,33 +889,17 @@ def slide_show(widget):
     movies, count = get_new_movies()
     show_movie_list = []
     list = []
+    count = 0
     for movie in movies:
-        movie_poster = clean_url(movie['poster'])
-        show_movie_list.append((movie['name'], movie['year'], movie_poster, movie['id'].strip('t')))
-        try:
+            
             f1 = tk.Button(widget,  borderwidth=0, border=0, activebackground='black', bg='black', command=lambda id=show_movie_list[1][3]: selected_movie_detail(id))
             f1.place(relx=0, rely=0, relheight=1, relwidth=1)
             imagen_fade(show_movie_list[1][2], screen_height, screen_width, f1)
 
-            f2 = tk.Button(widget,  borderwidth=0, border=0, activebackground='black', bg='black', command=lambda id=show_movie_list[2][3]: selected_movie_detail(id))
-            f2.place(relx=0, rely=0, relheight=1, relwidth=1)
-            imagen_fade(show_movie_list[2][2], screen_height, screen_width, f2)
 
-            f3 = tk.Button(widget,  borderwidth=0, border=0,activebackground='black', bg='black', command=lambda id=show_movie_list[3][3]: selected_movie_detail(id))
-            f3.place(relx=0, rely=0, relheight=1, relwidth=1)
-            imagen_fade(show_movie_list[3][2], screen_height, screen_width, f3)
-
-            f4 = tk.Button(widget,  borderwidth=0, border=0, activebackground='black', bg='black', command=lambda id=show_movie_list[4][3]: selected_movie_detail(id))
-            f4.place(relx=0, rely=0, relheight=1, relwidth=1)
-            imagen_fade(show_movie_list[4][2], screen_height, screen_width, f4)
-
-            f5 = tk.Button(widget,  borderwidth=0, border=0, activebackground='black', bg='black', command=lambda id=show_movie_list[5][3]: selected_movie_detail(id))
-            f5.place(relx=0, rely=0, relheight=1, relwidth=1)
-            imagen_fade(show_movie_list[5][2], screen_height, screen_width, f5)
 
             list = [f1, f2, f3, f4, f5]
-        except Exception as e:
-            pass
+
 
 
     Home_page_Background_changer(list)
