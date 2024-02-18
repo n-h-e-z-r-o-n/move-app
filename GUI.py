@@ -913,6 +913,10 @@ def Home_Page(widget):
         widget_scroll_bind(FRAME_1_canvas)
         Home_frame_hight = screen_height * 5
 
+        Home_label = tk.Label(widget, bg='blue')
+        Home_label.place(relx=0, rely=0, relwidth=1, relheight=1)
+        imagen("Assets/12.jpg", screen_width, Home_frame_hight, Home_label)
+
         # Section 1 ===============================================================================
 
         Suggestion = tk.Frame(widget,  borderwidth=0, border=0, bg='black')
@@ -1105,9 +1109,7 @@ def main():
     Home_frame = tk.Frame(FRAME_1_screen, bg='green', width=screen_width, height=Home_frame_hight)
     Home_frame.pack(fill=tk.BOTH, expand=True)
 
-    Home_label = tk.Label(Home_frame, bg='blue', width=screen_width, height=Home_frame_hight)
-    Home_label.place(relx=0, rely=0, relwidth=1, relheight=1)
-    imagen("Assets/12.jpg", screen_width, Home_frame_hight, Home_label)
+
 
 
     widget_track_position.append(Home_frame)
@@ -1130,7 +1132,7 @@ def main():
     """
 
 
-    #Home_Page(Home_frame)
+    Home_Page(Home_frame)
     #selected_movie_detail(10638522)
     #watch_page(main_frame, '10638522', 'Talk to Me', 7.2, 'movie', 'Australia. United Kingdom. ', 'Horror, Thriller, ', 2022, 'Causeway Films, Head Gear Films, Metrol Technology, Screen Australia, Talk to Me Holdings, ', 'Ari McCarthy, Hamish Phillips, Kit Erhart-Bruce, Sarah Brokensha, Jayden Davison, Sunny Johnson, Sophie Wilde, Marcus Johnson, Kidaan Zelleke, James Oliver, Joe Bird, Jett Gazley, Alexandra Jensen, Dog, Helene Philippou, ', 'When a group of friends discover how to conjure spirits using an embalmed hand, they become hooked on the new thrill, until one of them goes too far and unleashes terrifying supernatural forces.', 'https://m.media-amazon.com/images/M/MV5BMmY5ZGE4NmUtZWI4OS00ZWJmLWFjMzgtOWUyZjI4NDg3Y2E5XkEyXkFqcGdeQXVyMTkxNjUyNQ@@.jpg', 'Talk to Me', 2023, None, 'Talk to Me', 2007, 'https://m.media-amazon.com/images/M/MV5BMzgyMTMxNjg4OF5BMl5BanBnXkFtZTYwMDkwNDc3.jpg', 'Talk to Me, Sweet Darling', 2020, 'https://m.media-amazon.com/images/M/MV5BMDY5ODFmOTktOGYxOC00MGQ0LTk4NmYtYzQ4MDc0NWQzOWViXkEyXkFqcGdeQXVyNTgyMTU3Mjc@.jpg', 'Talk to Me', 2023, 'https://m.media-amazon.com/images/M/MV5BZDg2ZTRjYzMtZDJiYi00MDYxLWFlMDctZWQ4NDI3NTA2NWI1XkEyXkFqcGdeQXVyNjEzNjUxNzI@.jpg', 'Talk to Me', 2007, 'https://m.media-amazon.com/images/M/MV5BMTQ2ODQ5NDAtMjg3Ni00MGFmLWEzMmMtMGFjNjg4MTM4Yjg3XkEyXkFqcGdeQXVyMjExMjk0ODk@.jpg', 'They Talk to Me', 2021, 'https://m.media-amazon.com/images/M/MV5BOGY1YjIxNGUtYjEzYy00YTZmLTk2MTYtMjg0YzNhOTM1OTg5XkEyXkFqcGdeQXVyNTY3NTY1Nzg@.jpg', '27173489', '0796368', '13863990', '28547237', '0941650', '13894060')
 
