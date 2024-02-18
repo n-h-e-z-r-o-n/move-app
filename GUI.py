@@ -17,15 +17,14 @@ import imdb
 
 # =====================================================================================================================================================
 # integrating pywebview
-
+import ctypes
 from webview.window import Window
 from webview.platforms.edgechromium import EdgeChrome
-
+from tkinter import Frame
 from System.Windows.Forms import Control
 from System.Threading import Thread,ApartmentState,ThreadStart,SynchronizationContext,SendOrPostCallback
 
 user32=ctypes.windll.user32
-
 
 class WebView2(Frame):
     def __init__(self,parent,width:int,height:int,url:str='',**kw):
@@ -1030,7 +1029,7 @@ def Home_Page(widget):
 
 # ================= Main Definition ===================================================================================================================
 # =====================================================================================================================================================
-
+def Start_
 def main():
     global page_count, Home_frame
     global is_fullscreen
@@ -1094,9 +1093,6 @@ def main():
 
 
 if __name__ == "__main__":
-
-    #main()
-
     t = Thread(ThreadStart(main))
     t.ApartmentState = ApartmentState.STA
     t.Start()
