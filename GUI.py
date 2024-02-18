@@ -144,20 +144,25 @@ def widget_scroll_bind(widget):
 
 def imagen(image_path, screen_width, screen_height, widget): # image processing
     def load_image():
-        try:
-            image = Image.open(image_path)
-        except Exception as e:
+        while True:
             try:
-                image = Image.open(io.BytesIO(image_path))
+                image = Image.open(image_path)
             except Exception as e:
-                print(e)
-                binary_data = base64.b64decode(image_path)  # Decode the string
-                image = Image.open(io.BytesIO(binary_data))
-
-        image = image.resize((screen_width, screen_height), Image.LANCZOS)
-        photo = ImageTk.PhotoImage(image)
-        widget.config(image=photo)
-        widget.image = photo  # Keep a reference to the PhotoImage to prevent it from being garbage collected
+                try:
+                    image = Image.open(io.BytesIO(image_path))
+                except Exception as e:
+                    print(e)
+                    binary_data = base64.b64decode(image_path)  # Decode the string
+                    image = Image.open(io.BytesIO(binary_data))
+    
+            image = image.resize((screen_width, screen_height), Image.LANCZOS)
+            try:
+                photo = ImageTk.PhotoImage(image)
+            except:
+                continue
+            widget.config(image=photo)
+            widget.image = photo  # Keep a reference to the PhotoImage to prevent it from being garbage collected
+            break
 
     image_thread = threading.Thread(target=load_image)  # Create a thread to load the image asynchronously
     image_thread.start()
