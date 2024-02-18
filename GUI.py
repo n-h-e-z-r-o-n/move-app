@@ -1029,7 +1029,27 @@ def Home_Page(widget):
 
 # ================= Main Definition ===================================================================================================================
 # =====================================================================================================================================================
-def Start_
+def Start_graphics():
+        root = tk.Tk()
+
+        screenwidth = root.winfo_screenwidth()
+        screenheight = root.winfo_screenheight()
+        start_w = 600
+        start_h = 400
+        root.minsize(start_w, start_h)
+        root.maxsize(start_w, start_h)
+        pos_w = int((screenwidth / 2) - (start_w / 2))
+        pos_h = int((screenheight / 2) - (start_h / 2))
+        root.geometry(f'+{pos_w}+{pos_h}')
+        m = tk.Label(root)
+        m.pack(fill='both', expand=True)
+        imagen("./img1.jpeg", start_w, start_h, m)
+
+        root.overrideredirect(True)
+        root.config(bg='blue')
+
+        root.mainloop()
+
 def main():
     global page_count, Home_frame
     global is_fullscreen
