@@ -1086,7 +1086,7 @@ def main():
 
     FRAME_1 = tk.Frame(root, bg='')
     FRAME_1.place(relx=0, rely=0, relwidth=1, relheight=1)
-    FRAME_1_canvas = tk.Canvas(FRAME_1)
+    FRAME_1_canvas = tk.Canvas(FRAME_1, bg='blue')
     FRAME_1_canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
     FRAME_1_scrollbar = tk.Scrollbar(root, command=FRAME_1_canvas.yview)
     FRAME_1_canvas.config(yscrollcommand=FRAME_1_scrollbar.set)
@@ -1095,7 +1095,7 @@ def main():
     widget_scroll_bind(FRAME_1_canvas)  # Bind the mouse wheel event to the canvas
 
     Home_frame_hight = screen_height * 5
-    Home_frame = tk.Frame(FRAME_1_screen, bg='gray', width=screen_width, height=Home_frame_hight)
+    Home_frame = tk.Frame(FRAME_1_screen, bg='', width=screen_width, height=Home_frame_hight)
     Home_frame.pack(fill=tk.BOTH, expand=True)
     #imagen("./Assets/12.jpg", screen_width, Home_frame_hight, Home_frame)
     widget_track_position.append(Home_frame)
