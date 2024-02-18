@@ -1102,7 +1102,7 @@ def main():
     FRAME_1_canvas.create_window((0, 0), window=FRAME_1_screen, anchor=tk.NW)
     widget_scroll_bind(FRAME_1_canvas)  # Bind the mouse wheel event to the canvas
 
-    Home_frame = tk.Label(FRAME_1_screen, bg='green')
+    Home_frame = tk.Label(FRAME_1_screen, bg='green', width=screen_width, height=Home_frame_hight)
     Home_frame.pack(fill=tk.BOTH, expand=True)
     #Home_frame.place(relx=0, rely=0, relwidth=1, relheight=1)
 
