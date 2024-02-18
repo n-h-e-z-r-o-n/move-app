@@ -903,7 +903,8 @@ def slide_show(widget):
             print(count)
             f1 = tk.Button(widget,  borderwidth=0, border=0, text=movie['title'], fg='white', activebackground='black', bg='black') #, command=lambda id=movie[count]['imdb_id']: selected_movie_detail(id))
             f1.place(relx=0, rely=0, relheight=1, relwidth=1)
-            #imagen_fade(show_movie_list[1][2], screen_height, screen_width, f1)
+            print(poster_image_get(movie['imdb_id']))
+            imagen(poster_image_get(movie['imdb_id'], screen_height, screen_width, f1))
             count += 1
             list.append(f1)
 
