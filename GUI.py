@@ -1078,8 +1078,7 @@ def main():
     root.config(bg='blue')
 
 
-
-    dark_title_bar(root)
+    #dark_title_bar(root)
 
 
 
