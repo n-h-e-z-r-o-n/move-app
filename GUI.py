@@ -917,7 +917,7 @@ def Home_Page(widget):
         FRAME_1.tkraise()
         widget_scroll_bind(FRAME_1_canvas)
         Home_frame_hight = screen_height * 5
-        # background image
+        # background image ======================================================================
         Home_label = tk.Label(widget, bg='blue')
         Home_label.place(relx=0, rely=0, relwidth=1, relheight=1)
         imagen("Assets/12.jpg", screen_width, Home_frame_hight, Home_label)
