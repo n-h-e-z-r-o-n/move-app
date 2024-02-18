@@ -1088,14 +1088,14 @@ def main():
     screen_height = root.winfo_screenheight()
     large_frame_size = screen_height + 700
     search_q = tk.StringVar()
+    Home_frame_hight = screen_height * 5
 
     Backround = tk.Label(root)
     Backround.place(relx=0, rely=0, relwidth=1, relheight=1)
-    imagen("./Assets/12.jpg", , 100, Backro500und)
-    im
+    imagen("./Assets/12.jpg",screen_width , Home_frame_hight, Backround)
 
-    """
-    FRAME_1 = tk.Frame(root, bg='')
+
+    FRAME_1 = tk.Frame(Backround, bg='')
     FRAME_1.place(relx=0, rely=0, relwidth=1, relheight=1)
     FRAME_1_canvas = tk.Canvas(FRAME_1, bg='blue')
     FRAME_1_canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
@@ -1105,13 +1105,13 @@ def main():
     FRAME_1_canvas.create_window((0, 0), window=FRAME_1_screen, anchor=tk.NW)
     widget_scroll_bind(FRAME_1_canvas)  # Bind the mouse wheel event to the canvas
 
-    Home_frame_hight = screen_height * 5
+
     Home_frame = tk.Frame(FRAME_1_screen, bg='', width=screen_width, height=Home_frame_hight)
     Home_frame.pack(fill=tk.BOTH, expand=True)
 
     widget_track_position.append(Home_frame)
     page_count += 1
-    """
+
     """
     FRAME_2 = tk.Frame(root, bg='black')
     FRAME_2.place(relwidth=1, relheight=1, relx=0, rely=0)
