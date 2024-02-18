@@ -910,7 +910,7 @@ def slide_show(widget):
 
 
 
-    Home_page_Background_changer(list)
+    #Home_page_Background_changer(list)
 
 
 def Home_Page(widget):
