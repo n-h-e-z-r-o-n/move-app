@@ -286,7 +286,7 @@ def selected_movie_detail(movie_id):
     global top_frame_main
 
     def get_specific_movie_details(movie_id=movie_id):
-            f
+            movies = ia.get_movie(movie_id)
 
             # ia.update(movies)
             def cast():
