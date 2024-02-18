@@ -903,12 +903,12 @@ def slide_show(widget):
             imagen_fade(movie['imdb_id'], screen_height, screen_width, f1)
             count += 1
             list.append(f1)
-            break
 
 
 
 
-    #Home_page_Background_changer(list)
+
+    Home_page_Background_changer(list)
 
 
 def Home_Page(widget):
