@@ -1034,6 +1034,7 @@ def Home_Page(widget):
             y_pos += 0.32
             row += 1
         """
+        """
         video_box = tk.Frame(Home_frame, bg='black')
         frame2 = WebView2(video_box, 500, 500)
         frame2.load_url(f'https://vidsrc.to/embed/movie/tt{10638522}')  # https://vidsrc.to/embed/movie/tt10638522

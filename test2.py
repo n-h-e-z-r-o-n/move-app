@@ -2,7 +2,7 @@ import requests
 
 
 def get_new_movies (page = 1):
-    r = requests.get('https://vidsrc.to/vapi/movie/new/1')  # latest movies
+    r = requests.get(f'https://vidsrc.to/vapi/movie/new/{page}')  # latest movies
     print(r.status_code)
     movies = None
     length = 0
@@ -11,7 +11,6 @@ def get_new_movies (page = 1):
         length = data['result']['items']
         movies = data['result']['items']
     return movies, length
-
 
 movies, count = get_new_movies()
 print(movies)
