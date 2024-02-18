@@ -1084,7 +1084,7 @@ def main():
     large_frame_size = screen_height + 700
     search_q = tk.StringVar()
 
-    FRAME_1 = tk.Frame(root, bg='')
+    FRAME_1 = tk.Frame(root, bg='black')
     FRAME_1.place(relx=0, rely=0, relwidth=1, relheight=1)
     FRAME_1_canvas = tk.Canvas(FRAME_1, bg='blue')
     FRAME_1_canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
