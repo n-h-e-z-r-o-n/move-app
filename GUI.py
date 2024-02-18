@@ -161,8 +161,8 @@ def imagen(image_path, screen_width, screen_height, widget): # image processing
             widget.config(image=photo)
             widget.image = photo  # Keep a reference to the PhotoImage to prevent it from being garbage collected
 
-    image_thread = threading.Thread(target=load_image)  # Create a thread to load the image asynchronously
-    image_thread.start()
+    threading.Thread(target=load_image).start()  # Create a thread to load the image asynchronously
+
 
 
 def poster_image_get(movie_id):
@@ -217,8 +217,8 @@ def imagen_fade(poster_url, screen_height, screen_width, widget):
                 retry += 1
                 time.sleep(5)
 
-    image_thread = threading.Thread(target=load_img_url)  # Create a thread
-    image_thread.start()
+    threading.Thread(target=load_img_url).start()  # Create a thread
+
 
 
 def change_color(main_widget, widget):
