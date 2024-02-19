@@ -857,6 +857,7 @@ def Search_result(widget, m_list):
 
     grid(Search_result_frame, m_list, len(m_list), 0)
 
+# ------------------------------- Movie fetch function -------- -----------------------------------------------
 def get_new_movies (page = 1):
     r = requests.get(f'https://vidsrc.to/vapi/movie/new/{page}')  # latest movies
     print(r.status_code)
@@ -1015,8 +1016,7 @@ def Home_Page(widget):
         threading.Thread(target=populer_moves, args=(movies_widget,)).start()
 
 
-        return
-        #imagen("Assets/12.jpg", screen_width, Home_frame_hight, Home_label)
+
 
 
         # Section 3 ==========================================================================================================================================================
@@ -1063,7 +1063,8 @@ def Home_Page(widget):
             x_pos = 0.005
             y_pos += 0.32
             row += 1
-       
+        return
+        # imagen("Assets/12.jpg", screen_width, Home_frame_hight, Home_label)
         """
         video_box = tk.Frame(Home_frame, bg='black')
         frame2 = WebView2(video_box, 500, 500)
