@@ -956,7 +956,7 @@ def populer_new_tv_shows(widget_list, PX_hight, PY_width):
     print("p tv",len(populer_movie_list))
     count = 0
     for widget in widget_list:
-        m = populer_movie_list[count]["title"]
+        print(populer_movie_list[count]["title"])
         widget[1].config(text=populer_movie_list[count]["title"])
         imagen(poster_image_get(populer_movie_list[count]["imdb_id"]), PY_width, PX_hight, widget[0])
         count += 1
