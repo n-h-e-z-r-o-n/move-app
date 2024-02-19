@@ -983,7 +983,7 @@ def Home_Page(widget):
                 r1_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
                 #imagen(populer_movie_list[track][2], PY_width, PX_hight, r1_bt1)
                 change_bg_OnHover(r1_bt1, hover_color, '#1A2421')
-                r1_bt2 = tk.Button(label1, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, text=f"lll", activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg='gray',  font=('Calibri', 11))#, command=lambda id=populer_movie_list[track]: selected_movie_detail(id))
+                r1_bt2 = tk.Button(label1, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg='gray',  font=('Calibri', 11))#, command=lambda id=populer_movie_list[track]: selected_movie_detail(id))
                 r1_bt2.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
                 change_fg_OnHover(r1_bt2, hover_color, 'gray')
                 movies_widget.append((r1_bt1, r1_bt2))
@@ -1007,6 +1007,7 @@ def Home_Page(widget):
                 print(widget)
                 print(populer_movie_list[0])
                 imagen(poster_image_get(populer_movie_list[count]["imdb_id"]), PY_width, PX_hight, widget[0])
+                widget[1].config(text=populer_movie_list[count]["title"])
                 count += 1
 
         threading.Thread(target=populer_moves, args=(movies_widget,)).start()
