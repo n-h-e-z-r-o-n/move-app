@@ -493,48 +493,6 @@ def selected_movie_detail(movie_id):
                 recomednation_6_poster = popular_movies_dic['results'][random_numbers[5]]['poster']
                 r6_id = popular_movies_dic['results'][random_numbers[5]]['id'].strip('t')
 
-            """
-            print("title", movie_title)
-            print("kind", movie_type)
-            print("year", movie_country)
-            print("countries", movie_country)
-            print("rating", movie_ratting)
-            print('movie_poster_url', movie_poster_url)
-            print("ID", movie_id)
-            print("Year:", movie_year)
-            print("Plot:", movie_plot)
-            print("Genres:", movie_genres)
-            print("Cast:", movie_cast_names)
-        
-            print('\n')
-            print("r1_title", r1_title)
-            print("r1_year", r1_year)
-            print("recomednation_1_poster", recomednation_1_poster)
-            print('\n')
-            print("r2_title", r2_title)
-            print("r2_year", r2_year)
-            print("recomednation_2_poster", recomednation_2_poster)
-            print('\n')
-            print("r3_title", r3_title)
-            print("r3_year", r3_year)
-            print("recomednation_3_poster", recomednation_3_poster)
-            print('\n')
-            print("r4_title", r4_title)
-            print("r4_year", r4_year)
-            print("recomednation_4_poster", recomednation_4_poster)
-            print('\n')
-            print("r5_title", r5_title)
-            print("r5_year", r5_year)
-            print("recomednation_5_poster", recomednation_5_poster)
-            print('\n')
-            print("r6_title", r6_title)
-            print("r6_year", r6_year)
-            print("recomednation_6_poster", recomednation_6_poster)
-            """
-
-            # movie_id, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url, r1_title, r1_year, recomednation_1_poster, r2_title, r2_year, recomednation_2_poster, r3_title, r3_year, recomednation_3_poster, r4_title, r4_year, recomednation_4_poster, r5_title, r5_year, recomednation_5_poster, r6_title, r6_year, recomednation_6_poster
-            # r1_id, r2_id, r3_id, r4_id, r5_id, r6_id
-            #print(list[top_frame_main, movie_id, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url, r1_title, r1_year, recomednation_1_poster, r2_title, r2_year, recomednation_2_poster, r3_title, r3_year, recomednation_3_poster, r4_title, r4_year, recomednation_4_poster, r5_title, r5_year, recomednation_5_poster, r6_title, r6_year, recomednation_6_poster, r1_id, r2_id, r3_id, r4_id, r5_id, r6_id])
             watch_page(top_frame_main, movie_id, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url, r1_title, r1_year, recomednation_1_poster, r2_title, r2_year, recomednation_2_poster, r3_title, r3_year, recomednation_3_poster, r4_title, r4_year, recomednation_4_poster, r5_title, r5_year, recomednation_5_poster, r6_title, r6_year, recomednation_6_poster, r1_id, r2_id, r3_id, r4_id, r5_id, r6_id)
 
     get_specific_movie_details()
