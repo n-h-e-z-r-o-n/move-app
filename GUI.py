@@ -143,10 +143,10 @@ def on_mouse_wheel(widget, event):  # Function to handle mouse wheel scrolling
     # Scroll the canvas up or down based on the mouse wheel direction
     if event.delta < 0:
         #widget.yview_scroll(1, "units")
-        smooth_scroll(widget, 0.1)
+        smooth_scroll(widget, 0.01)
     else:
         #widget.yview_scroll(-1, "units")
-        smooth_scroll(widget, -0.1)
+        smooth_scroll(widget, -0.01)
 
 
 def widget_scroll_bind(widget):
