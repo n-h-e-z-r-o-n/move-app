@@ -1057,7 +1057,7 @@ def Home_Page(widget):
 
         # Section 2 ==================================================================================================================================================
 
-        Suggestion1 = tk.Frame(Home_frame, borderwidth=0, border=0, bg='black')
+        Suggestion1 = tk.Frame(widget, borderwidth=0, border=0, bg='black')
         Suggestion1.place(relx=0, rely=0.151, relheight=0.17, relwidth=1)
         recomendation_tubs_bg_color = 'black'
         hover_color = 'lightblue'
@@ -1103,7 +1103,7 @@ def Home_Page(widget):
 
         # Section 3 ==========================================================================================================================================================
 
-        Suggestion2 = tk.Frame(Home_frame, borderwidth=0, border=0, bg='black')
+        Suggestion2 = tk.Frame(widget, borderwidth=0, border=0, bg='black')
         Suggestion2.place(relx=0, rely=0.322, relheight=0.17, relwidth=1)
 
         series = imdb_other.popular_tv(genre=None, start_id=1, sort_by=None)  # returns top 50 popular TV Series starting from start id
