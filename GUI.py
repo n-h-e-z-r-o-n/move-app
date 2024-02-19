@@ -133,19 +133,22 @@ def change_fg_OnHover(widget, colorOnHover, colorOnLeave):  # Color change fg on
 
 def on_mouse_wheel(widget, event):  # Function to handle mouse wheel scrolling
     # Scroll the canvas up or down based on the mouse wheel direction
+    global root
     if event.delta < 0:
         #widget.yview_scroll(1, "units")
         current_scroll = float(widget.yview()[0])
         new_scroll = max(0.0, min(1.0, current_scroll + 0.01))
         widget.yview_moveto(new_scroll)
-        widget.update() # Force the update of the display
+        root.update()
+        root.update_idletasks()
 
     else:
         #widget.yview_scroll(-1, "units")
         current_scroll = float(widget.yview()[0])
         new_scroll = max(0.0, min(1.0, current_scroll + (-0.01)))
         widget.yview_moveto(new_scroll)
-        widget.update()  # Force the update of the display
+        root.update()
+        root.update_idletasks()
 
 
 def widget_scroll_bind(widget):
