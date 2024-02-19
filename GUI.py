@@ -439,7 +439,8 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     #  content:
     image_label = tk.Button(large_frame, text='▷', bg='black', fg='white', borderwidth=0, border=0, activebackground='black', activeforeground='yellow', relief=tk.FLAT, font=('Arial Black', 76, 'bold'), command=lambda: play(video_box))
     image_label.place(relx=0, rely=0.0, relheight=0.5, relwidth=1)
-    imagen_fade(movie_id, screen_height, screen_width, image_label)
+    #imagen_fade(movie_id, screen_height, screen_width, image_label)
+    imagen(movie_poster_url, screen_height, screen_width, image_label)
     change_fg_OnHover(image_label, 'Blue', 'white')
 
     back_tracking_widget = tk.Button(large_frame, font=('Georgia', 20), justify='center', fg='gray', text='⤽', activebackground='black', activeforeground='yellow', borderwidth=0, border=0, bg='black', command=previous_back_track_page_display)
