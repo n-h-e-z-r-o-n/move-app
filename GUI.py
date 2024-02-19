@@ -1066,7 +1066,7 @@ def Home_Page(widget):
         while row < 4: # 3
             while column < 8: # 8
 
-                label1 = tk.Label(Suggestion1, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
+                label1 = tk.Frame(Suggestion1, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
                 label1.place(relx=x_pos, rely=y_pos, relheight=0.31, relwidth=0.12)
                 r1_bt1 = tk.Button(label1, bg='#1A2421', borderwidth=0, justify=tk.CENTER,  activebackground=hover_color, border=0) #, command=lambda id = populer_movie_list[track][3]: selected_movie_detail(id))
                 r1_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
@@ -1119,7 +1119,7 @@ def Home_Page(widget):
         while row < 4:  # 3 rows
             while column < 8:  # 8 columns
 
-                label3 = tk.Label(Suggestion2, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
+                label3 = tk.Frame(Suggestion2, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
                 label3.place(relx=x_pos, rely=y_pos, relheight=0.31, relwidth=0.12)
                 r1_bt3 = tk.Button(label3, bg='#1A2421', borderwidth=0, justify=tk.CENTER,  activebackground=hover_color, border=0)#, command=lambda id = populer_series_list[track][3]: selected_movie_detail(id))
                 r1_bt3.place(relx=0, rely=0, relwidth=1, relheight=1)
