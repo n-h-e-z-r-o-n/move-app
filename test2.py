@@ -1,39 +1,21 @@
-from imdbmovies import IMDB
-import imdb
-from imdbmovies import IMDB
-imdb_2 = IMDB()
-ia = imdb.Cinemagoer()
-movies = imdb_2.get_by_id("tt12593682")
+import tkinter as tk
 
+def refresh_window():
+    # Redraw the window
+    window.update()
+    window.update_idletasks()
+    print("Refresh completed.")
 
-print(movies['poster'])
-def clean_url(url):
-    url = url
-    url = url.replace('_V1_', '_V1000_')  # Replace '_V1_' with '_V1000_'
-    url = url.replace('_UX67_', '_UX1000_')  # Replace '_UX67_' with '_UX1000_'
-    url = url.replace('_UY98_', '_UY1000_')
-    url = url.replace('_SX101_', '_SX1000_')
-    url = url.replace('_CR0,0,101,150_', '_CR0,0,0,0_')
-    url = url.replace('_CR0,0,67,98_', '_CR0,0,0,0_')  # Replace '_CR0,0,67,98_' with '_CR0,0,0,0_'
-    url = url.replace('_CR5,0,67,98_', '_CR0,0,0,0_')  # Replace '_CR5,0,67,98_' with '_CR0,0,0,0_'
-    url = url.replace('_CR1,0,67,98_', '_CR0,0,0,0_')  # Replace '_CR1,0,67,98_' with '_CR0,0,0,0_'
-    return url
+# Create the main window
+window = tk.Tk()
+window.geometry("300x300")
+window.title("PythonExamples.org")
 
-def poster_image_get(movie_id):
-    movies = imdb_2.get_by_id(movie_id)
-    movie_poster_url = movies['poster']
-    movie_poster_url = clean_url(movie_poster_url)
-    """
-    try:
-        movies = ia.get_movie(movie_id[2:])
-        movie_poster_url = movies.get('full-size cover url')
-    except:
-        movie_poster_url = None
+label = tk.Label(window, text="Click the below button to refresh the window.")
+label.pack()
 
-    return  movie_poster_url
-    """
+button = tk.Button(window, text="Refresh", command=refresh_window)
+button.pack()
 
-    return movie_poster_url
-
-m = poster_image_get("tt12593682")
-print(m)
+# Run the application
+window.mainloop()
