@@ -999,8 +999,8 @@ def Home_Page(widget):
             populer_movie_list.extend(movies)
             populer_movie_list.extend(movies)
             for widget in widget_list:
-                # imagen(populer_movie_list[track][2], PY_width, PX_hight, r1_bt1)
-                widget[0]
+                imagen(populer_movie_list[track][2], PY_width, PX_hight, widget[0])
+
 
 
         return
