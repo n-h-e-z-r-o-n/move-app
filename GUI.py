@@ -938,9 +938,7 @@ def get_added_tv_shows (page = 1):
     return movies, length
 
 
-def populer_new_tv_shows(widget_list,PX_hight, PY_width):
-    #PX_hight = int(Home_frame_hight * 0.17 * 0.31) - 1
-    #PY_width = int(screen_width * 1 * 0.12) - 1
+def populer_new_tv_shows(widget_list, PX_hight, PY_width):
     populer_movie_list = []
     movies, x = get_new_tv_shows(1)
     populer_movie_list.extend(movies)
