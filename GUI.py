@@ -140,7 +140,7 @@ def on_mouse_wheel(widget, event):  # Function to handle mouse wheel scrolling
         new_scroll = max(0.0, min(1.0, current_scroll + 0.01))
         widget.yview_moveto(new_scroll)
         widget.update()
-        widget.update_idletasks()
+        #widget.update_idletasks()
 
     else:
         #widget.yview_scroll(-1, "units")
@@ -148,7 +148,7 @@ def on_mouse_wheel(widget, event):  # Function to handle mouse wheel scrolling
         new_scroll = max(0.0, min(1.0, current_scroll + (-0.01)))
         widget.yview_moveto(new_scroll)
         widget.update()
-        widget.update_idletasks()
+        #widget.update_idletasks()
 
 
 def widget_scroll_bind(widget):
