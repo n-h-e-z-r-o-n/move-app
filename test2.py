@@ -1,5 +1,9 @@
 from imdbmovies import IMDB
 imdb_other = IMDB()
 movies = imdb_other.get_by_id("tt0944947")
-movie_name = movies['title']
+movie_type = movies['']
+movie_name = movies['name']
+
 movie_poster_url = movies['poster']
+movie_name = movies['title']
+movie_name = movies['title']
