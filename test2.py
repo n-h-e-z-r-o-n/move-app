@@ -48,7 +48,7 @@ class WebView2(Frame):
 
     def on_double_click(self):
         self.bind("<Double-Button-1>", print("Double-clicked"))
-        #print("Double-clicked")
+
 
 def on_double_click(event):
     print("Double-clicked")
