@@ -5,6 +5,11 @@ print(movies)
 movie_name = movies['name']
 movie_type = movies['type']
 movie_genre = movies['genre']
+movie_datePublished = movies['datePublished']
 movie_ratingValue = movies['ratingValue']
 movie_poster_url = movies['poster']
+movie_actor = movies['actor']
+
+
+
 
