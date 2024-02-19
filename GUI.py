@@ -1096,9 +1096,6 @@ def Home_Page(widget):
         #threading.Thread(target=populer_moves, args=(movies_widget,PX_hight, PY_width)).start()
 
 
-
-
-
         # Section 3 ==========================================================================================================================================================
 
         Suggestion2 = tk.Frame(widget, borderwidth=0, border=0, bg='black')
