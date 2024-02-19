@@ -61,7 +61,7 @@ def main():
     frame2.place(relheight=1, relwidth=1, relx=0, rely=0)
     print(frame2)
     #frame.bind("<Double-Button-1>", on_double_clisck)
-    frame.bind_all("<Double-Button-1>", on_double_clisck)
+    frame2.bind_all("<Double-Button-1>", on_double_clisck)
 
     root.mainloop()
 
