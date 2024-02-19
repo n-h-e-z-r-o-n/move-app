@@ -1,36 +1,39 @@
-import tkinter as tk
-
-def smooth_scroll(widget, increment):
-    # Get the current scroll position
-    current_scroll = float(widget.yview()[0])
-
-    # Calculate the new scroll position
-    new_scroll = max(0.0, min(1.0, current_scroll + increment))
-
-    # Set the new scroll position
-    widget.yview_moveto(new_scroll)
-
-    # Repeat the process until the desired position is reached
+from imdbmovies import IMDB
+import imdb
+from imdbmovies import IMDB
+imdb_2 = IMDB()
+ia = imdb.Cinemagoer()
+movies = imdb_2.get_by_id("tt12593682")
 
 
-# Create the main application window
-root = tk.Tk()
-root.geometry("400x300")
+print(movies['poster'])
+def clean_url(url):
+    url = url
+    url = url.replace('_V1_', '_V1000_')  # Replace '_V1_' with '_V1000_'
+    url = url.replace('_UX67_', '_UX1000_')  # Replace '_UX67_' with '_UX1000_'
+    url = url.replace('_UY98_', '_UY1000_')
+    url = url.replace('_SX101_', '_SX1000_')
+    url = url.replace('_CR0,0,101,150_', '_CR0,0,0,0_')
+    url = url.replace('_CR0,0,67,98_', '_CR0,0,0,0_')  # Replace '_CR0,0,67,98_' with '_CR0,0,0,0_'
+    url = url.replace('_CR5,0,67,98_', '_CR0,0,0,0_')  # Replace '_CR5,0,67,98_' with '_CR0,0,0,0_'
+    url = url.replace('_CR1,0,67,98_', '_CR0,0,0,0_')  # Replace '_CR1,0,67,98_' with '_CR0,0,0,0_'
+    return url
 
-# Create a Text widget with some content
-text = tk.Text(root)
-text.insert("end", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. " * 20)
-text.pack(fill="both", expand=True)
+def poster_image_get(movie_id):
+    movies = imdb_2.get_by_id(movie_id)
+    movie_poster_url = movies['poster']
+    movie_poster_url = clean_url(movie_poster_url)
+    """
+    try:
+        movies = ia.get_movie(movie_id[2:])
+        movie_poster_url = movies.get('full-size cover url')
+    except:
+        movie_poster_url = None
 
-# Bind mousewheel events for scrolling
-def on_mousewheel(event):
-    # Determine the direction of the scroll
-    if event.delta < 0:
-        smooth_scroll(text, 0.1)  # Scroll down
-    else:
-        smooth_scroll(text, -0.1)  # Scroll up
+    return  movie_poster_url
+    """
 
-text.bind("<MouseWheel>", on_mousewheel)
+    return movie_poster_url
 
-# Run the application
-root.mainloop()
+m = poster_image_get("tt12593682")
+print(m)
