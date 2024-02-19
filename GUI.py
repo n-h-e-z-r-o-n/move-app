@@ -998,7 +998,7 @@ def main():
     root = tk.Tk()
     root.title("Move App")
     root.state('zoomed')  # this creates a window that takes over the screen
-    root.minsize(150, 100)
+    root.minsize(500, 600)
 
 
 
