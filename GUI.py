@@ -350,10 +350,10 @@ def selected_movie_detail(movie_id):
     movie_production_company = None
 
     #return movie_name, movie_type, movie_genre, movie_datePublished, movie_ratingValue, movie_poster_url, movie_actor, movie_description
-    watch_page(top_frame_main, movie_id, movie_name, movie_ratingValue, movie_type, movie_country, movie_genre, movie_datePublished, movie_production_company, movie_actor, movie_description, movie_poster_url, r1_title, r1_year, recomednation_1_poster, r2_title, r2_year, recomednation_2_poster, r3_title, r3_year, recomednation_3_poster, r4_title, r4_year, recomednation_4_poster, r5_title, r5_year, recomednation_5_poster, r6_title, r6_year, recomednation_6_poster, r1_id, r2_id, r3_id, r4_id, r5_id, r6_id)
+    watch_page(top_frame_main, movie_id, movie_name, movie_ratingValue, movie_type, movie_country, movie_genre, movie_datePublished, movie_production_company, movie_actor, movie_description, movie_poster_url)
 
 
-def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url, r1_title, r1_year, recomednation_1_poster, r2_title, r2_year, recomednation_2_poster, r3_title, r3_year, recomednation_3_poster, r4_title, r4_year, recomednation_4_poster, r5_title, r5_year, recomednation_5_poster, r6_title, r6_year, recomednation_6_poster, r1_id, r2_id, r3_id, r4_id, r5_id, r6_id):
+def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url):
     global screen_width
     global screen_height
     global large_frame_size
@@ -464,7 +464,7 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     recomendation_tubs_bg_color = '#1A2421'
     hover_color = 'lightblue'
     text_color = 'gray'
-
+    """
     label2 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
     label2.place(relx=0.04, rely=0.78, relheight=0.2, relwidth=0.15)
     r1_bt1 = tk.Button(label2, bg=recomendation_tubs_bg_color, borderwidth=0, activebackground=hover_color, border=0, command=lambda id=r1_id: selected_movie_detail(id))
@@ -524,6 +524,7 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     r6_bt2 = tk.Button(label7, borderwidth=0, border=0, bg='black', activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r6_title}\n{r6_year}', font=('Calibri', 11, 'bold'), command=lambda id=r6_id: selected_movie_detail(id))
     r6_bt2.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
     change_fg_OnHover(r6_bt2, hover_color, text_color)
+    """
 
     video_box = tk.Frame(large_frame, bg='black')
     frame2 = WebView2(video_box, 500, 500)
@@ -1048,8 +1049,8 @@ def main():
 
 
     #Home_Page(Home_frame)
-    #selected_movie_detail(10638522)
-    watch_page(main_frame, '10638522', 'Talk to Me', 7.2, 'movie', 'Australia. United Kingdom. ', 'Horror, Thriller, ', 2022, 'Causeway Films, Head Gear Films, Metrol Technology, Screen Australia, Talk to Me Holdings, ', 'Ari McCarthy, Hamish Phillips, Kit Erhart-Bruce, Sarah Brokensha, Jayden Davison, Sunny Johnson, Sophie Wilde, Marcus Johnson, Kidaan Zelleke, James Oliver, Joe Bird, Jett Gazley, Alexandra Jensen, Dog, Helene Philippou, ', 'When a group of friends discover how to conjure spirits using an embalmed hand, they become hooked on the new thrill, until one of them goes too far and unleashes terrifying supernatural forces.', 'https://m.media-amazon.com/images/M/MV5BMmY5ZGE4NmUtZWI4OS00ZWJmLWFjMzgtOWUyZjI4NDg3Y2E5XkEyXkFqcGdeQXVyMTkxNjUyNQ@@.jpg', 'Talk to Me', 2023, None, 'Talk to Me', 2007, 'https://m.media-amazon.com/images/M/MV5BMzgyMTMxNjg4OF5BMl5BanBnXkFtZTYwMDkwNDc3.jpg', 'Talk to Me, Sweet Darling', 2020, 'https://m.media-amazon.com/images/M/MV5BMDY5ODFmOTktOGYxOC00MGQ0LTk4NmYtYzQ4MDc0NWQzOWViXkEyXkFqcGdeQXVyNTgyMTU3Mjc@.jpg', 'Talk to Me', 2023, 'https://m.media-amazon.com/images/M/MV5BZDg2ZTRjYzMtZDJiYi00MDYxLWFlMDctZWQ4NDI3NTA2NWI1XkEyXkFqcGdeQXVyNjEzNjUxNzI@.jpg', 'Talk to Me', 2007, 'https://m.media-amazon.com/images/M/MV5BMTQ2ODQ5NDAtMjg3Ni00MGFmLWEzMmMtMGFjNjg4MTM4Yjg3XkEyXkFqcGdeQXVyMjExMjk0ODk@.jpg', 'They Talk to Me', 2021, 'https://m.media-amazon.com/images/M/MV5BOGY1YjIxNGUtYjEzYy00YTZmLTk2MTYtMjg0YzNhOTM1OTg5XkEyXkFqcGdeQXVyNTY3NTY1Nzg@.jpg', '27173489', '0796368', '13863990', '28547237', '0941650', '13894060')
+    selected_movie_detail(10638522)
+    #watch_page(main_frame, '10638522', 'Talk to Me', 7.2, 'movie', 'Australia. United Kingdom. ', 'Horror, Thriller, ', 2022, 'Causeway Films, Head Gear Films, Metrol Technology, Screen Australia, Talk to Me Holdings, ', 'Ari McCarthy, Hamish Phillips, Kit Erhart-Bruce, Sarah Brokensha, Jayden Davison, Sunny Johnson, Sophie Wilde, Marcus Johnson, Kidaan Zelleke, James Oliver, Joe Bird, Jett Gazley, Alexandra Jensen, Dog, Helene Philippou, ', 'When a group of friends discover how to conjure spirits using an embalmed hand, they become hooked on the new thrill, until one of them goes too far and unleashes terrifying supernatural forces.', 'https://m.media-amazon.com/images/M/MV5BMmY5ZGE4NmUtZWI4OS00ZWJmLWFjMzgtOWUyZjI4NDg3Y2E5XkEyXkFqcGdeQXVyMTkxNjUyNQ@@.jpg', 'Talk to Me', 2023, None, 'Talk to Me', 2007, 'https://m.media-amazon.com/images/M/MV5BMzgyMTMxNjg4OF5BMl5BanBnXkFtZTYwMDkwNDc3.jpg', 'Talk to Me, Sweet Darling', 2020, 'https://m.media-amazon.com/images/M/MV5BMDY5ODFmOTktOGYxOC00MGQ0LTk4NmYtYzQ4MDc0NWQzOWViXkEyXkFqcGdeQXVyNTgyMTU3Mjc@.jpg', 'Talk to Me', 2023, 'https://m.media-amazon.com/images/M/MV5BZDg2ZTRjYzMtZDJiYi00MDYxLWFlMDctZWQ4NDI3NTA2NWI1XkEyXkFqcGdeQXVyNjEzNjUxNzI@.jpg', 'Talk to Me', 2007, 'https://m.media-amazon.com/images/M/MV5BMTQ2ODQ5NDAtMjg3Ni00MGFmLWEzMmMtMGFjNjg4MTM4Yjg3XkEyXkFqcGdeQXVyMjExMjk0ODk@.jpg', 'They Talk to Me', 2021, 'https://m.media-amazon.com/images/M/MV5BOGY1YjIxNGUtYjEzYy00YTZmLTk2MTYtMjg0YzNhOTM1OTg5XkEyXkFqcGdeQXVyNTY3NTY1Nzg@.jpg', '27173489', '0796368', '13863990', '28547237', '0941650', '13894060')
 
     root.mainloop()
 
