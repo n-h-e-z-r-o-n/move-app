@@ -3,8 +3,8 @@ imdb_other = IMDB()
 
 print(dir(imdb_other))
 
-print(imdb_other.upcoming())
-
+print(imdb_other.get_popular())
+help(imdb_other)
 
 def Selected(movie_id):
     imdb_other = IMDB()
