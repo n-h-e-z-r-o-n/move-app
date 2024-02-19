@@ -15,6 +15,5 @@ def Selected(movie_id):
     return movie_name, movie_type, movie_genre, movie_datePublished, movie_ratingValue, movie_poster_url, movie_actor, movie_description
 
 
-print(movie_actor)
-print(movie_genre)
+
 
