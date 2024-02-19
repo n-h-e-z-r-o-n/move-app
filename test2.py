@@ -1,4 +1,6 @@
 from imdbmovies import IMDB
+
+def Selected(movie)
 imdb_other = IMDB()
 movies = imdb_other.get_by_id("tt0944947")
 print(movies)
