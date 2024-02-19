@@ -527,9 +527,9 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
 
     video_box = tk.Frame(large_frame, bg='black')
     frame2 = WebView2(video_box, 500, 500)
-    frame2.load_url(f'https://vidsrc.to/embed/movie/tt{movie_id}')  # https://vidsrc.to/embed/movie/tt{movie_id}
+    frame2.load_url(f'https://vidsrc.to/embed/tv/tt0944947')  # https://vidsrc.to/embed/movie/tt{movie_id}
     frame2.place(relheight=1, relwidth=1, relx=0, rely=0)
-    
+
 
 
 def Animation(wid):
