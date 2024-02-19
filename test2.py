@@ -48,18 +48,26 @@ class WebView2(Frame):
 
 def on_double_click(event):
     print("Double-clicked")
+def main():
+    root = tk.Tk()
+    root.geometry("300x200")
 
-root = tk.Tk()
-root.geometry("300x200")
+    frame = tk.Frame(root, bg="blue", width=200, height=100)
+    frame.pack(padx=50, pady=50)
+    frame2 = WebView2(frame, 500, 500)
+    frame2.load_url(f'https://vidsrc.to/embed/tv/tt0944947')  # https://vidsrc.to/embed/movie/tt{movie_id}
+    frame2.place(relheight=1, relwidth=1, relx=0, rely=0)
+    frame2.bind("<Double-Button-1>", on_double_click)
 
-frame = tk.Frame(root, bg="lightgray", width=200, height=100)
-frame.pack(padx=50, pady=50)
-frame2 = WebView2(frame, 500, 500)
-frame2.load_url(f'https://vidsrc.to/embed/tv/tt0944947')  # https://vidsrc.to/embed/movie/tt{movie_id}
-frame2.place(relheight=1, relwidth=1, relx=0, rely=0)
-frame.bind("<Double-Button-1>", on_double_click)
-
-root.mainloop()
+    root.mainloop()
+if __name__ == "__main__":
+    #main()
+    #"""
+    t = Thread(ThreadStart(main))
+    t.ApartmentState = ApartmentState.STA
+    t.Start()
+    t.Join()
+    #"""
 
 
 
