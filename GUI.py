@@ -1072,7 +1072,7 @@ def Home_Page(widget):
         y_pos = 0.05
         track = 0
         movies_widget = []
-        while row < 2: # 3
+        while row < 3: # 3
             while column < 8: # 8
 
                 label1 = tk.Frame(Suggestion1, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
@@ -1125,7 +1125,7 @@ def Home_Page(widget):
         y_pos = 0.05
         track = 0
         tvs_widget = []
-        while row < 4:  # 3 rows
+        while row < 3:  # 3 rows
             while column < 8:  # 8 columns
 
                 label3 = tk.Frame(Suggestion2, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
