@@ -953,11 +953,8 @@ def populer_new_tv_shows(widget_list, PX_hight, PY_width):
     populer_movie_list.extend(movies)
     movies, x = get_new_tv_shows(2)
     populer_movie_list.extend(movies)
-    print("p tv",len(populer_movie_list))
-    print("p tv widget", len(widget_list))
     count = 0
     for widget in widget_list:
-        print(count, ' -- ', populer_movie_list[count]["title"])
         widget[1].config(text=populer_movie_list[count]["title"])
         imagen(poster_image_get(populer_movie_list[count]["imdb_id"]), PY_width, PX_hight, widget[0])
         count += 1
@@ -1127,7 +1124,6 @@ def Home_Page(widget):
         tvs_widget = []
         while row < 3:  # 3 rows
             while column < 8:  # 8 columns
-
                 label3 = tk.Frame(Suggestion2, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
                 label3.place(relx=x_pos, rely=y_pos, relheight=0.31, relwidth=0.12)
                 r1_bt3 = tk.Button(label3, bg='#1A2421', borderwidth=0, justify=tk.CENTER,  activebackground=hover_color, border=0)#, command=lambda id = populer_series_list[track][3]: selected_movie_detail(id))
