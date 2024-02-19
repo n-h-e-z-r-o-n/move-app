@@ -169,9 +169,22 @@ def imagen(image_url, screen_width, screen_height, widget):
 
 
 def poster_image_get(movie_id):
-    movies = ia.get_movie(movie_id[2:])
-    movie_poster_url = movies.get('full-size cover url')
+    try:
+        movies = imdb_other.get_by_id(movie_id)
+        movie_poster_url = movies['poster']
+        movie_poster_url = clean_url(movie_poster_url)
+    except:
+        movie_poster_url = None
+    """
+    try:
+        movies = ia.get_movie(movie_id[2:])
+        movie_poster_url = movies.get('full-size cover url')
+    except:
+        movie_poster_url = None
+
     return  movie_poster_url
+    """
+    return movie_poster_url
 
 
 def imagen_fade(poster_url, screen_height, screen_width, widget):
@@ -871,6 +884,70 @@ def get_new_movies (page = 1):
 
 
 
+def get_added_movies (page = 1):
+    r = requests.get(f'https://vidsrc.to/vapi/movie/add/{page}')  # latest movies
+    print(r.status_code)
+    movies = None
+    length = 0
+    if r.status_code == 200:
+        data = r.json()
+        length = len(data['result']['items'])
+        movies = data['result']['items']
+    return movies, length
+
+
+def get_new_tv_shows (page = 1):
+    r = requests.get(f'https://vidsrc.to/vapi/tv/new/{page}')  # latest movies
+    print(r.status_code)
+    movies = None
+    length = 0
+    if r.status_code == 200:
+        data = r.json()
+        length = len(data['result']['items'])
+        movies = data['result']['items']
+    return movies, length
+
+
+def get_added_tv_shows (page = 1):
+    r = requests.get(f'https://vidsrc.to/vapi/tv/add/{page}')  # latest movies
+    print(r.status_code)
+    movies = None
+    length = 0
+    if r.status_code == 200:
+        data = r.json()
+        length = len(data['result']['items'])
+        movies = data['result']['items']
+    return movies, length
+
+
+def populer_new_tv_shows(widget_list,PX_hight, PY_width):
+    #PX_hight = int(Home_frame_hight * 0.17 * 0.31) - 1
+    #PY_width = int(screen_width * 1 * 0.12) - 1
+    populer_movie_list = []
+    movies, x = get_new_tv_shows(1)
+    populer_movie_list.extend(movies)
+    movies, x = get_new_tv_shows(2)
+    populer_movie_list.extend(movies)
+    print("p tv",len(populer_movie_list))
+    count = 0
+    for widget in widget_list:
+        widget[1].config(text=populer_movie_list[count]["title"])
+        imagen(poster_image_get(populer_movie_list[count]["imdb_id"]), PY_width, PX_hight, widget[0])
+        count += 1
+
+def populer_moves(widget_list, PX_hight, PY_width):
+        populer_movie_list = []
+        movies, x = get_new_movies(1)
+        populer_movie_list.extend(movies)
+        movies, x = get_new_movies(2)
+        populer_movie_list.extend(movies)
+        print("p movies", len(populer_movie_list))
+        count = 0
+        for widget in widget_list:
+            widget[1].config(text=populer_movie_list[count]["title"])
+            imagen(poster_image_get(populer_movie_list[count]["imdb_id"]), PY_width, PX_hight, widget[0])
+
+            count += 1
 # ---------------------------------------------------------------------------------------------------------------
 
 def slide_show(widget):
@@ -897,26 +974,23 @@ def slide_show(widget):
             x += 1
         root.after(7000, lambda: Home_page_Background_changer(list, x=x))
 
-    movies, count = get_new_movies(2)
+    movies, num = get_new_movies(2)
+    print(num)
     list = []
-    count = 0
-    for movie in movies:
-            if count > 4:
-              break
-            print(count)
-            f1 = tk.Button(widget,  borderwidth=0, border=0, text=movie['title'], fg='white', activebackground='black', bg='black') #, command=lambda id=movie[count]['imdb_id']: selected_movie_detail(id))
-            f1.place(relx=0, rely=0, relheight=1, relwidth=1)
-            print(poster_image_get(movie['imdb_id']))
-            #imagen(poster_image_get(movie['imdb_id']), screen_height, screen_width, f1)
-            imagen_fade(movie['imdb_id'], screen_height, screen_width, f1)
-            count += 1
-            list.append(f1)
+    if num != 0:
+        count = 0
+        for movie in movies:
+                if count > 4:
+                  break
+                print(count)
+                f1 = tk.Button(widget,  borderwidth=0, border=0, text=movie['title'], fg='white', activebackground='black', bg='black') #, command=lambda id=movie[count]['imdb_id']: selected_movie_detail(id))
+                f1.place(relx=0, rely=0, relheight=1, relwidth=1)
+                print(poster_image_get(movie['imdb_id']))
+                imagen_fade(movie['imdb_id'], screen_height, screen_width, f1)
+                count += 1
+                list.append(f1)
 
-
-
-
-
-    Home_page_Background_changer(list)
+        Home_page_Background_changer(list)
 
 
 def Home_Page(widget):
@@ -925,6 +999,8 @@ def Home_Page(widget):
         FRAME_1.tkraise()
         widget_scroll_bind(FRAME_1_canvas)
         Home_frame_hight = screen_height * 5
+        PX_hight = int(Home_frame_hight * 0.17 * 0.31) - 1
+        PY_width = int(screen_width * 1 * 0.12) - 1
         # background image ======================================================================
         Home_label = tk.Label(widget, bg='blue')
         Home_label.place(relx=0, rely=0, relwidth=1, relheight=1)
@@ -950,34 +1026,25 @@ def Home_Page(widget):
         change_bg_OnHover(Search_box, '#010127', 'black')
         Search_box.bind("<Return>", lambda event: search_movies_request(top_frame_main, Search_box, widget, 1,  event))
 
-        threading.Thread(target=slide_show, args=(Suggestion,)).start()
+        #threading.Thread(target=slide_show, args=(Suggestion,)).start()
 
         # Section 2 ==================================================================================================================================================
 
         Suggestion1 = tk.Frame(Home_frame, borderwidth=0, border=0, bg='black')
         Suggestion1.place(relx=0, rely=0.151, relheight=0.17, relwidth=1)
-
         recomendation_tubs_bg_color = 'black'
         hover_color = 'lightblue'
-
-
-
-
-
-        movies_widget = []
-
-
 
         p_ms = tk.Button(Suggestion1, font=('Georgia', 16), justify='center', anchor=tk.W, activeforeground='lightblue', fg='gray', text=' ⍚ POPULAR MOVIES', borderwidth=0, border=0, bg='black', command=lambda: Search_result(top_frame_main, populer_movie_list))
         p_ms.place(relx=0, rely=0, relheight=0.04, relwidth=1)
         change_fg_OnHover(p_ms, 'lightblue', 'gray')
-
 
         column = 0
         row = 0
         x_pos = 0.005
         y_pos = 0.05
         track = 0
+        movies_widget = []
         while row < 4: # 3
             while column < 8: # 8
 
@@ -985,7 +1052,6 @@ def Home_Page(widget):
                 label1.place(relx=x_pos, rely=y_pos, relheight=0.31, relwidth=0.12)
                 r1_bt1 = tk.Button(label1, bg='#1A2421', borderwidth=0, justify=tk.CENTER,  activebackground=hover_color, border=0) #, command=lambda id = populer_movie_list[track][3]: selected_movie_detail(id))
                 r1_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
-                #imagen(populer_movie_list[track][2], PY_width, PX_hight, r1_bt1)
                 change_bg_OnHover(r1_bt1, hover_color, '#1A2421')
                 r1_bt2 = tk.Button(label1, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg='gray',  font=('Calibri', 11))#, command=lambda id=populer_movie_list[track]: selected_movie_detail(id))
                 r1_bt2.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
@@ -1000,23 +1066,9 @@ def Home_Page(widget):
             y_pos += 0.32
             row += 1
 
-        def populer_moves(widget_list):
-            PX_hight = int(Home_frame_hight * 0.17 * 0.31) - 1
-            PY_width = int(screen_width * 1 * 0.12) - 1
-            populer_movie_list = []
-            movies, count = get_new_movies()
-            populer_movie_list.extend(movies)
-            populer_movie_list.extend(movies)
-            count = 0
-            for widget in widget_list:
-                print(widget)
-                print(populer_movie_list[0])
-                widget[1].config(text=populer_movie_list[count]["title"])
-                imagen(poster_image_get(populer_movie_list[count]["imdb_id"]), PY_width, PX_hight, widget[0])
 
-                count += 1
 
-        threading.Thread(target=populer_moves, args=(movies_widget,)).start()
+        #threading.Thread(target=populer_moves, args=(movies_widget,PX_hight, PY_width)).start()
 
 
 
@@ -1045,19 +1097,19 @@ def Home_Page(widget):
         x_pos = 0.005
         y_pos = 0.05
         track = 0
+        tvs_widget = []
         while row < 4:  # 3 rows
             while column < 8:  # 8 columns
 
                 label3 = tk.Label(Suggestion2, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
                 label3.place(relx=x_pos, rely=y_pos, relheight=0.31, relwidth=0.12)
-                r1_bt3 = tk.Button(label3, bg='#1A2421', borderwidth=0, justify=tk.CENTER,  activebackground=hover_color, border=0, command=lambda id = populer_series_list[track][3]: selected_movie_detail(id))
+                r1_bt3 = tk.Button(label3, bg='#1A2421', borderwidth=0, justify=tk.CENTER,  activebackground=hover_color, border=0)#, command=lambda id = populer_series_list[track][3]: selected_movie_detail(id))
                 r1_bt3.place(relx=0, rely=0, relwidth=1, relheight=1)
-                imagen(populer_series_list[track][2], PY_width, PX_hight, r1_bt3)
                 change_bg_OnHover(r1_bt3, hover_color, '#1A2421')
-                r1_bt3 = tk.Button(label3, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, text=f'{populer_series_list[track][0]}', activeforeground=hover_color, activebackground='#1A2421', fg='gray',  font=('Calibri', 11), command=lambda id= populer_movie_list[track]: selected_movie_detail(id))
-                r1_bt3.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
-
-                change_fg_OnHover(r1_bt3, hover_color, 'gray')
+                r1_bt4 = tk.Button(label3, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, text='', activeforeground=hover_color, activebackground='#1A2421', fg='gray',  font=('Calibri', 11)) #, command=lambda id= populer_movie_list[track]: selected_movie_detail(id))
+                r1_bt4.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
+                tvs_widget.append((r1_bt3, r1_bt4))
+                change_fg_OnHover(r1_bt4, hover_color, 'gray')
                 x_pos += 0.125
                 column += 1
                 track += 1
@@ -1066,15 +1118,17 @@ def Home_Page(widget):
             x_pos = 0.005
             y_pos += 0.32
             row += 1
-        return
-        # imagen("Assets/12.jpg", screen_width, Home_frame_hight, Home_label)
-        """
-        video_box = tk.Frame(Home_frame, bg='black')
-        frame2 = WebView2(video_box, 500, 500)
-        frame2.load_url(f'https://vidsrc.to/embed/movie/tt{10638522}')  # https://vidsrc.to/embed/movie/tt10638522
-        frame2.pack(side='left', padx=0, fill='both', expand=True)
-        video_box.place(relx=0, rely=0.5, relheight=0.17, relwidth=1)
-        """
+
+        imagen("Assets/12.jpg", screen_width, Home_frame_hight, Home_label)
+        threading.Thread(target=slide_show, args=(Suggestion,)).start()
+        threading.Thread(target=populer_moves, args=(movies_widget, PX_hight, PY_width)).start()
+        threading.Thread(target=populer_new_tv_shows, args=(tvs_widget, PX_hight, PY_width)).start()
+
+
+
+
+
+
 
 # ================= Main Definition ===================================================================================================================
 # =====================================================================================================================================================
@@ -1115,7 +1169,7 @@ def main():
 
 
 
-    #dark_title_bar(root)
+    dark_title_bar(root)
 
 
 
