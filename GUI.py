@@ -953,11 +953,7 @@ def Home_Page(widget):
         recomendation_tubs_bg_color = 'black'
         hover_color = 'lightblue'
 
-        #movies ,count = get_new_movies()
-        #populer_movie_list = []
 
-        #populer_movie_list.extend(movies)
-        #populer_movie_list.extend(movies)
 
 
 
@@ -997,7 +993,15 @@ def Home_Page(widget):
             x_pos = 0.005
             y_pos += 0.32
             row += 1
-        def populer_moves(movie_list):
+        def populer_moves(widget_list):
+            populer_movie_list = []
+            movies, count = get_new_movies()
+            populer_movie_list.extend(movies)
+            populer_movie_list.extend(movies)
+            for widget in widget_list:
+                # imagen(populer_movie_list[track][2], PY_width, PX_hight, r1_bt1)
+                widget[0]
+
 
         return
         #imagen("Assets/12.jpg", screen_width, Home_frame_hight, Home_label)
