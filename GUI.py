@@ -166,6 +166,7 @@ def imagen(image_url, screen_width, screen_height, widget):
     image_thread = threading.Thread(target=load_image)  # Create a thread to load the image asynchronously
     image_thread.start()
 
+
 def imagen_2(image_path, screen_width, screen_height, widget): # image processing
     def load_image():
         try:
@@ -185,6 +186,7 @@ def imagen_2(image_path, screen_width, screen_height, widget): # image processin
 
     image_thread = threading.Thread(target=load_image)  # Create a thread to load the image asynchronously
     image_thread.start()
+
 
 def poster_image_get(movie_id):
     try:
@@ -252,7 +254,6 @@ def imagen_fade(poster_url, screen_height, screen_width, widget):
                 time.sleep(5)
 
     threading.Thread(target=load_img_url).start()  # Create a thread
-
 
 
 def change_color(main_widget, widget):
@@ -899,7 +900,6 @@ def get_new_movies (page = 1):
         length = len(data['result']['items'])
         movies = data['result']['items']
     return movies, length
-
 
 
 def get_added_movies (page = 1):
