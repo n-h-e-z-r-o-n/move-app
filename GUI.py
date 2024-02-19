@@ -1034,7 +1034,7 @@ def Home_Page(widget):
 
         # Section 1 ===============================================================================
 
-        Suggestion = tk.Frame(widget,  borderwidth=0, border=0, bg='blue')
+        Suggestion = tk.Frame(widget,  borderwidth=0, border=0, bg='')
         Suggestion.place(relx=0, rely=0, relheight=0.15, relwidth=1)
 
         back_tracking_widget = tk.Button(widget, font=('Georgia', 20), justify='center', fg='gray', text='⤽', activebackground='black', activeforeground='yellow', borderwidth=0, border=0, bg='black', command=previous_back_track_page_display)
@@ -1057,7 +1057,7 @@ def Home_Page(widget):
 
         # Section 2 ==================================================================================================================================================
 
-        Suggestion1 = tk.Frame(widget, borderwidth=0, border=0, bg='black')
+        Suggestion1 = tk.Frame(widget, borderwidth=0, border=0, bg='')
         Suggestion1.place(relx=0, rely=0.151, relheight=0.17, relwidth=1)
         recomendation_tubs_bg_color = 'black'
         hover_color = 'lightblue'
