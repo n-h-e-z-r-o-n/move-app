@@ -954,7 +954,7 @@ def populer_new_tv_shows(widget_list, PX_hight, PY_width):
     movies, x = get_new_tv_shows(2)
     populer_movie_list.extend(movies)
     print("p tv",len(populer_movie_list))
-    
+    print("p tv widget", len(widget_list))
     count = 0
     for widget in widget_list:
         print(count, ' -- ', populer_movie_list[count]["title"])
@@ -1072,7 +1072,7 @@ def Home_Page(widget):
         y_pos = 0.05
         track = 0
         movies_widget = []
-        while row < 4: # 3
+        while row < 2: # 3
             while column < 8: # 8
 
                 label1 = tk.Frame(Suggestion1, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
