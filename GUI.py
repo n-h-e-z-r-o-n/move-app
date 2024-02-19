@@ -525,11 +525,12 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     r6_bt2.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
     change_fg_OnHover(r6_bt2, hover_color, text_color)
     """
-
+    """
     video_box = tk.Frame(large_frame, bg='black')
     frame2 = WebView2(video_box, 500, 500)
     frame2.load_url(f'https://vidsrc.to/embed/movie/tt{movie_id}')  # https://vidsrc.to/embed/movie/tt{movie_id}
     frame2.place(relheight=1, relwidth=1, relx=0, rely=0)
+    """
 
 
 def Animation(wid):
