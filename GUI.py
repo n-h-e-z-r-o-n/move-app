@@ -965,8 +965,7 @@ def Home_Page(widget):
         p_ms.place(relx=0, rely=0, relheight=0.04, relwidth=1)
         change_fg_OnHover(p_ms, 'lightblue', 'gray')
 
-        PX_hight = int(Home_frame_hight * 0.17 * 0.31) - 1
-        PY_width = int(screen_width * 1 * 0.12) - 1
+
         column = 0
         row = 0
         x_pos = 0.005
@@ -994,13 +993,17 @@ def Home_Page(widget):
             y_pos += 0.32
             row += 1
         def populer_moves(widget_list):
+            PX_hight = int(Home_frame_hight * 0.17 * 0.31) - 1
+            PY_width = int(screen_width * 1 * 0.12) - 1
             populer_movie_list = []
             movies, count = get_new_movies()
             populer_movie_list.extend(movies)
             populer_movie_list.extend(movies)
             for widget in widget_list:
-                imagen(populer_movie_list[track][2], PY_width, PX_hight, widget[0])
+                print(widget)
+                #imagen(populer_movie_list[track][2], PY_width, PX_hight, widget[0])
 
+        threading.Thread(target=populer_moves, args=(movies_widget,)).start()
 
 
         return
