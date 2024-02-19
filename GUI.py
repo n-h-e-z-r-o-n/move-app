@@ -333,11 +333,8 @@ def toggle_fullscreen(main_widget, widget, original_x, original_y, original_widt
 def selected_movie_detail(movie_id):
     global top_frame_main
 
-    watch_page(top_frame_main, movie_id, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url, r1_title, r1_year, recomednation_1_poster, r2_title, r2_year, recomednation_2_poster, r3_title, r3_year, recomednation_3_poster, r4_title, r4_year, recomednation_4_poster, r5_title, r5_year, recomednation_5_poster, r6_title, r6_year, recomednation_6_poster, r1_id, r2_id, r3_id, r4_id, r5_id, r6_id)
+    #watch_page(top_frame_main, movie_id, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url, r1_title, r1_year, recomednation_1_poster, r2_title, r2_year, recomednation_2_poster, r3_title, r3_year, recomednation_3_poster, r4_title, r4_year, recomednation_4_poster, r5_title, r5_year, recomednation_5_poster, r6_title, r6_year, recomednation_6_poster, r1_id, r2_id, r3_id, r4_id, r5_id, r6_id)
 
-    get_specific_movie_details()
-    #t = threading.Thread(target=get_specific_movie_details)
-    #t.start()
 
 
 def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url, r1_title, r1_year, recomednation_1_poster, r2_title, r2_year, recomednation_2_poster, r3_title, r3_year, recomednation_3_poster, r4_title, r4_year, recomednation_4_poster, r5_title, r5_year, recomednation_5_poster, r6_title, r6_year, recomednation_6_poster, r1_id, r2_id, r3_id, r4_id, r5_id, r6_id):
@@ -1014,16 +1011,13 @@ def main():
     Home_frame = tk.Frame(FRAME_1_screen, bg='', width=screen_width, height=Home_frame_hight)
     Home_frame.pack(fill=tk.BOTH, expand=True)
 
-
-
-
     widget_track_position.append(Home_frame)
     page_count += 1
 
-    """
+    
     FRAME_2 = tk.Frame(root, bg='black')
     FRAME_2.place(relwidth=1, relheight=1, relx=0, rely=0)
-    canvas_FRAME_2 = tk.Canvas(FRAME_2, , borderwidth=0, highlightthickness=0) # Create a Canvas widget to hold the frame and enable scrolling
+    canvas_FRAME_2 = tk.Canvas(FRAME_2, borderwidth=0, highlightthickness=0) # Create a Canvas widget to hold the frame and enable scrolling
     canvas_FRAME_2.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
     canvas_FRAME_2_scrollbar = tk.Scrollbar(root, command=canvas_FRAME_2.yview) # Create a Scrollbar and connect it to the Canvas
     canvas_FRAME_2.config(yscrollcommand=canvas_FRAME_2_scrollbar.set)
@@ -1034,12 +1028,12 @@ def main():
     main_frame = tk.Frame(canvas_FRAME_2_frame, bg='black', width=screen_width, height=large_frame_size)
     main_frame.pack(fill=tk.BOTH, expand=True)
     top_frame_main = main_frame
-    """
+
 
 
     #Home_Page(Home_frame)
-    selected_movie_detail(10638522)
-    #watch_page(main_frame, '10638522', 'Talk to Me', 7.2, 'movie', 'Australia. United Kingdom. ', 'Horror, Thriller, ', 2022, 'Causeway Films, Head Gear Films, Metrol Technology, Screen Australia, Talk to Me Holdings, ', 'Ari McCarthy, Hamish Phillips, Kit Erhart-Bruce, Sarah Brokensha, Jayden Davison, Sunny Johnson, Sophie Wilde, Marcus Johnson, Kidaan Zelleke, James Oliver, Joe Bird, Jett Gazley, Alexandra Jensen, Dog, Helene Philippou, ', 'When a group of friends discover how to conjure spirits using an embalmed hand, they become hooked on the new thrill, until one of them goes too far and unleashes terrifying supernatural forces.', 'https://m.media-amazon.com/images/M/MV5BMmY5ZGE4NmUtZWI4OS00ZWJmLWFjMzgtOWUyZjI4NDg3Y2E5XkEyXkFqcGdeQXVyMTkxNjUyNQ@@.jpg', 'Talk to Me', 2023, None, 'Talk to Me', 2007, 'https://m.media-amazon.com/images/M/MV5BMzgyMTMxNjg4OF5BMl5BanBnXkFtZTYwMDkwNDc3.jpg', 'Talk to Me, Sweet Darling', 2020, 'https://m.media-amazon.com/images/M/MV5BMDY5ODFmOTktOGYxOC00MGQ0LTk4NmYtYzQ4MDc0NWQzOWViXkEyXkFqcGdeQXVyNTgyMTU3Mjc@.jpg', 'Talk to Me', 2023, 'https://m.media-amazon.com/images/M/MV5BZDg2ZTRjYzMtZDJiYi00MDYxLWFlMDctZWQ4NDI3NTA2NWI1XkEyXkFqcGdeQXVyNjEzNjUxNzI@.jpg', 'Talk to Me', 2007, 'https://m.media-amazon.com/images/M/MV5BMTQ2ODQ5NDAtMjg3Ni00MGFmLWEzMmMtMGFjNjg4MTM4Yjg3XkEyXkFqcGdeQXVyMjExMjk0ODk@.jpg', 'They Talk to Me', 2021, 'https://m.media-amazon.com/images/M/MV5BOGY1YjIxNGUtYjEzYy00YTZmLTk2MTYtMjg0YzNhOTM1OTg5XkEyXkFqcGdeQXVyNTY3NTY1Nzg@.jpg', '27173489', '0796368', '13863990', '28547237', '0941650', '13894060')
+    #selected_movie_detail(10638522)
+    watch_page(main_frame, '10638522', 'Talk to Me', 7.2, 'movie', 'Australia. United Kingdom. ', 'Horror, Thriller, ', 2022, 'Causeway Films, Head Gear Films, Metrol Technology, Screen Australia, Talk to Me Holdings, ', 'Ari McCarthy, Hamish Phillips, Kit Erhart-Bruce, Sarah Brokensha, Jayden Davison, Sunny Johnson, Sophie Wilde, Marcus Johnson, Kidaan Zelleke, James Oliver, Joe Bird, Jett Gazley, Alexandra Jensen, Dog, Helene Philippou, ', 'When a group of friends discover how to conjure spirits using an embalmed hand, they become hooked on the new thrill, until one of them goes too far and unleashes terrifying supernatural forces.', 'https://m.media-amazon.com/images/M/MV5BMmY5ZGE4NmUtZWI4OS00ZWJmLWFjMzgtOWUyZjI4NDg3Y2E5XkEyXkFqcGdeQXVyMTkxNjUyNQ@@.jpg', 'Talk to Me', 2023, None, 'Talk to Me', 2007, 'https://m.media-amazon.com/images/M/MV5BMzgyMTMxNjg4OF5BMl5BanBnXkFtZTYwMDkwNDc3.jpg', 'Talk to Me, Sweet Darling', 2020, 'https://m.media-amazon.com/images/M/MV5BMDY5ODFmOTktOGYxOC00MGQ0LTk4NmYtYzQ4MDc0NWQzOWViXkEyXkFqcGdeQXVyNTgyMTU3Mjc@.jpg', 'Talk to Me', 2023, 'https://m.media-amazon.com/images/M/MV5BZDg2ZTRjYzMtZDJiYi00MDYxLWFlMDctZWQ4NDI3NTA2NWI1XkEyXkFqcGdeQXVyNjEzNjUxNzI@.jpg', 'Talk to Me', 2007, 'https://m.media-amazon.com/images/M/MV5BMTQ2ODQ5NDAtMjg3Ni00MGFmLWEzMmMtMGFjNjg4MTM4Yjg3XkEyXkFqcGdeQXVyMjExMjk0ODk@.jpg', 'They Talk to Me', 2021, 'https://m.media-amazon.com/images/M/MV5BOGY1YjIxNGUtYjEzYy00YTZmLTk2MTYtMjg0YzNhOTM1OTg5XkEyXkFqcGdeQXVyNTY3NTY1Nzg@.jpg', '27173489', '0796368', '13863990', '28547237', '0941650', '13894060')
 
     root.mainloop()
 
