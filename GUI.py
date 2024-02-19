@@ -954,6 +954,7 @@ def populer_new_tv_shows(widget_list, PX_hight, PY_width):
     movies, x = get_new_tv_shows(2)
     populer_movie_list.extend(movies)
     print("p tv",len(populer_movie_list))
+    
     count = 0
     for widget in widget_list:
         print(count, ' -- ', populer_movie_list[count]["title"])
