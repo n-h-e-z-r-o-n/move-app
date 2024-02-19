@@ -137,14 +137,13 @@ def on_mouse_wheel(widget, event):  # Function to handle mouse wheel scrolling
     if event.delta < 0:
         #widget.yview_scroll(1, "units")
         current_scroll = float(widget.yview()[0])
-        new_scroll = max(0.0, min(1.0, current_scroll + 0.01))
+        new_scroll = max(0.0, min(1.0, current_scroll + 0.03))
         widget.yview_moveto(new_scroll)
-
 
     else:
         #widget.yview_scroll(-1, "units")
         current_scroll = float(widget.yview()[0])
-        new_scroll = max(0.0, min(1.0, current_scroll + (-0.01)))
+        new_scroll = max(0.0, min(1.0, current_scroll + (-0.03)))
         widget.yview_moveto(new_scroll)
 
 
