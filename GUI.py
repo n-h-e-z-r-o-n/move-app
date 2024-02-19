@@ -529,7 +529,7 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     frame2 = WebView2(video_box, 500, 500)
     frame2.load_url(f'https://vidsrc.to/embed/tv/tt0944947')  # https://vidsrc.to/embed/movie/tt{movie_id}
     frame2.place(relheight=1, relwidth=1, relx=0, rely=0)
-    frame2.bind("<Double-Button-1>", print("double clicked"))
+    video_box.bind("<Double-Button-1>", print("double clicked"))
 
 
 
