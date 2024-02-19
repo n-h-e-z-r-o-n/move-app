@@ -6,12 +6,12 @@ movie_name = movies['name']
 movie_type = movies['type']
 movie_genre = movies['genre']
 movie_datePublished = movies['datePublished']
-movie_ratingValue = movies['ratingValue']
+movie_ratingValue = movies['rating']['ratingValue']
 movie_poster_url = movies['poster']
 movie_actor = movies['actor']
 movie_description = movies['description']
 
 
-print()
+print(movie_datePublished)
 
 
