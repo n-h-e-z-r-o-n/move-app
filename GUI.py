@@ -997,6 +997,7 @@ def Home_Page(widget):
             x_pos = 0.005
             y_pos += 0.32
             row += 1
+        def populer_moves(movie_list):
 
         return
         #imagen("Assets/12.jpg", screen_width, Home_frame_hight, Home_label)
