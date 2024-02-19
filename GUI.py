@@ -995,6 +995,7 @@ def Home_Page(widget):
             x_pos = 0.005
             y_pos += 0.32
             row += 1
+
         def populer_moves(widget_list):
             PX_hight = int(Home_frame_hight * 0.17 * 0.31) - 1
             PY_width = int(screen_width * 1 * 0.12) - 1
