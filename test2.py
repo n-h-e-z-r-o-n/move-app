@@ -1,6 +1,11 @@
 from imdbmovies import IMDB
 imdb_other = IMDB()
+
 print(dir(imdb_other))
+
+print(imdb_other.get_popular())
+
+
 def Selected(movie_id):
     imdb_other = IMDB()
     movies = imdb_other.get_by_id("tt0944947")
