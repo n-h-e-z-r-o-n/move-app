@@ -46,6 +46,9 @@ class WebView2(Frame):
     def load_url(self,url):
         self.web_view.load_url(url)
 
+    def on_double_click(event):
+        print("Double-clicked")
+
 def on_double_click(event):
     print("Double-clicked")
 def main():
@@ -59,7 +62,7 @@ def main():
     frame2.place(relheight=1, relwidth=1, relx=0, rely=0)
     print(frame2)
     frame2.bind("<Double-Button-1>", on_double_click)
-    frame2.
+    frame2.closed += on_closed
     root.mainloop()
 
 if __name__ == "__main__":
