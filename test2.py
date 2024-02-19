@@ -3,7 +3,7 @@ imdb_other = IMDB()
 
 print(dir(imdb_other))
 
-print(imdb_other.popular_tv(genre='Action'))
+print(imdb_other.)
 help(imdb_other)
 
 def Selected(movie_id):
