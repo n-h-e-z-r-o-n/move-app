@@ -1018,7 +1018,7 @@ def Home_Page(widget):
         return
         #imagen("Assets/12.jpg", screen_width, Home_frame_hight, Home_label)
 
-        """
+
         # Section 3 ==========================================================================================================================================================
 
         Suggestion2 = tk.Frame(Home_frame, borderwidth=0, border=0, bg='black')
@@ -1063,7 +1063,7 @@ def Home_Page(widget):
             x_pos = 0.005
             y_pos += 0.32
             row += 1
-        """
+       
         """
         video_box = tk.Frame(Home_frame, bg='black')
         frame2 = WebView2(video_box, 500, 500)
