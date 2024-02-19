@@ -142,26 +142,29 @@ def widget_scroll_bind(widget):
     widget.bind_all("<MouseWheel>", lambda e: on_mouse_wheel(widget, e))
 
 
-def imagen(image_path, screen_width, screen_height, widget): # image processing
+def imagen(image_url, screen_width, screen_height, widget):
     def load_image():
-
+        retry = 0
+        while retry < 6:
             try:
-                image = Image.open(image_path)
-            except Exception as e:
-                try:
-                    image = Image.open(io.BytesIO(image_path))
-                except Exception as e:
-                    print(e)
-                    binary_data = base64.b64decode(image_path)  # Decode the string
-                    image = Image.open(io.BytesIO(binary_data))
+                if image_url is None:
+                    image = Image.open("./Default.png")
+                else:
+                    response = requests.get(image_url, timeout=20)
+                    image_data = response.content
+                    image = Image.open(BytesIO(image_data))
 
-            image = image.resize((screen_width, screen_height), Image.LANCZOS)
-            photo = ImageTk.PhotoImage(image)
+                image = image.resize((screen_width, screen_height), Image.LANCZOS)
+                photo = ImageTk.PhotoImage(image)
+                widget.config(image=photo)
+                widget.image = photo  # Keep a reference to the PhotoImage to prevent it from being garbage collected
+                retry = 7 # End  while looop
+            except :
+                retry += 1
+                time.sleep(5)
 
-            widget.config(image=photo)
-            widget.image = photo  # Keep a reference to the PhotoImage to prevent it from being garbage collected
-
-    threading.Thread(target=load_image).start()  # Create a thread to load the image asynchronously
+    image_thread = threading.Thread(target=load_image)  # Create a thread to load the image asynchronously
+    image_thread.start()
 
 
 
@@ -1001,7 +1004,7 @@ def Home_Page(widget):
             populer_movie_list.extend(movies)
             for widget in widget_list:
                 print(widget)
-                #imagen(populer_movie_list[track][2], PY_width, PX_hight, widget[0])
+                imagen(populer_movie_list[track][2], PY_width, PX_hight, widget[0])
 
         threading.Thread(target=populer_moves, args=(movies_widget,)).start()
 
