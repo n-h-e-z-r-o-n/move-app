@@ -129,12 +129,24 @@ def change_fg_OnHover(widget, colorOnHover, colorOnLeave):  # Color change fg on
     widget.bind("<Leave>", func=lambda e: widget.config(fg=colorOnLeave))
 
 
+def smooth_scroll(widget, increment):
+    # Get the current scroll position
+    current_scroll = float(widget.yview()[0])
+
+    # Calculate the new scroll position
+    new_scroll = max(0.0, min(1.0, current_scroll + increment))
+    print("new_scroll",new_scroll)
+    # Set the new scroll position
+    widget.yview_moveto(new_scroll)
+
 def on_mouse_wheel(widget, event):  # Function to handle mouse wheel scrolling
     # Scroll the canvas up or down based on the mouse wheel direction
     if event.delta < 0:
-        widget.yview_scroll(1, "units")
+        #widget.yview_scroll(1, "units")
+        smooth_scroll(widget, 0.1)
     else:
-        widget.yview_scroll(-1, "units")
+        #widget.yview_scroll(-1, "units")
+        smooth_scroll(widget, -0.1)
 
 
 def widget_scroll_bind(widget):
