@@ -4,7 +4,7 @@ imdb_other = IMDB()
 print(dir(imdb_other))
 
 print(imdb_other.popular_movies())
-help(imdb_other)
+
 
 def Selected(movie_id):
     imdb_other = IMDB()
