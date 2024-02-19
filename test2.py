@@ -53,7 +53,7 @@ def main():
     root.geometry("300x200")
 
     frame = tk.Frame(root, bg="blue", width=200, height=100)
-    frame.pack(padx=50, pady=50)
+    frame.pack(padx=0, pady=0, fill=tk.BOTH, expand=True)
     frame2 = WebView2(frame, 500, 500)
     frame2.load_url(f'https://vidsrc.to/embed/tv/tt0944947')  # https://vidsrc.to/embed/movie/tt{movie_id}
     frame2.place(relheight=1, relwidth=1, relx=0, rely=0)
