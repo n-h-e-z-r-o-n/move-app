@@ -870,6 +870,9 @@ def get_new_movies (page = 1):
     return movies, length
 
 
+
+# ---------------------------------------------------------------------------------------------------------------
+
 def slide_show(widget):
     global screen_height, screen_width, root
     def Home_page_Background_changer(list, x=0):

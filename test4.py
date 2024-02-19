@@ -6,7 +6,7 @@ def get_new_movies (page = 1):
     length = 0
     if r.status_code == 200:
         data = r.json()
-        length = data['result']['items']
+        length = len(data['result']['items'])
         movies = data['result']['items']
     return movies, length
 
@@ -20,7 +20,7 @@ def get_added_movies (page = 1):
     length = 0
     if r.status_code == 200:
         data = r.json()
-        length = data['result']['items']
+        length = len(data['result']['items'])
         movies = data['result']['items']
     return movies, length
 
@@ -36,7 +36,7 @@ def get_new_tv_shows (page = 1):
     length = 0
     if r.status_code == 200:
         data = r.json()
-        length = data['result']['items']
+        length = len(data['result']['items'])
         movies = data['result']['items']
     return movies, length
 
@@ -48,7 +48,7 @@ def get_added_tv_shows (page = 1):
     length = 0
     if r.status_code == 200:
         data = r.json()
-        length = data['result']['items']
+        length = len(data['result']['items'])
         movies = data['result']['items']
     return movies, length
 
@@ -59,7 +59,7 @@ def get_added_episode(page = 1):
     length = 0
     if r.status_code == 200:
         data = r.json()
-        length = data['result']['items']
+        length = len(data['result']['items'])]
         movies = data['result']['items']
     return movies, length
 
