@@ -441,6 +441,7 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     image_label.place(relx=0, rely=0.0, relheight=0.5, relwidth=1)
     #imagen_fade(movie_id, screen_height, screen_width, image_label)
     imagen(movie_poster_url, screen_height, screen_width, image_label)
+    imagen_fade(movie['imdb_id'], screen_height, screen_width, f1)
     change_fg_OnHover(image_label, 'Blue', 'white')
 
     back_tracking_widget = tk.Button(large_frame, font=('Georgia', 20), justify='center', fg='gray', text='⤽', activebackground='black', activeforeground='yellow', borderwidth=0, border=0, bg='black', command=previous_back_track_page_display)
@@ -1050,8 +1051,8 @@ def main():
 
 
 
-    Home_Page(Home_frame)
-    #selected_movie_detail(10638522)
+    #Home_Page(Home_frame)
+    selected_movie_detail(10638522)
     #watch_page(main_frame, '10638522', 'Talk to Me', 7.2, 'movie', 'Australia. United Kingdom. ', 'Horror, Thriller, ', 2022, 'Causeway Films, Head Gear Films, Metrol Technology, Screen Australia, Talk to Me Holdings, ', 'Ari McCarthy, Hamish Phillips, Kit Erhart-Bruce, Sarah Brokensha, Jayden Davison, Sunny Johnson, Sophie Wilde, Marcus Johnson, Kidaan Zelleke, James Oliver, Joe Bird, Jett Gazley, Alexandra Jensen, Dog, Helene Philippou, ', 'When a group of friends discover how to conjure spirits using an embalmed hand, they become hooked on the new thrill, until one of them goes too far and unleashes terrifying supernatural forces.', 'https://m.media-amazon.com/images/M/MV5BMmY5ZGE4NmUtZWI4OS00ZWJmLWFjMzgtOWUyZjI4NDg3Y2E5XkEyXkFqcGdeQXVyMTkxNjUyNQ@@.jpg', 'Talk to Me', 2023, None, 'Talk to Me', 2007, 'https://m.media-amazon.com/images/M/MV5BMzgyMTMxNjg4OF5BMl5BanBnXkFtZTYwMDkwNDc3.jpg', 'Talk to Me, Sweet Darling', 2020, 'https://m.media-amazon.com/images/M/MV5BMDY5ODFmOTktOGYxOC00MGQ0LTk4NmYtYzQ4MDc0NWQzOWViXkEyXkFqcGdeQXVyNTgyMTU3Mjc@.jpg', 'Talk to Me', 2023, 'https://m.media-amazon.com/images/M/MV5BZDg2ZTRjYzMtZDJiYi00MDYxLWFlMDctZWQ4NDI3NTA2NWI1XkEyXkFqcGdeQXVyNjEzNjUxNzI@.jpg', 'Talk to Me', 2007, 'https://m.media-amazon.com/images/M/MV5BMTQ2ODQ5NDAtMjg3Ni00MGFmLWEzMmMtMGFjNjg4MTM4Yjg3XkEyXkFqcGdeQXVyMjExMjk0ODk@.jpg', 'They Talk to Me', 2021, 'https://m.media-amazon.com/images/M/MV5BOGY1YjIxNGUtYjEzYy00YTZmLTk2MTYtMjg0YzNhOTM1OTg5XkEyXkFqcGdeQXVyNTY3NTY1Nzg@.jpg', '27173489', '0796368', '13863990', '28547237', '0941650', '13894060')
 
     root.mainloop()
