@@ -2,17 +2,18 @@ import requests
 
 
 def get_new_movies (page = 1):
-    r = requests.get(f'https://vidsrc.to/vapi/movie/new/{page}')  # latest movies
-    print(r.status_code)
-    movies = None
-    length = 0
-    if r.status_code == 200:
-        data = r.json()
-        length = data['result']['items']
-        movies = data['result']['items']
-    return movies, length
+    movies = []
+
+    while page < 5:
+        r = requests.get(f'https://vidsrc.to/vapi/movie/new/{page}')  # latest movies
+        print(r.status_code)
+        if r.status_code == 200:
+            data = r.json()
+            movies.extend(data['result']['items'])
+        page += 1
+    return movies, len(movies)
 
 movies, count = get_new_movies()
 print(movies)
-print(movies[0]['imdb_id'])
+print(count)
 
