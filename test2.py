@@ -58,9 +58,10 @@ def main():
     frame2.load_url(f'https://vidsrc.to/embed/tv/tt0944947')  # https://vidsrc.to/embed/movie/tt{movie_id}
     frame2.place(relheight=1, relwidth=1, relx=0, rely=0)
     print(frame2)
-    frame.bind("<Double-Button-1>", on_double_click)
-
+    frame2.bind("<Double-Button-1>", on_double_click)
+    frame2.
     root.mainloop()
+
 if __name__ == "__main__":
     #main()
     #"""
