@@ -1014,7 +1014,7 @@ def main():
     widget_track_position.append(Home_frame)
     page_count += 1
 
-    
+
     FRAME_2 = tk.Frame(root, bg='black')
     FRAME_2.place(relwidth=1, relheight=1, relx=0, rely=0)
     canvas_FRAME_2 = tk.Canvas(FRAME_2, borderwidth=0, highlightthickness=0) # Create a Canvas widget to hold the frame and enable scrolling
