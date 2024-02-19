@@ -9,6 +9,8 @@ movie_datePublished = movies['datePublished']
 movie_ratingValue = movies['ratingValue']
 movie_poster_url = movies['poster']
 movie_actor = movies['actor']
+movie_description = movies['description']
+
 
 
 
