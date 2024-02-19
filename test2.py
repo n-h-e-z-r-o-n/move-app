@@ -1,25 +1,17 @@
-from imdbmovies import IMDB
-imdb_other = IMDB()
+import tkinter as tk
 
-print(dir(imdb_other))
+def on_double_click(event):
+    print("Double-clicked")
 
-print(imdb_other.popular_movies())
+root = tk.Tk()
+root.geometry("300x200")
 
+frame = tk.Frame(root, bg="lightgray", width=200, height=100)
+frame.pack(padx=50, pady=50)
 
-def Selected(movie_id):
-    imdb_other = IMDB()
-    movies = imdb_other.get_by_id("tt0944947")
-    movie_name = movies['name']
-    movie_type = movies['type']
-    movie_genre = ", ".join(i for i in movies['genre'])
-    movie_datePublished = movies['datePublished']
-    movie_ratingValue = movies['rating']['ratingValue']
-    movie_poster_url = movies['poster']
-    movie_actor = ", ".join(i['name'] for i in movies['actor'])
-    movie_description = movies['description']
+frame.bind("<Double-Button-1>", on_double_click)
 
-    return movie_name, movie_type, movie_genre, movie_datePublished, movie_ratingValue, movie_poster_url, movie_actor, movie_description
-
+root.mainloop()
 
 
 
