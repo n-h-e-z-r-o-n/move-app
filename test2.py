@@ -9,10 +9,12 @@ movie_genre = movies['genre']
 movie_datePublished = movies['datePublished']
 movie_ratingValue = movies['rating']['ratingValue']
 movie_poster_url = movies['poster']
-movie_actor = "".join(i for i in movies['actor']['name'])
+#movie_actor = "".join(i for i in movies['actor']['name'])
 movie_description = movies['description']
 
 #return movie_name, movie_type, movie_genre, movie_datePublished, movie_ratingValue, movie_poster_url, movie_actor, movie_description
 
-print(movie_actor)
+for i in movies['actor']['name']
+    print(i)
+#print(movie_actor)
 
