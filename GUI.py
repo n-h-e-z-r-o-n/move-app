@@ -166,7 +166,25 @@ def imagen(image_url, screen_width, screen_height, widget):
     image_thread = threading.Thread(target=load_image)  # Create a thread to load the image asynchronously
     image_thread.start()
 
+def imagen_2(image_path, screen_width, screen_height, widget): # image processing
+    def load_image():
+        try:
+            image = Image.open(image_path)
+        except Exception as e:
+            try:
+                image = Image.open(io.BytesIO(image_path))
+            except Exception as e:
+                print(e)
+                binary_data = base64.b64decode(image_path)  # Decode the string
+                image = Image.open(io.BytesIO(binary_data))
 
+        image = image.resize((screen_width, screen_height), Image.LANCZOS)
+        photo = ImageTk.PhotoImage(image)
+        widget.config(image=photo)
+        widget.image = photo  # Keep a reference to the PhotoImage to prevent it from being garbage collected
+
+    image_thread = threading.Thread(target=load_image)  # Create a thread to load the image asynchronously
+    image_thread.start()
 
 def poster_image_get(movie_id):
     try:
@@ -1119,7 +1137,7 @@ def Home_Page(widget):
             y_pos += 0.32
             row += 1
 
-        imagen("Assets/12.jpg", screen_width, Home_frame_hight, Home_label)
+        imagen_2("Assets/12.jpg", screen_width, Home_frame_hight, Home_label)
         threading.Thread(target=slide_show, args=(Suggestion,)).start()
         threading.Thread(target=populer_moves, args=(movies_widget, PX_hight, PY_width)).start()
         threading.Thread(target=populer_new_tv_shows, args=(tvs_widget, PX_hight, PY_width)).start()
