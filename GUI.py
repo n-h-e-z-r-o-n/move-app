@@ -1002,9 +1002,12 @@ def Home_Page(widget):
             movies, count = get_new_movies()
             populer_movie_list.extend(movies)
             populer_movie_list.extend(movies)
+            count = 0
             for widget in widget_list:
                 print(widget)
-                imagen(populer_movie_list[track][2], PY_width, PX_hight, widget[0])
+                print(populer_movie_list[0])
+                imagen(poster_image_get(populer_movie_list[count]["imdb_id"]), PY_width, PX_hight, widget[0])
+                count += 1
 
         threading.Thread(target=populer_moves, args=(movies_widget,)).start()
 
