@@ -132,18 +132,17 @@ def change_fg_OnHover(widget, colorOnHover, colorOnLeave):  # Color change fg on
 
 
 def on_mouse_wheel(widget, event):  # Function to handle mouse wheel scrolling
+    def xxx(widget=widget, increment=None):
+             current_scroll = float(widget.yview()[0])
+             new_scroll = max(0.0, min(1.0, current_scroll + increment))
+             widget.yview_moveto(new_scroll)
+
     # Scroll the canvas up or down based on the mouse wheel direction
     if event.delta < 0:
-        #widget.yview_scroll(1, "units")
-        current_scroll = float(widget.yview()[0])
-        new_scroll = max(0.0, min(1.0, current_scroll + 0.03))
-        widget.yview_moveto(new_scroll)
+        widget.yview_scroll(1, "units")
 
     else:
-        #widget.yview_scroll(-1, "units")
-        current_scroll = float(widget.yview()[0])
-        new_scroll = max(0.0, min(1.0, current_scroll + (-0.03)))
-        widget.yview_moveto(new_scroll)
+        widget.yview_scroll(-1, "units")
 
 
 
@@ -1027,12 +1026,12 @@ def Home_Page(widget):
         PX_hight = int(Home_frame_hight * 0.17 * 0.31) - 1
         PY_width = int(screen_width * 1 * 0.12) - 1
         # background image ======================================================================
-        Home_label = tk.Label(widget, bg='blue')
+        Home_label = tk.Label(widget, bg='gray')
         Home_label.place(relx=0, rely=0, relwidth=1, relheight=1)
-
+        bg_sections = 'black'
         # Section 1 ===============================================================================
 
-        Suggestion = tk.Frame(widget,  borderwidth=0, border=0, bg='')
+        Suggestion = tk.Frame(widget,  borderwidth=0, border=0, bg=bg_sections)
         Suggestion.place(relx=0, rely=0, relheight=0.15, relwidth=1)
 
         back_tracking_widget = tk.Button(widget, font=('Georgia', 20), justify='center', fg='gray', text='⤽', activebackground='black', activeforeground='yellow', borderwidth=0, border=0, bg='black', command=previous_back_track_page_display)
@@ -1055,7 +1054,7 @@ def Home_Page(widget):
 
         # Section 2 ==================================================================================================================================================
 
-        Suggestion1 = tk.Frame(widget, borderwidth=0, border=0, bg='')
+        Suggestion1 = tk.Frame(widget, borderwidth=0, border=0, bg=bg_sections)
         Suggestion1.place(relx=0, rely=0.151, relheight=0.17, relwidth=1)
         recomendation_tubs_bg_color = 'black'
         hover_color = 'lightblue'
@@ -1098,7 +1097,7 @@ def Home_Page(widget):
 
         # Section 3 ==========================================================================================================================================================
 
-        Suggestion2 = tk.Frame(widget, borderwidth=0, border=0, bg='black')
+        Suggestion2 = tk.Frame(widget, borderwidth=0, border=0, bg=bg_sections)
         Suggestion2.place(relx=0, rely=0.322, relheight=0.17, relwidth=1)
 
         series = imdb_other.popular_tv(genre=None, start_id=1, sort_by=None)  # returns top 50 popular TV Series starting from start id
@@ -1154,14 +1153,14 @@ def Home_Page(widget):
 # ================= Main Definition ===================================================================================================================
 # =====================================================================================================================================================
 def Start_graphics():
-        root = tk.Tk()
+        C = tk.Tk()
 
-        screenwidth = root.winfo_screenwidth()
-        screenheight = root.winfo_screenheight()
+        screenwidth = C.winfo_screenwidth()
+        screenheight = C.winfo_screenheight()
         start_w = 600
         start_h = 400
-        root.minsize(start_w, start_h)
-        root.maxsize(start_w, start_h)
+        C.minsize(start_w, start_h)
+        C.maxsize(start_w, start_h)
         pos_w = int((screenwidth / 2) - (start_w / 2))
         pos_h = int((screenheight / 2) - (start_h / 2))
         root.geometry(f'+{pos_w}+{pos_h}')
@@ -1169,10 +1168,10 @@ def Start_graphics():
         m.pack(fill='both', expand=True)
         imagen("./img1.jpeg", start_w, start_h, m)
 
-        root.overrideredirect(True)
-        root.config(bg='blue')
+        C.overrideredirect(True)
+        C.config(bg='blue')
 
-        root.mainloop()
+        C.mainloop()
 
 def main():
     global page_count, Home_frame
