@@ -56,7 +56,7 @@ def main():
     frame.pack(padx=50, pady=50)
     frame2 = WebView2(frame, 500, 500)
     frame2.load_url(f'https://vidsrc.to/embed/tv/tt0944947')  # https://vidsrc.to/embed/movie/tt{movie_id}
-    #frame2.place(relheight=1, relwidth=1, relx=0, rely=0)
+    frame2.place(relheight=1, relwidth=1, relx=0, rely=0)
     print(frame2)
     frame.bind("<Double-Button-1>", on_double_click)
 
