@@ -994,13 +994,9 @@ def Start_graphics():
         C.overrideredirect(True)
         C.config(bg='blue')
         def on_closing():
-            time.sleep(5)
             C.destroy()
 
-        def close_stratup():
-            C.destroy()
-
-        m.after(5000, close_stratup)
+        m.after(5000, on_closing)
         C.mainloop()
 
 
@@ -1072,12 +1068,12 @@ def main():
 if __name__ == "__main__":
     Start_graphics()
     #main()
-    """
+    #"""
     t = Thread(ThreadStart(main))
     t.ApartmentState = ApartmentState.STA
     t.Start()
     t.Join()
-    """
+    #"""
 
 
 
