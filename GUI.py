@@ -929,7 +929,7 @@ def Home_Page(widget):
 
                 label1 = tk.Frame(Suggestion1, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
                 label1.place(relx=x_pos, rely=y_pos, relheight=0.31, relwidth=0.12)
-                r1_bt1 = tk.Button(label1, bg='#1A2421', borderwidth=0, justify=tk.CENTER,  activebackground=hover_color, border=0) #, command=lambda id = populer_movie_list[track][3]: selected_movie_detail(id))
+                r1_bt1 = tk.Button(label1, bg='#1A2421', borderwidth=0, justify=tk.CENTER,  activebackground=hover_color, border=0)
                 r1_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
                 change_bg_OnHover(r1_bt1, hover_color, '#1A2421')
                 r1_bt2 = tk.Button(label1, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg='gray',  font=('Calibri', 11))#, command=lambda id=populer_movie_list[track]: selected_movie_detail(id))
@@ -996,7 +996,7 @@ def Home_Page(widget):
 
         imagen_2("Assets/12.jpg", screen_width, Home_frame_hight, Home_label)
         threading.Thread(target=slide_show, args=(Suggestion,)).start()
-        threading.Thread(target=populer_moves, args=(movies_widget, PX_hight, PY_width)).start()
+        threading.Thread(target=populer_new_moves, args=(movies_widget, PX_hight, PY_width)).start()
         threading.Thread(target=populer_new_tv_shows, args=(tvs_widget, PX_hight, PY_width)).start()
 
 
@@ -1093,7 +1093,7 @@ def main():
 
     root.attributes("-topmost", False)
 
-    #Home_Page(Home_frame)
+    Home_Page(Home_frame)
     #selected_movie_detail("tt0944947")
     #watch_page(main_frame, '10638522', 'Talk to Me', 7.2, 'movie', 'Australia. United Kingdom. ', 'Horror, Thriller, ', 2022, 'Causeway Films, Head Gear Films, Metrol Technology, Screen Australia, Talk to Me Holdings, ', 'Ari McCarthy, Hamish Phillips, Kit Erhart-Bruce, Sarah Brokensha, Jayden Davison, Sunny Johnson, Sophie Wilde, Marcus Johnson, Kidaan Zelleke, James Oliver, Joe Bird, Jett Gazley, Alexandra Jensen, Dog, Helene Philippou', 'ghg' ,'eet')
     root.mainloop()
