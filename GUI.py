@@ -464,6 +464,7 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     hover_color = 'lightblue'
     text_color = 'gray'
 
+    recomedation_other = []
     label2 = tk.Frame(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
     label2.place(relx=0.04, rely=0.78, relheight=0.2, relwidth=0.15)
     r1_bt1 = tk.Button(label2, bg=recomendation_tubs_bg_color, borderwidth=0, activebackground=hover_color, border=0)#, command=lambda id=r1_id: selected_movie_detail(id))
@@ -473,7 +474,7 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     r1_bt2 = tk.Button(label2, borderwidth=0, border=0, bg='black', activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color)#, text=f'{r1_title}\n{r1_year}', font=('Calibri', 11, 'bold'), command=lambda id=r1_id: selected_movie_detail(id))
     r1_bt2.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
     change_fg_OnHover(r1_bt2, hover_color, text_color)
-
+    recomedation_other()
     label3 = tk.Frame(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
     label3.place(relx=0.2, rely=0.78, relheight=0.2, relwidth=0.15)
     r2_bt1 = tk.Button(label3, bg=recomendation_tubs_bg_color, activebackground=hover_color, borderwidth=0, border=0)#, command=lambda id=r2_id: selected_movie_detail(id))
@@ -484,7 +485,7 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     r2_bt2.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
     change_fg_OnHover(r2_bt2, hover_color, text_color)
 
-    label4 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
+    label4 = tk.Frame(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
     label4.place(relx=0.36, rely=0.78, relheight=0.2, relwidth=0.15)
     r3_bt1 = tk.Button(label4, bg=recomendation_tubs_bg_color, activebackground=hover_color, borderwidth=0, border=0)#, command=lambda id=r3_id: selected_movie_detail(id))
     r3_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
@@ -494,7 +495,7 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     r3_bt2.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
     change_fg_OnHover(r3_bt2, hover_color, text_color)
 
-    label5 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
+    label5 = tk.Frame(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
     label5.place(relx=0.52, rely=0.78, relheight=0.2, relwidth=0.15)
     r4_bt1 = tk.Button(label5, bg=recomendation_tubs_bg_color, activebackground=hover_color, borderwidth=0, border=0)#, command=lambda id=r4_id: selected_movie_detail(id))
     r4_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
@@ -504,7 +505,7 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     r4_bt2.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
     change_fg_OnHover(r4_bt2, hover_color, text_color)
 
-    label6 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
+    label6 = tk.Frame(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
     label6.place(relx=0.68, rely=0.78, relheight=0.2, relwidth=0.15)
     r5_bt1 = tk.Button(label6, bg=recomendation_tubs_bg_color, activebackground=hover_color, borderwidth=0, border=0)#, command=lambda id=r5_id: selected_movie_detail(id))
     r5_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
@@ -514,7 +515,7 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     r5_bt2.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
     change_fg_OnHover(r5_bt2, hover_color, text_color)
 
-    label7 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
+    label7 = tk.Frame(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
     label7.place(relx=0.84, rely=0.78, relheight=0.2, relwidth=0.15)
     r6_bt1 = tk.Button(label7, bg=recomendation_tubs_bg_color, activebackground=hover_color, borderwidth=0, border=0)#, command=lambda id=r6_id: selected_movie_detail(id))
     r6_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
@@ -530,6 +531,8 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     frame2.load_url(f'https://vidsrc.to/embed/tv/tt0944947')  # https://vidsrc.to/embed/movie/tt{movie_id}
     frame2.place(relheight=1, relwidth=1, relx=0, rely=0)
     video_box.bind("<Double-Button-1>", print("double clicked"))
+
+
 
 
 
