@@ -685,7 +685,7 @@ def Search_result(widget, m_list):
             while column < 6:
                 if track == total_movies:
                     break
-                label1 = tk.Label(widget, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
+                label1 = tk.Frame(widget, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
                 label1.place(relx=x_pos, rely=y_pos, relheight=0.2, relwidth=0.15)
                 r1_bt1 = tk.Button(label1, bg='#1A2421', borderwidth=0, activebackground=hover_color, border=0, command=lambda id=movies_list_result[track][3]: selected_movie_detail(id))
                 r1_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
