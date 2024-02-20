@@ -996,6 +996,7 @@ def Start_graphics():
         def Close():
             time.sleep(5)
             C.after(5000, C.destroy())
+            C.
 
         threading.Thread(target=Close).start()
 
