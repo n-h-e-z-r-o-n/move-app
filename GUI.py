@@ -541,7 +541,7 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
 
     # , command=lambda id=r1_id: selected_movie_detail(id))
 
-
+    m = random.randint(0, 1)
     if movie_type == "movie":
         threading.Thread(target=recommendation_movies, args=(recomedation_other, i_widh, i_high)).start()
     else:
