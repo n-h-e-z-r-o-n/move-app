@@ -129,8 +129,6 @@ def change_fg_OnHover(widget, colorOnHover, colorOnLeave):  # Color change fg on
     widget.bind("<Leave>", func=lambda e: widget.config(fg=colorOnLeave))
 
 
-
-
 def on_mouse_wheel(widget, event):  # Function to handle mouse wheel scrolling
     def xxx(widget=widget, increment=None):
              current_scroll = float(widget.yview()[0])
@@ -143,7 +141,6 @@ def on_mouse_wheel(widget, event):  # Function to handle mouse wheel scrolling
 
     else:
         widget.yview_scroll(-1, "units")
-
 
 
 def widget_scroll_bind(widget):
@@ -335,6 +332,7 @@ def rrr(movie_id):
 
     #watch_page(top_frame_main, movie_id, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url, r1_title, r1_year, recomednation_1_poster, r2_title, r2_year, recomednation_2_poster, r3_title, r3_year, recomednation_3_poster, r4_title, r4_year, recomednation_4_poster, r5_title, r5_year, recomednation_5_poster, r6_title, r6_year, recomednation_6_poster, r1_id, r2_id, r3_id, r4_id, r5_id, r6_id)
 
+
 def selected_movie_detail(movie_id):
     movies = imdb_other.get_by_id(movie_id)
     movie_name = movies['name']
@@ -350,7 +348,6 @@ def selected_movie_detail(movie_id):
 
     #return movie_name, movie_type, movie_genre, movie_datePublished, movie_ratingValue, movie_poster_url, movie_actor, movie_description
     watch_page(top_frame_main, movie_id, movie_name, movie_ratingValue, movie_type, movie_country, movie_genre, movie_datePublished, movie_production_company, movie_actor, movie_description, movie_poster_url)
-
 
 
 def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url):
@@ -543,11 +540,6 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
         threading.Thread(target=recommendation_movies, args=(recomedation_other, i_widh, i_high)).start()
     else:
         threading.Thread(target=recommendation_tv, args=(recomedation_other, i_widh, i_high)).start()
-
-
-
-
-
 
 
 def Animation(wid):
