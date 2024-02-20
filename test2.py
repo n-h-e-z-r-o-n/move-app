@@ -41,7 +41,11 @@ C.geometry(f'+{pos_w}+{pos_h}')
 m = tk.Label(C)
 m.pack(fill='both', expand=True)
 
-imagen_2("Assets/startup.jpg", start_w, start_h, m)
+
+image = Image.open("Assets/startup.jpg")
+image = image.resize((pos_w, pos_h), Image.LANCZOS)
+photo = ImageTk.PhotoImage(image)
+m.config(image=photo)
 
 #C.overrideredirect(True)
 C.config(bg='blue')
@@ -52,9 +56,8 @@ def on_closing():
     C.destroy()
 
 
-m = threading.Thread(target=on_closing)
-m.start()
-m.join()
+threading.Thread(target=on_closing).start()
+
 
 #C.protocol("WM_DELETE_WINDOW", on_closing)
 C.mainloop()
