@@ -1,6 +1,7 @@
 import imdb
-ia = imdb.Cinemagoer()
+ia = imdb.
 
-print(dir(ia))
-M = ia.update()
-print(M.)
+
+M = ia.
+print(dir(m))
+print()
