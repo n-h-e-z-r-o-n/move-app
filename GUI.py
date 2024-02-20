@@ -993,7 +993,11 @@ def Start_graphics():
 
         C.overrideredirect(True)
         C.config(bg='blue')
-        threading.Thread(target=C.after(5000, C.destroy())).start()
+        def Close():
+            time.sleep(5)
+            C.after(5000, C.destroy())
+
+        threading.Thread(target=Close).start()
 
         C.mainloop()
 
