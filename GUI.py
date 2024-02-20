@@ -985,15 +985,17 @@ def Start_graphics():
         C.maxsize(start_w, start_h)
         pos_w = int((screenwidth / 2) - (start_w / 2))
         pos_h = int((screenheight / 2) - (start_h / 2))
-        c.geometry(f'+{pos_w}+{pos_h}')
+        C.geometry(f'+{pos_w}+{pos_h}')
         m = tk.Label(root)
         m.pack(fill='both', expand=True)
-        imagen("./img1.jpeg", start_w, start_h, m)
+
+        imagen_2("Assets/startup.jpg", start_w, start_h, m)
 
         C.overrideredirect(True)
         C.config(bg='blue')
 
         C.mainloop()
+
 
 def main():
     global page_count, Home_frame
