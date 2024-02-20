@@ -2,7 +2,7 @@ import threading
 import tkinter as tk
 from PIL import Image, ImageTk
 from io import BytesIO
-import io
+import io ,time
 import base64
 
 
@@ -38,7 +38,7 @@ C.maxsize(start_w, start_h)
 pos_w = int((screenwidth / 2) - (start_w / 2))
 pos_h = int((screenheight / 2) - (start_h / 2))
 C.geometry(f'+{pos_w}+{pos_h}')
-m = tk.Label(root)
+m = tk.Label(C)
 m.pack(fill='both', expand=True)
 
 imagen_2("Assets/startup.jpg", start_w, start_h, m)
@@ -56,3 +56,4 @@ threading.Thread(target=on_closing).start()
 
 C.protocol("WM_DELETE_WINDOW", on_closing)
 C.mainloop()
+print('end')
