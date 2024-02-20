@@ -474,7 +474,8 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     r1_bt2 = tk.Button(label2, borderwidth=0, border=0, bg='black', activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color)#, text=f'{r1_title}\n{r1_year}', font=('Calibri', 11, 'bold'), command=lambda id=r1_id: selected_movie_detail(id))
     r1_bt2.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
     change_fg_OnHover(r1_bt2, hover_color, text_color)
-    recomedation_other()
+    recomedation_other.append((r1_bt1,r1_bt2))
+
     label3 = tk.Frame(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
     label3.place(relx=0.2, rely=0.78, relheight=0.2, relwidth=0.15)
     r2_bt1 = tk.Button(label3, bg=recomendation_tubs_bg_color, activebackground=hover_color, borderwidth=0, border=0)#, command=lambda id=r2_id: selected_movie_detail(id))
@@ -484,6 +485,7 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     r2_bt2 = tk.Button(label3, borderwidth=0, border=0, bg='black', activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color)#, text=f'{r2_title}\n{r2_year}', font=('Calibri', 11, 'bold'), command=lambda id=r2_id: selected_movie_detail(id))
     r2_bt2.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
     change_fg_OnHover(r2_bt2, hover_color, text_color)
+    recomedation_other.append((r2_bt1, r2_bt2))
 
     label4 = tk.Frame(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
     label4.place(relx=0.36, rely=0.78, relheight=0.2, relwidth=0.15)
@@ -494,6 +496,7 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     r3_bt2 = tk.Button(label4, borderwidth=0, border=0, bg='black', activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color)#, text=f'{r3_title}\n{r3_year}', font=('Calibri', 11, 'bold'), command=lambda id=r3_id: selected_movie_detail(id))
     r3_bt2.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
     change_fg_OnHover(r3_bt2, hover_color, text_color)
+    recomedation_other.append((r3_bt1, r3_bt2))
 
     label5 = tk.Frame(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
     label5.place(relx=0.52, rely=0.78, relheight=0.2, relwidth=0.15)
@@ -504,6 +507,7 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     r4_bt2 = tk.Button(label5, borderwidth=0, border=0, bg='black', activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color)#, text=f'{r4_title}\n{r4_year}', font=('Calibri', 11, 'bold'), command=lambda id=r4_id: selected_movie_detail(id))
     r4_bt2.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
     change_fg_OnHover(r4_bt2, hover_color, text_color)
+    recomedation_other.append((r4_bt1, r4_bt2))
 
     label6 = tk.Frame(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
     label6.place(relx=0.68, rely=0.78, relheight=0.2, relwidth=0.15)
@@ -514,6 +518,7 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     r5_bt2 = tk.Button(label6, borderwidth=0, border=0, bg='black', activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color)#, text=f'{r5_title}\n{r5_year}', font=('Calibri', 11, 'bold'), command=lambda id=r5_id: selected_movie_detail(id))
     r5_bt2.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
     change_fg_OnHover(r5_bt2, hover_color, text_color)
+    recomedation_other.append((r5_bt1, r5_bt2))
 
     label7 = tk.Frame(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
     label7.place(relx=0.84, rely=0.78, relheight=0.2, relwidth=0.15)
@@ -524,6 +529,7 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     r6_bt2 = tk.Button(label7, borderwidth=0, border=0, bg='black', activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color)#, text=f'{r6_title}\n{r6_year}', font=('Calibri', 11, 'bold'), command=lambda id=r6_id: selected_movie_detail(id))
     r6_bt2.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
     change_fg_OnHover(r6_bt2, hover_color, text_color)
+    recomedation_other.append((r6_bt1, r6_bt2))
 
 
     video_box = tk.Frame(large_frame, bg='black')
