@@ -1,4 +1,4 @@
-import requests
+from tkwebview2.tkwebview2 import WebView2, have_runtime, install_runtime
 def get_new_movies (page = 1):
     r = requests.get(f'https://vidsrc.to/vapi/movie/new/{page}')  # latest movies
     print(r.status_code)

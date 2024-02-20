@@ -30,6 +30,7 @@ class WebView2(Frame):
         user32.SetParent(self.chwnd,self.winfo_id())
         user32.MoveWindow(self.chwnd,0,0,width,height,True)
         self.loaded=window.events.loaded
+        self.window_resized=window.events.resized
         self.__go_bind()
         if url!='':
             self.load_url(url)
@@ -48,20 +49,28 @@ class WebView2(Frame):
 
 
 
-def on_double_clisck(event):
-    print("Double-clicked")
+
 def main():
     root = tk.Tk()
     root.geometry("300x200")
 
+    def on_double_clisck():
+        print('fgfg999999999999999')
+
     frame = tk.Frame(root, bg="blue", width=200, height=100)
     frame.pack(padx=0, pady=0, fill=tk.BOTH, expand=True)
     frame2 = WebView2(frame, 500, 500)
+    m = frame2.window.events.
     frame2.load_url(f'https://vidsrc.to/embed/tv/tt0944947')  # https://vidsrc.to/embed/movie/tt{movie_id}
-    frame2.place(relheight=1, relwidth=1, relx=0, rely=0)
-    print(frame2)
-    #frame.bind("<Double-Button-1>", on_double_clisck)
-    frame2.bind_all("<Double-Button-1>", on_double_clisck)
+    frame2.place(relheight=0.8, relwidth=1, relx=0, rely=0)
+
+
+
+
+
+    RRRR = tk.Button(root, bg="blue", width=200, height=100)
+    RRRR.place(relheight=1, relwidth=0.2, relx=0, rely=0.8)
+    RRRR.bind_all("<Double-Button-1>", on_double_clisck)
 
     root.mainloop()
 

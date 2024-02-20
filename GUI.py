@@ -463,67 +463,67 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     recomendation_tubs_bg_color = '#1A2421'
     hover_color = 'lightblue'
     text_color = 'gray'
-    """
-    label2 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
+
+    label2 = tk.Frame(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
     label2.place(relx=0.04, rely=0.78, relheight=0.2, relwidth=0.15)
-    r1_bt1 = tk.Button(label2, bg=recomendation_tubs_bg_color, borderwidth=0, activebackground=hover_color, border=0, command=lambda id=r1_id: selected_movie_detail(id))
+    r1_bt1 = tk.Button(label2, bg=recomendation_tubs_bg_color, borderwidth=0, activebackground=hover_color, border=0)#, command=lambda id=r1_id: selected_movie_detail(id))
     r1_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
-    imagen(recomednation_1_poster, i_widh, i_high, r1_bt1)
+    #imagen(recomednation_1_poster, i_widh, i_high, r1_bt1)
     change_bg_OnHover(r1_bt1, hover_color, recomendation_tubs_bg_color)
-    r1_bt2 = tk.Button(label2, borderwidth=0, border=0, bg='black', activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r1_title}\n{r1_year}', font=('Calibri', 11, 'bold'), command=lambda id=r1_id: selected_movie_detail(id))
+    r1_bt2 = tk.Button(label2, borderwidth=0, border=0, bg='black', activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color)#, text=f'{r1_title}\n{r1_year}', font=('Calibri', 11, 'bold'), command=lambda id=r1_id: selected_movie_detail(id))
     r1_bt2.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
     change_fg_OnHover(r1_bt2, hover_color, text_color)
 
-    label3 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
+    label3 = tk.Frame(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
     label3.place(relx=0.2, rely=0.78, relheight=0.2, relwidth=0.15)
-    r2_bt1 = tk.Button(label3, bg=recomendation_tubs_bg_color, activebackground=hover_color, borderwidth=0, border=0, command=lambda id=r2_id: selected_movie_detail(id))
+    r2_bt1 = tk.Button(label3, bg=recomendation_tubs_bg_color, activebackground=hover_color, borderwidth=0, border=0)#, command=lambda id=r2_id: selected_movie_detail(id))
     r2_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
-    imagen(recomednation_2_poster, i_widh, i_high, r2_bt1)
+    #imagen(recomednation_2_poster, i_widh, i_high, r2_bt1)
     change_bg_OnHover(r2_bt1, hover_color, recomendation_tubs_bg_color)
-    r2_bt2 = tk.Button(label3, borderwidth=0, border=0, bg='black', activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r2_title}\n{r2_year}', font=('Calibri', 11, 'bold'), command=lambda id=r2_id: selected_movie_detail(id))
+    r2_bt2 = tk.Button(label3, borderwidth=0, border=0, bg='black', activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color)#, text=f'{r2_title}\n{r2_year}', font=('Calibri', 11, 'bold'), command=lambda id=r2_id: selected_movie_detail(id))
     r2_bt2.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
     change_fg_OnHover(r2_bt2, hover_color, text_color)
 
     label4 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
     label4.place(relx=0.36, rely=0.78, relheight=0.2, relwidth=0.15)
-    r3_bt1 = tk.Button(label4, bg=recomendation_tubs_bg_color, activebackground=hover_color, borderwidth=0, border=0, command=lambda id=r3_id: selected_movie_detail(id))
+    r3_bt1 = tk.Button(label4, bg=recomendation_tubs_bg_color, activebackground=hover_color, borderwidth=0, border=0)#, command=lambda id=r3_id: selected_movie_detail(id))
     r3_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
-    imagen(recomednation_3_poster, i_widh, i_high, r3_bt1)
+    #imagen(recomednation_3_poster, i_widh, i_high, r3_bt1)
     change_bg_OnHover(r3_bt1, hover_color, recomendation_tubs_bg_color)
-    r3_bt2 = tk.Button(label4, borderwidth=0, border=0, bg='black', activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r3_title}\n{r3_year}', font=('Calibri', 11, 'bold'), command=lambda id=r3_id: selected_movie_detail(id))
+    r3_bt2 = tk.Button(label4, borderwidth=0, border=0, bg='black', activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color)#, text=f'{r3_title}\n{r3_year}', font=('Calibri', 11, 'bold'), command=lambda id=r3_id: selected_movie_detail(id))
     r3_bt2.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
     change_fg_OnHover(r3_bt2, hover_color, text_color)
 
     label5 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
     label5.place(relx=0.52, rely=0.78, relheight=0.2, relwidth=0.15)
-    r4_bt1 = tk.Button(label5, bg=recomendation_tubs_bg_color, activebackground=hover_color, borderwidth=0, border=0, command=lambda id=r4_id: selected_movie_detail(id))
+    r4_bt1 = tk.Button(label5, bg=recomendation_tubs_bg_color, activebackground=hover_color, borderwidth=0, border=0)#, command=lambda id=r4_id: selected_movie_detail(id))
     r4_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
-    imagen(recomednation_4_poster, i_widh, i_high, r4_bt1)
+    #imagen(recomednation_4_poster, i_widh, i_high, r4_bt1)
     change_bg_OnHover(r4_bt1, hover_color, recomendation_tubs_bg_color)
-    r4_bt2 = tk.Button(label5, borderwidth=0, border=0, bg='black', activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r4_title}\n{r4_year}', font=('Calibri', 11, 'bold'), command=lambda id=r4_id: selected_movie_detail(id))
+    r4_bt2 = tk.Button(label5, borderwidth=0, border=0, bg='black', activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color)#, text=f'{r4_title}\n{r4_year}', font=('Calibri', 11, 'bold'), command=lambda id=r4_id: selected_movie_detail(id))
     r4_bt2.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
     change_fg_OnHover(r4_bt2, hover_color, text_color)
 
     label6 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
     label6.place(relx=0.68, rely=0.78, relheight=0.2, relwidth=0.15)
-    r5_bt1 = tk.Button(label6, bg=recomendation_tubs_bg_color, activebackground=hover_color, borderwidth=0, border=0, command=lambda id=r5_id: selected_movie_detail(id))
+    r5_bt1 = tk.Button(label6, bg=recomendation_tubs_bg_color, activebackground=hover_color, borderwidth=0, border=0)#, command=lambda id=r5_id: selected_movie_detail(id))
     r5_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
-    imagen(recomednation_5_poster, i_widh, i_high, r5_bt1)
+    #imagen(recomednation_5_poster, i_widh, i_high, r5_bt1)
     change_bg_OnHover(r5_bt1, hover_color, recomendation_tubs_bg_color)
-    r5_bt2 = tk.Button(label6, borderwidth=0, border=0, bg='black', activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r5_title}\n{r5_year}', font=('Calibri', 11, 'bold'), command=lambda id=r5_id: selected_movie_detail(id))
+    r5_bt2 = tk.Button(label6, borderwidth=0, border=0, bg='black', activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color)#, text=f'{r5_title}\n{r5_year}', font=('Calibri', 11, 'bold'), command=lambda id=r5_id: selected_movie_detail(id))
     r5_bt2.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
     change_fg_OnHover(r5_bt2, hover_color, text_color)
 
     label7 = tk.Label(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
     label7.place(relx=0.84, rely=0.78, relheight=0.2, relwidth=0.15)
-    r6_bt1 = tk.Button(label7, bg=recomendation_tubs_bg_color, activebackground=hover_color, borderwidth=0, border=0, command=lambda id=r6_id: selected_movie_detail(id))
+    r6_bt1 = tk.Button(label7, bg=recomendation_tubs_bg_color, activebackground=hover_color, borderwidth=0, border=0)#, command=lambda id=r6_id: selected_movie_detail(id))
     r6_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
-    imagen(recomednation_6_poster, i_widh, i_high, r6_bt1)
+    #imagen(recomednation_6_poster, i_widh, i_high, r6_bt1)
     change_bg_OnHover(r6_bt1, hover_color, recomendation_tubs_bg_color)
-    r6_bt2 = tk.Button(label7, borderwidth=0, border=0, bg='black', activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color, text=f'{r6_title}\n{r6_year}', font=('Calibri', 11, 'bold'), command=lambda id=r6_id: selected_movie_detail(id))
+    r6_bt2 = tk.Button(label7, borderwidth=0, border=0, bg='black', activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg=text_color)#, text=f'{r6_title}\n{r6_year}', font=('Calibri', 11, 'bold'), command=lambda id=r6_id: selected_movie_detail(id))
     r6_bt2.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
     change_fg_OnHover(r6_bt2, hover_color, text_color)
-    """
+
 
     video_box = tk.Frame(large_frame, bg='black')
     frame2 = WebView2(video_box, 500, 500)
@@ -1050,9 +1050,8 @@ def main():
 
 
     #Home_Page(Home_frame)
-    selected_movie_detail("tt0944947")
-    #watch_page(main_frame, '10638522', 'Talk to Me', 7.2, 'movie', 'Australia. United Kingdom. ', 'Horror, Thriller, ', 2022, 'Causeway Films, Head Gear Films, Metrol Technology, Screen Australia, Talk to Me Holdings, ', 'Ari McCarthy, Hamish Phillips, Kit Erhart-Bruce, Sarah Brokensha, Jayden Davison, Sunny Johnson, Sophie Wilde, Marcus Johnson, Kidaan Zelleke, James Oliver, Joe Bird, Jett Gazley, Alexandra Jensen, Dog, Helene Philippou, ', 'When a group of friends discover how to conjure spirits using an embalmed hand, they become hooked on the new thrill, until one of them goes too far and unleashes terrifying supernatural forces.', 'https://m.media-amazon.com/images/M/MV5BMmY5ZGE4NmUtZWI4OS00ZWJmLWFjMzgtOWUyZjI4NDg3Y2E5XkEyXkFqcGdeQXVyMTkxNjUyNQ@@.jpg', 'Talk to Me', 2023, None, 'Talk to Me', 2007, 'https://m.media-amazon.com/images/M/MV5BMzgyMTMxNjg4OF5BMl5BanBnXkFtZTYwMDkwNDc3.jpg', 'Talk to Me, Sweet Darling', 2020, 'https://m.media-amazon.com/images/M/MV5BMDY5ODFmOTktOGYxOC00MGQ0LTk4NmYtYzQ4MDc0NWQzOWViXkEyXkFqcGdeQXVyNTgyMTU3Mjc@.jpg', 'Talk to Me', 2023, 'https://m.media-amazon.com/images/M/MV5BZDg2ZTRjYzMtZDJiYi00MDYxLWFlMDctZWQ4NDI3NTA2NWI1XkEyXkFqcGdeQXVyNjEzNjUxNzI@.jpg', 'Talk to Me', 2007, 'https://m.media-amazon.com/images/M/MV5BMTQ2ODQ5NDAtMjg3Ni00MGFmLWEzMmMtMGFjNjg4MTM4Yjg3XkEyXkFqcGdeQXVyMjExMjk0ODk@.jpg', 'They Talk to Me', 2021, 'https://m.media-amazon.com/images/M/MV5BOGY1YjIxNGUtYjEzYy00YTZmLTk2MTYtMjg0YzNhOTM1OTg5XkEyXkFqcGdeQXVyNTY3NTY1Nzg@.jpg', '27173489', '0796368', '13863990', '28547237', '0941650', '13894060')
-
+    #selected_movie_detail("tt0944947")
+    watch_page(main_frame, '10638522', 'Talk to Me', 7.2, 'movie', 'Australia. United Kingdom. ', 'Horror, Thriller, ', 2022, 'Causeway Films, Head Gear Films, Metrol Technology, Screen Australia, Talk to Me Holdings, ', 'Ari McCarthy, Hamish Phillips, Kit Erhart-Bruce, Sarah Brokensha, Jayden Davison, Sunny Johnson, Sophie Wilde, Marcus Johnson, Kidaan Zelleke, James Oliver, Joe Bird, Jett Gazley, Alexandra Jensen, Dog, Helene Philippou', 'ghg' ,'eet')
     root.mainloop()
 
 
