@@ -1,7 +1,7 @@
 import imdb
-ia = imdb.
+ia = imdb.IMDb()
 
+print(dir(ia))
+M = ia.search_movie('Avengers')
 
-M = ia.
-print(dir(m))
-print()
+print(M)
