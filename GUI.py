@@ -985,7 +985,7 @@ def Start_graphics():
         C.maxsize(start_w, start_h)
         pos_w = int((screenwidth / 2) - (start_w / 2))
         pos_h = int((screenheight / 2) - (start_h / 2))
-        root.geometry(f'+{pos_w}+{pos_h}')
+        c.geometry(f'+{pos_w}+{pos_h}')
         m = tk.Label(root)
         m.pack(fill='both', expand=True)
         imagen("./img1.jpeg", start_w, start_h, m)
@@ -1009,11 +1009,7 @@ def main():
     root.state('zoomed')  # this creates a window that takes over the screen
     root.minsize(500, 600)
 
-
-
     dark_title_bar(root)
-
-
 
     # Get the screen dimensions
     screen_width = root.winfo_screenwidth()
@@ -1065,6 +1061,7 @@ def main():
 
 
 if __name__ == "__main__":
+    Start_graphics()
     #main()
     #"""
     t = Thread(ThreadStart(main))
