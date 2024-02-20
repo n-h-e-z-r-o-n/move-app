@@ -997,11 +997,10 @@ def Start_graphics():
             time.sleep(5)
             C.destroy()
 
+        def close_stratup():
+            C.destroy()
 
-
-        threading.Thread(target=on_closing).start()
-
-        C.protocol("WM_DELETE_WINDOW", on_closing)
+        m.after(5000, close_stratup)
         C.mainloop()
 
 

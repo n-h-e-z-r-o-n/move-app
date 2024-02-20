@@ -51,12 +51,11 @@ m.config(image=photo)
 C.config(bg='blue')
 
 
-def on_closing():
-    time.sleep(5)
+def close_stratup():
     C.destroy()
 
 
-threading.Thread(target=on_closing).start()
+m.after(5000, close_stratup)
 
 
 #C.protocol("WM_DELETE_WINDOW", on_closing)
