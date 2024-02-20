@@ -994,12 +994,14 @@ def Start_graphics():
         C.overrideredirect(True)
         C.config(bg='blue')
         def on_closing():
-          root.destroy()
+            time.sleep(5)
+            C.destroy()
 
-        root.protocol("WM_DELETE_WINDOW", on_closing)
 
-        threading.Thread(target=Close).start()
 
+        threading.Thread(target=on_closing).start()
+
+        C.protocol("WM_DELETE_WINDOW", on_closing)
         C.mainloop()
 
 
