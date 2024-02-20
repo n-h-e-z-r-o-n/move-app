@@ -993,10 +993,10 @@ def Start_graphics():
 
         C.overrideredirect(True)
         C.config(bg='blue')
-        def Close():
-            time.sleep(5)
-            C.after(5000, C.destroy())
-            C.
+        def on_closing():
+          root.destroy()
+
+        root.protocol("WM_DELETE_WINDOW", on_closing)
 
         threading.Thread(target=Close).start()
 
