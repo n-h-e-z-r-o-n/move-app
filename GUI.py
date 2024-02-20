@@ -787,24 +787,24 @@ def populer_new_tv_shows(widget_list, PX_hight, PY_width):
     for widget in widget_list:
         widget[1].config(text=populer_movie_list[count]["title"])
         imagen(poster_image_get(populer_movie_list[count]["imdb_id"]), PY_width, PX_hight, widget[0])
-        widget[0].config(command=lambda id=movies[count]["imdb_id"]: selected_movie_detail(id))
-        widget[1].config(command=lambda id=movies[count]["imdb_id"]: selected_movie_detail(id))
+        widget[0].config(command=lambda id=populer_movie_list[count]["imdb_id"]: selected_movie_detail(id))
+        widget[1].config(command=lambda id=populer_movie_list[count]["imdb_id"]: selected_movie_detail(id))
         count += 1
 
 
 def populer_new_moves(widget_list, PX_hight, PY_width):
-        populer_movie_list = []
+        movie_list = []
         movies, x = get_new_movies(1)
-        populer_movie_list.extend(movies)
+        movie_list.extend(movies)
         movies, x = get_new_movies(2)
-        populer_movie_list.extend(movies)
-        print("p movies", len(populer_movie_list))
+        movie_list.extend(movies)
+        print("p movies", len(movie_list))
         count = 0
         for widget in widget_list:
-            widget[1].config(text=populer_movie_list[count]["title"])
-            imagen(poster_image_get(populer_movie_list[count]["imdb_id"]), PY_width, PX_hight, widget[0])
-            widget[0].config(command=lambda id=movies[count]["imdb_id"]: selected_movie_detail(id))
-            widget[1].config(command=lambda id=movies[count]["imdb_id"]: selected_movie_detail(id))
+            widget[1].config(text=movie_list[count]["title"])
+            imagen(poster_image_get(movie_list[count]["imdb_id"]), PY_width, PX_hight, widget[0])
+            widget[0].config(command=lambda id=movie_list[count]["imdb_id"]: selected_movie_detail(id))
+            widget[1].config(command=lambda id=movie_list[count]["imdb_id"]: selected_movie_detail(id))
             count += 1
 
 
