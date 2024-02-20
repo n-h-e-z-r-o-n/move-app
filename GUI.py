@@ -505,7 +505,7 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     r4_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
     #imagen(recomednation_4_poster, i_widh, i_high, r4_bt1)
     change_bg_OnHover(r4_bt1, hover_color, recomendation_tubs_bg_color)
-    r4_bt2 = tk.Button(label5, borderwidth=0, border=0, bg='black', activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, font=('Calibri', 11, 'bold'), fg=text_color)#, text=f'{r4_title}\n{r4_year}', font=('Calibri', 11, 'bold'), command=lambda id=r4_id: selected_movie_detail(id))
+    r4_bt2 = tk.Button(label5, borderwidth=0, border=0, bg='black', activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, font=('Calibri', 11, 'bold'), fg=text_color)
     r4_bt2.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
     change_fg_OnHover(r4_bt2, hover_color, text_color)
     recomedation_other.append((r4_bt1, r4_bt2))
@@ -516,7 +516,7 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     r5_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
     #imagen(recomednation_5_poster, i_widh, i_high, r5_bt1)
     change_bg_OnHover(r5_bt1, hover_color, recomendation_tubs_bg_color)
-    r5_bt2 = tk.Button(label6, borderwidth=0, border=0, bg='black', activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, font=('Calibri', 11, 'bold'), fg=text_color)#, text=f'{r5_title}\n{r5_year}', font=('Calibri', 11, 'bold'), command=lambda id=r5_id: selected_movie_detail(id))
+    r5_bt2 = tk.Button(label6, borderwidth=0, border=0, bg='black', activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, font=('Calibri', 11, 'bold'), fg=text_color)
     r5_bt2.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
     change_fg_OnHover(r5_bt2, hover_color, text_color)
     recomedation_other.append((r5_bt1, r5_bt2))
@@ -527,7 +527,7 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     r6_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
     #imagen(recomednation_6_poster, i_widh, i_high, r6_bt1)
     change_bg_OnHover(r6_bt1, hover_color, recomendation_tubs_bg_color)
-    r6_bt2 = tk.Button(label7, borderwidth=0, border=0, bg='black', activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, font=('Calibri', 11, 'bold'),  fg=text_color)#, text=f'{r6_title}\n{r6_year}', command=lambda id=r6_id: selected_movie_detail(id))
+    r6_bt2 = tk.Button(label7, borderwidth=0, border=0, bg='black', activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, font=('Calibri', 11, 'bold'),  fg=text_color)
     r6_bt2.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
     change_fg_OnHover(r6_bt2, hover_color, text_color)
     recomedation_other.append((r6_bt1, r6_bt2))
@@ -538,8 +538,6 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     frame2.load_url(f'https://vidsrc.to/embed/tv/tt0944947')  # https://vidsrc.to/embed/movie/tt{movie_id}
     frame2.place(relheight=1, relwidth=1, relx=0, rely=0)
     video_box.bind("<Double-Button-1>", print("double clicked"))
-
-
 
     if random.randint(0, 1):
         threading.Thread(target=recommendation_movies, args=(recomedation_other, i_widh, i_high)).start()
