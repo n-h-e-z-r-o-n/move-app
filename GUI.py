@@ -352,6 +352,7 @@ def selected_movie_detail(movie_id):
     watch_page(top_frame_main, movie_id, movie_name, movie_ratingValue, movie_type, movie_country, movie_genre, movie_datePublished, movie_production_company, movie_actor, movie_description, movie_poster_url)
 
 
+
 def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url):
     global screen_width
     global screen_height
@@ -538,7 +539,8 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     frame2.place(relheight=1, relwidth=1, relx=0, rely=0)
     video_box.bind("<Double-Button-1>", print("double clicked"))
 
-
+    def recommendation(movie_id):
+        padd
 
 
 
