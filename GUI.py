@@ -1058,7 +1058,7 @@ def main():
     main_frame.pack(fill=tk.BOTH, expand=True)
     top_frame_main = main_frame
 
-
+    root.attributes("-topmost", False)
 
     #Home_Page(Home_frame)
     #selected_movie_detail("tt0944947")
