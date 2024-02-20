@@ -787,10 +787,12 @@ def populer_new_tv_shows(widget_list, PX_hight, PY_width):
     for widget in widget_list:
         widget[1].config(text=populer_movie_list[count]["title"])
         imagen(poster_image_get(populer_movie_list[count]["imdb_id"]), PY_width, PX_hight, widget[0])
+        widget[0].config(command=lambda id=movies[count]["imdb_id"]: selected_movie_detail(id))
+        widget[1].config(command=lambda id=movies[count]["imdb_id"]: selected_movie_detail(id))
         count += 1
 
 
-def populer_moves(widget_list, PX_hight, PY_width):
+def populer_new_moves(widget_list, PX_hight, PY_width):
         populer_movie_list = []
         movies, x = get_new_movies(1)
         populer_movie_list.extend(movies)
@@ -801,6 +803,8 @@ def populer_moves(widget_list, PX_hight, PY_width):
         for widget in widget_list:
             widget[1].config(text=populer_movie_list[count]["title"])
             imagen(poster_image_get(populer_movie_list[count]["imdb_id"]), PY_width, PX_hight, widget[0])
+            widget[0].config(command=lambda id=movies[count]["imdb_id"]: selected_movie_detail(id))
+            widget[1].config(command=lambda id=movies[count]["imdb_id"]: selected_movie_detail(id))
             count += 1
 
 
