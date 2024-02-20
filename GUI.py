@@ -778,17 +778,17 @@ def get_added_tv_shows (page = 1):
 
 
 def populer_new_tv_shows(widget_list, PX_hight, PY_width):
-    populer_movie_list = []
+    tv_shows_list = []
     movies, x = get_new_tv_shows(1)
-    populer_movie_list.extend(movies)
+    tv_shows_list.extend(movies)
     movies, x = get_new_tv_shows(2)
-    populer_movie_list.extend(movies)
+    tv_shows_list.extend(movies)
     count = 0
     for widget in widget_list:
-        widget[1].config(text=populer_movie_list[count]["title"])
-        imagen(poster_image_get(populer_movie_list[count]["imdb_id"]), PY_width, PX_hight, widget[0])
-        widget[0].config(command=lambda id=populer_movie_list[count]["imdb_id"]: selected_movie_detail(id))
-        widget[1].config(command=lambda id=populer_movie_list[count]["imdb_id"]: selected_movie_detail(id))
+        widget[1].config(text=tv_shows_list[count]["title"])
+        imagen(poster_image_get(tv_shows_list[count]["imdb_id"]), PY_width, PX_hight, widget[0])
+        widget[0].config(command=lambda id=tv_shows_list[count]["imdb_id"]: selected_movie_detail(id))
+        widget[1].config(command=lambda id=tv_shows_list[count]["imdb_id"]: selected_movie_detail(id))
         count += 1
 
 
