@@ -1013,6 +1013,7 @@ def main():
     root.title("Move App")
     root.state('zoomed')  # this creates a window that takes over the screen
     root.minsize(500, 600)
+    root.attributes("-topmost", True)
 
     dark_title_bar(root)
 
