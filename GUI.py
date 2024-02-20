@@ -993,6 +993,7 @@ def Start_graphics():
 
         C.overrideredirect(True)
         C.config(bg='blue')
+        threading.Thread(target=C.after(5000, C.destroy())).start()
 
         C.mainloop()
 
@@ -1065,12 +1066,12 @@ def main():
 if __name__ == "__main__":
     Start_graphics()
     #main()
-    #"""
+    """
     t = Thread(ThreadStart(main))
     t.ApartmentState = ApartmentState.STA
     t.Start()
     t.Join()
-    #"""
+    """
 
 
 
