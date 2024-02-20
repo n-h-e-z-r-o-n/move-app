@@ -1,7 +1,18 @@
 import imdb
-ia = imdb.IMDb()
+from imdbmovies import IMDB
 
-print(dir(ia))
-M = ia.search_keyword('avengers')
-M = ia.search_person()
+ia = imdb.Cinemagoer()
+
+imdb_other = IMDB()
+
+#M = ia.search_keyword('avengers')
+#print(M)
+
+#M = imdb_other.search(name='avengers')
+#print(M)
+#M = imdb_other.upcoming()
+#print(M)
+
+
+
 print(M)

@@ -468,7 +468,7 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     recomedation_other = []
     label2 = tk.Frame(large_frame, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
     label2.place(relx=0.04, rely=0.78, relheight=0.2, relwidth=0.15)
-    r1_bt1 = tk.Button(label2, bg=recomendation_tubs_bg_color, borderwidth=0, activebackground=hover_color, font=('Calibri', 11, 'bold'), border=0)#, command=lambda id=r1_id: selected_movie_detail(id))
+    r1_bt1 = tk.Button(label2, bg=recomendation_tubs_bg_color, borderwidth=0, activebackground=hover_color, font=('Calibri', 11, 'bold'), border=0)
     r1_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
     #imagen(recomednation_1_poster, i_widh, i_high, r1_bt1)
     change_bg_OnHover(r1_bt1, hover_color, recomendation_tubs_bg_color)
@@ -539,8 +539,17 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     frame2.place(relheight=1, relwidth=1, relx=0, rely=0)
     video_box.bind("<Double-Button-1>", print("double clicked"))
 
-    def recommendation(movie_id):
-        padd
+    # , command=lambda id=r1_id: selected_movie_detail(id))
+
+
+    if movie_type == "movie":
+        threading.Thread(target=recommendation_movies, args=(recomedation_other, i_widh, i_high)).start()
+    else:
+        threading.Thread(target=recommendation_tv, args=(recomedation_other, i_widh, i_high)).start()
+
+
+
+
 
 
 
@@ -796,6 +805,31 @@ def populer_moves(widget_list, PX_hight, PY_width):
             widget[1].config(text=populer_movie_list[count]["title"])
             imagen(poster_image_get(populer_movie_list[count]["imdb_id"]), PY_width, PX_hight, widget[0])
             count += 1
+
+
+def recommendation_movies(widget_list, PY_width, PX_hight):
+    page = random.randint(1, 100)
+    movies, x = get_new_movies(page)
+    count = 0
+    for widget in widget_list:
+        widget[1].config(text=movies[count]["title"])
+        imagen(poster_image_get(movies[count]["imdb_id"]), PY_width, PX_hight, widget[0])
+        widget[0].config(command=lambda id=movies[count]["imdb_id"]: selected_movie_detail(id))
+        widget[1].config(command=lambda id=movies[count]["imdb_id"]: selected_movie_detail(id))
+        count += 1
+
+
+
+def recommendation_tv(widget_list, PY_width, PX_hight):
+    page = random.randint(1, 100)
+    tvs, x = get_new_tv_shows(page)
+    count = 0
+    for widget in widget_list:
+        widget[1].config(text=tvs[count]["title"])
+        imagen(poster_image_get(tvs[count]["imdb_id"]), PY_width, PX_hight, widget[0])
+        widget[0].config(command=lambda id=tvs[count]["imdb_id"]: selected_movie_detail(id))
+        widget[1].config(command=lambda id=tvs[count]["imdb_id"]: selected_movie_detail(id))
+        count += 1
 # ---------------------------------------------------------------------------------------------------------------
 
 def slide_show(widget):
@@ -1063,8 +1097,8 @@ def main():
     root.attributes("-topmost", False)
 
     #Home_Page(Home_frame)
-    #selected_movie_detail("tt0944947")
-    watch_page(main_frame, '10638522', 'Talk to Me', 7.2, 'movie', 'Australia. United Kingdom. ', 'Horror, Thriller, ', 2022, 'Causeway Films, Head Gear Films, Metrol Technology, Screen Australia, Talk to Me Holdings, ', 'Ari McCarthy, Hamish Phillips, Kit Erhart-Bruce, Sarah Brokensha, Jayden Davison, Sunny Johnson, Sophie Wilde, Marcus Johnson, Kidaan Zelleke, James Oliver, Joe Bird, Jett Gazley, Alexandra Jensen, Dog, Helene Philippou', 'ghg' ,'eet')
+    selected_movie_detail("tt0944947")
+    #watch_page(main_frame, '10638522', 'Talk to Me', 7.2, 'movie', 'Australia. United Kingdom. ', 'Horror, Thriller, ', 2022, 'Causeway Films, Head Gear Films, Metrol Technology, Screen Australia, Talk to Me Holdings, ', 'Ari McCarthy, Hamish Phillips, Kit Erhart-Bruce, Sarah Brokensha, Jayden Davison, Sunny Johnson, Sophie Wilde, Marcus Johnson, Kidaan Zelleke, James Oliver, Joe Bird, Jett Gazley, Alexandra Jensen, Dog, Helene Philippou', 'ghg' ,'eet')
     root.mainloop()
 
 

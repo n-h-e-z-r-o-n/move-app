@@ -1,12 +1,15 @@
-import tkinter as tk
+import requests
+def get_new_tv_shows (page = 1):
+    r = requests.get(f'https://vidsrc.to/vapi/tv/new/{page}')  # latest movies
+    print(r.status_code)
+    movies = None
+    length = 0
+    if r.status_code == 200:
+        data = r.json()
+        length = len(data['result']['items'])
+        movies = data['result']['items']
+    return movies, length
 
-def close_window():
-    root.destroy()
+movies, length = get_new_tv_shows()
 
-root = tk.Tk()
-
-# Create a button to close the window
-button = tk.Button(root, text="Close Window", command=close_window)
-button.pack()
-
-root.mainloop()
+print(movies[0]['name'])
