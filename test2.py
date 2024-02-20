@@ -43,7 +43,7 @@ m.pack(fill='both', expand=True)
 
 imagen_2("Assets/startup.jpg", start_w, start_h, m)
 
-C.overrideredirect(True)
+#C.overrideredirect(True)
 C.config(bg='blue')
 
 
@@ -52,8 +52,10 @@ def on_closing():
     C.destroy()
 
 
-threading.Thread(target=on_closing).start()
+m = threading.Thread(target=on_closing)
+m.start()
+m.join()
 
-C.protocol("WM_DELETE_WINDOW", on_closing)
+#C.protocol("WM_DELETE_WINDOW", on_closing)
 C.mainloop()
 print('end')
