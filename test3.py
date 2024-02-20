@@ -2,4 +2,7 @@ import random
 m = random.randint(0, 1)
 print("random",  m)
 
-\random.randint(0, 1)
+if random.randint(0, 1):
+    print("even")
+else:
+    print("odd")
