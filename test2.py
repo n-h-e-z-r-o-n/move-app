@@ -1,87 +1,58 @@
+import threading
 import tkinter as tk
-import ctypes
-from webview.window import Window
-from webview.platforms.edgechromium import EdgeChrome
-from tkinter import Frame
-from System.Windows.Forms import Control
-from System.Threading import Thread,ApartmentState,ThreadStart,SynchronizationContext,SendOrPostCallback
-
-user32=ctypes.windll.user32
-
-class WebView2(Frame):
-    def __init__(self,parent,width:int,height:int,url:str='',**kw):
-        Frame.__init__(self,parent,width=width,height=height,**kw)
-        control=Control()
-        uid = 'master'
-        window=Window(uid,str(id(self)), url=None, html=None, js_api=None, width=width, height=height, x=None, y=None,
-                      resizable=True, fullscreen=False, min_size=(200, 100), hidden=False,
-                      frameless=False, easy_drag=True,
-                      minimized=False, on_top=False, confirm_close=False, background_color='#FFFFFF',
-                      transparent=False, text_select=True, localization=None,
-                      zoomable=True, draggable=True, vibrancy=False)
-        self.window=window
-        self.web_view=EdgeChrome(control,window,None)
-        self.control=control
-        self.web=self.web_view.web_view
-        self.width=width
-        self.height=height
-        self.parent=parent
-        self.chwnd=int(str(self.control.Handle))
-        user32.SetParent(self.chwnd,self.winfo_id())
-        user32.MoveWindow(self.chwnd,0,0,width,height,True)
-        self.loaded=window.events.loaded
-        self.window_resized=window.events.resized
-        self.__go_bind()
-        if url!='':
-            self.load_url(url)
-        self.core=None
-
-    def __go_bind(self):
-        self.bind('<Destroy>',lambda event:self.web.Dispose())
-        self.bind('<Configure>',self.__resize_webview)
-        self.newwindow=None
-
-    def __resize_webview(self,event):
-        user32.MoveWindow(self.chwnd,0,0,self.winfo_width(),self.winfo_height(),True)
-
-    def load_url(self,url):
-        self.web_view.load_url(url)
+from PIL import Image, ImageTk
+from io import BytesIO
+import io
+import base64
 
 
+def imagen_2(image_path, screen_width, screen_height, widget): # image processing
+    def load_image():
+        try:
+            image = Image.open(image_path)
+        except Exception as e:
+            try:
+                image = Image.open(io.BytesIO(image_path))
+            except Exception as e:
+                print(e)
+                binary_data = base64.b64decode(image_path)  # Decode the string
+                image = Image.open(io.BytesIO(binary_data))
+
+        image = image.resize((screen_width, screen_height), Image.LANCZOS)
+        photo = ImageTk.PhotoImage(image)
+        widget.config(image=photo)
+        widget.image = photo  # Keep a reference to the PhotoImage to prevent it from being garbage collected
+
+    image_thread = threading.Thread(target=load_image)  # Create a thread to load the image asynchronously
+    image_thread.start()
 
 
-def main():
-    root = tk.Tk()
-    root.geometry("300x200")
+C = tk.Tk()
 
-    def on_double_clisck():
-        print('fgfg999999999999999')
+screenwidth = C.winfo_screenwidth()
+screenheight = C.winfo_screenheight()
+start_w = 600
+start_h = 400
+C.minsize(start_w, start_h)
+C.maxsize(start_w, start_h)
+pos_w = int((screenwidth / 2) - (start_w / 2))
+pos_h = int((screenheight / 2) - (start_h / 2))
+C.geometry(f'+{pos_w}+{pos_h}')
+m = tk.Label(root)
+m.pack(fill='both', expand=True)
 
-    frame = tk.Frame(root, bg="blue", width=200, height=100)
-    frame.pack(padx=0, pady=0, fill=tk.BOTH, expand=True)
-    frame2 = WebView2(frame, 500, 500)
-    m = frame2.window.events.
-    frame2.load_url(f'https://vidsrc.to/embed/tv/tt0944947')  # https://vidsrc.to/embed/movie/tt{movie_id}
-    frame2.place(relheight=0.8, relwidth=1, relx=0, rely=0)
+imagen_2("Assets/startup.jpg", start_w, start_h, m)
 
-
-
-
-
-    RRRR = tk.Button(root, bg="blue", width=200, height=100)
-    RRRR.place(relheight=1, relwidth=0.2, relx=0, rely=0.8)
-    RRRR.bind_all("<Double-Button-1>", on_double_clisck)
-
-    root.mainloop()
-
-if __name__ == "__main__":
-    #main()
-    #"""
-    t = Thread(ThreadStart(main))
-    t.ApartmentState = ApartmentState.STA
-    t.Start()
-    t.Join()
-    #"""
+C.overrideredirect(True)
+C.config(bg='blue')
 
 
+def on_closing():
+    time.sleep(5)
+    C.destroy()
 
+
+threading.Thread(target=on_closing).start()
+
+C.protocol("WM_DELETE_WINDOW", on_closing)
+C.mainloop()
