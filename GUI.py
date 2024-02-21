@@ -691,7 +691,6 @@ def Search_result(widget, m_list):
     Search_box.bind("<FocusIn>", lambda e: on_entry_click(Search_box, e))
     Search_box.bind("<FocusOut>", lambda e: on_focusout(Search_box, e))
     change_bg_OnHover(Search_box, '#010127', 'black')
-    change_bg_OnHover
     Search_box.bind("<Return>", lambda event: search_movies_request(top_frame_main, Search_box, widget, 0, event))
 
     recomendation_tubs_bg_color = 'black'
