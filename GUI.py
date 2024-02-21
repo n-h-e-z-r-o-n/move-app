@@ -1249,7 +1249,7 @@ def main():
 
 
 if __name__ == "__main__":
-    # Start_graphics()
+    Start_graphics()
     main()
     """
     t = Thread(ThreadStart(main))
