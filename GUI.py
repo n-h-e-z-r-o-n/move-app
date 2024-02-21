@@ -915,7 +915,14 @@ def Fetch_Mount_SHows(numer=24):
         new_tvs_list.extend(tv_new)
         added_tvs_list.extend(tv_added)
 
+
         count += 1
+
+    print('new_movie_list', len(new_movie_list))
+    print('added_movie_list', len(added_movie_list))
+    print('new_tvs_list', len(new_tvs_list))
+    print('added_tvs_list', len(added_tvs_list))
+
 
     New_moves = xr(new_movie_list)
     Added_moves = xr(added_movie_list)
