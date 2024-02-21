@@ -1019,12 +1019,35 @@ def Home_Page(widget):
     Suggestion3 = tk.Frame(widget, borderwidth=0, border=0, bg=bg_sections)
     Suggestion3.place(relx=0, rely=0.493, relheight=0.17, relwidth=1)
 
-    p_ms = tk.Button(Suggestion1, font=('Georgia', 16), justify='center', anchor=tk.W, activeforeground='lightblue', fg='gray', text=' ⍚ POPULAR MOVIES', borderwidth=0, border=0, bg='black', command=lambda: Search_result(top_frame_main, populer_movie_list))
-    p_ms.place(relx=0, rely=0, relheight=0.04, relwidth=1)
-    change_fg_OnHover(p_ms, 'lightblue', 'gray')
+    p_ms3 = tk.Button(Suggestion3, font=('Georgia', 16), justify='center', anchor=tk.W, activeforeground='lightblue', fg='gray', text=' ⍚ POPULAR MOVIES', borderwidth=0, border=0, bg='black', command=lambda: Search_result(top_frame_main, populer_movie_list))
+    p_ms3.place(relx=0, rely=0, relheight=0.04, relwidth=1)
+    change_fg_OnHover(p_ms3, 'lightblue', 'gray')
 
+    column = 0
+    row = 0
+    x_pos = 0.005
+    y_pos = 0.05
+    track = 0
+    tvs_widget = []
+    while row < 3:  # 3 rows
+        while column < 8:  # 8 columns
+            label3 = tk.Frame(Suggestion2, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
+            label3.place(relx=x_pos, rely=y_pos, relheight=0.31, relwidth=0.12)
+            r1_bt3 = tk.Button(label3, bg='#1A2421', borderwidth=0, justify=tk.CENTER, activebackground=hover_color, border=0)  # , command=lambda id = populer_series_list[track][3]: selected_movie_detail(id))
+            r1_bt3.place(relx=0, rely=0, relwidth=1, relheight=1)
+            change_bg_OnHover(r1_bt3, hover_color, '#1A2421')
+            r1_bt4 = tk.Button(label3, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, text='', activeforeground=hover_color, activebackground='#1A2421', fg='gray', font=('Calibri', 11))  # , command=lambda id= populer_movie_list[track]: selected_movie_detail(id))
+            r1_bt4.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
+            tvs_widget.append((r1_bt3, r1_bt4))
+            change_fg_OnHover(r1_bt4, hover_color, 'gray')
+            x_pos += 0.125
+            column += 1
+            track += 1
 
-
+        column = 0
+        x_pos = 0.005
+        y_pos += 0.32
+        row += 1
 
     imagen_2("Assets/12.jpg", screen_width, Home_frame_hight, Home_label)
     #threading.Thread(target=slide_show, args=(Suggestion,)).start()
