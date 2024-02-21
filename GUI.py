@@ -884,9 +884,10 @@ def recommendation_tv(widget_list, PY_width, PX_hight):
 
 def Fetch_Mount(numer = 24):
     global New_moves, Added_moves, New_TV_Shows, Added_TV_Shows
-    count = 0
-    while count < numer:
-            movies, length = get_added_movies(page=1)
+    count = 1
+    while count <= numer:
+            movies, length = get_added_movies(page=count)
+            count += 1
 
 # ---------------------------------------------------------------------------------------------------------------
 
