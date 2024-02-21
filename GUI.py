@@ -882,6 +882,7 @@ def recommendation_tv(widget_list, PY_width, PX_hight):
         widget[1].config(command=lambda id=tvs[count]["imdb_id"]: selected_movie_detail(id))
         count += 1
 
+def 
 
 # ---------------------------------------------------------------------------------------------------------------
 
