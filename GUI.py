@@ -84,8 +84,7 @@ page_count = -1
 search_q = None
 root = None
 FRAME_1_canvas = canvas_FRAME_2 = FRAME_1 = FRAME_2 = None
-large_frame_size = None
-
+New_moves = Added_moves = New_TV_Shows = Added_TV_Shows = None
 ia = imdb.Cinemagoer()
 
 imdb_other = IMDB()
@@ -918,7 +917,11 @@ def Fetch_Mount(numer=24):
 
         count += 1
 
-    xr(shows_list)
+    New_moves = xr(new_movie_list)
+    Added_moves = xr(added_movie_list)
+    New_TV_Shows = xr(new_tvs_list)
+    Added_TV_Shows = xr(added_tvs_list)
+
 
 
 # ---------------------------------------------------------------------------------------------------------------
