@@ -1006,12 +1006,6 @@ def Home_Page(widget):
     Suggestion2 = tk.Frame(widget, borderwidth=0, border=0, bg=bg_sections)
     Suggestion2.place(relx=0, rely=0.322, relheight=0.17, relwidth=1)
 
-    series = imdb_other.popular_tv(genre=None, start_id=1, sort_by=None)  # returns top 50 popular TV Series starting from start id
-
-    populer_series_list = []
-
-
-
     p_Ss = tk.Button(Suggestion2, font=('Georgia', 16), justify='center', anchor=tk.W, fg='gray', activeforeground='lightblue', text=' ⍚ POPULAR SERIES', borderwidth=0, border=0, bg='black', command=lambda: Search_result(top_frame_main, populer_series_list))
     p_Ss.place(relx=0, rely=0, relheight=0.04, relwidth=1)
     change_fg_OnHover(p_Ss, 'lightblue', 'gray')
@@ -1021,7 +1015,7 @@ def Home_Page(widget):
     x_pos = 0.005
     y_pos = 0.05
     track = 0
-    tvs_widget = []
+    movies_added_widget = []
     while row < 3:  # 3 rows
         while column < 8:  # 8 columns
             label3 = tk.Frame(Suggestion2, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
@@ -1031,7 +1025,7 @@ def Home_Page(widget):
             change_bg_OnHover(r1_bt3, hover_color, '#1A2421')
             r1_bt4 = tk.Button(label3, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, text='', activeforeground=hover_color, activebackground='#1A2421', fg='gray', font=('Calibri', 11))  # , command=lambda id= populer_movie_list[track]: selected_movie_detail(id))
             r1_bt4.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
-            tvs_widget.append((r1_bt3, r1_bt4))
+            movies_added_widget.append((r1_bt3, r1_bt4))
             change_fg_OnHover(r1_bt4, hover_color, 'gray')
             x_pos += 0.125
             column += 1
@@ -1080,7 +1074,7 @@ def Home_Page(widget):
     imagen_2("Assets/12.jpg", screen_width, Home_frame_hight, Home_label)
     #threading.Thread(target=slide_show, args=(Suggestion,)).start()
     #threading.Thread(target=populer_new_moves, args=(movies_new_widget, PX_hight, PY_width)).start()
-    threading.Thread(target=populer_added_moves, args=(tvs_widget, PX_hight, PY_width)).start()
+    threading.Thread(target=populer_added_moves, args=(movies_added_widget, PX_hight, PY_width)).start()
     #threading.Thread(target=populer_new_tv_shows, args=(tvs_widget, PX_hight, PY_width)).start()
     threading.Thread(target=populer_added_tv_shows(), args=(tvs_widget, PX_hight, PY_width)).start()
 
