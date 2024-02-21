@@ -147,14 +147,39 @@ def on_mouse_wheel(widget, event):  # Function to handle mouse wheel scrolling
         #xxx(widget, -0.004)
         #widget.update_idletasks()  # Force update of the display
 
+
+prevy = 0
 def on_touch_scroll(widget, event):
-        canvas.yview_scroll(-1 * int(event.delta), "units")
-        print("touch")
+        global prevy
+
+        def xxx(widget=widget, increment=None):
+            current_scroll = float(widget.yview()[0])
+            new_scroll = max(0.0, min(1.0, current_scroll + increment))
+            widget.yview_moveto(new_scroll)
+
+        print("touch scroll")
+        nowy = event.y_root
+        print(nowy)
+
+        if nowy > prevy:
+            xxx(widget, -0.002)
+            #widget.yview_scroll(-1, "units")
+        elif nowy < prevy:
+            xxx(widget, 0.002)
+            #widget.yview_scroll(1, "units")
+
+        else:
+            event.delta = 0
+        prevy = nowy
         print(event.delta)
+        #widget.unbind_all("<B1-Motion>", "+" )
+        #widget.bind("<Leave>", lambda _: widget.unbind_all("<B1-Motion>"), "+")
+
+
 def widget_scroll_bind(widget):
     widget.bind("<Configure>", lambda e: on_frame_configure(widget, e))
     widget.bind_all("<MouseWheel>", lambda e: on_mouse_wheel(widget, e))
-    widget.bind_all("<B1-Motion>", lambda e: on_touch_scroll(widget, e))
+    widget.bind_all("<B1-Motion>", lambda e: on_touch_scroll(widget, e), "+")
 
 
 def imagen(image_url, screen_width, screen_height, widget):
@@ -859,17 +884,14 @@ def slide_show(widget):
         root.after(7000, lambda: Home_page_Background_changer(list, x=x))
 
     movies, num = get_new_movies(2)
-    print(num)
     list = []
     if num != 0:
         count = 0
         for movie in movies:
                 if count > 4:
                   break
-                print(count)
                 f1 = tk.Button(widget,  borderwidth=0, border=0, text=movie['title'], fg='white', activebackground='black', bg='black') #, command=lambda id=movie[count]['imdb_id']: selected_movie_detail(id))
                 f1.place(relx=0, rely=0, relheight=1, relwidth=1)
-                print(poster_image_get(movie['imdb_id']))
                 imagen_fade(movie['imdb_id'], screen_height, screen_width, f1)
                 count += 1
                 list.append(f1)
