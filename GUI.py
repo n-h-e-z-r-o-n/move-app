@@ -812,6 +812,19 @@ def populer_new_tv_shows(widget_list, PX_hight, PY_width):
         widget[1].config(command=lambda id=tv_shows_list[count]["imdb_id"]: selected_movie_detail(id))
         count += 1
 
+def populer_added_tv_shows(widget_list, PX_hight, PY_width):
+    tv_shows_list = []
+    movies, x = get_added_tv_shows(1)
+    tv_shows_list.extend(movies)
+    movies, x = get_added_tv_shows(2)
+    tv_shows_list.extend(movies)
+    count = 0
+    for widget in widget_list:
+        widget[1].config(text=tv_shows_list[count]["title"])
+        imagen(poster_image_get(tv_shows_list[count]["imdb_id"]), PY_width, PX_hight, widget[0])
+        widget[0].config(command=lambda id=tv_shows_list[count]["imdb_id"]: selected_movie_detail(id))
+        widget[1].config(command=lambda id=tv_shows_list[count]["imdb_id"]: selected_movie_detail(id))
+        count += 1
 
 def populer_new_moves(widget_list, PX_hight, PY_width):
     movie_list = []
@@ -828,6 +841,7 @@ def populer_new_moves(widget_list, PX_hight, PY_width):
         widget[1].config(command=lambda id=movie_list[count]["imdb_id"]: selected_movie_detail(id))
         count += 1
 
+
 def populer_added_moves(widget_list, PX_hight, PY_width):
     movie_list = []
     movies, x = get_added_movies(1)
@@ -842,6 +856,7 @@ def populer_added_moves(widget_list, PX_hight, PY_width):
         widget[0].config(command=lambda id=movie_list[count]["imdb_id"]: selected_movie_detail(id))
         widget[1].config(command=lambda id=movie_list[count]["imdb_id"]: selected_movie_detail(id))
         count += 1
+
 
 def recommendation_movies(widget_list, PY_width, PX_hight):
     page = random.randint(1, 100)
