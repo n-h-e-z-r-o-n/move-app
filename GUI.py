@@ -886,7 +886,10 @@ def Fetch_Mount(numer = 24):
     global New_moves, Added_moves, New_TV_Shows, Added_TV_Shows
     count = 0
     while count < numer:
-          get_new_movies(page=count)
+          movies, len = get_new_movies(page=count)
+          movies, len = get_added_movies(page=count)
+          movies, len = get_new_tv_shows(page=count)
+          movies, len = get_new_movies(page=count)
           count += 1
 
     movie_list = []
