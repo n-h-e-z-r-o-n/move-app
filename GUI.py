@@ -911,7 +911,8 @@ def Home_Page(widget):
     Home_label = tk.Label(widget, bg='gray')
     Home_label.place(relx=0, rely=0, relwidth=1, relheight=1)
     bg_sections = 'black'
-    # Section 1 ===============================================================================
+
+    # ===========  Section 1  =========================================================================================================================================
 
     Suggestion = tk.Frame(widget, borderwidth=0, border=0, bg=bg_sections)
     Suggestion.place(relx=0, rely=0, relheight=0.15, relwidth=1)
