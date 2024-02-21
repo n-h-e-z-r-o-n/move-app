@@ -884,7 +884,7 @@ def recommendation_tv(widget_list, PY_width, PX_hight):
         count += 1
 
 
-def Fetch_Mount_SHows(numer=24):
+def Fetch_Mount_SHows(numer=10):
     global New_moves, Added_moves, New_TV_Shows, Added_TV_Shows
 
     def xr(shows_list):
@@ -893,7 +893,7 @@ def Fetch_Mount_SHows(numer=24):
             movie_id = movie['imdb_id']
             title = movie['title']
             year = ''
-            poster =  poster_image_get(movie_id)
+            poster = poster_image_get(movie_id)
 
             M_list.append((title, year, poster, movie_id))  # (title, year, post_url, movie_id)
 
@@ -925,9 +925,13 @@ def Fetch_Mount_SHows(numer=24):
 
 
     New_moves = xr(new_movie_list)
+    print('New_moves', len(New_moves))
     Added_moves = xr(added_movie_list)
+    print('Added_moves', len(Added_moves))
     New_TV_Shows = xr(new_tvs_list)
+    print('New_TV_Shows', len(New_TV_Shows))
     Added_TV_Shows = xr(added_tvs_list)
+    print('Added_TV_Shows', len(Added_TV_Shows))
 
 
 
