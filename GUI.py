@@ -884,11 +884,15 @@ def recommendation_tv(widget_list, PY_width, PX_hight):
 
 def Fetch_Mount(numer = 24):
     global New_moves, Added_moves, New_TV_Shows, Added_TV_Shows
-    count = 1
-    while count <= numer:
-            movies, length = get_added_movies(page=count)
+    movie_list = []
+    for movie in movies:
+        movie_id = movie['imdb_id']
+        title = movie['title']
+        year = ''
+        poster = ''  # poster_image_get(movie_id)
+        movie_list.append((title, year, poster, movie_id))  # (title, year, post_url, movie_id)
 
-            count += 1
+    return movie_list
 
 # ---------------------------------------------------------------------------------------------------------------
 
