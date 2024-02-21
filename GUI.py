@@ -171,7 +171,7 @@ def on_touch_scroll(widget, event):
         else:
             event.delta = 0
         prevy = nowy
-
+        bind("<Leave>", lambda _: widget.unbind_all("<Button-1>"), "+")
 
 
 
