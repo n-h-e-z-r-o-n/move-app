@@ -171,15 +171,16 @@ def on_touch_scroll(widget, event):
         else:
             event.delta = 0
         prevy = nowy
-        print(event.delta)
-        #widget.unbind_all("<B1-Motion>", "+" )
-        widget.bind("<Leave>", lambda _: widget.unbind_all("<B1>"), "+")
+
+
+
 
 
 def widget_scroll_bind(widget):
     widget.bind("<Configure>", lambda e: on_frame_configure(widget, e))
     widget.bind_all("<MouseWheel>", lambda e: on_mouse_wheel(widget, e))
     widget.bind_all("<B1-Motion>", lambda e: on_touch_scroll(widget, e), "+")
+    widget.bind("<Leave>", lambda _: widget.unbind_all("<B1>"), "+")
 
 
 def imagen(image_url, screen_width, screen_height, widget):
