@@ -988,7 +988,7 @@ def Home_Page(widget):
     PX_hight = int(Home_frame_hight * 0.17 * 0.31) - 1
     PY_width = int(screen_width * 1 * 0.12) - 1
     # background image ======================================================================
-    Home_label = tk.Label(widget, bg='gray')
+    Home_label = tk.Label(widget, bg='yellow')
     Home_label.place(relx=0, rely=0, relwidth=1, relheight=1)
     bg_sections = 'black'
 
