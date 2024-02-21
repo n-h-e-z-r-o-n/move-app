@@ -57,7 +57,7 @@ class VerticalScrolledFrame(tk.Frame):
 
 if __name__ == "__main__":
     root = tk.Tk()
-    vsf = VerticalScrolledFrame(root, bg="white")
+    vsf = VerticalScrolledFrame(root, bg="blue")
     vsf.grid(row=0, column=0, sticky="nsew")
 
     # Add widgets to the scrolled frame (e.g., labels, buttons)
