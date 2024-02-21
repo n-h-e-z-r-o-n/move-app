@@ -887,6 +887,14 @@ def recommendation_tv(widget_list, PY_width, PX_hight):
 
 def Fetch_Mount(numer=24):
     global New_moves, Added_moves, New_TV_Shows, Added_TV_Shows
+
+    def xr(shows_list):
+        for movie in shows_list:
+            movie_id = movie['imdb_id']
+            title = movie['title']
+            year = ''
+            poster = ''  # poster_image_get(movie_id)
+            movie_list.append((title, year, poster, movie_id))  # (title, year, post_url, movie_id)
     new_movie_list = []
     added_movie_list = []
     new_tvs_list = []
@@ -902,16 +910,11 @@ def Fetch_Mount(numer=24):
         added_movie_list.extend(movies_added)
         new_tvs_list.extend(tv_new)
         added_tvs_list.extend(tv_added)
-        
+
         count += 1
 
 
-    for movie in movies:
-        movie_id = movie['imdb_id']
-        title = movie['title']
-        year = ''
-        poster = ''  # poster_image_get(movie_id)
-        movie_list.append((title, year, poster, movie_id))  # (title, year, post_url, movie_id)
+
 
     return movie_list
 
