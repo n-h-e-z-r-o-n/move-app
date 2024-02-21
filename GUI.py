@@ -979,7 +979,7 @@ def Home_Page(widget):
     x_pos = 0.005
     y_pos = 0.05
     track = 0
-    movies_widget = []
+    movies_new_widget = []
     while row < 3:  # 3
         while column < 8:  # 8
 
@@ -991,7 +991,7 @@ def Home_Page(widget):
             r1_bt2 = tk.Button(label1, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg='gray', font=('Calibri', 11))  # , command=lambda id=populer_movie_list[track]: selected_movie_detail(id))
             r1_bt2.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
             change_fg_OnHover(r1_bt2, hover_color, 'gray')
-            movies_widget.append((r1_bt1, r1_bt2))
+            movies_new_widget.append((r1_bt1, r1_bt2))
             x_pos += 0.125
             column += 1
             track += 1
