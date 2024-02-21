@@ -1080,8 +1080,9 @@ def Home_Page(widget):
     imagen_2("Assets/12.jpg", screen_width, Home_frame_hight, Home_label)
     #threading.Thread(target=slide_show, args=(Suggestion,)).start()
     #threading.Thread(target=populer_new_moves, args=(movies_widget, PX_hight, PY_width)).start()
-    #threading.Thread(target=populer_new_tv_shows, args=(tvs_widget, PX_hight, PY_width)).start()
     threading.Thread(target=populer_added_moves, args=(tvs_widget, PX_hight, PY_width)).start()
+    #threading.Thread(target=populer_new_tv_shows, args=(tvs_widget, PX_hight, PY_width)).start()
+    threading.Thread(target=populer_added_tv_shows(), args=(tvs_widget, PX_hight, PY_width)).start()
 
 
 
