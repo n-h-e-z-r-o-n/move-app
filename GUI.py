@@ -148,18 +148,8 @@ def on_mouse_wheel(widget, event):  # Function to handle mouse wheel scrolling
         #widget.update_idletasks()  # Force update of the display
 
 def on_touch_scroll(widget, event):
-        nowy = event.y_root
-        sectionmoved = 15
-        if nowy > widget.prevy:
-            event.delta = -sectionmoved
-        elif nowy < widget.prevy:
-            event.delta = sectionmoved
-        else:
-            event.delta = 0
-        widget.prevy = nowy
-        widget.scrollposition += event.delta
-        widget.canvas.yview_moveto(widget.scrollposition / widget.interior.winfo_reqheight())
-
+        print("touch")
+        print(event.delta)
 def widget_scroll_bind(widget):
     widget.bind("<Configure>", lambda e: on_frame_configure(widget, e))
     widget.bind_all("<MouseWheel>", lambda e: on_mouse_wheel(widget, e))
