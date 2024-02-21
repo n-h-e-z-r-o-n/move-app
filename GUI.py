@@ -145,7 +145,7 @@ def on_mouse_wheel(widget, event):  # Function to handle mouse wheel scrolling
         #xxx(widget, 0.001)
         for _ in range(5):
             xxx(widget, 0.001)
-            widget.update_idletasks()  # Force update of the display
+            #widget.update_idletasks()  # Force update of the display
         # widget.update_idletasks()  # Force update of the display
 
     else:
@@ -153,7 +153,7 @@ def on_mouse_wheel(widget, event):  # Function to handle mouse wheel scrolling
         #xxx(widget, -0.001)
         for _ in range(5):
             xxx(widget, -0.001)
-            widget.update_idletasks()  # Force update of the display
+            #widget.update_idletasks()  # Force update of the display
         # widget.update_idletasks()  # Force update of the display
 
 
