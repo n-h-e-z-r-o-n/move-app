@@ -143,7 +143,7 @@ def on_mouse_wheel(widget, event):  # Function to handle mouse wheel scrolling
     if event.delta < 0:
         #widget.yview_scroll(1, "units")
         #xxx(widget, 0.001)
-        for _ in range(4):
+        for _ in range(10):
             xxx(widget, 0.001)
             widget.update_idletasks()  # Force update of the display
         # widget.update_idletasks()  # Force update of the display
@@ -151,7 +151,7 @@ def on_mouse_wheel(widget, event):  # Function to handle mouse wheel scrolling
     else:
         #widget.yview_scroll(-1, "units")
         #xxx(widget, -0.001)
-        for _ in range(4):
+        for _ in range(10):
             xxx(widget, -0.001)
             widget.update_idletasks()  # Force update of the display
         # widget.update_idletasks()  # Force update of the display
@@ -1118,7 +1118,7 @@ def Home_Page(widget):
     #threading.Thread(target=populer_new_moves, args=(movies_new_widget, PX_hight, PY_width)).start()
     #threading.Thread(target=populer_added_moves, args=(movies_added_widget, PX_hight, PY_width)).start()
     #threading.Thread(target=populer_new_tv_shows, args=(tvs_new_widgets, PX_hight, PY_width)).start()
-    #threading.Thread(target=populer_added_tv_shows, args=(tvs_added_widget, PX_hight, PY_width)).start()
+    threading.Thread(target=populer_added_tv_shows, args=(tvs_added_widget, PX_hight, PY_width)).start()
 
 
 
