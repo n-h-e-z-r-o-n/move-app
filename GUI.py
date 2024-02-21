@@ -876,7 +876,7 @@ def Home_Page(widget):
         global widget_track_position, page_count, screen_height, screen_width, canvas_FRAME_2, FRAME_1_canvas, top_frame_main, Home_frame
 
         FRAME_1.tkraise()
-        widget_scroll_bind(FRAME_1_canvas)
+        widget_scroll_bind(FRAME_1_canvas, widget)
         Home_frame_hight = screen_height * 5
         PX_hight = int(Home_frame_hight * 0.17 * 0.31) - 1
         PY_width = int(screen_width * 1 * 0.12) - 1
