@@ -1081,7 +1081,7 @@ def Home_Page(widget):
     section5 = tk.Frame(widget, borderwidth=0, border=0, bg=bg_sections)
     section5.place(relx=0, rely=0.664, relheight=0.17, relwidth=1)
 
-    p_ms5 = tk.Button(section5, font=('Georgia', 16), justify='center', anchor=tk.W, activeforeground='lightblue', fg='gray', text=' ⍚ ADDED SERIES', borderwidth=0, border=0, bg='black', command=lambda: Search_result(top_frame_main, populer_movie_list))
+    p_ms5 = tk.Button(section5, font=('Georgia', 16), justify='center', anchor=tk.W, activeforeground='lightblue', fg='gray', text=' ⍚ ADDED SERIES', borderwidth=0, border=0, bg='black')#, command=lambda: Search_result(top_frame_main, populer_movie_list))
     p_ms5.place(relx=0, rely=0, relheight=0.04, relwidth=1)
     change_fg_OnHover(p_ms5, 'lightblue', 'gray')
 
