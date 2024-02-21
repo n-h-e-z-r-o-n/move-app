@@ -14,7 +14,7 @@ def get_added_movies(page=1):
         title = movie['title']
         year = ''
         poster = '' #poster_image_get(movie_id)
-        movie_list.append((title, year, poster, movie_id))
+        movie_list.append((title, year, poster, movie_id)) # (title, year, post_url, movie_id)
 
     return movie_list
 
