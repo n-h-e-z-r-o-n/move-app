@@ -1008,7 +1008,7 @@ def Home_Page(widget):
 # ================= Main Definition ===================================================================================================================
 # =====================================================================================================================================================
 def Start_graphics():
-        C = tk.Tk()
+        C = tk.Tk(use="none")
 
         screenwidth = C.winfo_screenwidth()
         screenheight = C.winfo_screenheight()
@@ -1042,7 +1042,7 @@ def main():
     global large_frame_size, search_q, root
     global top_search_page, top_page, widget_track_position, top_frame_main, FRAME_1, FRAME_2, FRAME_1_canvas , canvas_FRAME_2
 
-    root = tk.Tk( buffered=True)
+    root = tk.Tk()
     root.title("Move App")
     root.state('zoomed')  # this creates a window that takes over the screen
     root.minsize(500, 600)
