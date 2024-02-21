@@ -150,6 +150,7 @@ def on_mouse_wheel(widget, event):  # Function to handle mouse wheel scrolling
 def widget_scroll_bind(widget):
     widget.bind("<Configure>", lambda e: on_frame_configure(widget, e))
     widget.bind_all("<MouseWheel>", lambda e: on_mouse_wheel(widget, e))
+    widget.bind_all("<B1-Motion>", lambda e: on_mouse_wheel(widget, e))
 
 
 def imagen(image_url, screen_width, screen_height, widget):
