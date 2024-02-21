@@ -173,7 +173,7 @@ def on_touch_scroll(widget, event):
         prevy = nowy
         print(event.delta)
         #widget.unbind_all("<B1-Motion>", "+" )
-        widget.bind("<Leave>", lambda _: widget.unbind_all("<B1-Active>"), "+")
+        widget.bind("<Leave>", lambda _: widget.unbind_all("<B1>"), "+")
 
 
 def widget_scroll_bind(widget):
