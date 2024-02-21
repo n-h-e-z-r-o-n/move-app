@@ -148,6 +148,7 @@ def on_mouse_wheel(widget, event):  # Function to handle mouse wheel scrolling
         #widget.update_idletasks()  # Force update of the display
 
 def on_touch_scroll(widget, event):
+        canvas.yview_scroll(-1 * int(event.delta), "units")
         print("touch")
         print(event.delta)
 def widget_scroll_bind(widget):
