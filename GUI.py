@@ -975,7 +975,7 @@ def Home_Page(widget):
     hover_color = 'lightblue'
 
 
-    p_ms2 = tk.Button(section2, font=('Georgia', 16), justify='center', anchor=tk.W, activeforeground='lightblue', fg='gray', text=' ⍚ NEW MOVIES', borderwidth=0, border=0, bg='black', command=lambda: Search_result(top_frame_main, populer_movie_list))
+    p_ms2 = tk.Button(section2, font=('Georgia', 16), justify='center', anchor=tk.W, activeforeground='lightblue', fg='gray', text=' ⍚ NEW MOVIES', borderwidth=0, border=0, bg='black')#, command=lambda: Search_result(top_frame_main, populer_movie_list))
     p_ms2.place(relx=0, rely=0, relheight=0.04, relwidth=1)
     change_fg_OnHover(p_ms2, 'lightblue', 'gray')
 
@@ -993,7 +993,7 @@ def Home_Page(widget):
             r1_bt1 = tk.Button(label1, bg='#1A2421', borderwidth=0, justify=tk.CENTER, activebackground=hover_color, border=0)
             r1_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
             change_bg_OnHover(r1_bt1, hover_color, '#1A2421')
-            r1_bt2 = tk.Button(label1, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg='gray', font=('Calibri', 11))  # , command=lambda id=populer_movie_list[track]: selected_movie_detail(id))
+            r1_bt2 = tk.Button(label1, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, activeforeground=hover_color, activebackground=recomendation_tubs_bg_color, fg='gray', font=('Calibri', 11))
             r1_bt2.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
             change_fg_OnHover(r1_bt2, hover_color, 'gray')
             movies_new_widget.append((r1_bt1, r1_bt2))
@@ -1011,7 +1011,7 @@ def Home_Page(widget):
     section3 = tk.Frame(widget, borderwidth=0, border=0, bg=bg_sections)
     section3.place(relx=0, rely=0.322, relheight=0.17, relwidth=1)
 
-    p_ms3 = tk.Button(section3, font=('Georgia', 16), justify='center', anchor=tk.W, fg='gray', activeforeground='lightblue', text=' ⍚ RECENT MOVIES', borderwidth=0, border=0, bg='black', command=lambda: Search_result(top_frame_main, populer_series_list))
+    p_ms3 = tk.Button(section3, font=('Georgia', 16), justify='center', anchor=tk.W, fg='gray', activeforeground='lightblue', text=' ⍚ RECENT MOVIES', borderwidth=0, border=0, bg='black')#, command=lambda: Search_result(top_frame_main, populer_series_list))
     p_ms3.place(relx=0, rely=0, relheight=0.04, relwidth=1)
     change_fg_OnHover(p_ms3, 'lightblue', 'gray')
 
@@ -1025,10 +1025,10 @@ def Home_Page(widget):
         while column < 8:  # 8 columns
             label3 = tk.Frame(section3, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
             label3.place(relx=x_pos, rely=y_pos, relheight=0.31, relwidth=0.12)
-            r1_bt3 = tk.Button(label3, bg='#1A2421', borderwidth=0, justify=tk.CENTER, activebackground=hover_color, border=0)  # , command=lambda id = populer_series_list[track][3]: selected_movie_detail(id))
+            r1_bt3 = tk.Button(label3, bg='#1A2421', borderwidth=0, justify=tk.CENTER, activebackground=hover_color, border=0)
             r1_bt3.place(relx=0, rely=0, relwidth=1, relheight=1)
             change_bg_OnHover(r1_bt3, hover_color, '#1A2421')
-            r1_bt4 = tk.Button(label3, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, text='', activeforeground=hover_color, activebackground='#1A2421', fg='gray', font=('Calibri', 11))  # , command=lambda id= populer_movie_list[track]: selected_movie_detail(id))
+            r1_bt4 = tk.Button(label3, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, text='', activeforeground=hover_color, activebackground='#1A2421', fg='gray', font=('Calibri', 11))
             r1_bt4.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
             movies_added_widget.append((r1_bt3, r1_bt4))
             change_fg_OnHover(r1_bt4, hover_color, 'gray')
@@ -1046,7 +1046,7 @@ def Home_Page(widget):
     section4 = tk.Frame(widget, borderwidth=0, border=0, bg=bg_sections)
     section4.place(relx=0, rely=0.493, relheight=0.17, relwidth=1)
 
-    p_ms4 = tk.Button(section4, font=('Georgia', 16), justify='center', anchor=tk.W, activeforeground='lightblue', fg='gray', text=' ⍚ NEW SERIES', borderwidth=0, border=0, bg='black', command=lambda: Search_result(top_frame_main, populer_movie_list))
+    p_ms4 = tk.Button(section4, font=('Georgia', 16), justify='center', anchor=tk.W, activeforeground='lightblue', fg='gray', text=' ⍚ NEW SERIES', borderwidth=0, border=0, bg='black')#, command=lambda: Search_result(top_frame_main, populer_movie_list))
     p_ms4.place(relx=0, rely=0, relheight=0.04, relwidth=1)
     change_fg_OnHover(p_ms4, 'lightblue', 'gray')
 
