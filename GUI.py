@@ -148,13 +148,11 @@ def on_mouse_wheel(widget, event):  # Function to handle mouse wheel scrolling
 
     else:
         #widget.yview_scroll(-1, "units")
-        xxx(widget, -0.004)
+        xxx(widget, -0.01)
         # widget.update_idletasks()  # Force update of the display
 
 
 prevy = 0
-
-
 def on_touch_scroll(widget, event):
     global prevy
 
