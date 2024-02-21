@@ -1260,7 +1260,7 @@ def main():
 
 
 if __name__ == "__main__":
-    Fetch_Mount_SHows(numer=24)
+    Fetch_Mount_SHows(numer=10)
     #Start_graphics()
     #main()
     """
