@@ -157,9 +157,9 @@ def on_touch_scroll(widget, event):
             new_scroll = max(0.0, min(1.0, current_scroll + increment))
             widget.yview_moveto(new_scroll)
 
-        print("touch scroll")
+
         nowy = event.y_root
-        print(nowy)
+
 
         if nowy > prevy:
             xxx(widget, -0.002)
