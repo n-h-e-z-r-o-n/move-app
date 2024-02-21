@@ -685,7 +685,7 @@ def Search_result(widget, m_list):
     froward_tracking_widget.place(relx=0.021, rely=0, relheight=0.017, relwidth=0.021)
     change_fg_OnHover(froward_tracking_widget, 'yellow', 'gray')
 
-    Search_box = tk.Entry(Search_result_frame, font=('Georgia', 15), justify='center', insertbackground="lightblue", borderwidth=0, border=0, bg='BLUE', fg='white')
+    Search_box = tk.Entry(Search_result_frame, font=('Georgia', 15), justify='center', insertbackground="lightblue", borderwidth=0, border=0, bg='blue', fg='white')
     Search_box.place(relx=0.30, rely=0.007, relheight=0, relwidth=0.4)
     Search_box.insert(0, "Search")
     Search_box.bind("<FocusIn>", lambda e: on_entry_click(Search_box, e))
