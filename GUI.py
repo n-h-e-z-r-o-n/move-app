@@ -185,13 +185,19 @@ def widget_scroll_bind(widget):
 
 
 def imagen(image_url, screen_width, screen_height, widget):
-    def load_image():
+    def load_image(image_url=image_url):
         retry = 0
         while retry < 6:
             try:
                 if image_url is None:
                     image = Image.open("./Default.png")
+
+                elif image_url.startswith("http"):
+                    response = requests.get(image_url, timeout=20)
+                    image_data = response.content
+                    image = Image.open(BytesIO(image_data))
                 else:
+                    image_url = poster_image_get(image_url)
                     response = requests.get(image_url, timeout=20)
                     image_data = response.content
                     image = Image.open(BytesIO(image_data))
@@ -230,23 +236,6 @@ def imagen_2(image_path, screen_width, screen_height, widget):  # image processi
     image_thread.start()
 
 
-def poster_image_get(movie_id):
-    try:
-        movies = imdb_other.get_by_id(movie_id)
-        movie_poster_url = movies['poster']
-        movie_poster_url = clean_url(movie_poster_url)
-    except:
-        movie_poster_url = None
-    """
-    try:
-        movies = ia.get_movie(movie_id[2:])
-        movie_poster_url = movies.get('full-size cover url')
-    except:
-        movie_poster_url = None
-
-    return  movie_poster_url
-    """
-    return movie_poster_url
 
 
 def imagen_fade(movie_id, screen_height, screen_width, widget):
@@ -834,7 +823,6 @@ def populer_new_moves(widget_list, PX_hight, PY_width):
     movie_list.extend(movies)
     movies, x = get_new_movies(2)
     movie_list.extend(movies)
-    print("p movies", len(movie_list))
     count = 0
     for widget in widget_list:
         widget[1].config(text=movie_list[count]["title"])
@@ -890,13 +878,16 @@ def Fetch_Mount_SHows(numer=10):
     def xr(shows_list):
         M_list = []
         for movie in shows_list:
-            movie_id = movie['imdb_id']
-            title = movie['title']
-            year = ''
-            poster = poster_image_get(movie_id)
+            try:
 
-            M_list.append((title, year, poster, movie_id))  # (title, year, post_url, movie_id)
+                movie_id = movie['imdb_id']
+                title = movie['title']
+                year = ''
+                poster = '' #poster_image_get(movie_id)
 
+                M_list.append((title, year, movie_id, movie_id))  # (title, year, post_url, movie_id)
+            except Exception as e:
+                pass
         return M_list
 
     new_movie_list = []
@@ -915,26 +906,34 @@ def Fetch_Mount_SHows(numer=10):
         new_tvs_list.extend(tv_new)
         added_tvs_list.extend(tv_added)
 
-
         count += 1
 
-    print('new_movie_list', len(new_movie_list))
-    print('added_movie_list', len(added_movie_list))
-    print('new_tvs_list', len(new_tvs_list))
-    print('added_tvs_list', len(added_tvs_list))
-
-
-    New_moves = xr(new_movie_list)
-    print('New_moves', len(New_moves))
+    New_moves = threading.Thread( target=xr, args=(new_movie_list,)).start()
     Added_moves = xr(added_movie_list)
-    print('Added_moves', len(Added_moves))
     New_TV_Shows = xr(new_tvs_list)
-    print('New_TV_Shows', len(New_TV_Shows))
     Added_TV_Shows = xr(added_tvs_list)
-    print('Added_TV_Shows', len(Added_TV_Shows))
+    print("ready")
+
+threading.Thread(target=Fetch_Mount_SHows, args=(10,)).start()
 
 
+def poster_image_get(movie_id):
+    try:
+        movies = imdb_other.get_by_id(movie_id)
+        movie_poster_url = movies['poster']
+        movie_poster_url = clean_url(movie_poster_url)
+    except:
+        movie_poster_url = None
+    """
+    try:
+        movies = ia.get_movie(movie_id[2:])
+        movie_poster_url = movies.get('full-size cover url')
+    except:
+        movie_poster_url = None
 
+    return  movie_poster_url
+    """
+    return movie_poster_url
 # ---------------------------------------------------------------------------------------------------------------
 
 def slide_show(widget):
@@ -982,8 +981,7 @@ def Home_Page(widget):
     global widget_track_position, page_count, screen_height, screen_width, canvas_FRAME_2, FRAME_1_canvas, top_frame_main, Home_frame
     global New_moves, Added_moves, New_TV_Shows, Added_TV_Shows
 
-    print("Shows")
-    print(New_TV_Shows)
+
 
     FRAME_1.tkraise()
     widget_scroll_bind(FRAME_1_canvas)
@@ -1023,7 +1021,7 @@ def Home_Page(widget):
     recomendation_tubs_bg_color = 'black'
     hover_color = 'lightblue'
 
-    p_ms2 = tk.Button(section2, font=('Georgia', 16), justify='center', anchor=tk.W, activeforeground='lightblue', fg='gray', text=' ⍚ NEW MOVIES', borderwidth=0, border=0, bg='black')  # , command=lambda: Search_result(top_frame_main, populer_movie_list))
+    p_ms2 = tk.Button(section2, font=('Georgia', 16), justify='center', anchor=tk.W, activeforeground='lightblue', fg='gray', text=' ⍚ NEW MOVIES', borderwidth=0, border=0, bg='black' , command=lambda: Search_result(top_frame_main, New_moves))
     p_ms2.place(relx=0, rely=0, relheight=0.04, relwidth=1)
     change_fg_OnHover(p_ms2, 'lightblue', 'gray')
 
@@ -1059,7 +1057,7 @@ def Home_Page(widget):
     section3 = tk.Frame(widget, borderwidth=0, border=0, bg=bg_sections)
     section3.place(relx=0, rely=0.322, relheight=0.17, relwidth=1)
 
-    p_ms3 = tk.Button(section3, font=('Georgia', 16), justify='center', anchor=tk.W, fg='gray', activeforeground='lightblue', text=' ⍚ RECENT MOVIES', borderwidth=0, border=0, bg='black')  # , command=lambda: Search_result(top_frame_main, populer_series_list))
+    p_ms3 = tk.Button(section3, font=('Georgia', 16), justify='center', anchor=tk.W, fg='gray', activeforeground='lightblue', text=' ⍚ RECENT MOVIES', borderwidth=0, border=0, bg='black' , command=lambda: Search_result(top_frame_main, Added_moves))
     p_ms3.place(relx=0, rely=0, relheight=0.04, relwidth=1)
     change_fg_OnHover(p_ms3, 'lightblue', 'gray')
 
@@ -1094,7 +1092,7 @@ def Home_Page(widget):
     section4 = tk.Frame(widget, borderwidth=0, border=0, bg=bg_sections)
     section4.place(relx=0, rely=0.493, relheight=0.17, relwidth=1)
 
-    p_ms4 = tk.Button(section4, font=('Georgia', 16), justify='center', anchor=tk.W, activeforeground='lightblue', fg='gray', text=' ⍚ NEW SERIES', borderwidth=0, border=0, bg='black')  # , command=lambda: Search_result(top_frame_main, populer_movie_list))
+    p_ms4 = tk.Button(section4, font=('Georgia', 16), justify='center', anchor=tk.W, activeforeground='lightblue', fg='gray', text=' ⍚ NEW SERIES', borderwidth=0, border=0, bg='black', command=lambda: Search_result(top_frame_main, New_TV_Shows))
     p_ms4.place(relx=0, rely=0, relheight=0.04, relwidth=1)
     change_fg_OnHover(p_ms4, 'lightblue', 'gray')
 
@@ -1111,7 +1109,7 @@ def Home_Page(widget):
             r1_bt3 = tk.Button(label3, bg='#1A2421', borderwidth=0, justify=tk.CENTER, activebackground=hover_color, border=0)  # , command=lambda id = populer_series_list[track][3]: selected_movie_detail(id))
             r1_bt3.place(relx=0, rely=0, relwidth=1, relheight=1)
             change_bg_OnHover(r1_bt3, hover_color, '#1A2421')
-            r1_bt4 = tk.Button(label3, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, text='', activeforeground=hover_color, activebackground='#1A2421', fg='gray', font=('Calibri', 11))  # , command=lambda id= populer_movie_list[track]: selected_movie_detail(id))
+            r1_bt4 = tk.Button(label3, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, text='', activeforeground=hover_color, activebackground='#1A2421', fg='gray', font=('Calibri', 11))
             r1_bt4.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
             tvs_new_widgets.append((r1_bt3, r1_bt4))
             change_fg_OnHover(r1_bt4, hover_color, 'gray')
@@ -1129,7 +1127,7 @@ def Home_Page(widget):
     section5 = tk.Frame(widget, borderwidth=0, border=0, bg=bg_sections)
     section5.place(relx=0, rely=0.664, relheight=0.17, relwidth=1)
 
-    p_ms5 = tk.Button(section5, font=('Georgia', 16), justify='center', anchor=tk.W, activeforeground='lightblue', fg='gray', text=' ⍚ ADDED SERIES', borderwidth=0, border=0, bg='black')  # , command=lambda: Search_result(top_frame_main, populer_movie_list))
+    p_ms5 = tk.Button(section5, font=('Georgia', 16), justify='center', anchor=tk.W, activeforeground='lightblue', fg='gray', text=' ⍚ ADDED SERIES', borderwidth=0, border=0, bg='black' , command=lambda: Search_result(top_frame_main, Added_TV_Shows))
     p_ms5.place(relx=0, rely=0, relheight=0.04, relwidth=1)
     change_fg_OnHover(p_ms5, 'lightblue', 'gray')
 
@@ -1143,10 +1141,10 @@ def Home_Page(widget):
         while column < 8:  # 8 columns
             label3 = tk.Frame(section5, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
             label3.place(relx=x_pos, rely=y_pos, relheight=0.31, relwidth=0.12)
-            r1_bt3 = tk.Button(label3, bg='#1A2421', borderwidth=0, justify=tk.CENTER, activebackground=hover_color, border=0)  # , command=lambda id = populer_series_list[track][3]: selected_movie_detail(id))
+            r1_bt3 = tk.Button(label3, bg='#1A2421', borderwidth=0, justify=tk.CENTER, activebackground=hover_color, border=0)
             r1_bt3.place(relx=0, rely=0, relwidth=1, relheight=1)
             change_bg_OnHover(r1_bt3, hover_color, '#1A2421')
-            r1_bt4 = tk.Button(label3, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, text='', activeforeground=hover_color, activebackground='#1A2421', fg='gray', font=('Calibri', 11))  # , command=lambda id= populer_movie_list[track]: selected_movie_detail(id))
+            r1_bt4 = tk.Button(label3, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, text='', activeforeground=hover_color, activebackground='#1A2421', fg='gray', font=('Calibri', 11))
             r1_bt4.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
             tvs_added_widget.append((r1_bt3, r1_bt4))
             change_fg_OnHover(r1_bt4, hover_color, 'gray')
@@ -1260,9 +1258,9 @@ def main():
 
 
 if __name__ == "__main__":
-    Fetch_Mount_SHows(numer=10)
+
     #Start_graphics()
-    #main()
+    main()
     """
     t = Thread(ThreadStart(main))
     t.ApartmentState = ApartmentState.STA

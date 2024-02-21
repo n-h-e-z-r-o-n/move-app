@@ -5,8 +5,12 @@ ia = imdb.Cinemagoer()
 
 imdb_other = IMDB()
 
-#M = ia.search_keyword('avengers')
-#print(M)
+
+
+
+
+c
+
 
 #M = imdb_other.search(name='avengers')
 #print(M)
@@ -15,4 +19,7 @@ imdb_other = IMDB()
 
 
 
-print(M)
+print(movie_poster_url)
+
+movies = ia.get_movie('0944947')
+print(movies.get_fullsizeURL())
