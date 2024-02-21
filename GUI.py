@@ -1021,6 +1021,12 @@ def Home_Page(widget):
     threading.Thread(target=populer_new_moves, args=(movies_widget, PX_hight, PY_width)).start()
     threading.Thread(target=populer_new_tv_shows, args=(tvs_widget, PX_hight, PY_width)).start()
 
+    # ===========  Section 4  =========================================================================================================================================
+
+    Suggestion2 = tk.Frame(widget, borderwidth=0, border=0, bg=bg_sections)
+    Suggestion2.place(relx=0, rely=0.322, relheight=0.17, relwidth=1)
+
+
 
 # ================= Main Definition ===================================================================================================================
 # =====================================================================================================================================================
