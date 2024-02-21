@@ -141,7 +141,7 @@ def on_mouse_wheel(widget, event):  # Function to handle mouse wheel scrolling
 
     # Scroll the canvas up or down based on the mouse wheel direction
     if event.delta < 0:
-        widget.yview_scroll(1, "units")
+        #widget.yview_scroll(1, "units")
         # xxx(widget, 0.004)
         # widget.update_idletasks()  # Force update of the display
 
