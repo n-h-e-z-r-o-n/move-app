@@ -129,7 +129,7 @@ def change_fg_OnHover(widget, colorOnHover, colorOnLeave):  # Color change fg on
     widget.bind("<Leave>", func=lambda e: widget.config(fg=colorOnLeave))
 
 
-def on_mouse_wheel(widget, wdget2, event):  # Function to handle mouse wheel scrolling
+def on_mouse_wheel(widget, event):  # Function to handle mouse wheel scrolling
     def xxx(widget=widget, increment=None):
              current_scroll = float(widget.yview()[0])
              new_scroll = max(0.0, min(1.0, current_scroll + increment))
@@ -139,17 +139,17 @@ def on_mouse_wheel(widget, wdget2, event):  # Function to handle mouse wheel scr
     if event.delta < 0:
         widget.yview_scroll(1, "units")
         #xxx(widget, 0.004)
-        wdget2.update_idletasks()  # Force update of the display
+        #widget.update_idletasks()  # Force update of the display
 
     else:
         widget.yview_scroll(-1, "units")
         #xxx(widget, -0.004)
-        widget.update_idletasks()  # Force update of the display
+        #widget.update_idletasks()  # Force update of the display
 
 
-def widget_scroll_bind(widget, wdget2):
+def widget_scroll_bind(widget):
     widget.bind("<Configure>", lambda e: on_frame_configure(widget, e))
-    widget.bind_all("<MouseWheel>", lambda e: on_mouse_wheel(widget, wdget2, e))
+    widget.bind_all("<MouseWheel>", lambda e: on_mouse_wheel(widget, e))
 
 
 def imagen(image_url, screen_width, screen_height, widget):
@@ -876,7 +876,7 @@ def Home_Page(widget):
         global widget_track_position, page_count, screen_height, screen_width, canvas_FRAME_2, FRAME_1_canvas, top_frame_main, Home_frame
 
         FRAME_1.tkraise()
-        widget_scroll_bind(FRAME_1_canvas, widget)
+        widget_scroll_bind(FRAME_1_canvas)
         Home_frame_hight = screen_height * 5
         PX_hight = int(Home_frame_hight * 0.17 * 0.31) - 1
         PY_width = int(screen_width * 1 * 0.12) - 1
