@@ -1249,8 +1249,9 @@ def main():
 
 
 if __name__ == "__main__":
-    Start_graphics()
-    main()
+    Fetch_Mount_SHows(numer=24)
+    #Start_graphics()
+    #main()
     """
     t = Thread(ThreadStart(main))
     t.ApartmentState = ApartmentState.STA
