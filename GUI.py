@@ -1019,7 +1019,7 @@ def Home_Page(widget):
     # ===========  Section 4  =========================================================================================================================================
 
     Suggestion3 = tk.Frame(widget, borderwidth=0, border=0, bg=bg_sections)
-    Suggestion3.place(relx=0, rely=0.492, relheight=0.17, relwidth=1)
+    Suggestion3.place(relx=0, rely=0.493, relheight=0.17, relwidth=1)
 
 
 
