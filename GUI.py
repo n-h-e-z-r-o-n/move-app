@@ -1016,15 +1016,22 @@ def Home_Page(widget):
         y_pos += 0.32
         row += 1
 
+    # ===========  Section 4  =========================================================================================================================================
+
+    Suggestion3 = tk.Frame(widget, borderwidth=0, border=0, bg=bg_sections)
+    Suggestion3.place(relx=0, rely=0.322, relheight=0.17, relwidth=1)
+
+
+
+
+
+
     imagen_2("Assets/12.jpg", screen_width, Home_frame_hight, Home_label)
     threading.Thread(target=slide_show, args=(Suggestion,)).start()
     threading.Thread(target=populer_new_moves, args=(movies_widget, PX_hight, PY_width)).start()
     threading.Thread(target=populer_new_tv_shows, args=(tvs_widget, PX_hight, PY_width)).start()
 
-    # ===========  Section 4  =========================================================================================================================================
 
-    Suggestion2 = tk.Frame(widget, borderwidth=0, border=0, bg=bg_sections)
-    Suggestion2.place(relx=0, rely=0.322, relheight=0.17, relwidth=1)
 
 
 
