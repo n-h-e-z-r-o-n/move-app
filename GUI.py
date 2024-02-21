@@ -982,9 +982,7 @@ def Home_Page(widget):
 
     populer_series_list = []
 
-    for TV in series['results']:
-        TV_poster = clean_url(TV['poster'])
-        populer_series_list.append((TV['name'], TV['year'], TV_poster, TV['id'].strip('t')))
+
 
     p_Ss = tk.Button(Suggestion2, font=('Georgia', 16), justify='center', anchor=tk.W, fg='gray', activeforeground='lightblue', text=' ⍚ POPULAR SERIES', borderwidth=0, border=0, bg='black', command=lambda: Search_result(top_frame_main, populer_series_list))
     p_Ss.place(relx=0, rely=0, relheight=0.04, relwidth=1)
@@ -1021,7 +1019,9 @@ def Home_Page(widget):
     Suggestion3 = tk.Frame(widget, borderwidth=0, border=0, bg=bg_sections)
     Suggestion3.place(relx=0, rely=0.493, relheight=0.17, relwidth=1)
 
-
+    p_ms = tk.Button(Suggestion1, font=('Georgia', 16), justify='center', anchor=tk.W, activeforeground='lightblue', fg='gray', text=' ⍚ POPULAR MOVIES', borderwidth=0, border=0, bg='black', command=lambda: Search_result(top_frame_main, populer_movie_list))
+    p_ms.place(relx=0, rely=0, relheight=0.04, relwidth=1)
+    change_fg_OnHover(p_ms, 'lightblue', 'gray')
 
 
 
