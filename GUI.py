@@ -685,12 +685,13 @@ def Search_result(widget, m_list):
     froward_tracking_widget.place(relx=0.021, rely=0, relheight=0.017, relwidth=0.021)
     change_fg_OnHover(froward_tracking_widget, 'yellow', 'gray')
 
-    Search_box = tk.Entry(Search_result_frame, font=('Georgia', 15), justify='center', insertbackground="lightblue", borderwidth=0, border=0, bg='blue', fg='white')
+    Search_box = tk.Entry(Search_result_frame, font=('Georgia', 15), justify='center', insertbackground="lightblue", borderwidth=0, border=0, bg='black', fg='white')
     Search_box.place(relx=0.30, rely=0.007, relheight=0.02, relwidth=0.4)
     Search_box.insert(0, "Search")
     Search_box.bind("<FocusIn>", lambda e: on_entry_click(Search_box, e))
     Search_box.bind("<FocusOut>", lambda e: on_focusout(Search_box, e))
     change_bg_OnHover(Search_box, '#010127', 'black')
+    change_bg_OnHover
     Search_box.bind("<Return>", lambda event: search_movies_request(top_frame_main, Search_box, widget, 0, event))
 
     recomendation_tubs_bg_color = 'black'
