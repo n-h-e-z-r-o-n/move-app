@@ -972,7 +972,7 @@ def Home_Page(widget):
     global New_moves, Added_moves, New_TV_Shows, Added_TV_Shows
 
     print("Shows")
-    print
+    print(New_TV_Shows)
 
     FRAME_1.tkraise()
     widget_scroll_bind(FRAME_1_canvas)
