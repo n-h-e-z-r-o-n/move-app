@@ -969,6 +969,9 @@ def slide_show(widget):
 
 def Home_Page(widget):
     global widget_track_position, page_count, screen_height, screen_width, canvas_FRAME_2, FRAME_1_canvas, top_frame_main, Home_frame
+    global New_moves, Added_moves, New_TV_Shows, Added_TV_Shows
+
+    print(Shows)
 
     FRAME_1.tkraise()
     widget_scroll_bind(FRAME_1_canvas)
@@ -1155,6 +1158,7 @@ def Home_Page(widget):
 # ================= Main Definition ===================================================================================================================
 # =====================================================================================================================================================
 def Start_graphics():
+    Fetch_Mount_SHows(numer=24)
     C = tk.Tk()
 
     screenwidth = C.winfo_screenwidth()
