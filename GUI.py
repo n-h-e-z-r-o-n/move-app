@@ -141,18 +141,20 @@ def on_mouse_wheel(widget, event):  # Function to handle mouse wheel scrolling
 
     # Scroll the canvas up or down based on the mouse wheel direction
     if event.delta < 0:
-        #widget.yview_scroll(1, "units")
+        # widget.yview_scroll(1, "units")
         xxx(widget, 0.01)
 
         # widget.update_idletasks()  # Force update of the display
 
     else:
-        #widget.yview_scroll(-1, "units")
+        # widget.yview_scroll(-1, "units")
         xxx(widget, -0.01)
         # widget.update_idletasks()  # Force update of the display
 
 
 prevy = 0
+
+
 def on_touch_scroll(widget, event):
     global prevy
 
@@ -882,15 +884,20 @@ def recommendation_tv(widget_list, PY_width, PX_hight):
         widget[1].config(command=lambda id=tvs[count]["imdb_id"]: selected_movie_detail(id))
         count += 1
 
-def Fetch_Mount(numer = 24):
+
+def Fetch_Mount(numer=24):
     global New_moves, Added_moves, New_TV_Shows, Added_TV_Shows
     count = 0
     while count < numer:
-          movies, len = get_new_movies(page=count)
-          movies, len = get_added_movies(page=count)
-          movies, len = get_new_tv_shows(page=count)
-          movies, len = get_added_tv_shows(page=count)
-          count += 1
+        movies_new, len1 = get_new_movies(page=count)
+        movies_added, len2 = get_added_movies(page=count)
+        tv_new, len3 = get_new_tv_shows(page=count)
+        tv_added, len3 = get_added_tv_shows(page=count)
+        New_moves.extend(movies_new)
+        Added_moves.extend(movies_added)
+        New_TV_Shows.extend(tv_new)
+        Added_TV_Shows.extend(tv_added)
+        count += 1
 
     movie_list = []
     for movie in movies:
@@ -901,6 +908,7 @@ def Fetch_Mount(numer = 24):
         movie_list.append((title, year, poster, movie_id))  # (title, year, post_url, movie_id)
 
     return movie_list
+
 
 # ---------------------------------------------------------------------------------------------------------------
 
@@ -979,8 +987,6 @@ def Home_Page(widget):
     change_bg_OnHover(Search_box, '#010127', 'black')
     Search_box.bind("<Return>", lambda event: search_movies_request(top_frame_main, Search_box, widget, 1, event))
 
-
-
     # ===========  Section 2  =========================================================================================================================================
 
     section2 = tk.Frame(widget, borderwidth=0, border=0, bg=bg_sections)
@@ -988,8 +994,7 @@ def Home_Page(widget):
     recomendation_tubs_bg_color = 'black'
     hover_color = 'lightblue'
 
-
-    p_ms2 = tk.Button(section2, font=('Georgia', 16), justify='center', anchor=tk.W, activeforeground='lightblue', fg='gray', text=' ⍚ NEW MOVIES', borderwidth=0, border=0, bg='black')#, command=lambda: Search_result(top_frame_main, populer_movie_list))
+    p_ms2 = tk.Button(section2, font=('Georgia', 16), justify='center', anchor=tk.W, activeforeground='lightblue', fg='gray', text=' ⍚ NEW MOVIES', borderwidth=0, border=0, bg='black')  # , command=lambda: Search_result(top_frame_main, populer_movie_list))
     p_ms2.place(relx=0, rely=0, relheight=0.04, relwidth=1)
     change_fg_OnHover(p_ms2, 'lightblue', 'gray')
 
@@ -1025,7 +1030,7 @@ def Home_Page(widget):
     section3 = tk.Frame(widget, borderwidth=0, border=0, bg=bg_sections)
     section3.place(relx=0, rely=0.322, relheight=0.17, relwidth=1)
 
-    p_ms3 = tk.Button(section3, font=('Georgia', 16), justify='center', anchor=tk.W, fg='gray', activeforeground='lightblue', text=' ⍚ RECENT MOVIES', borderwidth=0, border=0, bg='black')#, command=lambda: Search_result(top_frame_main, populer_series_list))
+    p_ms3 = tk.Button(section3, font=('Georgia', 16), justify='center', anchor=tk.W, fg='gray', activeforeground='lightblue', text=' ⍚ RECENT MOVIES', borderwidth=0, border=0, bg='black')  # , command=lambda: Search_result(top_frame_main, populer_series_list))
     p_ms3.place(relx=0, rely=0, relheight=0.04, relwidth=1)
     change_fg_OnHover(p_ms3, 'lightblue', 'gray')
 
@@ -1060,7 +1065,7 @@ def Home_Page(widget):
     section4 = tk.Frame(widget, borderwidth=0, border=0, bg=bg_sections)
     section4.place(relx=0, rely=0.493, relheight=0.17, relwidth=1)
 
-    p_ms4 = tk.Button(section4, font=('Georgia', 16), justify='center', anchor=tk.W, activeforeground='lightblue', fg='gray', text=' ⍚ NEW SERIES', borderwidth=0, border=0, bg='black')#, command=lambda: Search_result(top_frame_main, populer_movie_list))
+    p_ms4 = tk.Button(section4, font=('Georgia', 16), justify='center', anchor=tk.W, activeforeground='lightblue', fg='gray', text=' ⍚ NEW SERIES', borderwidth=0, border=0, bg='black')  # , command=lambda: Search_result(top_frame_main, populer_movie_list))
     p_ms4.place(relx=0, rely=0, relheight=0.04, relwidth=1)
     change_fg_OnHover(p_ms4, 'lightblue', 'gray')
 
@@ -1095,7 +1100,7 @@ def Home_Page(widget):
     section5 = tk.Frame(widget, borderwidth=0, border=0, bg=bg_sections)
     section5.place(relx=0, rely=0.664, relheight=0.17, relwidth=1)
 
-    p_ms5 = tk.Button(section5, font=('Georgia', 16), justify='center', anchor=tk.W, activeforeground='lightblue', fg='gray', text=' ⍚ ADDED SERIES', borderwidth=0, border=0, bg='black')#, command=lambda: Search_result(top_frame_main, populer_movie_list))
+    p_ms5 = tk.Button(section5, font=('Georgia', 16), justify='center', anchor=tk.W, activeforeground='lightblue', fg='gray', text=' ⍚ ADDED SERIES', borderwidth=0, border=0, bg='black')  # , command=lambda: Search_result(top_frame_main, populer_movie_list))
     p_ms5.place(relx=0, rely=0, relheight=0.04, relwidth=1)
     change_fg_OnHover(p_ms5, 'lightblue', 'gray')
 
@@ -1125,15 +1130,12 @@ def Home_Page(widget):
         y_pos += 0.32
         row += 1
 
-    #imagen_2("Assets/12.jpg", screen_width, Home_frame_hight, Home_label)
+    # imagen_2("Assets/12.jpg", screen_width, Home_frame_hight, Home_label)
     threading.Thread(target=slide_show, args=(Suggestion,)).start()
     threading.Thread(target=populer_new_moves, args=(movies_new_widget, PX_hight, PY_width)).start()
     threading.Thread(target=populer_added_moves, args=(movies_added_widget, PX_hight, PY_width)).start()
     threading.Thread(target=populer_new_tv_shows, args=(tvs_new_widgets, PX_hight, PY_width)).start()
     threading.Thread(target=populer_added_tv_shows, args=(tvs_added_widget, PX_hight, PY_width)).start()
-
-
-
 
 
 # ================= Main Definition ===================================================================================================================
@@ -1228,7 +1230,7 @@ def main():
 
 
 if __name__ == "__main__":
-    #Start_graphics()
+    # Start_graphics()
     main()
     """
     t = Thread(ThreadStart(main))
