@@ -8,9 +8,10 @@ def get_added_movies(page=1):
         data = r.json()
         length = len(data['result']['items'])
         movies = data['result']['items']
+
     for movie in movies:
         movie_id = movie['imdb_id']
         title = movie['title']
-        year = movie['year']
+        year = ''
 
 print(movies)
