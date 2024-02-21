@@ -162,10 +162,10 @@ def on_touch_scroll(widget, event):
 
 
         if nowy > prevy:
-            xxx(widget, -0.002)
+            xxx(widget, -0.004)
             #widget.yview_scroll(-1, "units")
         elif nowy < prevy:
-            xxx(widget, 0.002)
+            xxx(widget, 0.004)
             #widget.yview_scroll(1, "units")
 
         else:
