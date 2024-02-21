@@ -884,7 +884,7 @@ def recommendation_tv(widget_list, PY_width, PX_hight):
         count += 1
 
 
-def Fetch_Mount(numer=24):
+def Fetch_Mount_SHows(numer=24):
     global New_moves, Added_moves, New_TV_Shows, Added_TV_Shows
 
     def xr(shows_list):
