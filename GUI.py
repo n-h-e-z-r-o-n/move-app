@@ -899,7 +899,7 @@ def Fetch_Mount(numer=24):
         Added_TV_Shows.extend(tv_added)
         count += 1
 
-    movie_list = []
+
     for movie in movies:
         movie_id = movie['imdb_id']
         title = movie['title']
