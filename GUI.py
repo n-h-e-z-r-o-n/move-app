@@ -1108,7 +1108,7 @@ def Home_Page(widget):
         y_pos += 0.32
         row += 1
 
-    imagen_2("Assets/12.jpg", screen_width, Home_frame_hight, Home_label)
+    #imagen_2("Assets/12.jpg", screen_width, Home_frame_hight, Home_label)
     #threading.Thread(target=slide_show, args=(Suggestion,)).start()
     #threading.Thread(target=populer_new_moves, args=(movies_new_widget, PX_hight, PY_width)).start()
     #threading.Thread(target=populer_added_moves, args=(movies_added_widget, PX_hight, PY_width)).start()
