@@ -767,7 +767,6 @@ def get_new_movies(page=1):
 
 def get_added_movies(page=1):
     r = requests.get(f'https://vidsrc.to/vapi/movie/add/{page}')  # latest movies
-    print(r.status_code)
     movies = None
     length = 0
     if r.status_code == 200:
@@ -779,7 +778,6 @@ def get_added_movies(page=1):
 
 def get_new_tv_shows(page=1):
     r = requests.get(f'https://vidsrc.to/vapi/tv/new/{page}')  # latest movies
-    print(r.status_code)
     movies = None
     length = 0
     if r.status_code == 200:
@@ -791,7 +789,6 @@ def get_new_tv_shows(page=1):
 
 def get_added_tv_shows(page=1):
     r = requests.get(f'https://vidsrc.to/vapi/tv/add/{page}')  # latest movies
-    print(r.status_code)
     movies = None
     length = 0
     if r.status_code == 200:
@@ -831,11 +828,11 @@ def populer_new_moves(widget_list, PX_hight, PY_width):
         widget[1].config(command=lambda id=movie_list[count]["imdb_id"]: selected_movie_detail(id))
         count += 1
 
-def populer_new_moves(widget_list, PX_hight, PY_width):
+def populer_added_moves(widget_list, PX_hight, PY_width):
     movie_list = []
-    movies, x = get_new_movies(1)
+    movies, x = get_added_movies(1)
     movie_list.extend(movies)
-    movies, x = get_new_movies(2)
+    movies, x = get_added_movies(2)
     movie_list.extend(movies)
     print("p movies", len(movie_list))
     count = 0
