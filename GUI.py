@@ -939,7 +939,7 @@ def Home_Page(widget):
     Home_label = tk.Label(widget, bg='gray')
     Home_label.place(relx=0, rely=0, relwidth=1, relheight=1)
     bg_sections = 'black'
-    houv
+    hover_color =
 
     # ===========  Section 1  =========================================================================================================================================
 
