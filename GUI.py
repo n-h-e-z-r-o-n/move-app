@@ -812,6 +812,7 @@ def populer_new_tv_shows(widget_list, PX_hight, PY_width):
         widget[1].config(command=lambda id=tv_shows_list[count]["imdb_id"]: selected_movie_detail(id))
         count += 1
 
+
 def populer_added_tv_shows(widget_list, PX_hight, PY_width):
     tv_shows_list = []
     movies, x = get_added_tv_shows(1)
@@ -825,6 +826,7 @@ def populer_added_tv_shows(widget_list, PX_hight, PY_width):
         widget[0].config(command=lambda id=tv_shows_list[count]["imdb_id"]: selected_movie_detail(id))
         widget[1].config(command=lambda id=tv_shows_list[count]["imdb_id"]: selected_movie_detail(id))
         count += 1
+
 
 def populer_new_moves(widget_list, PX_hight, PY_width):
     movie_list = []
@@ -1079,6 +1081,7 @@ def Home_Page(widget):
     #threading.Thread(target=slide_show, args=(Suggestion,)).start()
     #threading.Thread(target=populer_new_moves, args=(movies_widget, PX_hight, PY_width)).start()
     #threading.Thread(target=populer_new_tv_shows, args=(tvs_widget, PX_hight, PY_width)).start()
+    threading.Thread(target=populer_added_moves, args=(tvs_widget, PX_hight, PY_width)).start()
 
 
 
