@@ -889,7 +889,7 @@ def Fetch_Mount(numer = 24):
           movies, len = get_new_movies(page=count)
           movies, len = get_added_movies(page=count)
           movies, len = get_new_tv_shows(page=count)
-          movies, len = get_new_movies(page=count)
+          movies, len = get_added_tv_shows(page=count)
           count += 1
 
     movie_list = []
