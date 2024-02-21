@@ -894,8 +894,9 @@ def Fetch_Mount(numer=24):
             title = movie['title']
             year = ''
             poster =  poster_image_get(movie_id)
-            
+
             movie_list.append((title, year, poster, movie_id))  # (title, year, post_url, movie_id)
+
     new_movie_list = []
     added_movie_list = []
     new_tvs_list = []
