@@ -939,6 +939,7 @@ def Home_Page(widget):
     Home_label = tk.Label(widget, bg='gray')
     Home_label.place(relx=0, rely=0, relwidth=1, relheight=1)
     bg_sections = 'black'
+    houv
 
     # ===========  Section 1  =========================================================================================================================================
 
@@ -961,18 +962,19 @@ def Home_Page(widget):
     change_bg_OnHover(Search_box, '#010127', 'black')
     Search_box.bind("<Return>", lambda event: search_movies_request(top_frame_main, Search_box, widget, 1, event))
 
-    # threading.Thread(target=slide_show, args=(Suggestion,)).start()
+
 
     # ===========  Section 2  =========================================================================================================================================
 
-    Suggestion1 = tk.Frame(widget, borderwidth=0, border=0, bg=bg_sections)
-    Suggestion1.place(relx=0, rely=0.151, relheight=0.17, relwidth=1)
+    section2 = tk.Frame(widget, borderwidth=0, border=0, bg=bg_sections)
+    section2.place(relx=0, rely=0.151, relheight=0.17, relwidth=1)
     recomendation_tubs_bg_color = 'black'
     hover_color = 'lightblue'
 
-    p_ms = tk.Button(Suggestion1, font=('Georgia', 16), justify='center', anchor=tk.W, activeforeground='lightblue', fg='gray', text=' ⍚ POPULAR MOVIES', borderwidth=0, border=0, bg='black', command=lambda: Search_result(top_frame_main, populer_movie_list))
-    p_ms.place(relx=0, rely=0, relheight=0.04, relwidth=1)
-    change_fg_OnHover(p_ms, 'lightblue', 'gray')
+
+    p_ms2 = tk.Button(section2, font=('Georgia', 16), justify='center', anchor=tk.W, activeforeground='lightblue', fg='gray', text=' ⍚ NEW MOVIES', borderwidth=0, border=0, bg='black', command=lambda: Search_result(top_frame_main, populer_movie_list))
+    p_ms2.place(relx=0, rely=0, relheight=0.04, relwidth=1)
+    change_fg_OnHover(p_ms2, 'lightblue', 'gray')
 
     column = 0
     row = 0
@@ -983,7 +985,7 @@ def Home_Page(widget):
     while row < 3:  # 3
         while column < 8:  # 8
 
-            label1 = tk.Frame(Suggestion1, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
+            label1 = tk.Frame(section2, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
             label1.place(relx=x_pos, rely=y_pos, relheight=0.31, relwidth=0.12)
             r1_bt1 = tk.Button(label1, bg='#1A2421', borderwidth=0, justify=tk.CENTER, activebackground=hover_color, border=0)
             r1_bt1.place(relx=0, rely=0, relwidth=1, relheight=1)
@@ -1003,12 +1005,12 @@ def Home_Page(widget):
 
     # ===========  Section 3  =========================================================================================================================================
 
-    Suggestion2 = tk.Frame(widget, borderwidth=0, border=0, bg=bg_sections)
-    Suggestion2.place(relx=0, rely=0.322, relheight=0.17, relwidth=1)
+    section3 = tk.Frame(widget, borderwidth=0, border=0, bg=bg_sections)
+    section3.place(relx=0, rely=0.322, relheight=0.17, relwidth=1)
 
-    p_Ss = tk.Button(Suggestion2, font=('Georgia', 16), justify='center', anchor=tk.W, fg='gray', activeforeground='lightblue', text=' ⍚ POPULAR SERIES', borderwidth=0, border=0, bg='black', command=lambda: Search_result(top_frame_main, populer_series_list))
-    p_Ss.place(relx=0, rely=0, relheight=0.04, relwidth=1)
-    change_fg_OnHover(p_Ss, 'lightblue', 'gray')
+    p_ms3 = tk.Button(section3, font=('Georgia', 16), justify='center', anchor=tk.W, fg='gray', activeforeground='lightblue', text=' ⍚ RECENT MOVIES', borderwidth=0, border=0, bg='black', command=lambda: Search_result(top_frame_main, populer_series_list))
+    p_ms3.place(relx=0, rely=0, relheight=0.04, relwidth=1)
+    change_fg_OnHover(p_ms3, 'lightblue', 'gray')
 
     column = 0
     row = 0
@@ -1018,7 +1020,7 @@ def Home_Page(widget):
     movies_added_widget = []
     while row < 3:  # 3 rows
         while column < 8:  # 8 columns
-            label3 = tk.Frame(Suggestion2, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
+            label3 = tk.Frame(section3, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
             label3.place(relx=x_pos, rely=y_pos, relheight=0.31, relwidth=0.12)
             r1_bt3 = tk.Button(label3, bg='#1A2421', borderwidth=0, justify=tk.CENTER, activebackground=hover_color, border=0)  # , command=lambda id = populer_series_list[track][3]: selected_movie_detail(id))
             r1_bt3.place(relx=0, rely=0, relwidth=1, relheight=1)
@@ -1038,29 +1040,64 @@ def Home_Page(widget):
 
     # ===========  Section 4  =========================================================================================================================================
 
-    Suggestion3 = tk.Frame(widget, borderwidth=0, border=0, bg=bg_sections)
-    Suggestion3.place(relx=0, rely=0.493, relheight=0.17, relwidth=1)
+    section4 = tk.Frame(widget, borderwidth=0, border=0, bg=bg_sections)
+    section4.place(relx=0, rely=0.493, relheight=0.17, relwidth=1)
 
-    p_ms3 = tk.Button(Suggestion3, font=('Georgia', 16), justify='center', anchor=tk.W, activeforeground='lightblue', fg='gray', text=' ⍚ POPULAR MOVIES', borderwidth=0, border=0, bg='black', command=lambda: Search_result(top_frame_main, populer_movie_list))
-    p_ms3.place(relx=0, rely=0, relheight=0.04, relwidth=1)
-    change_fg_OnHover(p_ms3, 'lightblue', 'gray')
+    p_ms4 = tk.Button(section4, font=('Georgia', 16), justify='center', anchor=tk.W, activeforeground='lightblue', fg='gray', text=' ⍚ NEW SERIES', borderwidth=0, border=0, bg='black', command=lambda: Search_result(top_frame_main, populer_movie_list))
+    p_ms4.place(relx=0, rely=0, relheight=0.04, relwidth=1)
+    change_fg_OnHover(p_ms4, 'lightblue', 'gray')
 
     column = 0
     row = 0
     x_pos = 0.005
     y_pos = 0.05
     track = 0
-    tvs_widget = []
+    tvs_new_widgets = []
     while row < 3:  # 3 rows
         while column < 8:  # 8 columns
-            label3 = tk.Frame(Suggestion3, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
+            label3 = tk.Frame(section4, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
             label3.place(relx=x_pos, rely=y_pos, relheight=0.31, relwidth=0.12)
             r1_bt3 = tk.Button(label3, bg='#1A2421', borderwidth=0, justify=tk.CENTER, activebackground=hover_color, border=0)  # , command=lambda id = populer_series_list[track][3]: selected_movie_detail(id))
             r1_bt3.place(relx=0, rely=0, relwidth=1, relheight=1)
             change_bg_OnHover(r1_bt3, hover_color, '#1A2421')
             r1_bt4 = tk.Button(label3, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, text='', activeforeground=hover_color, activebackground='#1A2421', fg='gray', font=('Calibri', 11))  # , command=lambda id= populer_movie_list[track]: selected_movie_detail(id))
             r1_bt4.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
-            tvs_widget.append((r1_bt3, r1_bt4))
+            tvs_new_widgets.append((r1_bt3, r1_bt4))
+            change_fg_OnHover(r1_bt4, hover_color, 'gray')
+            x_pos += 0.125
+            column += 1
+            track += 1
+
+        column = 0
+        x_pos = 0.005
+        y_pos += 0.32
+        row += 1
+
+    # ===========  Section 5  =========================================================================================================================================
+
+    section5 = tk.Frame(widget, borderwidth=0, border=0, bg=bg_sections)
+    section5.place(relx=0, rely=0.664, relheight=0.17, relwidth=1)
+
+    p_ms5 = tk.Button(section5, font=('Georgia', 16), justify='center', anchor=tk.W, activeforeground='lightblue', fg='gray', text=' ⍚ ADDED SERIES', borderwidth=0, border=0, bg='black', command=lambda: Search_result(top_frame_main, populer_movie_list))
+    p_ms5.place(relx=0, rely=0, relheight=0.04, relwidth=1)
+    change_fg_OnHover(p_ms5, 'lightblue', 'gray')
+
+    column = 0
+    row = 0
+    x_pos = 0.005
+    y_pos = 0.05
+    track = 0
+    tvs_added_widget = []
+    while row < 3:  # 3 rows
+        while column < 8:  # 8 columns
+            label3 = tk.Frame(section5, bg=recomendation_tubs_bg_color, borderwidth=0, border=0)
+            label3.place(relx=x_pos, rely=y_pos, relheight=0.31, relwidth=0.12)
+            r1_bt3 = tk.Button(label3, bg='#1A2421', borderwidth=0, justify=tk.CENTER, activebackground=hover_color, border=0)  # , command=lambda id = populer_series_list[track][3]: selected_movie_detail(id))
+            r1_bt3.place(relx=0, rely=0, relwidth=1, relheight=1)
+            change_bg_OnHover(r1_bt3, hover_color, '#1A2421')
+            r1_bt4 = tk.Button(label3, borderwidth=0, border=0, bg=recomendation_tubs_bg_color, text='', activeforeground=hover_color, activebackground='#1A2421', fg='gray', font=('Calibri', 11))  # , command=lambda id= populer_movie_list[track]: selected_movie_detail(id))
+            r1_bt4.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
+            tvs_added_widget.append((r1_bt3, r1_bt4))
             change_fg_OnHover(r1_bt4, hover_color, 'gray')
             x_pos += 0.125
             column += 1
@@ -1074,9 +1111,9 @@ def Home_Page(widget):
     imagen_2("Assets/12.jpg", screen_width, Home_frame_hight, Home_label)
     #threading.Thread(target=slide_show, args=(Suggestion,)).start()
     #threading.Thread(target=populer_new_moves, args=(movies_new_widget, PX_hight, PY_width)).start()
-    threading.Thread(target=populer_added_moves, args=(movies_added_widget, PX_hight, PY_width)).start()
-    #threading.Thread(target=populer_new_tv_shows, args=(tvs_widget, PX_hight, PY_width)).start()
-    threading.Thread(target=populer_added_tv_shows(), args=(tvs_widget, PX_hight, PY_width)).start()
+    #threading.Thread(target=populer_added_moves, args=(movies_added_widget, PX_hight, PY_width)).start()
+    #threading.Thread(target=populer_new_tv_shows, args=(tvs_new_widgets, PX_hight, PY_width)).start()
+    #threading.Thread(target=populer_added_tv_shows, args=(tvs_added_widget, PX_hight, PY_width)).start()
 
 
 
@@ -1175,10 +1212,10 @@ def main():
 
 if __name__ == "__main__":
     #Start_graphics()
-    # main()
-    # """
+    main()
+    """
     t = Thread(ThreadStart(main))
     t.ApartmentState = ApartmentState.STA
     t.Start()
     t.Join()
-    # """
+    """
