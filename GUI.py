@@ -1186,7 +1186,7 @@ def Home_Page(widget):
     footer_nav_bar = tk.Frame(footer_section, bg="blue", borderwidth=0, border=0)
     footer_nav_bar.place(relx=0, rely=0.9, relwidth=1, relheight=0.05)
 
-    CONECTED  = tk.Label(footer_nav_bar, bg='brown', text='online', fg='green', font=('Bauhaus 93', 19))
+    CONECTED  = tk.Label(footer_nav_bar, bg='brown', fg='green', font=('Bauhaus 93', 19))
     CONECTED.place(relx=0, rely=0, relwidth=0.07, relheight=1)
     internet_check_widgets.append(CONECTED)
 
