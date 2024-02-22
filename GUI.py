@@ -353,6 +353,11 @@ def toggle_fullscreen(main_widget, widget, original_x, original_y, original_widt
         is_fullscreen = True
 
 
+def rrr(movie_id):
+    global top_frame_main
+
+    # watch_page(top_frame_main, movie_id, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url, r1_title, r1_year, recomednation_1_poster, r2_title, r2_year, recomednation_2_poster, r3_title, r3_year, recomednation_3_poster, r4_title, r4_year, recomednation_4_poster, r5_title, r5_year, recomednation_5_poster, r6_title, r6_year, recomednation_6_poster, r1_id, r2_id, r3_id, r4_id, r5_id, r6_id)
+
 
 def selected_movie_detail(movie_id):
     movies = imdb_other.get_by_id(movie_id)
@@ -747,6 +752,7 @@ def has_internet_connection():
             internet_check = False
             return False  # Handle exceptions gracefully
 
+thre
 
 # ------------------------------- Movie fetch function -------- -----------------------------------------------
 def get_new_movies(page=1):
