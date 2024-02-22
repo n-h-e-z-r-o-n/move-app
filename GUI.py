@@ -1179,10 +1179,10 @@ def Home_Page(widget):
 
     imagen_2("./Assets/footer.jpg", int(screen_width * 1), int(Home_frame_hight * 0.166), footer_image)
 
-    Home_label2 = tk.Frame(footer_section, bg=bg_sections)
-    Home_label2.place(relx=0, rely=0.9, relwidth=1, relheight=0.05)
+    footer_nav_bar = tk.Frame(footer_section, bg=bg_sections)
+    footer_nav_bar.place(relx=0, rely=0.9, relwidth=1, relheight=0.05)
 
-    CONECTED  = tk.Label(Home_label2, bg=bg_sections, text='online')
+    CONECTED  = tk.Label(footer_nav_bar, bg=bg_sections, text='online')
     CONECTED.place(relx=0, rely=0, relwidth=0.1, relheight=1)
 
 
