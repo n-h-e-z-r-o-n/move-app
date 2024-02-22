@@ -752,7 +752,7 @@ def has_internet_connection():
             internet_check = False
             return False  # Handle exceptions gracefully
 
-thre
+threading.Thread(target=has_internet_connection)
 
 # ------------------------------- Movie fetch function -------- -----------------------------------------------
 def get_new_movies(page=1):
