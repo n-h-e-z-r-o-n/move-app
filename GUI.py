@@ -740,11 +740,13 @@ def Search_result(widget, m_list):
 
     grid(Search_result_frame, m_list, len(m_list), 0)
 
+
 def has_internet_connection():
-    global 
+    global internet_check
     while True:
         try:
             response = requests.get("https://www.google.com", timeout=3)
+            internet_check = True
             return response.status_code == 200  # Check for successful response (200)
         except Exception as e:
             return False  # Handle exceptions gracefully
