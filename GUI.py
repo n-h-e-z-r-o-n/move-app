@@ -1180,8 +1180,8 @@ def Home_Page(widget):
     Home_label = tk.Frame(Home_label, bg=bg_sections)
     Home_label.place(relx=0, rely=0.9, relwidth=1, relheight=0.05)
 
-    Home_label = tk.Frame(Home_label, bg=bg_sections)
-    Home_label.place(relx=0, rely=0.9, relwidth=1, relheight=0.05)
+    CONECTED  = tk.Label(Home_label, bg=bg_sections, text='online')
+    CONECTED.place(relx=0, rely=0.9, relwidth=1, relheight=0.05)
 
 
     # ================================= Home threads  =====================================================================================================================================
