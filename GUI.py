@@ -1177,7 +1177,7 @@ def Home_Page(widget):
     footer_image = tk.Label(footer_section, borderwidth=0, border=0)
     footer_image.place(relx=0, rely=0, relwidth=1, relheight=1)
 
-    imagen_2("./Assets/footer.jpg", int(screen_width * 1), int(Home_frame_hight * 0.166), footer_image)
+    imagen_2("./Assets/footer.jpg", int(screen_width * 1), int(Home_frame_hight * 0.167), footer_image)
 
     footer_nav_bar = tk.Frame(footer_section, bg=bg_sections)
     footer_nav_bar.place(relx=0, rely=0.9, relwidth=1, relheight=0.05)
