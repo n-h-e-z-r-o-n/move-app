@@ -952,7 +952,6 @@ def Fetch_Mount_SHows(numer=10):
                 M_list.append((title, year, movie_id, movie_id))  # (title, year, post_url, movie_id)
             except Exception as e:
                 pass
-        print(M_list)
         return M_list
 
     new_movie_list = []
