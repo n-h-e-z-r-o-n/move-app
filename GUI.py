@@ -1182,8 +1182,8 @@ def Home_Page(widget):
     footer_nav_bar = tk.Frame(footer_section, bg="blue", borderwidth=0, border=0)
     footer_nav_bar.place(relx=0, rely=0.9, relwidth=1, relheight=0.05)
 
-    CONECTED  = tk.Label(footer_nav_bar, bg='brown', text='online', fg='white', font=('Bauhaus 93', 15))
-    CONECTED.place(relx=0, rely=0, relwidth=0.0, relheight=1)
+    CONECTED  = tk.Label(footer_nav_bar, bg='brown', text='online', fg='green', font=('Bauhaus 93', 19))
+    CONECTED.place(relx=0, rely=0, relwidth=0.07, relheight=1)
 
     imagen_2("./Assets/footer.jpg", int(screen_width * 1), int(Home_frame_hight * 0.167), footer_image)
 
