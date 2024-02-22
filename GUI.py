@@ -1215,7 +1215,7 @@ def Home_Page(widget):
         row += 1
 
     # ================================= Footer Section =====================================================================================================================================
-    footer_section = tk.Frame(widget, bg='black', borderwidth=0, border=0)
+    footer_section = tk.Frame(widget, bg=bg_sections, borderwidth=0, border=0)
     footer_section.place(relx=0, rely=0.834, relwidth=1, relheight=0.166)
 
     footer_image = tk.Label(footer_section, borderwidth=0, border=0, justify=tk.CENTER)
@@ -1223,22 +1223,22 @@ def Home_Page(widget):
 
 
 
-    footer_nav_bar = tk.Frame(footer_section, bg="blue", borderwidth=0, border=0)
+    footer_nav_bar = tk.Frame(footer_section, bg=bg_sections, borderwidth=0, border=0)
     footer_nav_bar.place(relx=0, rely=0.9, relwidth=1, relheight=0.05)
 
-    CONECTED  = tk.Label(footer_nav_bar, bg='brown', fg='green', font=('Bauhaus 93', 19))
+    CONECTED  = tk.Label(footer_nav_bar, bg=bg_sections, fg='green', font=('Bauhaus 93', 19))
     CONECTED.place(relx=0, rely=0, relwidth=0.07, relheight=1)
     internet_check_widgets.append(CONECTED)
 
 
     # ================================= Home threads  =====================================================================================================================================
 
-    imagen_2("./Assets/footer.jpg", int(screen_width * 1), int(Home_frame_hight * 0.167), footer_image)
-    threading.Thread(target=slide_show, args=(Suggestion,)).start()
-    threading.Thread(target=populer_new_moves, args=(movies_new_widget, PX_hight, PY_width)).start()
-    threading.Thread(target=populer_added_moves, args=(movies_added_widget, PX_hight, PY_width)).start()
-    threading.Thread(target=populer_new_tv_shows, args=(tvs_new_widgets, PX_hight, PY_width)).start()
-    threading.Thread(target=populer_added_tv_shows, args=(tvs_added_widget, PX_hight, PY_width)).start()
+    #imagen_2("./Assets/footer.jpg", int(screen_width * 1), int(Home_frame_hight * 0.167), footer_image)
+    #threading.Thread(target=slide_show, args=(Suggestion,)).start()
+    #threading.Thread(target=populer_new_moves, args=(movies_new_widget, PX_hight, PY_width)).start()
+    #threading.Thread(target=populer_added_moves, args=(movies_added_widget, PX_hight, PY_width)).start()
+    #threading.Thread(target=populer_new_tv_shows, args=(tvs_new_widgets, PX_hight, PY_width)).start()
+    #threading.Thread(target=populer_added_tv_shows, args=(tvs_added_widget, PX_hight, PY_width)).start()
 
 
 # ================= Main Definition ===================================================================================================================
