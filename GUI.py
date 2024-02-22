@@ -1154,12 +1154,14 @@ def Home_Page(widget):
         y_pos += 0.32
         row += 1
 
-    # background image ======================================================================
+    # ================================= Footer Section =====================================================================================================================================
 
     Home_label = tk.Label(widget, bg='blue')
     Home_label.place(relx=0, rely=0.834, relwidth=1, relheight=0.166)
 
     imagen_2("./Assets/footer.jpg", int(screen_width * 1), int(Home_frame_hight * 0.166), Home_label)
+
+    # ================================= Home threads  =====================================================================================================================================
 
     #imagen_2(r"C:\Users\HEZRON WEKESA\Downloads\12.jpg", screen_width, Home_frame_hight, Home_label)
     threading.Thread(target=slide_show, args=(Suggestion,)).start()
