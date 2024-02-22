@@ -84,6 +84,7 @@ page_count = -1
 search_q = None
 root = None
 internet_check = False
+closed = False
 FRAME_1_canvas = canvas_FRAME_2 = FRAME_1 = FRAME_2 = None
 New_moves = Added_moves = New_TV_Shows = Added_TV_Shows = None
 ia = imdb.Cinemagoer()
@@ -743,7 +744,7 @@ def Search_result(widget, m_list):
 
 
 def has_internet_connection():
-    global internet_check
+    global internet_check,  closed
     while True:
         try:
             response = requests.get("https://www.google.com", timeout=3)
@@ -1224,7 +1225,7 @@ def main():
     global screen_height
     global large_frame_size, search_q, root
     global top_search_page, top_page, widget_track_position, top_frame_main, FRAME_1, FRAME_2, FRAME_1_canvas, canvas_FRAME_2
-
+    global closed
     root = tk.Tk()
     root.title("Move App")
     root.state('zoomed')  # this creates a window that takes over the screen
@@ -1277,10 +1278,8 @@ def main():
     # watch_page(main_frame, '10638522', 'Talk to Me', 7.2, 'movie', 'Australia. United Kingdom. ', 'Horror, Thriller, ', 2022, 'Causeway Films, Head Gear Films, Metrol Technology, Screen Australia, Talk to Me Holdings, ', 'Ari McCarthy, Hamish Phillips, Kit Erhart-Bruce, Sarah Brokensha, Jayden Davison, Sunny Johnson, Sophie Wilde, Marcus Johnson, Kidaan Zelleke, James Oliver, Joe Bird, Jett Gazley, Alexandra Jensen, Dog, Helene Philippou', 'ghg' ,'eet')
 
     def on_closing():
-        global session, client_socket, root, closed
+        global closed
         closed = True
-        session.close()
-        client_socket.close()
         root.destroy()
 
     root.protocol("WM_DELETE_WINDOW", on_closing)
