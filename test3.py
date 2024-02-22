@@ -11,10 +11,13 @@ genres = ','.join(i for i in movie['genres'])
 
 
 
+print(movie.data)
+
+"""
+
 print(genres)
 
-print(movie['number of seasons'])
-print(movie['rating'])
+
 print(movie['cover url'])
 print(movie['imdbID'])
 print(movie['kind'])
@@ -22,3 +25,4 @@ print(movie['year'])
 print(movie['title'])
 
 print(movie['plot'][0])
+"""
