@@ -761,6 +761,7 @@ threading.Thread(target=has_internet_connection).start()
 
 # ------------------------------- Movie fetch function -------- -----------------------------------------------
 def get_new_movies(page=1):
+    global internet_check,  closed
     r = requests.get(f'https://vidsrc.to/vapi/movie/new/{page}')  # latest movies
     print(r.status_code)
     movies = None
