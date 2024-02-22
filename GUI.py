@@ -1218,9 +1218,8 @@ def Home_Page(widget):
     footer_section = tk.Frame(widget, bg=bg_sections, borderwidth=0, border=0)
     footer_section.place(relx=0, rely=0.834, relwidth=1, relheight=0.166)
 
-    footer_image = tk.Label(footer_section, borderwidth=0, border=0, justify=tk.CENTER)
+    footer_image = tk.Label(footer_section, borderwidth=0, border=0, bg=bg_sections, justify=tk.CENTER)
     footer_image.place(relx=0, rely=0, relwidth=1, relheight=1)
-
 
 
     footer_nav_bar = tk.Frame(footer_section, bg=bg_sections, borderwidth=0, border=0)
@@ -1238,7 +1237,7 @@ def Home_Page(widget):
     #threading.Thread(target=populer_new_moves, args=(movies_new_widget, PX_hight, PY_width)).start()
     #threading.Thread(target=populer_added_moves, args=(movies_added_widget, PX_hight, PY_width)).start()
     #threading.Thread(target=populer_new_tv_shows, args=(tvs_new_widgets, PX_hight, PY_width)).start()
-    #threading.Thread(target=populer_added_tv_shows, args=(tvs_added_widget, PX_hight, PY_width)).start()
+    threading.Thread(target=populer_added_tv_shows, args=(tvs_added_widget, PX_hight, PY_width)).start()
 
 
 # ================= Main Definition ===================================================================================================================
@@ -1308,7 +1307,7 @@ def main():
     FRAME_1_canvas.create_window((0, 0), window=FRAME_1_screen, anchor=tk.NW)
     widget_scroll_bind(FRAME_1_canvas)  # Bind the mouse wheel event to the canvas
 
-    Home_frame = tk.Frame(FRAME_1_screen, width=screen_width, bg='black', height=Home_frame_hight)
+    Home_frame = tk.Frame(FRAME_1_screen, width=screen_width, bg='lightblue', height=Home_frame_hight)
     Home_frame.pack(fill=tk.BOTH, expand=True)
 
     widget_track_position.append(Home_frame)
