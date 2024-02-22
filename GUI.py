@@ -743,6 +743,7 @@ def has_internet_connection():
     global internet_check,  closed, internet_check_widgets
 
     while not closed:
+        print("internet_check")
         try:
             response = requests.get("https://www.google.com", timeout=3)
             internet_check =  response.status_code == 200  # Check for successful response (200)
