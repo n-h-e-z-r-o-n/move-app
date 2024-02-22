@@ -235,8 +235,8 @@ def imagen_2(image_path, screen_width, screen_height, widget):  # image processi
         widget.config(image=photo)
         widget.image = photo  # Keep a reference to the PhotoImage to prevent it from being garbage collected
 
-    image_thread = threading.Thread(target=load_image)  # Create a thread to load the image asynchronously
-    image_thread.start()
+    threading.Thread(target=load_image).start()  # Create a thread to load the image asynchronously
+
 
 
 
