@@ -1059,7 +1059,6 @@ def slide_show(widget):
         else:
             list[x].tkraise()
             x += 1
-        print("x = ", x)
         widget.after(6000, lambda: Home_page_Background_changer(list, x=x))
 
     movies, num = get_new_movies(2)
@@ -1227,11 +1226,11 @@ def Home_Page(widget):
     section5 = tk.Frame(widget, borderwidth=0, border=0, bg=bg_sections)
     section5.place(relx=0, rely=0.664, relheight=0.17, relwidth=1)
 
-    p_ms5 = tk.Button(section5, font=('Georgia', 16), justify='center', anchor=tk.W, activeforeground='lightblue', fg='gray', text=' ⍚ ADDED SERIES', borderwidth=0, border=0, bg='blue' , command=lambda: Search_result(top_frame_main, Added_TV_Shows))
+    p_ms5 = tk.Button(section5, font=('Georgia', 16), justify='center', anchor=tk.W, activeforeground='lightblue', fg='gray', text=' ⍚ ADDED SERIES', borderwidth=0, border=0, bg=bg_sections , command=lambda: Search_result(top_frame_main, Added_TV_Shows))
     p_ms5.place(relx=0, rely=0, relheight=0.04, relwidth=0.5)
     change_fg_OnHover(p_ms5, 'lightblue', 'gray')
 
-    p_ms5 = tk.Button(section5, font=('Georgia', 16), justify='center', anchor=tk.W, activeforeground='lightblue', fg='gray', text=' ⍚ New Episodes', borderwidth=0, border=0, bg='blue', command=lambda: Search_result(top_frame_main, New_Episodes))
+    p_ms5 = tk.Button(section5, font=('Georgia', 16), justify='center', anchor=tk.W, activeforeground='lightblue', fg='gray', text=' ⍚ New Episodes', borderwidth=0, border=0, bg=bg_sections, command=lambda: Search_result(top_frame_main, New_Episodes))
     p_ms5.place(relx=0.5, rely=0, relheight=0.04, relwidth=0.5)
     change_fg_OnHover(p_ms5, 'lightblue', 'gray')
 
@@ -1279,12 +1278,12 @@ def Home_Page(widget):
 
     # ================================= Home threads  =====================================================================================================================================
 
-    #imagen_2("./Assets/footer.jpg", int(screen_width * 1), int(Home_frame_hight * 0.167), footer_image)
-    #threading.Thread(target=slide_show, args=(Suggestion,)).start()
-    #threading.Thread(target=populer_new_moves, args=(movies_new_widget, PX_hight, PY_width)).start()
-    #threading.Thread(target=populer_added_moves, args=(movies_added_widget, PX_hight, PY_width)).start()
-    #threading.Thread(target=populer_new_tv_shows, args=(tvs_new_widgets, PX_hight, PY_width)).start()
-    #threading.Thread(target=populer_added_tv_shows, args=(tvs_added_widget, PX_hight, PY_width)).start()
+    imagen_2("./Assets/footer.jpg", int(screen_width * 1), int(Home_frame_hight * 0.167), footer_image)
+    threading.Thread(target=slide_show, args=(Suggestion,)).start()
+    threading.Thread(target=populer_new_moves, args=(movies_new_widget, PX_hight, PY_width)).start()
+    threading.Thread(target=populer_added_moves, args=(movies_added_widget, PX_hight, PY_width)).start()
+    threading.Thread(target=populer_new_tv_shows, args=(tvs_new_widgets, PX_hight, PY_width)).start()
+    threading.Thread(target=populer_added_tv_shows, args=(tvs_added_widget, PX_hight, PY_width)).start()
 
 
 # ================= Main Definition ===================================================================================================================
