@@ -238,9 +238,6 @@ def imagen_2(image_path, screen_width, screen_height, widget):  # image processi
     threading.Thread(target=load_image).start()  # Create a thread to load the image asynchronously
 
 
-
-
-
 def imagen_fade(movie_id, screen_height, screen_width, widget):
     def load_img_url(widget=widget, movie_id=movie_id):
         poster_url = poster_image_get(movie_id)
@@ -353,7 +350,6 @@ def toggle_fullscreen(main_widget, widget, original_x, original_y, original_widt
         widget.forget()
         widget.place(relx=0, rely=0, x=0, y=0, relwidth=1, relheight=screen_height / large_frame_size)
         is_fullscreen = True
-
 
 
 def selected_movie_detail(movie_id):
@@ -958,7 +954,6 @@ def Fetch_Mount_SHows(numer=10):
     New_TV_Shows = threading.Thread( target=xr, args=(new_tvs_list,)).start() #xr(new_tvs_list)
     Added_TV_Shows = threading.Thread( target=xr, args=(added_tvs_list,)).start() # xr(added_tvs_list)
     print("ready")
-
 
 
 
