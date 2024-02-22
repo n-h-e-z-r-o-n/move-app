@@ -962,13 +962,23 @@ def Fetch_Mount_SHows(numer=10):
 
 
 def poster_image_get(movie_id):
-    try:
-        movies = imdb_other.get_by_id(movie_id)
-        movie_poster_url = movies['poster']
-        movie_poster_url = clean_url(movie_poster_url)
-    except Exception as e:
-        print(e)
-        movie_poster_url = None
+    global internet_check, closed
+    movie_poster_url = None
+    count = 0
+    while count <7:
+        try:
+            if closed:
+                break
+            if not internet_check:
+                continue
+
+            movies = imdb_other.get_by_id(movie_id)
+            movie_poster_url = movies['poster']
+            movie_poster_url = clean_url(movie_poster_url)
+            break
+        except Exception as e:
+            print("---", e, "---",movie_id)
+            count += 1
     """
     try:
         movies = ia.get_movie(movie_id[2:])
@@ -1223,7 +1233,7 @@ def Home_Page(widget):
     # ================================= Home threads  =====================================================================================================================================
 
     imagen_2("./Assets/footer.jpg", int(screen_width * 1), int(Home_frame_hight * 0.167), footer_image)
-    #threading.Thread(target=slide_show, args=(Suggestion,)).start()
+    threading.Thread(target=slide_show, args=(Suggestion,)).start()
     threading.Thread(target=populer_new_moves, args=(movies_new_widget, PX_hight, PY_width)).start()
     threading.Thread(target=populer_added_moves, args=(movies_added_widget, PX_hight, PY_width)).start()
     threading.Thread(target=populer_new_tv_shows, args=(tvs_new_widgets, PX_hight, PY_width)).start()
@@ -1305,7 +1315,7 @@ def main():
 
     FRAME_2 = tk.Frame(root, bg='black')
     FRAME_2.place(relwidth=1, relheight=1, relx=0, rely=0)
-    canvas_FRAME_2 = tk.Canvas(FRAME_2, borderwidth=0, highlightthickness=0)  # Create a Canvas widget to hold the frame and enable scrolling
+    canvas_FRAME_2 = tk.Canvas(FRAME_2, borderwidth=0, highlightthickness=0, bg='black')  # Create a Canvas widget to hold the frame and enable scrolling
     canvas_FRAME_2.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
     canvas_FRAME_2_scrollbar = tk.Scrollbar(root, command=canvas_FRAME_2.yview)  # Create a Scrollbar and connect it to the Canvas
     canvas_FRAME_2.config(yscrollcommand=canvas_FRAME_2_scrollbar.set)
@@ -1319,8 +1329,8 @@ def main():
 
     root.attributes("-topmost", False)
 
-    #Home_Page(Home_frame)
-    selected_movie_detail("tt1190634")
+    Home_Page(Home_frame)
+    #selected_movie_detail("tt1190634")
     # watch_page(main_frame, '10638522', 'Talk to Me', 7.2, 'movie', 'Australia. United Kingdom. ', 'Horror, Thriller, ', 2022, 'Causeway Films, Head Gear Films, Metrol Technology, Screen Australia, Talk to Me Holdings, ', 'Ari McCarthy, Hamish Phillips, Kit Erhart-Bruce, Sarah Brokensha, Jayden Davison, Sunny Johnson, Sophie Wilde, Marcus Johnson, Kidaan Zelleke, James Oliver, Joe Bird, Jett Gazley, Alexandra Jensen, Dog, Helene Philippou', 'ghg' ,'eet')
 
     def on_closing():

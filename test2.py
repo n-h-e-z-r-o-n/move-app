@@ -6,7 +6,7 @@ ia = imdb.Cinemagoer()
 imdb_other = IMDB()
 
 
-movies = imdb_other.get_by_id("tt1190634")
+movies = imdb_other.get_by_id("tt31381010")
 movies.update(movies)
 
 
@@ -19,5 +19,5 @@ movie_poster_url = movies['poster']
 movie_actor = ", ".join(i['name'] for i in movies['actor'])
 movie_description = movies['description']
 
-print(movies)
+print(movie_poster_url)
 
