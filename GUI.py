@@ -83,6 +83,7 @@ widget_track_position = []
 page_count = -1
 search_q = None
 root = None
+internet_check = False
 FRAME_1_canvas = canvas_FRAME_2 = FRAME_1 = FRAME_2 = None
 New_moves = Added_moves = New_TV_Shows = Added_TV_Shows = None
 ia = imdb.Cinemagoer()
@@ -746,8 +747,7 @@ def has_internet_connection():
     while True:
         try:
             response = requests.get("https://www.google.com", timeout=3)
-            internet_check = True
-            return response.status_code == 200  # Check for successful response (200)
+            internet_check =  response.status_code == 200  # Check for successful response (200)
         except Exception as e:
             internet_check = False
             return False  # Handle exceptions gracefully
