@@ -1,11 +1,11 @@
 import requests
-url = 'https://www.imdb.com/title/tt1190634/episodes?season=1'
 
+# Making a GET request
+r = requests.get('https://www.geeksforgeeks.org/python-programming-language/')
 
-r = requests.get(url)  # latest movies
+# check status code for response received
+# success code - 200
 print(r)
-data = r.json()
-length = len(data['result']['items'])
-movies = data['result']['items']
 
-print(movies)
+# print content of request
+print(r.content)
