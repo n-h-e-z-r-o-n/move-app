@@ -741,23 +741,19 @@ def Search_result(widget, m_list):
 
 def has_internet_connection():
     global internet_check,  closed, internet_check_widgets
-    print("internet_check: ", closed )
     while not closed:
-        print("internet_check")
         try:
             response = requests.get("https://www.google.com", timeout=3)
             internet_check =  response.status_code == 200  # Check for successful response (200)
             if len(internet_check_widgets) != 0:
-                print("connceted")
                 for i in internet_check_widgets:
-                    i.configure(bg='green', text='online')
+                    i.configure(fg='green', text='online')
         except Exception as e:
             internet_check = False
 
             if len(internet_check_widgets) != 0:
-                print("diconected")
                 for i in internet_check_widgets:
-                    i.configure(bg='red', text='not online')
+                    i.configure(fg='red', text='not online')
 
         time.sleep(5)
 
