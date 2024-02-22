@@ -998,7 +998,7 @@ def slide_show(widget):
 def Home_Page(widget):
     global widget_track_position, page_count, screen_height, screen_width, canvas_FRAME_2, FRAME_1_canvas, top_frame_main, Home_frame
     global New_moves, Added_moves, New_TV_Shows, Added_TV_Shows
-    global internet_check
+    global internet_check_widgets
 
 
     FRAME_1.tkraise()
@@ -1188,6 +1188,7 @@ def Home_Page(widget):
 
     CONECTED  = tk.Label(footer_nav_bar, bg='brown', text='online', fg='green', font=('Bauhaus 93', 19))
     CONECTED.place(relx=0, rely=0, relwidth=0.07, relheight=1)
+    internet_check_widgets.append(CONECTED)
 
     imagen_2("./Assets/footer.jpg", int(screen_width * 1), int(Home_frame_hight * 0.167), footer_image)
 
