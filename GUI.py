@@ -776,17 +776,26 @@ def get_new_movies(page=1):
                 length = len(data['result']['items'])
                 movies = data['result']['items']
                 break
+
     return movies, length
 
 
 def get_added_movies(page=1):
-    r = requests.get(f'https://vidsrc.to/vapi/movie/add/{page}')  # latest movies
-    movies = None
+    global internet_check, closed
+    movies = []
     length = 0
-    if r.status_code == 200:
-        data = r.json()
-        length = len(data['result']['items'])
-        movies = data['result']['items']
+
+    while True:
+        if closed:
+            break
+        if internet_check:
+            r = requests.get(f'https://vidsrc.to/vapi/movie/add/{page}')  # latest movies
+            movies = None
+            length = 0
+            if r.status_code == 200:
+                data = r.json()
+                length = len(data['result']['items'])
+                movies = data['result']['items']
     return movies, length
 
 
