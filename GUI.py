@@ -1217,16 +1217,15 @@ def Home_Page(widget):
     CONECTED.place(relx=0, rely=0, relwidth=0.07, relheight=1)
     internet_check_widgets.append(CONECTED)
 
-    imagen_2("./Assets/footer.jpg", int(screen_width * 1), int(Home_frame_hight * 0.167), footer_image)
 
     # ================================= Home threads  =====================================================================================================================================
 
-    #imagen_2(r"C:\Users\HEZRON WEKESA\Downloads\12.jpg", screen_width, Home_frame_hight, Home_label)
+    imagen_2("./Assets/footer.jpg", int(screen_width * 1), int(Home_frame_hight * 0.167), footer_image)
     threading.Thread(target=slide_show, args=(Suggestion,)).start()
-    #threading.Thread(target=populer_new_moves, args=(movies_new_widget, PX_hight, PY_width)).start()
-    #threading.Thread(target=populer_added_moves, args=(movies_added_widget, PX_hight, PY_width)).start()
-    #threading.Thread(target=populer_new_tv_shows, args=(tvs_new_widgets, PX_hight, PY_width)).start()
-    #threading.Thread(target=populer_added_tv_shows, args=(tvs_added_widget, PX_hight, PY_width)).start()
+    threading.Thread(target=populer_new_moves, args=(movies_new_widget, PX_hight, PY_width)).start()
+    threading.Thread(target=populer_added_moves, args=(movies_added_widget, PX_hight, PY_width)).start()
+    threading.Thread(target=populer_new_tv_shows, args=(tvs_new_widgets, PX_hight, PY_width)).start()
+    threading.Thread(target=populer_added_tv_shows, args=(tvs_added_widget, PX_hight, PY_width)).start()
 
 
 # ================= Main Definition ===================================================================================================================
