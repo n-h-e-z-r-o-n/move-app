@@ -1,7 +1,7 @@
 import requests
 
 # Making a GET request
-r = requests.get('https://www.geeksforgeeks.org/python-programming-language/')
+r = requests.get('https://www.imdb.com/title/tt1190634/episodes/?ref_=tt_eps_sm')
 
 # check status code for response received
 # success code - 200
