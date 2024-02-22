@@ -87,7 +87,7 @@ internet_check = False
 internet_check_widgets = []
 closed = False
 FRAME_1_canvas = canvas_FRAME_2 = FRAME_1 = FRAME_2 = None
-New_moves = Added_moves = New_TV_Shows = Added_TV_Shows = None
+New_moves = Added_moves = New_TV_Shows = Added_TV_Shows = New_Episodes= None
 ia = imdb.Cinemagoer()
 
 imdb_other = IMDB()
@@ -763,7 +763,7 @@ def has_internet_connection():
 # ------------------------------- Movie fetch function -------- -----------------------------------------------
 def get_new_movies(page=1):
     global internet_check,  closed
-    movies =[]
+    movies = []
     length = 0
 
     while True:
@@ -783,7 +783,7 @@ def get_new_movies(page=1):
 
 def get_added_movies(page=1):
     global internet_check, closed
-    movies = None
+    movies = []
     length = 0
     while True:
         if closed:
@@ -801,7 +801,7 @@ def get_added_movies(page=1):
 
 def get_new_tv_shows(page=1):
     global internet_check, closed
-    movies = None
+    movies = []
     length = 0
     while True:
         if closed:
@@ -819,7 +819,7 @@ def get_new_tv_shows(page=1):
 
 def get_added_tv_shows(page=1):
     global internet_check, closed
-    movies = None
+    movies = []
     length = 0
     while True:
         if closed:
@@ -834,6 +834,22 @@ def get_added_tv_shows(page=1):
 
     return movies, length
 
+def get_latest_episode(page=1):
+    global internet_check,  closed
+    movies = []
+    length = 0
+    while True:
+        if closed:
+            break
+        if internet_check:
+            r = requests.get(f'https://vidsrc.to/vapi/episode/latest/{page}')  # latest movies
+            if r.status_code == 200:
+                data = r.json()
+                length = len(data['result']['items'])
+                movies = data['result']['items']
+                break
+
+    return movies, length
 
 def populer_new_tv_shows(widget_list, PX_hight, PY_width):
     tv_shows_list = []
@@ -919,8 +935,10 @@ def recommendation_tv(widget_list, PY_width, PX_hight):
         count += 1
 
 
+
+
 def Fetch_Mount_SHows(numer=10):
-    global New_moves, Added_moves, New_TV_Shows, Added_TV_Shows
+    global New_moves, Added_moves, New_TV_Shows, Added_TV_Shows, New_Episodes
 
     def xr(shows_list):
         M_list = []
@@ -934,30 +952,35 @@ def Fetch_Mount_SHows(numer=10):
                 M_list.append((title, year, movie_id, movie_id))  # (title, year, post_url, movie_id)
             except Exception as e:
                 pass
+        print(M_list)
         return M_list
 
     new_movie_list = []
     added_movie_list = []
     new_tvs_list = []
     added_tvs_list = []
+    new_episodes_list = []
     count = 0
     while count < numer:
         movies_new, len1 = get_new_movies(page=count)
         movies_added, len2 = get_added_movies(page=count)
         tv_new, len3 = get_new_tv_shows(page=count)
         tv_added, len3 = get_added_tv_shows(page=count)
+        new_episodes, len3 = get_latest_episode(page=count)
 
         new_movie_list.extend(movies_new)
         added_movie_list.extend(movies_added)
         new_tvs_list.extend(tv_new)
         added_tvs_list.extend(tv_added)
+        new_episodes_list.extend(new_episodes)
 
         count += 1
 
-    New_moves = threading.Thread( target=xr, args=(new_movie_list,)).start() #xr(added_movie_list)
-    Added_moves = threading.Thread( target=xr, args=(added_movie_list,)).start() #xr(added_movie_list)
-    New_TV_Shows = threading.Thread( target=xr, args=(new_tvs_list,)).start() #xr(new_tvs_list)
-    Added_TV_Shows = threading.Thread( target=xr, args=(added_tvs_list,)).start() # xr(added_tvs_list)
+    New_moves = xr(added_movie_list)  # threading.Thread( target=xr, args=(new_movie_list,)).start()
+    Added_moves = xr(added_movie_list)  # threading.Thread( target=xr, args=(added_movie_list,)).start()
+    New_TV_Shows = xr(new_tvs_list)  # threading.Thread( target=xr, args=(new_tvs_list,)).start()
+    Added_TV_Shows = xr(added_tvs_list)  # threading.Thread( target=xr, args=(added_tvs_list,)).start()
+    New_Episodes = xr(new_episodes_list)  # threading.Thread( target=xr, args=(new_episodes_list, )).start()
     print("ready")
 
 
@@ -1002,9 +1025,28 @@ def slide_show(widget):
             return
         global root
         list = list
-        if x == 4:
+
+        if  x == 10:
             list[x].tkraise()
-            x = 1
+            x = 0
+        elif x == 9:
+            list[x].tkraise()
+            x += 1
+        elif x == 8:
+            list[x].tkraise()
+            x += 1
+        elif x == 7:
+            list[x].tkraise()
+            x += 1
+        elif x == 6:
+            list[x].tkraise()
+            x += 1
+        elif x == 5:
+            list[x].tkraise()
+            x += 1
+        elif x == 4:
+            list[x].tkraise()
+            x += 1
         elif x == 3:
             list[x].tkraise()
             x += 1
@@ -1017,14 +1059,15 @@ def slide_show(widget):
         else:
             list[x].tkraise()
             x += 1
-        root.after(7000, lambda: Home_page_Background_changer(list, x=x))
+        print("x = ", x)
+        widget.after(6000, lambda: Home_page_Background_changer(list, x=x))
 
     movies, num = get_new_movies(2)
     list = []
     if num != 0:
         count = 0
         for movie in movies:
-            if count > 4:
+            if count > 10:
                 break
             f1 = tk.Button(widget, borderwidth=0, border=0, fg='white', activebackground='black', bg='black', command=lambda id=movie['imdb_id']: selected_movie_detail(id))
             f1.place(relx=0, rely=0, relheight=1, relwidth=1)
@@ -1037,7 +1080,7 @@ def slide_show(widget):
 
 def Home_Page(widget):
     global widget_track_position, page_count, screen_height, screen_width, canvas_FRAME_2, FRAME_1_canvas, top_frame_main, Home_frame
-    global New_moves, Added_moves, New_TV_Shows, Added_TV_Shows
+    global New_moves, Added_moves, New_TV_Shows, Added_TV_Shows, New_Episodes
     global internet_check_widgets
 
 
@@ -1184,8 +1227,12 @@ def Home_Page(widget):
     section5 = tk.Frame(widget, borderwidth=0, border=0, bg=bg_sections)
     section5.place(relx=0, rely=0.664, relheight=0.17, relwidth=1)
 
-    p_ms5 = tk.Button(section5, font=('Georgia', 16), justify='center', anchor=tk.W, activeforeground='lightblue', fg='gray', text=' ⍚ ADDED SERIES', borderwidth=0, border=0, bg='black' , command=lambda: Search_result(top_frame_main, Added_TV_Shows))
-    p_ms5.place(relx=0, rely=0, relheight=0.04, relwidth=1)
+    p_ms5 = tk.Button(section5, font=('Georgia', 16), justify='center', anchor=tk.W, activeforeground='lightblue', fg='gray', text=' ⍚ ADDED SERIES', borderwidth=0, border=0, bg='blue' , command=lambda: Search_result(top_frame_main, Added_TV_Shows))
+    p_ms5.place(relx=0, rely=0, relheight=0.04, relwidth=0.5)
+    change_fg_OnHover(p_ms5, 'lightblue', 'gray')
+
+    p_ms5 = tk.Button(section5, font=('Georgia', 16), justify='center', anchor=tk.W, activeforeground='lightblue', fg='gray', text=' ⍚ New Episodes', borderwidth=0, border=0, bg='blue', command=lambda: Search_result(top_frame_main, New_Episodes))
+    p_ms5.place(relx=0.5, rely=0, relheight=0.04, relwidth=0.5)
     change_fg_OnHover(p_ms5, 'lightblue', 'gray')
 
     column = 0
@@ -1236,8 +1283,8 @@ def Home_Page(widget):
     #threading.Thread(target=slide_show, args=(Suggestion,)).start()
     #threading.Thread(target=populer_new_moves, args=(movies_new_widget, PX_hight, PY_width)).start()
     #threading.Thread(target=populer_added_moves, args=(movies_added_widget, PX_hight, PY_width)).start()
-    threading.Thread(target=populer_new_tv_shows, args=(tvs_new_widgets, PX_hight, PY_width)).start()
-    threading.Thread(target=populer_added_tv_shows, args=(tvs_added_widget, PX_hight, PY_width)).start()
+    #threading.Thread(target=populer_new_tv_shows, args=(tvs_new_widgets, PX_hight, PY_width)).start()
+    #threading.Thread(target=populer_added_tv_shows, args=(tvs_added_widget, PX_hight, PY_width)).start()
 
 
 # ================= Main Definition ===================================================================================================================
