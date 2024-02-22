@@ -7,6 +7,9 @@ imdb_other = IMDB()
 
 
 movies = imdb_other.get_by_id("tt1190634")
+movies.update(movies)
+
+
 movie_name = movies['name']
 movie_type = movies['type']
 movie_genre = ", ".join(i for i in movies['genre'])
@@ -17,3 +20,4 @@ movie_actor = ", ".join(i['name'] for i in movies['actor'])
 movie_description = movies['description']
 
 print(movies)
+

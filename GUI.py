@@ -155,8 +155,6 @@ def on_mouse_wheel(widget, event):  # Function to handle mouse wheel scrolling
 
 
 prevy = 0
-
-
 def on_touch_scroll(widget, event):
     global prevy
 
@@ -193,7 +191,8 @@ def imagen(image_url, screen_width, screen_height, widget):
         while retry < 6:
             try:
                 if image_url is None:
-                    image = Image.open("./Default.png")
+                    #image = Image.open("./Default.png")
+                    break
 
                 elif image_url.startswith("http"):
                     response = requests.get(image_url, timeout=20)
@@ -354,6 +353,11 @@ def toggle_fullscreen(main_widget, widget, original_x, original_y, original_widt
 
 def selected_movie_detail(movie_id):
     print(movie_id)
+    if not movie_id.startswith("t"):
+        movie_id = "tt" + movie_id
+
+    print(movie_id)
+
     movies = imdb_other.get_by_id(movie_id)
     movie_name = movies['name']
     movie_type = movies['type']
@@ -552,7 +556,7 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     frame2 = WebView2(video_box, 500, 500)
     frame2.load_url(f'https://vidsrc.to/embed/tv/{movie_id}')  # https://vidsrc.to/embed/movie/tt{movie_id}
     frame2.place(relheight=1, relwidth=1, relx=0, rely=0)
-    video_box.bind("<Double-Button-1>", print("double clicked"))
+
 
     if random.randint(0, 1):
         threading.Thread(target=recommendation_movies, args=(recomedation_other, i_widh, i_high)).start()
@@ -1315,8 +1319,8 @@ def main():
 
     root.attributes("-topmost", False)
 
-    Home_Page(Home_frame)
-    #selected_movie_detail("tt27867155")
+    #Home_Page(Home_frame)
+    selected_movie_detail("tt1190634")
     # watch_page(main_frame, '10638522', 'Talk to Me', 7.2, 'movie', 'Australia. United Kingdom. ', 'Horror, Thriller, ', 2022, 'Causeway Films, Head Gear Films, Metrol Technology, Screen Australia, Talk to Me Holdings, ', 'Ari McCarthy, Hamish Phillips, Kit Erhart-Bruce, Sarah Brokensha, Jayden Davison, Sunny Johnson, Sophie Wilde, Marcus Johnson, Kidaan Zelleke, James Oliver, Joe Bird, Jett Gazley, Alexandra Jensen, Dog, Helene Philippou', 'ghg' ,'eet')
 
     def on_closing():
