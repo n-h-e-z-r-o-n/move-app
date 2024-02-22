@@ -782,7 +782,7 @@ def get_new_movies(page=1):
 
 def get_added_movies(page=1):
     global internet_check, closed
-    movies = []
+    movies = None
     length = 0
     while True:
         if closed:
@@ -793,12 +793,14 @@ def get_added_movies(page=1):
                 data = r.json()
                 length = len(data['result']['items'])
                 movies = data['result']['items']
+                break
+
     return movies, length
 
 
 def get_new_tv_shows(page=1):
     global internet_check, closed
-    movies = []
+    movies = None
     length = 0
     while True:
         if closed:
@@ -809,6 +811,7 @@ def get_new_tv_shows(page=1):
                 data = r.json()
                 length = len(data['result']['items'])
                 movies = data['result']['items']
+                break
 
     return movies, length
 
@@ -826,6 +829,8 @@ def get_added_tv_shows(page=1):
                 data = r.json()
                 length = len(data['result']['items'])
                 movies = data['result']['items']
+                break
+
     return movies, length
 
 
