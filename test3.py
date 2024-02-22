@@ -1,14 +1,4 @@
-import requests
-internet_check = False
-def has_internet_connection():
-    global internet_check
-    try:
-        response = requests.get("https://www.google.com", timeout=3)
-        internet_check =  response.status_code == 200  # Check for successful response (200)
-    except Exception as e:
-        internet_check = False  # Handle exceptions gracefully
-has_internet_connection()
-if internet_check:
-    print("Connected to the internet!")
-else:
-    print("No internet connection.")
+from imdbmovies import IMDB
+imdb = IMDB()
+res = imdb.upcoming(region=None)
+# returns upcomming movies info as json
