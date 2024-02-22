@@ -84,6 +84,7 @@ page_count = -1
 search_q = None
 root = None
 internet_check = False
+internet_check_widgets = []
 closed = False
 FRAME_1_canvas = canvas_FRAME_2 = FRAME_1 = FRAME_2 = None
 New_moves = Added_moves = New_TV_Shows = Added_TV_Shows = None
@@ -747,10 +748,14 @@ def has_internet_connection():
             internet_check =  response.status_code == 200  # Check for successful response (200)
             if len(internet_check_widgets) != 0:
                 for i in internet_check_widgets:
-                    i.configure(bg='green', text='on'))
+                    i.configure(bg='green', text='online')
         except Exception as e:
             internet_check = False
-            return False  # Handle exceptions gracefully
+
+            if len(internet_check_widgets) != 0:
+                for i in internet_check_widgets:
+                    i.configure(bg='red', text='not online')
+
         time.sleep(5)
 
 threading.Thread(target=has_internet_connection)
