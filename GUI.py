@@ -745,13 +745,14 @@ def Search_result(widget, m_list):
 
 def has_internet_connection():
     global internet_check,  closed
-    while True:
+    while not closed:
         try:
             response = requests.get("https://www.google.com", timeout=3)
             internet_check =  response.status_code == 200  # Check for successful response (200)
         except Exception as e:
             internet_check = False
             return False  # Handle exceptions gracefully
+        time.sleep(1)
 
 threading.Thread(target=has_internet_connection)
 
