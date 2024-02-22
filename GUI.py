@@ -747,7 +747,7 @@ def has_internet_connection():
             internet_check =  response.status_code == 200  # Check for successful response (200)
             if len(internet_check_widgets) != 0:
                 for i in internet_check_widgets:
-                    i.destroy()
+                    i.configure(bg='green', text='on'))
         except Exception as e:
             internet_check = False
             return False  # Handle exceptions gracefully
