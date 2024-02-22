@@ -6,7 +6,7 @@ ia = imdb.Cinemagoer()
 imdb_other = IMDB()
 
 
-movies = imdb_other.get_by_id("1190634")
+movies = imdb_other.get_by_id("tt1190634")
 movie_name = movies['name']
 movie_type = movies['type']
 movie_genre = ", ".join(i for i in movies['genre'])
