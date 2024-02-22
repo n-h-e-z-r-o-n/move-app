@@ -762,14 +762,17 @@ threading.Thread(target=has_internet_connection).start()
 # ------------------------------- Movie fetch function -------- -----------------------------------------------
 def get_new_movies(page=1):
     global internet_check,  closed
-    r = requests.get(f'https://vidsrc.to/vapi/movie/new/{page}')  # latest movies
-    print(r.status_code)
-    movies = None
-    length = 0
-    if r.status_code == 200:
-        data = r.json()
-        length = len(data['result']['items'])
-        movies = data['result']['items']
+    if not closed:
+        while True:
+            if internet_check
+            r = requests.get(f'https://vidsrc.to/vapi/movie/new/{page}')  # latest movies
+            print(r.status_code)
+            movies = None
+            length = 0
+            if r.status_code == 200:
+                data = r.json()
+                length = len(data['result']['items'])
+                movies = data['result']['items']
     return movies, length
 
 
