@@ -1161,6 +1161,9 @@ def Home_Page(widget):
 
     imagen_2("./Assets/footer.jpg", int(screen_width * 1), int(Home_frame_hight * 0.166), Home_label)
 
+    Home_label = tk.Label(Home_label, bg='blue')
+    Home_label.place(relx=0, rely=0.9, relwidth=1, relheight=0.1)
+
     # ================================= Home threads  =====================================================================================================================================
 
     #imagen_2(r"C:\Users\HEZRON WEKESA\Downloads\12.jpg", screen_width, Home_frame_hight, Home_label)
