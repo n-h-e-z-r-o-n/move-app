@@ -953,10 +953,10 @@ def Fetch_Mount_SHows(numer=10):
 
         count += 1
 
-    New_moves = threading.Thread( target=xr, args=(new_movie_list,)).start()
+    New_moves = threading.Thread( target=xr, args=(new_movie_list,)).start() #xr(added_movie_list)
     Added_moves = threading.Thread( target=xr, args=(added_movie_list,)).start() #xr(added_movie_list)
-    New_TV_Shows = threading.Thread( target=xr, args=(added_movie_list,)).start() #xr(new_tvs_list)
-    Added_TV_Shows = threading.Thread( target=xr, args=(added_movie_list,)).start() # xr(added_tvs_list)
+    New_TV_Shows = threading.Thread( target=xr, args=(new_tvs_list,)).start() #xr(new_tvs_list)
+    Added_TV_Shows = threading.Thread( target=xr, args=(added_tvs_list,)).start() # xr(added_tvs_list)
     print("ready")
 
 threading.Thread(target=Fetch_Mount_SHows, args=(10,)).start()
