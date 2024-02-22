@@ -769,8 +769,6 @@ def get_new_movies(page=1):
             if internet_check:
                 r = requests.get(f'https://vidsrc.to/vapi/movie/new/{page}')  # latest movies
                 print(r.status_code)
-                movies = None
-                length = 0
                 if r.status_code == 200:
                     data = r.json()
                     length = len(data['result']['items'])
