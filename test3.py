@@ -1,19 +1,14 @@
-import socket
+import tkinter as tk
 
-def check_internet_connection(host="8.8.8.8", port=53, timeout=3):
-    """
-    Check internet connection by attempting to create a socket connection
-    to a reliable external server (default is Google's public DNS server).
-    """
-    try:
-        socket.setdefaulttimeout(timeout)
-        socket.socket(socket.AF_INET, socket.SOCK_STREAM).connect((host, port))
-        return True
-    except socket.error:
-        return False
+root = tk.Tk()
+root.geometry("300x200")
 
-# Check internet connection
-if check_internet_connection():
-    print("Internet connection available")
-else:
-    print("No internet connection")
+# Create a transparent LabelFrame
+transparent_frame = tk.LabelFrame(root, text="Transparent LabelFrame", bg='green', bd=0, highlightthickness=0)
+transparent_frame.place(relx=0.5, rely=0.5, anchor="center")
+
+# Add a label inside the transparent LabelFrame
+label = tk.Label(transparent_frame, text="Hello, World!")
+label.pack()
+
+root.mainloop()

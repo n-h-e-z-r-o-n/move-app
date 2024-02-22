@@ -967,7 +967,7 @@ def slide_show(widget):
         for movie in movies:
             if count > 4:
                 break
-            f1 = tk.Button(widget, borderwidth=0, border=0, text=movie['title'], fg='white', activebackground='black', bg='black')  # , command=lambda id=movie[count]['imdb_id']: selected_movie_detail(id))
+            f1 = tk.Button(widget, borderwidth=0, border=0, text=movie['title'], fg='white', activebackground='black', bg='black', command=lambda id=movie['imdb_id']: selected_movie_detail(id))
             f1.place(relx=0, rely=0, relheight=1, relwidth=1)
             imagen_fade(movie['imdb_id'], screen_height, screen_width, f1)
             count += 1
@@ -981,27 +981,25 @@ def Home_Page(widget):
     global New_moves, Added_moves, New_TV_Shows, Added_TV_Shows
 
 
-
     FRAME_1.tkraise()
     widget_scroll_bind(FRAME_1_canvas)
     Home_frame_hight = screen_height * 5
     PX_hight = int(Home_frame_hight * 0.17 * 0.31) - 1
     PY_width = int(screen_width * 1 * 0.12) - 1
-    # background image ======================================================================
-    Home_label = tk.Label(widget, bg='yellow')
-    Home_label.place(relx=0, rely=0, relwidth=1, relheight=1)
     bg_sections = 'black'
+
+
 
     # ===========  Section 1  =========================================================================================================================================
 
     Suggestion = tk.Frame(widget, borderwidth=0, border=0, bg=bg_sections)
     Suggestion.place(relx=0, rely=0, relheight=0.15, relwidth=1)
 
-    back_tracking_widget = tk.Button(widget, font=('Georgia', 20), justify='center', fg='gray', text='⤽', activebackground='black', activeforeground='yellow', borderwidth=0, border=0, bg='black', command=previous_back_track_page_display)
+    back_tracking_widget = tk.Button(widget,  borderwidth=0, border=0, bg='black', font=('Georgia', 20), justify='center', fg='gray', text='⤽', activebackground='black', activeforeground='yellow', command=previous_back_track_page_display)
     back_tracking_widget.place(relx=0, rely=0, relheight=0.005, relwidth=0.021)
     change_fg_OnHover(back_tracking_widget, 'yellow', 'gray')
 
-    froward_tracking_widget = tk.Button(widget, font=('Georgia', 20), justify='center', fg='gray', text='⤼', activebackground='black', activeforeground='yellow', borderwidth=0, border=0, bg='black', command=previous_forwad_track_page_display)
+    froward_tracking_widget = tk.Button(widget, borderwidth=0, border=0, bg='black', font=('Georgia', 20), justify='center', fg='gray', text='⤽', activebackground='black', activeforeground='yellow', command=previous_forwad_track_page_display)
     froward_tracking_widget.place(relx=0.021, rely=0, relheight=0.005, relwidth=0.021)
     change_fg_OnHover(froward_tracking_widget, 'yellow', 'gray')
 
@@ -1156,12 +1154,19 @@ def Home_Page(widget):
         y_pos += 0.32
         row += 1
 
-    imagen_2("Assets/12.jpg", screen_width, Home_frame_hight, Home_label)
+    # background image ======================================================================
+
+    Home_label = tk.Label(widget, bg='blue')
+    Home_label.place(relx=0, rely=0.834, relwidth=1, relheight=0.166)
+
+    imagen_2("./Assets/footer.jpg", int(screen_width * 1), int(Home_frame_hight * 0.166), Home_label)
+
+    #imagen_2(r"C:\Users\HEZRON WEKESA\Downloads\12.jpg", screen_width, Home_frame_hight, Home_label)
     threading.Thread(target=slide_show, args=(Suggestion,)).start()
-    threading.Thread(target=populer_new_moves, args=(movies_new_widget, PX_hight, PY_width)).start()
-    threading.Thread(target=populer_added_moves, args=(movies_added_widget, PX_hight, PY_width)).start()
-    threading.Thread(target=populer_new_tv_shows, args=(tvs_new_widgets, PX_hight, PY_width)).start()
-    threading.Thread(target=populer_added_tv_shows, args=(tvs_added_widget, PX_hight, PY_width)).start()
+    #threading.Thread(target=populer_new_moves, args=(movies_new_widget, PX_hight, PY_width)).start()
+    #threading.Thread(target=populer_added_moves, args=(movies_added_widget, PX_hight, PY_width)).start()
+    #threading.Thread(target=populer_new_tv_shows, args=(tvs_new_widgets, PX_hight, PY_width)).start()
+    #threading.Thread(target=populer_added_tv_shows, args=(tvs_added_widget, PX_hight, PY_width)).start()
 
 
 # ================= Main Definition ===================================================================================================================
@@ -1227,7 +1232,7 @@ def main():
     FRAME_1_canvas.create_window((0, 0), window=FRAME_1_screen, anchor=tk.NW)
     widget_scroll_bind(FRAME_1_canvas)  # Bind the mouse wheel event to the canvas
 
-    Home_frame = tk.Frame(FRAME_1_screen, bg='', width=screen_width, height=Home_frame_hight)
+    Home_frame = tk.Frame(FRAME_1_screen, width=screen_width, bg='lightblue', height=Home_frame_hight)
     Home_frame.pack(fill=tk.BOTH, expand=True)
 
     widget_track_position.append(Home_frame)
