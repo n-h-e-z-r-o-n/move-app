@@ -956,7 +956,6 @@ def Fetch_Mount_SHows(numer=10):
     print("ready")
 
 
-
 def poster_image_get(movie_id):
     try:
         movies = imdb_other.get_by_id(movie_id)
@@ -975,6 +974,8 @@ def poster_image_get(movie_id):
     return  movie_poster_url
     """
     return movie_poster_url
+
+
 # ---------------------------------------------------------------------------------------------------------------
 
 def slide_show(widget):
