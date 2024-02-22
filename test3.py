@@ -1,13 +1,13 @@
 import requests
-
+internet_check = False
 def has_internet_connection():
     try:
         response = requests.get("https://www.google.com", timeout=3)
-        return response.status_code == 200  # Check for successful response (200)
+        internet_check =  response.status_code == 200  # Check for successful response (200)
     except Exception as e:
-        return False  # Handle exceptions gracefully
+        internet_check = False  # Handle exceptions gracefully
 
-if has_internet_connection():
+if internet_check:
     print("Connected to the internet!")
 else:
     print("No internet connection.")

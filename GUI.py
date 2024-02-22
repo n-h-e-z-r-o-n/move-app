@@ -749,6 +749,7 @@ def has_internet_connection():
             internet_check = True
             return response.status_code == 200  # Check for successful response (200)
         except Exception as e:
+            internet_check = False
             return False  # Handle exceptions gracefully
 
 
