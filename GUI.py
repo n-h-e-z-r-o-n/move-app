@@ -1236,7 +1236,7 @@ def Home_Page(widget):
     #threading.Thread(target=slide_show, args=(Suggestion,)).start()
     #threading.Thread(target=populer_new_moves, args=(movies_new_widget, PX_hight, PY_width)).start()
     #threading.Thread(target=populer_added_moves, args=(movies_added_widget, PX_hight, PY_width)).start()
-    #threading.Thread(target=populer_new_tv_shows, args=(tvs_new_widgets, PX_hight, PY_width)).start()
+    threading.Thread(target=populer_new_tv_shows, args=(tvs_new_widgets, PX_hight, PY_width)).start()
     threading.Thread(target=populer_added_tv_shows, args=(tvs_added_widget, PX_hight, PY_width)).start()
 
 
