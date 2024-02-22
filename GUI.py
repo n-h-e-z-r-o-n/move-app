@@ -1267,8 +1267,8 @@ def main():
     global top_search_page, top_page, widget_track_position, top_frame_main, FRAME_1, FRAME_2, FRAME_1_canvas, canvas_FRAME_2
     global closed
 
-    #threading.Thread(target=has_internet_connection).start()
-    #threading.Thread(target=Fetch_Mount_SHows, args=(10,)).start()
+    threading.Thread(target=has_internet_connection).start()
+    threading.Thread(target=Fetch_Mount_SHows, args=(10,)).start()
 
     root = tk.Tk()
     root.title("Move App")
