@@ -752,7 +752,7 @@ def has_internet_connection():
         except Exception as e:
             internet_check = False
             return False  # Handle exceptions gracefully
-        time.sleep(1)
+        time.sleep(5)
 
 threading.Thread(target=has_internet_connection)
 
@@ -994,6 +994,7 @@ def slide_show(widget):
 def Home_Page(widget):
     global widget_track_position, page_count, screen_height, screen_width, canvas_FRAME_2, FRAME_1_canvas, top_frame_main, Home_frame
     global New_moves, Added_moves, New_TV_Shows, Added_TV_Shows
+    global internet_check
 
 
     FRAME_1.tkraise()
