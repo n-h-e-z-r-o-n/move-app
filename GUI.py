@@ -925,7 +925,6 @@ def Fetch_Mount_SHows(numer=10):
         M_list = []
         for movie in shows_list:
             try:
-
                 movie_id = movie['imdb_id']
                 title = movie['title']
                 year = ''
