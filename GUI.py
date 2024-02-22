@@ -1177,8 +1177,12 @@ def Home_Page(widget):
 
     imagen_2("./Assets/footer.jpg", int(screen_width * 1), int(Home_frame_hight * 0.166), Home_label)
 
-    Home_label = tk.Label(Home_label, bg=bg_sections)
+    Home_label = tk.Frame(Home_label, bg=bg_sections)
     Home_label.place(relx=0, rely=0.9, relwidth=1, relheight=0.05)
+
+    Home_label = tk.Frame(Home_label, bg=bg_sections)
+    Home_label.place(relx=0, rely=0.9, relwidth=1, relheight=0.05)
+
 
     # ================================= Home threads  =====================================================================================================================================
 
