@@ -1174,12 +1174,12 @@ def Home_Page(widget):
     footer_section = tk.Label(widget, bg='blue')
     footer_section.place(relx=0, rely=0.834, relwidth=1, relheight=0.166)
 
-    Home_label = tk.Label(footer_section, bg='blue')
-    Home_label.place(relx=0, rely=0.834, relwidth=1, relheight=0.166)
+    footer_image = tk.Label(footer_section, bg='blue')
+    footer_image.place(relx=0, rely=0.834, relwidth=1, relheight=1)
 
-    imagen_2("./Assets/footer.jpg", int(screen_width * 1), int(Home_frame_hight * 0.166), Home_label)
+    imagen_2("./Assets/footer.jpg", int(screen_width * 1), int(Home_frame_hight * 0.166), footer_image)
 
-    Home_label2 = tk.Frame(Home_label, bg=bg_sections)
+    Home_label2 = tk.Frame(footer_section, bg=bg_sections)
     Home_label2.place(relx=0, rely=0.9, relwidth=1, relheight=0.05)
 
     CONECTED  = tk.Label(Home_label2, bg=bg_sections, text='online')
