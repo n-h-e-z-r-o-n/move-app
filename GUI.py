@@ -739,12 +739,15 @@ def Search_result(widget, m_list):
 
 
 def has_internet_connection():
-    global internet_check,  closed
+    global internet_check,  closed, internet_check_widgets
+
     while not closed:
         try:
             response = requests.get("https://www.google.com", timeout=3)
             internet_check =  response.status_code == 200  # Check for successful response (200)
-            if 
+            if len(internet_check_widgets) != 0:
+                for i in internet_check_widgets:
+                    i.destroy()
         except Exception as e:
             internet_check = False
             return False  # Handle exceptions gracefully
