@@ -741,7 +741,7 @@ def Search_result(widget, m_list):
 
 def has_internet_connection():
     global internet_check,  closed, internet_check_widgets
-
+    print("internet_check", closed )
     while not closed:
         print("internet_check")
         try:
