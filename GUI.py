@@ -959,7 +959,7 @@ def Fetch_Mount_SHows(numer=10):
     Added_TV_Shows = threading.Thread( target=xr, args=(added_tvs_list,)).start() # xr(added_tvs_list)
     print("ready")
 
-threading.Thread(target=Fetch_Mount_SHows, args=(10,)).start()
+
 
 
 def poster_image_get(movie_id):
@@ -1268,8 +1268,8 @@ def main():
     global closed
 
     threading.Thread(target=has_internet_connection).start()
+    threading.Thread(target=Fetch_Mount_SHows, args=(10,)).start()
 
-    
     root = tk.Tk()
     root.title("Move App")
     root.state('zoomed')  # this creates a window that takes over the screen
