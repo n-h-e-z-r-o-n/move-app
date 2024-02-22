@@ -1332,10 +1332,10 @@ def main():
 if __name__ == "__main__":
 
     #Start_graphics()
-    #main()
-    #"""
+    main()
+    """
     t = Thread(ThreadStart(main))
     t.ApartmentState = ApartmentState.STA
     t.Start()
     t.Join()
-    #"""
+    """
