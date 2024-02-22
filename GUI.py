@@ -764,16 +764,18 @@ def get_new_movies(page=1):
     global internet_check,  closed
     movies =[]
     length = 0
-    if not closed:
-        while True:
-            if internet_check:
-                r = requests.get(f'https://vidsrc.to/vapi/movie/new/{page}')  # latest movies
-                print(r.status_code)
-                if r.status_code == 200:
-                    data = r.json()
-                    length = len(data['result']['items'])
-                    movies = data['result']['items']
-                    break
+
+    while True:
+        if closed:
+            break
+        if internet_check:
+            r = requests.get(f'https://vidsrc.to/vapi/movie/new/{page}')  # latest movies
+            print(r.status_code)
+            if r.status_code == 200:
+                data = r.json()
+                length = len(data['result']['items'])
+                movies = data['result']['items']
+                break
     return movies, length
 
 
