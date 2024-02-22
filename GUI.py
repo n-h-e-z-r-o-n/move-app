@@ -1171,8 +1171,10 @@ def Home_Page(widget):
         row += 1
 
     # ================================= Footer Section =====================================================================================================================================
+    footer_section = tk.Label(widget, bg='blue')
+    footer_section.place(relx=0, rely=0.834, relwidth=1, relheight=0.166)
 
-    Home_label = tk.Label(widget, bg='blue')
+    Home_label = tk.Label(footer_section, bg='blue')
     Home_label.place(relx=0, rely=0.834, relwidth=1, relheight=0.166)
 
     imagen_2("./Assets/footer.jpg", int(screen_width * 1), int(Home_frame_hight * 0.166), Home_label)
