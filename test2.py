@@ -7,7 +7,7 @@ imdb_other = IMDB()
 
 movies = imdb_other.get_by_id("tt27867155")
 
-
+imdb_other.
 
 
 
