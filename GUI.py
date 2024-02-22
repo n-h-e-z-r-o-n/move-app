@@ -1275,6 +1275,16 @@ def main():
     Home_Page(Home_frame)
     # selected_movie_detail("tt0944947")
     # watch_page(main_frame, '10638522', 'Talk to Me', 7.2, 'movie', 'Australia. United Kingdom. ', 'Horror, Thriller, ', 2022, 'Causeway Films, Head Gear Films, Metrol Technology, Screen Australia, Talk to Me Holdings, ', 'Ari McCarthy, Hamish Phillips, Kit Erhart-Bruce, Sarah Brokensha, Jayden Davison, Sunny Johnson, Sophie Wilde, Marcus Johnson, Kidaan Zelleke, James Oliver, Joe Bird, Jett Gazley, Alexandra Jensen, Dog, Helene Philippou', 'ghg' ,'eet')
+
+    def on_closing():
+        global session, client_socket, root, closed
+        closed = True
+        session.close()
+        client_socket.close()
+        root.destroy()
+
+    root.protocol("WM_DELETE_WINDOW", on_closing)
+
     root.mainloop()
 
 
