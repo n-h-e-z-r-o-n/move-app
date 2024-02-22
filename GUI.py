@@ -1019,7 +1019,7 @@ def slide_show(widget):
             count += 1
             list.append(f1)
 
-        Home_page_Background_changer(list)
+    Home_page_Background_changer(list)
 
 
 def Home_Page(widget):
