@@ -353,6 +353,7 @@ def toggle_fullscreen(main_widget, widget, original_x, original_y, original_widt
 
 
 def selected_movie_detail(movie_id):
+    print(movie_id)
     movies = imdb_other.get_by_id(movie_id)
     movie_name = movies['name']
     movie_type = movies['type']
@@ -1221,8 +1222,8 @@ def Home_Page(widget):
     #threading.Thread(target=slide_show, args=(Suggestion,)).start()
     threading.Thread(target=populer_new_moves, args=(movies_new_widget, PX_hight, PY_width)).start()
     threading.Thread(target=populer_added_moves, args=(movies_added_widget, PX_hight, PY_width)).start()
-    #threading.Thread(target=populer_new_tv_shows, args=(tvs_new_widgets, PX_hight, PY_width)).start()
-    #threading.Thread(target=populer_added_tv_shows, args=(tvs_added_widget, PX_hight, PY_width)).start()
+    threading.Thread(target=populer_new_tv_shows, args=(tvs_new_widgets, PX_hight, PY_width)).start()
+    threading.Thread(target=populer_added_tv_shows, args=(tvs_added_widget, PX_hight, PY_width)).start()
 
 
 # ================= Main Definition ===================================================================================================================
