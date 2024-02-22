@@ -967,7 +967,8 @@ def poster_image_get(movie_id):
         movies = imdb_other.get_by_id(movie_id)
         movie_poster_url = movies['poster']
         movie_poster_url = clean_url(movie_poster_url)
-    except:
+    except Exception as e:
+        print(e)
         movie_poster_url = None
     """
     try:
