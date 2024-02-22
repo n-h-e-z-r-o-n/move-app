@@ -814,13 +814,18 @@ def get_new_tv_shows(page=1):
 
 
 def get_added_tv_shows(page=1):
-    r = requests.get(f'https://vidsrc.to/vapi/tv/add/{page}')  # latest movies
+    global internet_check, closed
     movies = None
     length = 0
-    if r.status_code == 200:
-        data = r.json()
-        length = len(data['result']['items'])
-        movies = data['result']['items']
+    while True:
+        if closed:
+            break
+        if internet_check:
+            r = requests.get(f'https://vidsrc.to/vapi/tv/add/{page}')  # latest movies
+            if r.status_code == 200:
+                data = r.json()
+                length = len(data['result']['items'])
+                movies = data['result']['items']
     return movies, length
 
 
