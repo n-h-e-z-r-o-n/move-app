@@ -5,20 +5,15 @@ ia = imdb.Cinemagoer()
 
 imdb_other = IMDB()
 
-movies = imdb_other.get_by_id("tt27867155")
 
-imdb_other.
+movies = imdb_other.get_by_id("tt18382028")
+movie_name = movies['name']
+movie_type = movies['type']
+movie_genre = ", ".join(i for i in movies['genre'])
+movie_datePublished = movies['datePublished']
+movie_ratingValue = movies['rating']['ratingValue']
+movie_poster_url = movies['poster']
+movie_actor = ", ".join(i['name'] for i in movies['actor'])
+movie_description = movies['description']
 
-
-
-#M = imdb_other.search(name='avengers')
-#print(M)
-#M = imdb_other.upcoming()
-#print(M)
-
-
-
-print(movie_poster_url)
-
-movies = ia.get_movie('0944947')
-print(movies.get_fullsizeURL())
+print(movies)
