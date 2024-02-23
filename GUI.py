@@ -770,13 +770,15 @@ def get_new_movies(page=1):
         if closed:
             break
         if internet_check:
-            r = requests.get(f'https://vidsrc.to/vapi/movie/new/{page}')  # latest movies
-            print(r.status_code)
-            if r.status_code == 200:
-                data = r.json()
-                length = len(data['result']['items'])
-                movies = data['result']['items']
-                break
+            try:
+                r = requests.get(f'https://vidsrc.to/vapi/movie/new/{page}')  # latest movies
+                print(r.status_code)
+                if r.status_code == 200:
+                    data = r.json()
+                    length = len(data['result']['items'])
+                    movies = data['result']['items']
+                    break
+            
 
     return movies, length
 
@@ -789,12 +791,15 @@ def get_added_movies(page=1):
         if closed:
             break
         if internet_check:
-            r = requests.get(f'https://vidsrc.to/vapi/movie/add/{page}')  # latest movies
-            if r.status_code == 200:
-                data = r.json()
-                length = len(data['result']['items'])
-                movies = data['result']['items']
-                break
+            try:
+                r = requests.get(f'https://vidsrc.to/vapi/movie/add/{page}')  # latest movies
+                if r.status_code == 200:
+                    data = r.json()
+                    length = len(data['result']['items'])
+                    movies = data['result']['items']
+                    break
+            except Exception as e:
+                print(e)
 
     return movies, length
 
@@ -807,12 +812,15 @@ def get_new_tv_shows(page=1):
         if closed:
             break
         if internet_check:
-            r = requests.get(f'https://vidsrc.to/vapi/tv/new/{page}')  # latest movies
-            if r.status_code == 200:
-                data = r.json()
-                length = len(data['result']['items'])
-                movies = data['result']['items']
-                break
+            try:
+                r = requests.get(f'https://vidsrc.to/vapi/tv/new/{page}')  # latest movies
+                if r.status_code == 200:
+                    data = r.json()
+                    length = len(data['result']['items'])
+                    movies = data['result']['items']
+                    break
+            except Exception as e:
+                print(e)
 
     return movies, length
 
@@ -825,12 +833,15 @@ def get_added_tv_shows(page=1):
         if closed:
             break
         if internet_check:
-            r = requests.get(f'https://vidsrc.to/vapi/tv/add/{page}')  # latest movies
-            if r.status_code == 200:
-                data = r.json()
-                length = len(data['result']['items'])
-                movies = data['result']['items']
-                break
+            try:
+                r = requests.get(f'https://vidsrc.to/vapi/tv/add/{page}')  # latest movies
+                if r.status_code == 200:
+                    data = r.json()
+                    length = len(data['result']['items'])
+                    movies = data['result']['items']
+                    break
+            except Exception as e:
+                print(e)
 
     return movies, length
 
