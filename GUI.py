@@ -575,10 +575,6 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
 
     main_frame = tk.Frame(Add2, bg='yellow', width=500, height=2000)
     main_frame.pack(fill=tk.BOTH, expand=True)
-    main_frame.unbind("<MouseWheel>")
-
-
-    # Add a scroll bar
     scrollbar = tk.Scrollbar(main_frame)
     scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
 
@@ -586,7 +582,7 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     text_widget = tk.Text(main_frame, yscrollcommand=scrollbar.set)
     text_widget.pack(fill=tk.BOTH, expand=True)
     text_widget.unbind("<MouseWheel>")
-    text_widget.unbind("<B1-Motion>")
+    text_widget.unbind("<B1-Motion>", "+")
 
     # Link the scroll bar to the text widget
     scrollbar.config(command=text_widget.yview)
