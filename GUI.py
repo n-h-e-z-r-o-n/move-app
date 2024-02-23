@@ -462,7 +462,7 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     tk.Button(Add, text="Season ", borderwidth=0, border=0, font=('Comic Sans MS', 12)).place(relheight=1 ,relwidth=0.1, relx=0, rely=0)
 
     Add2 = tk.Frame(large_frame, bg='green', borderwidth=0, border=0)
-    Add2.place(relx=0.04, rely=0.764, relheight=0.037, relwidth=0.95)
+    Add2.place(relx=0.04, rely=0.742, relheight=0.037, relwidth=0.2)
 
 
 
