@@ -461,7 +461,7 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
 
     Add_canvas = tk.Canvas(Add, borderwidth=0, highlightthickness=0, bg='yellow')
     Add_canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
-    Add_scrollbar = tk.Scrollbar(root, command=Add_canvas.xview)
+    Add_scrollbar = tk.Scrollbar(Add_canvas, command=Add_canvas.xview)
     Add_scrollbar.pack()
     Add_canvas.config(xscrollcommand=Add_scrollbar.set)
     add_screen = tk.Frame(Add_canvas, bg='yellow')
