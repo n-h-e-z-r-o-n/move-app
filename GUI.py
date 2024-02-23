@@ -1428,6 +1428,7 @@ def Start_graphics():
     m.after(5000, on_closing)
     C.mainloop()
 
+
 def download_app_icon():
     url1 = "https://github.com/ice-black/move-app/blob/9af6998c123fd6f2d86ff9a083eecd094200a8ab/Assets/tx.ico"
     url2 = "https://github.com/ice-black/move-app/blob/be16bd596a33e02576b6935c15efeb39a212fbf9/Assets/startup.jpg"
@@ -1452,6 +1453,8 @@ def download_app_icon():
 
         except:
             pass
+
+
 def main():
     global page_count, Home_frame
     global is_fullscreen
