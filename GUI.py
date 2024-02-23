@@ -1429,7 +1429,9 @@ def Start_graphics():
     C.mainloop()
 
 def download_app_icon():
-    url = "https://raw.githubusercontent.com/Hezron26/assets/main/panda.ico"
+    url1 = "https://raw.githubusercontent.com/Hezron26/assets/main/panda.ico"
+    url1 = "https://raw.githubusercontent.com/Hezron26/assets/main/panda.ico"
+    url1 = "https://raw.githubusercontent.com/Hezron26/assets/main/panda.ico"
     filename = 'Assets/tx.ico'
     response = requests.get(url)
     with open(filename, 'wb') as f:
