@@ -1430,7 +1430,8 @@ def Start_graphics():
 
 def download_app_icon():
     url1 = "https://github.com/ice-black/move-app/blob/9af6998c123fd6f2d86ff9a083eecd094200a8ab/Assets/tx.ico"
-    url2 = "https://raw.githubusercontent.com/Hezron26/assets/main/panda.ico"
+    url2 = "https://github.com/ice-black/move-app/blob/be16bd596a33e02576b6935c15efeb39a212fbf9/Assets/startup.jpg"
+    url2 = "https://github.com/ice-black/move-app/blob/be16bd596a33e02576b6935c15efeb39a212fbf9/Assets/startup.jpg"
     filename = 'Assets/tx.ico'
     response = requests.get(url1)
     with open(filename, 'wb') as f:
