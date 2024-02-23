@@ -352,6 +352,7 @@ def toggle_fullscreen(main_widget, widget, original_x, original_y, original_widt
 
 
 def selected_movie_detail(movie_id):
+    def srt
     print(movie_id)
     if not movie_id.startswith("t"):
         movie_id = "tt" + movie_id
