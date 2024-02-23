@@ -596,7 +596,7 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
         y_pos = 0
         i = 1
         while i <= num:
-            s_b = tk.Button(ome_frame, fg='gray', bg="#1A2421", text=f'Season {i}',  font=('Comic Sans MS', 12), borderwidth=0, border=0)
+            s_b = tk.Button(ome_frame, fg='gray', bg="#1A2421", activeforeground='green', activebackground="#1A2421", text=f'Season {i}',  font=('Comic Sans MS', 13), borderwidth=0, border=0)
             s_b.place(relwidth=0.05, relheight=0.008, relx=0, rely=y_pos)
             change_fg_OnHover(s_b, hover_color, "gray")
             y_pos += 0.008
@@ -616,7 +616,7 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
                 Add2.place_forget()
                 displayed = 0
 
-        sr = tk.Button(widget, text="Seasons", bg="#253529", borderwidth=0, border=0, font=('Comic Sans MS', 15), command=lambda widg=Add2: show_season(widg))
+        sr = tk.Button(widget, text="Seasons", bg="#253529", activebackground="#253529", activeforeground='yellow', borderwidth=0, border=0, font=('Comic Sans MS', 15), command=lambda widg=Add2: show_season(widg))
         sr.place(relheight=1, relwidth=0.1, relx=0, rely=0)
         change_fg_OnHover(sr, hover_color, 'black')
 
