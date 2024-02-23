@@ -570,6 +570,7 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
 
     Add2 = tk.Frame(large_frame, bg='green', borderwidth=0, border=0)
     # Add2.place(relx=0.04, rely=0.742, relheight=0.22, relwidth=0.2)
+    Add2 = tk.Frame(large_frame, bg='green', borderwidth=0, border=0)
 
     global displayed
     displayed = 0
