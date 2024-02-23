@@ -1432,9 +1432,12 @@ def download_app_icon():
     url1 = "https://github.com/ice-black/move-app/blob/9af6998c123fd6f2d86ff9a083eecd094200a8ab/Assets/tx.ico"
     url2 = "https://github.com/ice-black/move-app/blob/be16bd596a33e02576b6935c15efeb39a212fbf9/Assets/startup.jpg"
     url3 = "https://github.com/ice-black/move-app/blob/a469eb9d2b5ede618e0c1efd17a854e3134c2c5f/Assets/footer.jpg"
-    filename = 'Assets/tx.ico'
+    filename1 = 'Assets/tx.ico'
+    filename2 = 'Assets/startup.jpg'
+    filename3 = 'Assets/footer.jpg'
+
     response = requests.get(url1)
-    with open(filename, 'wb') as f:
+    with open(filename1, 'wb') as f:
         f.write(response.content)
 
 def main():
