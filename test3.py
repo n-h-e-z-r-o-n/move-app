@@ -26,3 +26,12 @@ for i in range(50):
     text_widget.insert(tk.END, f"This is line {i+1}\n")
 
 root.mainloop()
+
+FRAME_1 = tk.Frame(root, bg='black')
+FRAME_1.place(relx=0, rely=0, relwidth=1, relheight=1)
+FRAME_1_canvas = tk.Canvas(FRAME_1, borderwidth=0, highlightthickness=0, bg='black')
+FRAME_1_canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+FRAME_1_scrollbar = tk.Scrollbar(root, command=FRAME_1_canvas.yview)
+FRAME_1_canvas.config(yscrollcommand=FRAME_1_scrollbar.set)
+FRAME_1_screen = tk.Frame(FRAME_1_canvas, bg='black')
+FRAME_1_canvas.create_window((0, 0), window=FRAME_1_screen, anchor=tk.NW)
