@@ -567,18 +567,20 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     # ===================================================================================================================================
     Add = tk.Frame(large_frame, bg='green', borderwidth=0, border=0)
     Add.place(relx=0.04, rely=0.727, relheight=0.015, relwidth=0.95)
-    Add_canvas = tk.Canvas(Add, borderwidth=0, highlightthickness=0, bg='black')
+
+
+
+    Add2 = tk.Frame(large_frame, bg='green', borderwidth=0, border=0)
+    # Add2.place(relx=0.04, rely=0.742, relheight=0.22, relwidth=0.2)
+    Add_canvas = tk.Canvas(Add2, borderwidth=0, highlightthickness=0, bg='black')
     Add_canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
     add_scrollbar = tk.Scrollbar(root, command=Add_canvas.yview)
     Add_canvas.config(yscrollcommand=add_scrollbar.set)
-    add_screen = tk.Frame(Add_canvas, bg='black')
+    add_screen = tk.Frame(FRAME_1_canvas, bg='black')
     Add_canvas.create_window((0, 0), window=add_screen, anchor=tk.NW)
     #widget_scroll_bind(FRAME_1_canvas)  # Bind the mouse wheel event to the canvas
 
-
-    Add2 = tk.Frame(add_screen, bg='green', borderwidth=0, border=0)
-    # Add2.place(relx=0.04, rely=0.742, relheight=0.22, relwidth=0.2)
-    main_frame = tk.Frame(Add2, bg='yellow', width=500, height=2000)
+    main_frame = tk.Frame(add_screen, bg='yellow', width=500, height=2000)
     main_frame.place(relx=0., rely=0, relheight=1, relwidth=1)
 
 
