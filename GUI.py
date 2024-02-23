@@ -455,8 +455,8 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     plot_wdget.config(state="disabled")
     plot_wdget.place(relx=0.04, rely=0.689, relheight=0.035, relwidth=0.95)
 
-    # Add = tk.Text(large_frame, bg='green', fg='gray', borderwidth=0, border=0, wrap=tk.WORD, font=('Comic Sans MS', 12))
-    # Add.place(relx=0.04, rely=0.727, relheight=0.037, relwidth=0.95)
+    Add = tk.Text(large_frame, bg='green', fg='gray', borderwidth=0, border=0, wrap=tk.WORD, font=('Comic Sans MS', 12))
+    Add.place(relx=0.04, rely=0.727, relheight=0.037, relwidth=0.95)
 
     #  content:
     image_label = tk.Button(large_frame, text='▷', bg='black', fg='white', borderwidth=0, border=0, activebackground='black', activeforeground='yellow', relief=tk.FLAT, font=('Arial Black', 76, 'bold'), command=lambda: play(video_box))
