@@ -834,6 +834,7 @@ def get_added_tv_shows(page=1):
 
     return movies, length
 
+
 def get_latest_episode(page=1):
     global internet_check,  closed
     movies = []
