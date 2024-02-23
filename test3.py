@@ -1,20 +1,29 @@
-import threading
-import time
+from tkinter import *
 
+root = Tk()
+root.geometry("150x200")
 
-def x():
-    value = 5
-    time.sleep(5)
+w = Label(root, text ='GeeksForGeeks',
+		font = "50")
 
-    return value
+w.pack()
 
+scroll_bar = Scrollbar(root) 
 
+scroll_bar.pack( side = RIGHT,
+				fill = Y )
 
-x  = threading.Thread(target=x )
-x.start()
-x.join()
-m = x.results()
-print(x)
+mylist = Listbox(root,
+				yscrollcommand = scroll_bar.set )
+
+for line in range(1, 26):
+	mylist.insert(END, "Geeks " + str(line))
+
+mylist.pack( side = LEFT, fill = BOTH )
+
+scroll_bar.config( command = mylist.yview )
+
+root.mainloop()
 
 
 
