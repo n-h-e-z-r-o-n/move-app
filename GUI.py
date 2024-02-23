@@ -459,16 +459,14 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     Add = tk.Frame(large_frame, bg='green',  borderwidth=0, border=0)
     Add.place(relx=0.04, rely=0.727, relheight=0.037, relwidth=0.95)
 
-    Add_canvas = tk.Canvas(Add, borderwidth=0, highlightthickness=0, bg='yellow')
-    Add_canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
-    Add_scrollbar = tk.Scrollbar(Add_canvas, command=Add_canvas.xview)
-    Add_scrollbar.pack(side=tk.BOTTOM, fill='x')
-    Add_canvas.config(xscrollcommand=Add_scrollbar.set)
-    add_screen = tk.Frame(Add_canvas, bg='yellow')
-    Add_canvas.create_window((0, 0), window=add_screen, anchor=tk.NW)
+
+    tk.Button(Add, text="Season ", borderwidth=0, border=0, font=('Comic Sans MS', 12)).place(relheight=1 ,relwidth=0.1, relx=0, rely=0)
+
+    Add2 = tk.Frame(large_frame, bg='green', borderwidth=0, border=0)
+    Add2.place(relx=0.04, rely=0.727, relheight=0.037, relwidth=0.95)
 
 
-    tk.Button(add_screen, text="Season 1", borderwidth=0, border=0, font=('Comic Sans MS', 12)).place(relheight=1 ,relwidth=0.1, relx=0, rely=0)
+
 
     # =======================================================================================================================================
 
