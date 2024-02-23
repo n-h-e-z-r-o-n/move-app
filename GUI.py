@@ -1398,6 +1398,11 @@ def Home_Page(widget):
 # ================= Main Definition ===================================================================================================================
 # =====================================================================================================================================================
 def Start_graphics():
+
+
+
+
+
     C = tk.Tk()
 
     screenwidth = C.winfo_screenwidth()
@@ -1409,7 +1414,7 @@ def Start_graphics():
     pos_w = int((screenwidth / 2) - (start_w / 2))
     pos_h = int((screenheight / 2) - (start_h / 2))
     C.geometry(f'+{pos_w}+{pos_h}')
-    m = tk.Label(root)
+    m = tk.Label(C)
     m.pack(fill='both', expand=True)
 
     imagen_2("Assets/startup.jpg", start_w, start_h, m)
@@ -1423,6 +1428,12 @@ def Start_graphics():
     m.after(5000, on_closing)
     C.mainloop()
 
+def download_app_icon():
+    url = "https://raw.githubusercontent.com/Hezron26/assets/main/panda.ico"
+    filename = 'tx.ico'
+    response = requests.get(url)
+    with open(filename, 'wb') as f:
+        f.write(response.content)
 
 def main():
     global page_count, Home_frame
@@ -1437,8 +1448,21 @@ def main():
     threading.Thread(target=has_internet_connection).start()
     threading.Thread(target=Fetch_Mount_SHows, args=(10,)).start()
 
+
+
     root = tk.Tk()
-    root.title("Move App")
+
+    try:
+        root.iconbitmap("tx.ico")
+    except:
+        download_app_icon()
+        try:
+            root.iconbitmap("tx.ico")
+        except:
+            pass
+
+
+    root.title("TX")
     root.state('zoomed')  # this creates a window that takes over the screen
     root.minsize(500, 600)
     root.attributes("-topmost", True)

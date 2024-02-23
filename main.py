@@ -22,7 +22,7 @@ class AppOgl(OpenGLFrame):
 
 if __name__ == '__main__':
     root = tkinter.Tk()
-    app = AppOgl(root, width=320, height=200)
+    app = AppOgl(root)
     app.pack(fill=tkinter.BOTH, expand=tkinter.YES)
 
     #tkinter.Frame(app, width=320, height=200).place(relx=0, rely=0)
