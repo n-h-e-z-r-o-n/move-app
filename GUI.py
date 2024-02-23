@@ -1020,7 +1020,7 @@ def poster_image_get(movie_id):
     global internet_check, closed
     movie_poster_url = None
     count = 0
-    while count <7:
+    while count < 10:
         try:
             if closed:
                 break
