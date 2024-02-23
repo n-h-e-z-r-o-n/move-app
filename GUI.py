@@ -352,28 +352,29 @@ def toggle_fullscreen(main_widget, widget, original_x, original_y, original_widt
 
 
 def selected_movie_detail(movie_id):
-    def srt
-    print(movie_id)
-    if not movie_id.startswith("t"):
-        movie_id = "tt" + movie_id
+    def process(movie_id = movie_id):
+        print(movie_id)
+        if not movie_id.startswith("t"):
+            movie_id = "tt" + movie_id
 
-    print(movie_id)
+        print(movie_id)
 
-    movies = imdb_other.get_by_id(movie_id)
-    movie_name = movies['name']
-    movie_type = movies['type']
-    movie_genre = ", ".join(i for i in movies['genre'])
-    movie_datePublished = movies['datePublished']
-    movie_ratingValue = movies['rating']['ratingValue']
-    movie_poster_url = movies['poster']
-    movie_actor = ", ".join(i['name'] for i in movies['actor'])
-    movie_description = movies['description']
-    movie_country = None
-    movie_production_company = None
+        movies = imdb_other.get_by_id(movie_id)
+        movie_name = movies['name']
+        movie_type = movies['type']
+        movie_genre = ", ".join(i for i in movies['genre'])
+        movie_datePublished = movies['datePublished']
+        movie_ratingValue = movies['rating']['ratingValue']
+        movie_poster_url = movies['poster']
+        movie_actor = ", ".join(i['name'] for i in movies['actor'])
+        movie_description = movies['description']
+        movie_country = None
+        movie_production_company = None
 
-    # return movie_name, movie_type, movie_genre, movie_datePublished, movie_ratingValue, movie_poster_url, movie_actor, movie_description
-    watch_page(top_frame_main, movie_id, movie_name, movie_ratingValue, movie_type, movie_country, movie_genre, movie_datePublished, movie_production_company, movie_actor, movie_description, movie_poster_url)
+        # return movie_name, movie_type, movie_genre, movie_datePublished, movie_ratingValue, movie_poster_url, movie_actor, movie_description
+        watch_page(top_frame_main, movie_id, movie_name, movie_ratingValue, movie_type, movie_country, movie_genre, movie_datePublished, movie_production_company, movie_actor, movie_description, movie_poster_url)
 
+    threading.Thread(target=process).start()
 
 def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_country, movie_genres, movie_year, movie_production_company, movie_cast_names, movie_plot, movie_poster_url):
     global screen_width
@@ -1421,8 +1422,8 @@ def main():
 
     root.attributes("-topmost", False)
 
-    Home_Page(Home_frame)
-    #selected_movie_detail("tt1190634")
+    #Home_Page(Home_frame)
+    selected_movie_detail("tt19395018")
     # watch_page(main_frame, '10638522', 'Talk to Me', 7.2, 'movie', 'Australia. United Kingdom. ', 'Horror, Thriller, ', 2022, 'Causeway Films, Head Gear Films, Metrol Technology, Screen Australia, Talk to Me Holdings, ', 'Ari McCarthy, Hamish Phillips, Kit Erhart-Bruce, Sarah Brokensha, Jayden Davison, Sunny Johnson, Sophie Wilde, Marcus Johnson, Kidaan Zelleke, James Oliver, Joe Bird, Jett Gazley, Alexandra Jensen, Dog, Helene Philippou', 'ghg' ,'eet')
 
     def on_closing():
