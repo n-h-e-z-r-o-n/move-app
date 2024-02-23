@@ -567,13 +567,13 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     # ===================================================================================================================================
     Add = tk.Frame(large_frame, bg='green', borderwidth=0, border=0)
     Add.place(relx=0.04, rely=0.727, relheight=0.015, relwidth=0.95)
-    scroll_bar = tk.Scrollbar(root)
+    scroll_bar = tk.Scrollbar(Add)
     scroll_bar.pack(side=tk.RIGHT, fill=tk.Y)
 
 
     Add2 = tk.Frame(large_frame, bg='green', borderwidth=0, border=0)
     # Add2.place(relx=0.04, rely=0.742, relheight=0.22, relwidth=0.2)
-    main_frame = tk.Frame(Add2, bg='black', width=500, height=2000)
+    main_frame = tk.Frame(Add2, bg='yellow', width=500, height=2000)
     main_frame.place(relx=0., rely=0, relheight=1, relwidth=1)
 
 
