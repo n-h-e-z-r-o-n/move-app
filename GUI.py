@@ -1448,7 +1448,8 @@ def download_app_icon():
             response = requests.get(url3)
             with open(filename3, 'wb') as f:
                 f.write(response.content)
-                
+            break
+
         except:
             pass
 def main():
