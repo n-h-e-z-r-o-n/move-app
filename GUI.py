@@ -573,9 +573,27 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     Add2 = tk.Frame(large_frame, bg='green', borderwidth=0, border=0)
     # Add2.place(relx=0.04, rely=0.742, relheight=0.22, relwidth=0.2)
 
+    main_frame = tk.Frame(Add2, bg='yellow', width=500, height=2000)
+    main_frame.pack(fill=tk.BOTH, expand=True)
 
-    main_frame = tk.Frame(add_screen, bg='yellow', width=500, height=2000)
-    main_frame.place(relx=0., rely=0, relheight=1, relwidth=1)
+
+    # Add a scroll bar
+    scrollbar = tk.Scrollbar(main_frame)
+    scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+
+    # Create a text widget inside the frame
+    text_widget = tk.Text(main_frame, yscrollcommand=scrollbar.set)
+    text_widget.pack(fill=tk.BOTH, expand=True)
+
+    # Link the scroll bar to the text widget
+    scrollbar.config(command=text_widget.yview)
+
+    # Add some text to the text widget (just for demonstration)
+    for i in range(50):
+        text_widget.insert(tk.END, f"This is line {i + 1}\n")
+
+
+
 
 
 
