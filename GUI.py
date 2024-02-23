@@ -1439,12 +1439,13 @@ def download_app_icon():
     response = requests.get(url1)
     with open(filename1, 'wb') as f:
         f.write(response.content)
-    response = requests.get(url1)
+        
+    response = requests.get(url2)
     with open(filename2, 'wb') as f:
         f.write(response.content)
 
-    response = requests.get(url1)
-    with open(filename1, 'wb') as f:
+    response = requests.get(url3)
+    with open(filename3, 'wb') as f:
         f.write(response.content)
 def main():
     global page_count, Home_frame
