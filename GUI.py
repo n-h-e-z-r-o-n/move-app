@@ -778,7 +778,8 @@ def get_new_movies(page=1):
                     length = len(data['result']['items'])
                     movies = data['result']['items']
                     break
-            
+            except Exception as e:
+                print(e)
 
     return movies, length
 
