@@ -1437,17 +1437,17 @@ def download_app_icon():
     filename3 = 'Assets/footer.jpg'
     while True:
         try:
-            response = requests.get(url1)
+            response1 = requests.get(url1)
             with open(filename1, 'wb') as f:
-                f.write(response.content)
+                f.write(response1.content)
 
-            response = requests.get(url2)
+            response2 = requests.get(url2)
             with open(filename2, 'wb') as f:
-                f.write(response.content)
+                f.write(response2.content)
 
-            response = requests.get(url3)
+            response3 = requests.get(url3)
             with open(filename3, 'wb') as f:
-                f.write(response.content)
+                f.write(response3.content)
             break
 
         except:
