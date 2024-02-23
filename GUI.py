@@ -474,7 +474,7 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
             displayed = 0
 
 
-    tk.Button(Add, text="Season ", borderwidth=0, border=0, font=('Comic Sans MS', 12), command= show_season).place(relheight=1 ,relwidth=0.1, relx=0, rely=0)
+    tk.Button(Add, text="Season ", borderwidth=0, border=0, font=('Comic Sans MS', 12), command= lambda :show_season).place(relheight=1 ,relwidth=0.1, relx=0, rely=0)
 
 
 
