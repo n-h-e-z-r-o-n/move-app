@@ -1429,7 +1429,6 @@ def Start_graphics():
     C.mainloop()
 
 def download_app_icon():
-    url1 = "https://raw.githubusercontent.com/Hezron26/assets/main/panda.ico"
     url1 = "https://github.com/ice-black/move-app/blob/9af6998c123fd6f2d86ff9a083eecd094200a8ab/Assets/tx.ico"
     url1 = "https://raw.githubusercontent.com/Hezron26/assets/main/panda.ico"
     filename = 'Assets/tx.ico'
