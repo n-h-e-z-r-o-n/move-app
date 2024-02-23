@@ -575,6 +575,7 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
 
     main_frame = tk.Frame(Add2, bg='yellow', width=500, height=2000)
     main_frame.pack(fill=tk.BOTH, expand=True)
+    main_frame.unbind_all("<MouseWheel>")
 
 
     # Add a scroll bar
