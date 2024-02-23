@@ -567,8 +567,13 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     # ===================================================================================================================================
     Add = tk.Frame(large_frame, bg='green', borderwidth=0, border=0)
     Add.place(relx=0.04, rely=0.727, relheight=0.015, relwidth=0.95)
-    scroll_bar = tk.Scrollbar(Add)
-    scroll_bar.pack(side=tk.RIGHT, fill=tk.Y)
+    Add_canvas = tk.Canvas(Add, borderwidth=0, highlightthickness=0, bg='black')
+    Add_canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+    add_scrollbar = tk.Scrollbar(root, command=Add_canvas.yview)
+    Add_canvas.config(yscrollcommand=add_scrollbar.set)
+    add_screen = tk.Frame(FRAME_1_canvas, bg='black')
+    Add_canvas.create_window((0, 0), window=add_screen, anchor=tk.NW)
+    widget_scroll_bind(FRAME_1_canvas)  # Bind the mouse wheel event to the canvas
 
 
     Add2 = tk.Frame(large_frame, bg='green', borderwidth=0, border=0)
