@@ -1449,9 +1449,9 @@ def download_app_icon():
             response3 = requests.get(url3)
             with open(filename3, 'wb') as f:
                 f.write(response3.content)
-            response3 = requests.get(url3)
-            with open(filename3, 'wb') as f:
-                f.write(response3.content)
+            response4 = requests.get(url3)
+            with open(filename4, 'wb') as f:
+                f.write(response4.content)
             break
 
         except:
