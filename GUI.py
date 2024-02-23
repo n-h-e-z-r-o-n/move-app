@@ -1034,6 +1034,7 @@ def poster_image_get(movie_id):
             break
         except Exception as e:
             print("---", e, "---",movie_id)
+            time.sleep(10)
             count += 1
     """
     try:
