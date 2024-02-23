@@ -1,58 +1,25 @@
-from tkinter import *
+import tkinter as tk
 
-root = Tk()
-root.geometry("150x200")
+root = tk.Tk()
+root.geometry("300x200")
 
-w = Label(root, text ='GeeksForGeeks',
-		font = "50")
+# Create a frame
+frame = tk.Frame(root)
+frame.pack(fill=tk.BOTH, expand=True)
 
-w.pack()
+# Add a scroll bar
+scrollbar = tk.Scrollbar(frame)
+scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
 
-scroll_bar = Scrollbar(root) 
+# Create a text widget inside the frame
+text_widget = tk.Text(frame, yscrollcommand=scrollbar.set)
+text_widget.pack(fill=tk.BOTH, expand=True)
 
-scroll_bar.pack( side = RIGHT,
-				fill = Y )
+# Link the scroll bar to the text widget
+scrollbar.config(command=text_widget.yview)
 
-mylist = Listbox(root,
-				yscrollcommand = scroll_bar.set )
-
-for line in range(1, 26):
-	mylist.insert(END, "Geeks " + str(line))
-
-mylist.pack( side = LEFT, fill = BOTH )
-
-scroll_bar.config( command = mylist.yview )
+# Add some text to the text widget (just for demonstration)
+for i in range(50):
+    text_widget.insert(tk.END, f"This is line {i+1}\n")
 
 root.mainloop()
-
-
-
-"""
-from imdb import Cinemagoer
-
-# create an instance of the Cinemagoer class
-ia = Cinemagoer()
-
-# get a movie
-movie = ia.get_movie('31381010')
-
-
-genres = ','.join(i for i in movie['genres'])
-
-
-
-print(movie.data)
-
-
-
-print(genres)
-
-
-print(movie['cover url'])
-print(movie['imdbID'])
-print(movie['kind'])
-print(movie['year'])
-print(movie['title'])
-
-print(movie['plot'][0])
-"""
