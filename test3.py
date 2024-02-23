@@ -1,3 +1,24 @@
+import threading
+import time
+
+
+def x():
+    value = 5
+    time.sleep(5)
+
+    return value
+
+
+
+x  = threading.Thread(target=x )
+x.start()
+x.join()
+m = x.results()
+print(x)
+
+
+
+"""
 from imdb import Cinemagoer
 
 # create an instance of the Cinemagoer class
@@ -13,7 +34,7 @@ genres = ','.join(i for i in movie['genres'])
 
 print(movie.data)
 
-"""
+
 
 print(genres)
 

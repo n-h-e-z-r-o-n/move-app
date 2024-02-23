@@ -842,12 +842,16 @@ def get_latest_episode(page=1):
         if closed:
             break
         if internet_check:
-            r = requests.get(f'https://vidsrc.to/vapi/episode/latest/{page}')  # latest movies
-            if r.status_code == 200:
-                data = r.json()
-                length = len(data['result']['items'])
-                movies = data['result']['items']
-                break
+            try:
+                r = requests.get(f'https://vidsrc.to/vapi/episode/latest/{page}')  # latest movies
+                if r.status_code == 200:
+                    data = r.json()
+                    length = len(data['result']['items'])
+                    movies = data['result']['items']
+                    break
+            except Exception as e:
+                print(e)
+
 
     return movies, length
 
@@ -975,11 +979,39 @@ def Fetch_Mount_SHows(numer=10):
 
         count += 1
 
-    New_moves = xr(added_movie_list)  # threading.Thread( target=xr, args=(new_movie_list,)).start()
-    Added_moves = xr(added_movie_list)  # threading.Thread( target=xr, args=(added_movie_list,)).start()
-    New_TV_Shows = xr(new_tvs_list)  # threading.Thread( target=xr, args=(new_tvs_list,)).start()
-    Added_TV_Shows = xr(added_tvs_list)  # threading.Thread( target=xr, args=(added_tvs_list,)).start()
-    New_Episodes = xr(new_episodes_list)  # threading.Thread( target=xr, args=(new_episodes_list, )).start()
+    def run_in_thread1():
+        global New_moves
+        New_moves = xr(new_movie_list)
+
+    def run_in_thread2():
+        global Added_moves
+        Added_moves = xr(added_movie_list)
+
+    def run_in_thread3():
+        global New_TV_Shows
+        New_TV_Shows = xr(new_tvs_list)
+
+    def run_in_thread4():
+        global Added_TV_Shows
+        Added_TV_Shows = xr(added_tvs_list)
+
+    def run_in_thread5():
+        global New_Episodes
+        New_Episodes = xr(new_episodes_list)
+
+    #New_moves = xr(new_movie_list)  # new_movie_list
+    #Added_moves = xr(added_movie_list)  # threading.Thread( target=xr, args=(added_movie_list,)).start()
+    #New_TV_Shows = xr(new_tvs_list)  # threading.Thread( target=xr, args=(new_tvs_list,)).start()
+    #Added_TV_Shows = xr(added_tvs_list)  # threading.Thread( target=xr, args=(added_tvs_list,)).start()
+    #New_Episodes = xr(new_episodes_list)  # threading.Thread( target=xr, args=(new_episodes_list, )).start()
+
+    threading.Thread(target=run_in_thread1).start()
+    threading.Thread(target=run_in_thread2).start()
+    threading.Thread(target=run_in_thread3).start()
+    threading.Thread(target=run_in_thread4).start()
+    threading.Thread(target=run_in_thread5).start()
+
+
     print("ready")
 
 
