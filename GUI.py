@@ -565,57 +565,62 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     frame2.place(relheight=1, relwidth=1, relx=0, rely=0)
 
     # ===================================================================================================================================
-    Add = tk.Frame(large_frame, bg='green', borderwidth=0, border=0)
+    Add = tk.Frame(large_frame, bg='lightblue', borderwidth=0, border=0)
     Add.place(relx=0.04, rely=0.727, relheight=0.015, relwidth=0.95)
 
+    def series_info(widget = Add,  movie_id = movie_id):
+        try:
+            movies2 = ia.get_movie(movie_id[2:])
+            num = sesonses = movies2['seasons']
+        except:
+            num = 0
+            return
 
 
-    Add2 = tk.Frame(large_frame, bg='green', borderwidth=0, border=0)
-    # Add2.place(relx=0.04, rely=0.742, relheight=0.22, relwidth=0.2)
+        Add2 = tk.Frame(large_frame, bg='green', borderwidth=0, border=0)
+        # Add2.place(relx=0.04, rely=0.742, relheight=0.22, relwidth=0.18)
+        canvas = tk.Canvas(Add2, bg='green', scrollregion=(0, 0, 5000, 5000))
+        vbar = tk.Scrollbar(Add2, orient=tk.VERTICAL)
+        vbar.pack(side=tk.RIGHT, fill=tk.Y)
+        vbar.config(command=canvas.yview)
+        canvas.config(yscrollcommand=vbar.set)
+        canvas.pack(side=tk.LEFT, expand=True, fill=tk.BOTH)
+        FRAME_1_screen = Frame(canvas, bg='black')
+        canvas.create_window((0, 0), window=FRAME_1_screen, anchor=tk.NW)
 
-    scrollbar = tk.Scrollbar(Add2)
-    scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
-    main_frame = tk.Frame(Add2, bg='yellow', width=500, height=2000)
-    main_frame.pack(fill=tk.BOTH, expand=True)
-
-    scrollbar.config(command=main_frame.yview) # Link the scroll bar to the text widget
-
-    # Create a text widget inside the frame
-    text_widget = tk.Text(main_frame, yscrollcommand=scrollbar.set)
-    text_widget.pack(fill=tk.BOTH, expand=True)
-    text_widget.unbind("<MouseWheel>")
-    text_widget.unbind("<B1-Motion>", "+")
+        ome_frame = Frame(FRAME_1_screen, bg='#1A2421', width=5000, height=5000)
+        ome_frame.pack(fill=tk.BOTH, expand=True)
 
 
-
-    # Add some text to the text widget (just for demonstration)
-    for i in range(50):
-        text_widget.insert(tk.END, f"This is line {i + 1}\n")
-
-
-
-
-
-
-
+        #num = 20
+        y_pos = 0
+        i = 1
+        while i <= num:
+            s_b = tk.Button(ome_frame, fg='gray', bg="#1A2421", text=f'Season {i}',  font=('Comic Sans MS', 12), borderwidth=0, border=0)
+            s_b.place(relwidth=0.05, relheight=0.008, relx=0, rely=y_pos)
+            change_fg_OnHover(s_b, hover_color, "gray")
+            y_pos += 0.008
+            i+=1
 
 
-
-    global displayed
-    displayed = 0
-
-    def show_season(Add2):
         global displayed
-        if displayed == None: displayed = 0
+        displayed = 0
+        def show_season(Add2):
+            global displayed
+            if displayed == None: displayed = 0
 
-        if displayed == 0:
-            Add2.place(relx=0.04, rely=0.742, relheight=0.22, relwidth=0.2)
-            displayed = 1
-        else:
-            Add2.place_forget()
-            displayed = 0
+            if displayed == 0:
+                Add2.place(relx=0.04, rely=0.743, relheight=0.2, relwidth=0.18)
+                displayed = 1
+            else:
+                Add2.place_forget()
+                displayed = 0
 
-    tk.Button(Add, text="Season ", borderwidth=0, border=0, font=('Comic Sans MS', 12), command=lambda widg=Add2: show_season(widg)).place(relheight=1, relwidth=0.1, relx=0, rely=0)
+        sr = tk.Button(widget, text="Season ", bg=hover_color, borderwidth=0, border=0, font=('Comic Sans MS', 12), command=lambda widg=Add2: show_season(widg))
+        sr.place(relheight=1, relwidth=0.1, relx=0, rely=0)
+        change_fg_OnHover(sr, 'gray', 'black')
+
+    series_info(widget=Add, movie_id=movie_id)
 
     if random.randint(0, 1):
         threading.Thread(target=recommendation_movies, args=(recomedation_other, i_widh, i_high)).start()
