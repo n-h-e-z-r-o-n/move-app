@@ -1387,7 +1387,7 @@ def Home_Page(widget):
 
     # ================================= Home threads  =====================================================================================================================================
 
-    imagen_2("./Assets/footer.jpg", int(screen_width * 1), int(Home_frame_hight * 0.167), footer_image)
+    imagen_2("./footer.jpg", int(screen_width * 1), int(Home_frame_hight * 0.167), footer_image)
     threading.Thread(target=slide_show, args=(Suggestion,)).start()
     threading.Thread(target=populer_new_moves, args=(movies_new_widget, PX_hight, PY_width)).start()
     threading.Thread(target=populer_added_moves, args=(movies_added_widget, PX_hight, PY_width)).start()
@@ -1417,7 +1417,7 @@ def Start_graphics():
     m = tk.Label(C)
     m.pack(fill='both', expand=True)
 
-    imagen_2("Assets/startup.jpg", start_w, start_h, m)
+    imagen_2("./startup.jpg", start_w, start_h, m)
 
     C.overrideredirect(True)
     C.config(bg='blue')
@@ -1433,9 +1433,9 @@ def download_app_icon():
     url1 = "https://github.com/ice-black/move-app/blob/9af6998c123fd6f2d86ff9a083eecd094200a8ab/Assets/tx.ico"
     url2 = "https://github.com/ice-black/move-app/blob/be16bd596a33e02576b6935c15efeb39a212fbf9/Assets/startup.jpg"
     url3 = "https://github.com/ice-black/move-app/blob/a469eb9d2b5ede618e0c1efd17a854e3134c2c5f/Assets/footer.jpg"
-    filename1 = 'Assets/tx.ico'
-    filename2 = 'Assets/startup.jpg'
-    filename3 = 'Assets/footer.jpg'
+    filename1 = 'tx.ico'
+    filename2 = 'startup.jpg'
+    filename3 = 'footer.jpg'
     while True:
         try:
             response1 = requests.get(url1)

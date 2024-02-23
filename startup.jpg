@@ -84,7 +84,7 @@
   <meta name="current-catalog-service-hash" content="82c569b93da5c18ed649ebd4c2c79437db4611a6a1373e805a3cb001c64130b7">
 
 
-  <meta name="request-id" content="1CAF:F6A66:1DE02:2876F:65D8F65F" data-pjax-transient="true"/><meta name="html-safe-nonce" content="8eafd20d96a17b42005e51b26c3787a8e6fb10cd82463bdf96e71ff68e498ea5" data-pjax-transient="true"/><meta name="visitor-payload" content="eyJyZWZlcnJlciI6IiIsInJlcXVlc3RfaWQiOiIxQ0FGOkY2QTY2OjFERTAyOjI4NzZGOjY1RDhGNjVGIiwidmlzaXRvcl9pZCI6IjQ2MDYyMDMzMTM5OTQxMzUxMzUiLCJyZWdpb25fZWRnZSI6InNvdXRoYWZyaWNhbm9ydGgiLCJyZWdpb25fcmVuZGVyIjoic291dGhhZnJpY2Fub3J0aCJ9" data-pjax-transient="true"/><meta name="visitor-hmac" content="f4052b970329f39fff827eb44c0a0939a013ab3f3045ec6f0d5d0885620c7a7a" data-pjax-transient="true"/>
+  <meta name="request-id" content="1C89:EF0AE:1ECB4:2A0D5:65D8F747" data-pjax-transient="true"/><meta name="html-safe-nonce" content="2535eaa19baf15f5f3d80843481dcf2f2b7955ea476e7f646e987e5615ad5858" data-pjax-transient="true"/><meta name="visitor-payload" content="eyJyZWZlcnJlciI6IiIsInJlcXVlc3RfaWQiOiIxQzg5OkVGMEFFOjFFQ0I0OjJBMEQ1OjY1RDhGNzQ3IiwidmlzaXRvcl9pZCI6IjcyNDM0MjgwMTI0NDQxNTM2NzEiLCJyZWdpb25fZWRnZSI6InNvdXRoYWZyaWNhbm9ydGgiLCJyZWdpb25fcmVuZGVyIjoic291dGhhZnJpY2Fub3J0aCJ9" data-pjax-transient="true"/><meta name="visitor-hmac" content="715b3395a3c8c495ea5accf37bc23a09a2f1ef2b0af1985f7f2a804e33e155cf" data-pjax-transient="true"/>
 
 
 
@@ -92,7 +92,7 @@
   <meta name="github-keyboard-shortcuts" content="source-code,file-tree,copilot" data-turbo-transient="true" />
   
 
-  <meta name="selected-link" value="/ice-black/move-app/blob/a469eb9d2b5ede618e0c1efd17a854e3134c2c5f/Assets/footer.jpg" data-turbo-transient>
+  <meta name="selected-link" value="/ice-black/move-app/blob/be16bd596a33e02576b6935c15efeb39a212fbf9/Assets/startup.jpg" data-turbo-transient>
   <link rel="assets" href="https://github.githubassets.com/">
 
     <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
@@ -122,7 +122,7 @@
       <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub">
     <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
     <meta property="fb:app_id" content="1401488693436528">
-    <meta name="apple-itunes-app" content="app-id=1477376905, app-argument=https://github.com/ice-black/move-app/blob/a469eb9d2b5ede618e0c1efd17a854e3134c2c5f/Assets/footer.jpg" />
+    <meta name="apple-itunes-app" content="app-id=1477376905, app-argument=https://github.com/ice-black/move-app/blob/be16bd596a33e02576b6935c15efeb39a212fbf9/Assets/startup.jpg" />
       <meta property="og:url" content="https://github.com">
       <meta property="og:site_name" content="GitHub">
       <meta property="og:title" content="Build software better, together">
@@ -246,9 +246,9 @@
       </a>
 
       <div class="flex-1">
-        <a href="/login?return_to=https%3A%2F%2Fgithub.com%2Fice-black%2Fmove-app%2Fblob%2Fa469eb9d2b5ede618e0c1efd17a854e3134c2c5f%2FAssets%2Ffooter.jpg"
+        <a href="/login?return_to=https%3A%2F%2Fgithub.com%2Fice-black%2Fmove-app%2Fblob%2Fbe16bd596a33e02576b6935c15efeb39a212fbf9%2FAssets%2Fstartup.jpg"
           class="d-inline-block d-lg-none flex-order-1 f5 no-underline border color-border-default rounded-2 px-2 py-1 color-fg-inherit"
-          data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;site header menu&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;SIGN_UP&quot;,&quot;originating_url&quot;:&quot;https://github.com/ice-black/move-app/blob/a469eb9d2b5ede618e0c1efd17a854e3134c2c5f/Assets/footer.jpg&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="a7bab085054c6d9f7a995d01d09bedda60d2a6562ecd7afd763341d265530e61"
+          data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;site header menu&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;SIGN_UP&quot;,&quot;originating_url&quot;:&quot;https://github.com/ice-black/move-app/blob/be16bd596a33e02576b6935c15efeb39a212fbf9/Assets/startup.jpg&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="8ca5fe0ec18e01df622932d8315d2d29ee5fc7664ecd90bc40bc74fb27de68fb"
           data-ga-click="(Logged out) Header, clicked Sign in, text:sign-in">
           Sign in
         </a>
@@ -621,7 +621,7 @@
                 
 
 
-<qbsearch-input class="search-input" data-scope="owner:ice-black" data-custom-scopes-path="/search/custom_scopes" data-delete-custom-scopes-csrf="SZx1su5SbcPwMa1Owmz5SoWjw2ZiigJstEFRpR4lAEdqajNhNM2iWxSwcKza2H5kMKeYFH0ppyiBxeD83qQ21w" data-max-custom-scopes="10" data-header-redesign-enabled="false" data-initial-value="" data-blackbird-suggestions-path="/search/suggestions" data-jump-to-suggestions-path="/_graphql/GetSuggestedNavigationDestinations" data-current-repository="" data-current-org="" data-current-owner="" data-logged-in="false" data-copilot-chat-enabled="false" data-blackbird-indexed-repo-csrf="<esi:include src=&quot;/_esi/rails_csrf_token_form_hidden?r=g36PuXUaWX%2B%2BeUGOW2OnEz4Z2So9EUcica0N2e%2FO1KOVo3qa5iyMujGaelILQqxZVr6c2yO1Eu5Gb7DkaicHmHFFytkWm4nYVqfMakhIpZdKwE0uXHY8Ii6WHrBb0ewXNYwZNVdUg3Se1%2BsW64ZzHlOhhN3yUCFARnjXjjxulViX72ioJXV1te2jkiuYFyMFVsCzQkGOrSp18cyS%2FD0IGfN6Psy3%2FuAyDfWsooA8nBgyJplKIcFwrGDcCiVdvqqi%2B4sWPk7s8ammKWvGXS84%2Br171Y351FR85bbhlcvsomme%2BwG3PTmzOCofILI%2FCQlsvR64YAzR%2FGFjU39eqKtSbCfJ%2BAJbT6DxmgZhkZE77etp%2FaXjY7woDoOI0ZfkrXLgp19cWKM0Xn4Dy8amWAZbnXroVjA308aFib78e7q5DLegzsBwVTnaGuKNhrnCBfQaq2iItgMEvaS6hc%2FKhZUE8RbiWXAIwyzrU4sJ%2F%2F2CzH%2Fkt9AesrGYN5y%2BXoOQ3Tq3bPZZXOqOEE%2BIgJwF0XlGe2SnAISK1gVFegHKJvPGJHhfS2652Xt2lQtwXFXRCFGnDCfIxSUyiZtMtCHneo6uBoK1UGEur%2BohNXK7DazA6rbFJj4DVvW84XNF%2BT%2FZPxmE5f%2BFswjN--2cIYoa4vtRLuYMMx--6ehQrzY%2B%2FauFhoy%2BnBn4AQ%3D%3D&quot; />">
+<qbsearch-input class="search-input" data-scope="owner:ice-black" data-custom-scopes-path="/search/custom_scopes" data-delete-custom-scopes-csrf="niF7xnBM_86HWPI3QIH8CgHmXBgEzQ954s2ePLhkkktONSpfxbEH-Q_Gh6p8La_HGYdudhr9X8cj94nQHzWgjg" data-max-custom-scopes="10" data-header-redesign-enabled="false" data-initial-value="" data-blackbird-suggestions-path="/search/suggestions" data-jump-to-suggestions-path="/_graphql/GetSuggestedNavigationDestinations" data-current-repository="" data-current-org="" data-current-owner="" data-logged-in="false" data-copilot-chat-enabled="false" data-blackbird-indexed-repo-csrf="<esi:include src=&quot;/_esi/rails_csrf_token_form_hidden?r=GJ5DHFUXjSxwXdZKd7dvVQ7ar1xoWJyYzBSNyMwWVxq6CflbQueWTI5DxSMryeo%2Bg3SMnCsE83l6CYHkkPzjaLeoiFzUNmWyTpO2wnctsYil7HmbwILpGE5zTTYTH7tWtCwMdeW6Jta18uye3qKG6PNag%2B%2BpJTXM2SZoX%2FRX2cELEYzww113iux7gPigoOJbV5NbG8VoqzhXmWvt1f%2FYfwA7hmVAbQbfJWPZxfWtbnjrcV8A%2FzFJjhLvfiNhVzEKzKlqhoVpw8HlXQDFUkI7KT4a64mCLR1h3%2BpO1c57kol2o83QUGhoLTTzHViGen2OKa3xNvB%2Fy6uqHzTYRZiM0wJhIdXsmC1yo1j%2FDWcjUWgTaHJ4Zu8cg79O4PVQu09fZ0Go9DIBkLd4Qjf0ysmxjrukGB%2F%2BTprn5b43EOnxdq%2B70tS5q4cFnsYzeKfXQZK9%2B0WZQO3zCXlh9aWI%2BX0XwCduWOHJb8ZFXamTEJCkr%2FDjHbi3dv1G5eNNebjI9IEzTsrDzZKMnfxbV5y%2B9BNgHGTcRVVKDuhZCjPuEvL4A5URuVcUJqiZEJYuonNhxlxPZsQbV132%2F%2BfJVkRuiWH46DQFI7AR5jm1Mw6mGWHM%2FCHTJKjtDUEloTgZ3O8%2Bx%2FU%2BKTLsJOwt--W8LNymFfSPqcA1zl--b3GPStffzKeSnCcfxU1WEQ%3D%3D&quot; />">
   <div
     class="search-input-container search-with-dialog position-relative d-flex flex-row flex-items-center mr-4 rounded"
     data-action="click:qbsearch-input#searchInputContainerClicked"
@@ -683,7 +683,7 @@
           ></div>
           <div class="QueryBuilder-InputWrapper">
             <div aria-hidden="true" class="QueryBuilder-Sizer" data-target="query-builder.sizer"></div>
-            <input id="query-builder-test" name="query-builder-test" value="" autocomplete="off" type="text" role="combobox" spellcheck="false" aria-expanded="false" aria-describedby="validation-3dfcf9e0-9859-4227-8a09-d3649eb6622e" data-target="query-builder.input" data-action="
+            <input id="query-builder-test" name="query-builder-test" value="" autocomplete="off" type="text" role="combobox" spellcheck="false" aria-expanded="false" aria-describedby="validation-187b83f3-8658-4805-879b-a17963a72bec" data-target="query-builder.input" data-action="
           input:query-builder#inputChange
           blur:query-builder#inputBlur
           keydown:query-builder#inputKeydown
@@ -914,7 +914,7 @@
                   id="query-builder-test-results"
                 ></ul>
         </div>
-      <div class="FormControl-inlineValidation" id="validation-3dfcf9e0-9859-4227-8a09-d3649eb6622e" hidden="hidden">
+      <div class="FormControl-inlineValidation" id="validation-187b83f3-8658-4805-879b-a17963a72bec" hidden="hidden">
         <span class="FormControl-inlineValidation--visual">
           <svg aria-hidden="true" height="12" viewBox="0 0 12 12" version="1.1" width="12" data-view-component="true" class="octicon octicon-alert-fill">
     <path d="M4.855.708c.5-.896 1.79-.896 2.29 0l4.675 8.351a1.312 1.312 0 0 1-1.146 1.954H1.33A1.313 1.313 0 0 1 .183 9.058ZM7 7V3H5v4Zm-1 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"></path>
@@ -955,7 +955,7 @@
   </div>
 </div>
       <scrollable-region data-labelled-by="feedback-dialog-title">
-        <div data-view-component="true" class="Overlay-body">        <!-- '"` --><!-- </textarea></xmp> --></option></form><form id="code-search-feedback-form" data-turbo="false" action="/search/feedback" accept-charset="UTF-8" method="post"><input type="hidden" data-csrf="true" name="authenticity_token" value="1paNbQyVYyWth1lICwHBs1VfI2C+J3c2UCtwogvyMwriRJLLgOR4U5IpMp5aX4l4o86OoMvAqJRvcopA2zHUcQ==" />
+        <div data-view-component="true" class="Overlay-body">        <!-- '"` --><!-- </textarea></xmp> --></option></form><form id="code-search-feedback-form" data-turbo="false" action="/search/feedback" accept-charset="UTF-8" method="post"><input type="hidden" data-csrf="true" name="authenticity_token" value="XIFpEVYSP3H4jz4C4WFZx6ppYcpoNHdC1c14p7E9hSa836jw1xEGmbDvxVE4hKHs5gUXWp+4N5B8OLEerptdjA==" />
           <p>We read every piece of feedback, and take your input very seriously.</p>
           <textarea name="feedback" class="form-control width-full mb-2" style="height: 120px" id="feedback"></textarea>
           <input name="include_email" id="include_email" aria-label="Include my email address so I can be contacted" class="form-control mr-2" type="checkbox">
@@ -992,7 +992,7 @@
         <div data-view-component="true" class="Overlay-body">        <div data-target="custom-scopes.customScopesModalDialogFlash"></div>
 
         <div hidden class="create-custom-scope-form" data-target="custom-scopes.createCustomScopeForm">
-        <!-- '"` --><!-- </textarea></xmp> --></option></form><form id="custom-scopes-dialog-form" data-turbo="false" action="/search/custom_scopes" accept-charset="UTF-8" method="post"><input type="hidden" data-csrf="true" name="authenticity_token" value="cPqfDrya4BHEaTcCWPRtMDn4lBWwJy6JMkRm8hxNomI1fmWPNnDXzRBy/10w/je72UYtbtZpIwS8qDrMiNbrHg==" />
+        <!-- '"` --><!-- </textarea></xmp> --></option></form><form id="custom-scopes-dialog-form" data-turbo="false" action="/search/custom_scopes" accept-charset="UTF-8" method="post"><input type="hidden" data-csrf="true" name="authenticity_token" value="LhDbpoT5N1rvMabxYZ7TYFP5MlsXZp7x56kvtCiRbywkhJ3JaJK3HMwkFhRGeEs13tKpsg5vXQfOfDUEWjwp6w==" />
           <div data-target="custom-scopes.customScopesModalDialogFlash"></div>
 
           <input type="hidden" id="custom_scope_id" name="custom_scope_id" data-target="custom-scopes.customScopesIdField">
@@ -1010,7 +1010,7 @@
                 placeholder="github-ruby"
                 required
                 maxlength="50">
-              <input type="hidden" data-csrf="true" value="Yn3cr2m87baExfq3SP/0AfnmiB+NUCxCbP6K4AZlseaXlNsKqElrvHG1E98LV3xYUl2ErRSTzstLQY3nCtdPbg==" />
+              <input type="hidden" data-csrf="true" value="neO/LRLsLuKCPOr3aZGsocK8o2cMXItEDpNMU8+b8rxDCymd63ZqrTD2GMsxWODkL0Ve9RJODSZKpiW9SDacaA==" />
             </auto-check>
           </div>
 
@@ -1047,13 +1047,13 @@
 </dialog></dialog-helper>
     </custom-scopes>
   </div>
-</qbsearch-input><input type="hidden" data-csrf="true" class="js-data-jump-to-suggestions-path-csrf" value="aSEGUMIj2lOTd9a9ehNKe3Edu25pte6Jko1mMwm6gDkgGFBqSh1GniUql9ktXR6iVnTYg51TmlFssOmblvQANA==" />
+</qbsearch-input><input type="hidden" data-csrf="true" class="js-data-jump-to-suggestions-path-csrf" value="gj4u5Ja64pED9GBrwMxbn1UoDAHMjSFyP2YqRsPSE1lAdER0YdCpCO4KkeAaL7yFaRXNO6Pr0ZFrQUYsaNDIAQ==" />
 
 
           <div class="position-relative mr-lg-3 d-lg-inline-block">
-            <a href="/login?return_to=https%3A%2F%2Fgithub.com%2Fice-black%2Fmove-app%2Fblob%2Fa469eb9d2b5ede618e0c1efd17a854e3134c2c5f%2FAssets%2Ffooter.jpg"
+            <a href="/login?return_to=https%3A%2F%2Fgithub.com%2Fice-black%2Fmove-app%2Fblob%2Fbe16bd596a33e02576b6935c15efeb39a212fbf9%2FAssets%2Fstartup.jpg"
               class="HeaderMenu-link HeaderMenu-link--sign-in flex-shrink-0 no-underline d-block d-lg-inline-block border border-lg-0 rounded rounded-lg-0 p-2 p-lg-0"
-              data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;site header menu&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;SIGN_UP&quot;,&quot;originating_url&quot;:&quot;https://github.com/ice-black/move-app/blob/a469eb9d2b5ede618e0c1efd17a854e3134c2c5f/Assets/footer.jpg&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="a7bab085054c6d9f7a995d01d09bedda60d2a6562ecd7afd763341d265530e61"
+              data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;site header menu&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;SIGN_UP&quot;,&quot;originating_url&quot;:&quot;https://github.com/ice-black/move-app/blob/be16bd596a33e02576b6935c15efeb39a212fbf9/Assets/startup.jpg&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="8ca5fe0ec18e01df622932d8315d2d29ee5fc7664ecd90bc40bc74fb27de68fb"
               data-ga-click="(Logged out) Header, clicked Sign in, text:sign-in">
               Sign in
             </a>
@@ -1061,7 +1061,7 @@
   <div style="width: 300px" data-view-component="true" class="Popover-message Box Popover-message--top-right color-fg-default p-4 mt-2 mx-auto text-left color-shadow-large">
     <h4 data-view-component="true" class="color-fg-default mb-2">                  Sign in to GitHub
 </h4>
-                      <!-- '"` --><!-- </textarea></xmp> --></option></form><form data-turbo="false" action="/session" accept-charset="UTF-8" method="post"><input type="hidden" data-csrf="true" name="authenticity_token" value="8hwFw7XWYBs2pJ6fP/EBy7AyN6W0GOFs1aXPnrJzyj+NUJz1MjerK9AEsaYurywf5F2KJQqoBtkdiLVjQvGYBg==" />    <label for="login_field">
+                      <!-- '"` --><!-- </textarea></xmp> --></option></form><form data-turbo="false" action="/session" accept-charset="UTF-8" method="post"><input type="hidden" data-csrf="true" name="authenticity_token" value="OY59DBYH0Jahix8BKBTBlHLYI/ulc+LlycXDGaFi+UQo1NbN1QfE6g3hvOzcW2nVzzLLCoGuajv0SpkxtU7haA==" />    <label for="login_field">
       Username or email address
     </label>
     <input type="text" name="login" id="login_field" class="form-control input-block js-login-field" autocapitalize="off" autocorrect="off" autocomplete="username" autofocus="autofocus" />
@@ -1077,20 +1077,20 @@
 <input type="hidden" class="js-support" name="javascript-support" value="unknown">
 <input type="hidden" class="js-webauthn-support" name="webauthn-support" value="unknown">
 <input type="hidden" class="js-webauthn-iuvpaa-support" name="webauthn-iuvpaa-support" value="unknown">
-<input type="hidden" name="return_to" id="return_to" value="https://github.com/ice-black/move-app/blob/a469eb9d2b5ede618e0c1efd17a854e3134c2c5f/Assets/footer.jpg" autocomplete="off" class="form-control" />
+<input type="hidden" name="return_to" id="return_to" value="https://github.com/ice-black/move-app/blob/be16bd596a33e02576b6935c15efeb39a212fbf9/Assets/startup.jpg" autocomplete="off" class="form-control" />
 <input type="hidden" name="allow_signup" id="allow_signup" autocomplete="off" class="form-control" />
 <input type="hidden" name="client_id" id="client_id" autocomplete="off" class="form-control" />
 <input type="hidden" name="integration" id="integration" autocomplete="off" class="form-control" />
-<input class="form-control" type="text" name="required_field_584f" hidden="hidden" />
-<input class="form-control" type="hidden" name="timestamp" value="1708717663737" />
-<input class="form-control" type="hidden" name="timestamp_secret" value="72a726e46c1172c4297b3cc160ae000ff5cc99dbeb798dc6b2b844640c0e80ef" />
+<input class="form-control" type="text" name="required_field_edd0" hidden="hidden" />
+<input class="form-control" type="hidden" name="timestamp" value="1708717896246" />
+<input class="form-control" type="hidden" name="timestamp_secret" value="98e0374ce5d45685f53cd7bb2c1c0449a5cb567a841bb08af3cf1fa67757f87a" />
 
 
     <input type="submit" name="commit" value="Sign in" class="btn btn-primary btn-block js-sign-in-button" data-disable-with="Signing in…" data-signin-label="Sign in" data-sso-label="Sign in with your identity provider" development="false" disable-emu-sso="false" />
   </div>
 </form>  <webauthn-status class="js-webauthn-login-emu-control">
         <div data-target="webauthn-status.partial" class="d-flex flex-justify-between flex-column mt-3 mb-0" hidden>
-          <a href="/login?passkey=true&amp;return_to=https%3A%2F%2Fgithub.com%2Fice-black%2Fmove-app%2Fblob%2Fa469eb9d2b5ede618e0c1efd17a854e3134c2c5f%2FAssets%2Ffooter.jpg" data-analytics-event="{&quot;category&quot;:&quot;passkey_404_login&quot;,&quot;action&quot;:&quot;clicked&quot;,&quot;label&quot;:null}" data-view-component="true" class="Button--link Button--medium Button">  <span class="Button-content">
+          <a href="/login?passkey=true&amp;return_to=https%3A%2F%2Fgithub.com%2Fice-black%2Fmove-app%2Fblob%2Fbe16bd596a33e02576b6935c15efeb39a212fbf9%2FAssets%2Fstartup.jpg" data-analytics-event="{&quot;category&quot;:&quot;passkey_404_login&quot;,&quot;action&quot;:&quot;clicked&quot;,&quot;label&quot;:null}" data-view-component="true" class="Button--link Button--medium Button">  <span class="Button-content">
     <span class="Button-label">or sign in with a passkey</span>
   </span>
 </a>
@@ -1100,10 +1100,10 @@
 
 </div></div>          </div>
 
-            <a href="/signup?ref_cta=Sign+up&amp;ref_loc=header+logged+out&amp;ref_page=%2Fice-black%2Fmove-app%2Fblob%2Fa469eb9d2b5ede618e0c1efd17a854e3134c2c5f%2FAssets%2Ffooter.jpg&amp;source=header"
+            <a href="/signup?ref_cta=Sign+up&amp;ref_loc=header+logged+out&amp;ref_page=%2Fice-black%2Fmove-app%2Fblob%2Fbe16bd596a33e02576b6935c15efeb39a212fbf9%2FAssets%2Fstartup.jpg&amp;source=header"
               class="HeaderMenu-link HeaderMenu-link--sign-up flex-shrink-0 d-none d-lg-inline-block no-underline border color-border-default rounded px-2 py-1"
-              data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;site header menu&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;SIGN_UP&quot;,&quot;originating_url&quot;:&quot;https://github.com/ice-black/move-app/blob/a469eb9d2b5ede618e0c1efd17a854e3134c2c5f/Assets/footer.jpg&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="a7bab085054c6d9f7a995d01d09bedda60d2a6562ecd7afd763341d265530e61"
-              data-analytics-event="{&quot;category&quot;:&quot;Sign up&quot;,&quot;action&quot;:&quot;click to sign up for account&quot;,&quot;label&quot;:&quot;ref_page:/ice-black/move-app/blob/a469eb9d2b5ede618e0c1efd17a854e3134c2c5f/Assets/footer.jpg;ref_cta:Sign up;ref_loc:header logged out&quot;}"
+              data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;site header menu&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;SIGN_UP&quot;,&quot;originating_url&quot;:&quot;https://github.com/ice-black/move-app/blob/be16bd596a33e02576b6935c15efeb39a212fbf9/Assets/startup.jpg&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="8ca5fe0ec18e01df622932d8315d2d29ee5fc7664ecd90bc40bc74fb27de68fb"
+              data-analytics-event="{&quot;category&quot;:&quot;Sign up&quot;,&quot;action&quot;:&quot;click to sign up for account&quot;,&quot;label&quot;:&quot;ref_page:/ice-black/move-app/blob/be16bd596a33e02576b6935c15efeb39a212fbf9/Assets/startup.jpg;ref_cta:Sign up;ref_loc:header logged out&quot;}"
             >
               Sign up
             </a>
@@ -1122,10 +1122,10 @@
         <span class="js-stale-session-flash-signed-out" hidden>You signed out in another tab or window. <a class="Link--inTextBlock" href="">Reload</a> to refresh your session.</span>
         <span class="js-stale-session-flash-switched" hidden>You switched accounts on another tab or window. <a class="Link--inTextBlock" href="">Reload</a> to refresh your session.</span>
 
-    <button id="icon-button-96b70bbc-742f-4b3b-ae6f-eb7fc441a919" aria-labelledby="tooltip-6c67eaa8-f4b3-4832-a2e4-3ecfad40d525" type="button" data-view-component="true" class="Button Button--iconOnly Button--invisible Button--medium flash-close js-flash-close">  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x Button-visual">
+    <button id="icon-button-8af019d5-ac2d-46b8-bb21-94d83d906a6c" aria-labelledby="tooltip-3caa569b-7084-4e2c-b899-0599fdfd9554" type="button" data-view-component="true" class="Button Button--iconOnly Button--invisible Button--medium flash-close js-flash-close">  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x Button-visual">
     <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
 </svg>
-</button><tool-tip id="tooltip-6c67eaa8-f4b3-4832-a2e4-3ecfad40d525" for="icon-button-96b70bbc-742f-4b3b-ae6f-eb7fc441a919" popover="manual" data-direction="s" data-type="label" data-view-component="true" class="sr-only position-absolute">Dismiss alert</tool-tip>
+</button><tool-tip id="tooltip-3caa569b-7084-4e2c-b899-0599fdfd9554" for="icon-button-8af019d5-ac2d-46b8-bb21-94d83d906a6c" popover="manual" data-direction="s" data-type="label" data-view-component="true" class="sr-only position-absolute">Dismiss alert</tool-tip>
 
 
   
