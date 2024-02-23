@@ -464,8 +464,8 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
 
     global displayed
     displayed = 0
-    def show_season():
-        global displayed, Add2
+    def show_season(Add2):
+        global displayed
         if displayed == 0:
             Add2.place(relx=0.04, rely=0.742, relheight=0.22, relwidth=0.2)
             displayed = 1
