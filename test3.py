@@ -4,7 +4,10 @@ root = tk.Tk()
 root.geometry("300x200")
 
 # Create a frame
-frame = tk.Frame(root)
+frame2 = tk.Frame(root)
+frame2.place(relheight=0.5, relwidth=0.5, rely=0.5, relx=0.5)
+
+frame = tk.Frame(frame2)
 frame.pack(fill=tk.BOTH, expand=True)
 
 # Add a scroll bar
