@@ -467,12 +467,13 @@ def watch_page(widget, movie_id, movie_title, movie_ratting, movie_type, movie_c
     def show_season():
         global displayed, Add2
         if displayed == 0:
-            Add2.place_forget()
+            Add2.place(relx=0.04, rely=0.742, relheight=0.22, relwidth=0.2)
             displayed = 1
         else:
-            Add2.place(relx=0.04, rely=0.742, relheight=0.22, relwidth=0.2)
+            Add2.place_forget()
             displayed = 0
 
+    show_season(Add2)
 
     tk.Button(Add, text="Season ", borderwidth=0, border=0, font=('Comic Sans MS', 12), command= lambda :show_season).place(relheight=1 ,relwidth=0.1, relx=0, rely=0)
 
