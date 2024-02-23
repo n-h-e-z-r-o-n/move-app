@@ -1435,7 +1435,7 @@ def download_app_icon():
     filename1 = 'tx.ico'
     filename2 = 'startup.jpg'
     filename3 = 'footer.jpg'
-    filename3 = "search_animation.gif"
+    filename4 = "search_animation.gif"
     while True:
         try:
             response1 = requests.get(url1)
