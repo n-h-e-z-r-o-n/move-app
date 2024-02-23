@@ -1016,8 +1016,6 @@ def recommendation_tv(widget_list, PY_width, PX_hight):
         count += 1
 
 
-
-
 def Fetch_Mount_SHows(numer=10):
     global New_moves, Added_moves, New_TV_Shows, Added_TV_Shows, New_Episodes
 
@@ -1433,9 +1431,11 @@ def download_app_icon():
     url1 = "https://github.com/ice-black/move-app/blob/9af6998c123fd6f2d86ff9a083eecd094200a8ab/Assets/tx.ico"
     url2 = "https://github.com/ice-black/move-app/blob/be16bd596a33e02576b6935c15efeb39a212fbf9/Assets/startup.jpg"
     url3 = "https://github.com/ice-black/move-app/blob/a469eb9d2b5ede618e0c1efd17a854e3134c2c5f/Assets/footer.jpg"
+    url4 = "https://github.com/ice-black/move-app/blob/a469eb9d2b5ede618e0c1efd17a854e3134c2c5f/Assets/footer.jpg"
     filename1 = 'tx.ico'
     filename2 = 'startup.jpg'
     filename3 = 'footer.jpg'
+    filename3 = "search_animation.gif"
     while True:
         try:
             response1 = requests.get(url1)
@@ -1446,6 +1446,9 @@ def download_app_icon():
             with open(filename2, 'wb') as f:
                 f.write(response2.content)
 
+            response3 = requests.get(url3)
+            with open(filename3, 'wb') as f:
+                f.write(response3.content)
             response3 = requests.get(url3)
             with open(filename3, 'wb') as f:
                 f.write(response3.content)
