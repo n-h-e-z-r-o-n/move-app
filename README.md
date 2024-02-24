@@ -13,4 +13,4 @@ This application is licensed under the GNU General Public  [ License ](https://r
 
 
 
-For Feedback (etc), You can contact me at [ Phone ](https://wa.me/254714415034)
+
