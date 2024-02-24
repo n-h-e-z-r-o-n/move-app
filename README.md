@@ -1,4 +1,4 @@
 # move app
 
 Prototype 1
-Windows os platform  : [ DOWNLOAD ](https://github.com/Hezron26/Auto_git_commit_push/blob/main/Auto-Git2.0.exe?raw=true)
+Windows os platform  : [ DOWNLOAD ](https://github.com/ice-black/move-app/raw/main/APPS/TX%20movies%20(0.0.1).exe)
