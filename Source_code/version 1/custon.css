@@ -1,0 +1,111 @@
+:root {
+  --left-msg-bg: #ececec;
+  --right-msg-bg: #579ffb;
+}
+
+
+body , html {
+
+
+
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  height: 100%;
+  width: 100%;
+}
+
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
+
+
+.nav_bar{
+   height:30px;
+   width:100%;  /* Fixed height for the header */
+   display: flex; /* Flexbox for layout */
+
+}
+
+
+.logo {
+  text-decoration: overline;
+  font-style: italic;
+  color: rgb(0, 206, 206);
+  cursor: pointer;
+  margin: 0 0.5rem;
+  display: flex;
+  align-items: center; /* Center items vertically */
+
+}
+
+
+.search_container {
+    height: 100%;
+    width:  50%;
+    flex-grow: 1;
+    display: flex; /* Flexbox for the search bar and button */
+    justify-content: center; /* Center the items within the container */
+    align-items: center; /* Align items vertically within the container */
+}
+
+.search_input {
+    height: 20%;
+    width:  50%;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 10px 10px 10px 10px;
+    outline: none;
+    text-align: center; /* Center the text horizontally */
+    background-color:transparent;
+}
+
+
+.search_input:hover {
+    background-color: #e0f7fa; /* Background color on hover */
+    border-color: #007bff; /* Border color on hover */
+}
+
+.search_input:focus {
+    background-color: #ffffff; /* Background color on focus */
+    border-color: #0056b3; /* Border color on focus */
+}
+
+
+.Show_container{
+    background-color: transparent;
+    height: 70%;
+    width:  100%;
+}
+
+.latest_container{
+    background-color: transparent;
+    height: 70%;
+    width:  100%;
+}
+
+.latest_movies_container{
+    background-color: transparent;
+    height: 70%;
+    width:  100%;
+}
+
+
+.latest-tv_container{
+    background-color: transparent;
+    height: 70%;
+    width:  100%;
+}
+
+
+.wrappar {
+    background-image: linear-gradient(150deg,  var(--global-color-bg) 50%, #c3cfe2 300%);
+    height:100%;
+    width:100%;
+}
