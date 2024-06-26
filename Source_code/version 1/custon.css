@@ -102,8 +102,9 @@ body , html {
     position: relative;
     background-size: cover;
     background-position: center
-    overflow: hidden;
-    width: 2103px;
+    
+    max-width: 100%;
+    max-height: 100%;
 
 
 }
