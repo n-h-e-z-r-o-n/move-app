@@ -100,10 +100,13 @@ body , html {
 .swiper_wrapper_image{
     height: 100%;
     width: 100%;
-         position: relative
-         background-size: cover;
-         background-position: center
-         overflow: hidden;
+    background-size: cover;
+    background-position: center
+    overflow: hidden;
+    transition-property: transform;
+    background-repeat: no-repeat;
+                display: flex;
+
 
 }
 
