@@ -95,7 +95,8 @@ body , html {
     display: flex;
     transition-property: transform;
     box-sizing: content-box;
-    transition-duration: 0ms;
-    transform: translate3d(-534px, 0px, 0px);
+
+    transition-property: transform;
+    flex-shrink: 0;
 }
 
