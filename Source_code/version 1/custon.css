@@ -95,8 +95,15 @@ body , html {
     display: flex;
     transition-property: transform;
     box-sizing: content-box;
+}
 
-    transition-property: transform;
-    flex-shrink: 0;
+.swiper_wrapper_image{
+    height: 100%;
+    width: 100%;
+         position: relative
+         background-size: cover;
+         background-position: center
+         overflow: hidden;
+
 }
 
