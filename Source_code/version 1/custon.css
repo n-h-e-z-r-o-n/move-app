@@ -102,9 +102,11 @@ body , html {
     position: relative;
     background-size: cover;
     background-position: center
-transition-property: transform;
-box-sizing: border-box;
-display: block;
+        background-repeat: no-repeat;
+
+    transition-property: transform;
+    box-sizing: border-box;
+    display: block;
     unicode-bidi: isolate;
-}
+    }
 
