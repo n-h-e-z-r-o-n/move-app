@@ -80,7 +80,8 @@ body , html {
 
 .Show_container{
     background-color: blue;
-    height: 70%;
+    height: 400px;
     width:  100%;
+    cursor: grab;
 }
 
