@@ -79,33 +79,8 @@ body , html {
 
 
 .Show_container{
-    background-color: transparent;
+    background-color: blue;
     height: 70%;
     width:  100%;
 }
 
-.latest_container{
-    background-color: transparent;
-    height: 70%;
-    width:  100%;
-}
-
-.latest_movies_container{
-    background-color: transparent;
-    height: 70%;
-    width:  100%;
-}
-
-
-.latest-tv_container{
-    background-color: transparent;
-    height: 70%;
-    width:  100%;
-}
-
-
-.wrappar {
-    background-image: linear-gradient(150deg,  var(--global-color-bg) 50%, #c3cfe2 300%);
-    height:100%;
-    width:100%;
-}
