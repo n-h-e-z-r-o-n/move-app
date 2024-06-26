@@ -98,12 +98,12 @@ body , html {
 .swiper_wrapper_image{
     flex-shrink: 0;
     height: 100%;
-    width: 100%;
+    width: 907px;
     position: relative;
     background-size: cover;
     background-position: center
-        background-repeat: no-repeat;
-
+    background-repeat: no-repeat;
+    box-sizing: content-box;
     transition-property: transform;
     box-sizing: border-box;
     display: block;
