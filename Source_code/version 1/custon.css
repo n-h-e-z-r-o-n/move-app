@@ -79,11 +79,9 @@ body , html {
 
 
 .Show_container{
-    height: 500px;
+    height: 600px;
     width:  100%;
     cursor: grab;
-    position: relative;
-    background-color: blue
 }
 
 .swiper_wrapper{
@@ -98,14 +96,14 @@ body , html {
 }
 
 .swiper_wrapper_image{
+    flex-shrink: 0;
     height: 100%;
     width: 100%;
     position: relative;
     background-size: cover;
     background-position: center
     overflow: hidden;
-    transition-property: transform;
-                object-fit: cover;
+
 
 
 }
