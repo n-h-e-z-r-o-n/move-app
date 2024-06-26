@@ -79,9 +79,21 @@ body , html {
 
 
 .Show_container{
-    background-color: blue;
     height: 400px;
     width:  100%;
     cursor: grab;
+    position: relative;
+    background-color: blue
+}
+
+.swiper_wrapper{
+    position: relative;
+    background-color: blue
+    width: 100%px
+    height: 100px;
+    z-index: 1;
+    display: flex;
+    transition-property: transform;
+    box-sizing: content-box;
 }
 
