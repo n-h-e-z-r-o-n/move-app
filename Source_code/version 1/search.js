@@ -89,26 +89,24 @@ function Search_Results_SHOW(movies) {
  const searchTerm = params['query'];
 
  if (searchTerm) {
-
    document.getElementById('result_text').innerText = `SEARCH RESULTS      :  ${searchTerm}`;
-
-     SearchShows(SEARCH_MOVIE_API + searchTerm, SEARCH_TV_API+searchTerm);    // code to fetch and display search results here
-
- } else {
- }
+   SearchShows(SEARCH_MOVIE_API + searchTerm, SEARCH_TV_API+searchTerm);    // code to fetch and display search results here
+ } else { }
 
 
 
 
 
 
- document.addEventListener("DOMContentLoaded", function() {
-    const container = document.querySelector(".box-img");
+ document.addEventListener('DOMContentLoaded', () => {
+   const movieContainers = document.querySelectorAll('.box');
 
-    container.addEventListener("click", function() {
-        // Your event handler logic here
-        console.log("Container clicked!");
-        // For example, navigate to a new page
-        // window.location.href = 'newpage.html';
-    });
-});
+   movieContainers.forEach(container => {
+     container.addEventListener('click', () => {
+       // Add your desired action here
+       console.log('Container clicked:', container);
+       // For example, you could redirect to a movie detail page
+       // window.location.href = 'path/to/detail/page';
+     });
+   });
+ });
