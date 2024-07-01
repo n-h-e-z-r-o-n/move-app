@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Receive and Display Data</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css" />
+    <link rel="stylesheet" type="text/css" href="./custon.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+        <div >
+
+                <header class = "nav_bar" >
+
+                    <div class="logo">
+                        <h2 >NavBar</h2>
+                    </div>
+
+                    <form id="searchForm" class="search_container">
+                    <input class="search_input" id="search_input" type="text" placeholder="Search">
+                    <div class="search_icon">
+                    <i  aria-hidden="true">🔍</i>
+                    </div>
+                    </form>
+
+                    <div class="profile-container">
+                        <img class="profile-picture" src="profile/xc.jpg" alt="">
+                        <div class="profile-text-container">
+                            <i class="fas fa-caret-down"></i>
+                        </div>
+
+                    </div>
+
+                </header>
+
+
+
+
+                <main>
+
+                  <div class="grid_container" >
+                     <div class="show_title_section" >
+                       <h3 class="text_container" id= "result_text" style="color: gray;"></h3>
+                           <!-- Movies container  -->
+                           <div class="movies-container" id="Search_Results">
+
+                          <!-- show S_Results container  -->
+
+
+                           </div>
+
+
+
+                  </div>
+
+                </main>
+
+      </body>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+      <script src="search.js"></script>
+
+
+
+      </html>

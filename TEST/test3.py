@@ -1,7 +1,12 @@
-from imdbmovies import IMDB
-imdb_other = IMDB()
+import requests
 
 
-movies = imdb_other.get_by_id("tt30750708")
-movie_poster_url = movies['poster']
-print(movie_poster_url)
+r = requests.get(f'https://api.themoviedb.org/3/discover/tv?&api_key=6bfaa39b0a3a25275c765dcaddc7dae7&page=1')  # latest movies
+if r.status_code == 200:
+    data = r.json()
+    print(len(data['results']))
+
+print(data['results'][0])
+for i in data['results'][0]:
+    print(i )
+

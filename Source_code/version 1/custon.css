@@ -73,11 +73,12 @@ body , html {
     display: flex; /* Flexbox for the search bar and button */
     justify-content: center; /* Center the items within the container */
     align-items: center; /* Align items vertically within the container */
+
 }
 
 .search_input {
     height: 20%;
-    width:  50%;
+    width:  100%;
     padding: 10px;
     font-size: 16px;
     cursor: pointer;
@@ -86,17 +87,18 @@ body , html {
     outline: none;
     text-align: center; /* Center the text horizontally */
     background-color:transparent;
+    color: black;
 }
 
 
 .search_input:hover {
-    background-color: #e0f7fa; /* Background color on hover */
-    border-color: #007bff; /* Border color on hover */
+    border-color: yellow; /* Border color on hover */
 }
 
 .search_input:focus {
     background-color: #ffffff; /* Background color on focus */
-    border-color: #0056b3; /* Border color on focus */
+    border-color: yellow; /* Border color on focus */
+    color: black;
 
 }
 
@@ -130,12 +132,14 @@ body , html {
   display: flex;
   align-items: center;
   gap: 10px;
+  border-radius: 90px;
 }
 .slider-images img{
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 90px;
+
 }
 .slider-img{
   width: 10%;
@@ -191,7 +195,7 @@ body , html {
 }
 .slider-img.active{
   width: 1066px !important;
-  height:  600px !important;
+  height:  700px !important;
 }
 .slider-img.active h1{
    display: none;
@@ -249,7 +253,11 @@ body , html {
 }
 
 
-.movie-list-item:hover .movie-list-item-button {
+.movie-list-item:hover .movie-list-item-button   {
+  opacity: 1;
+}
+
+.movie-list-item:hover .movie-list-item-title{
   opacity: 1;
 }
 
@@ -272,10 +280,24 @@ body , html {
   border: none;
   cursor: pointer;
   position: absolute;
-  bottom: 20px;
+  bottom: 30px;
   left: 50px;
   opacity: 0;
   transition: 1s all ease-in-out;
+}
+.movie-list-item-title {
+  padding: 10px;
+  color: white;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  position: absolute;
+  bottom: 0px;
+  left: 45px;
+  opacity: 0;
+  align-items: center;
+  transition: 1s all ease-in-out;
+  color: gray;
 }
 
 .arrow {
@@ -337,7 +359,7 @@ body , html {
     margin-left: auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px,auto));
-    gap: 1rem;
+    gap: 3rem;
     margin-top: 2rem;
 
 }
@@ -346,11 +368,16 @@ body , html {
     height: 270px;
     cursor: pointer;
     background-color: yellow;
+    border-radius: 40px 40px 40px 40px;
+
+
 }
 .box .box-img img{
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 40px 40px 40px 40px;
+
 }
 .box .box-img img:hover{
     transform: translateY(-10px);
@@ -359,7 +386,12 @@ body , html {
 .box h3{
     font-size: 0.9rem;
     font-weight: 500;
+    text-align: center;
 }
-.box span{
-    font-size: 14px;
+.container_span{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: .85em;
+
 }
