@@ -99,14 +99,9 @@ function Search_Results_SHOW(movies) {
 
 
  document.addEventListener('DOMContentLoaded', () => {
-   const movieContainers = document.querySelectorAll('.box');
+      const boxImages = document.querySelectorAll('.box-img');
 
-   movieContainers.forEach(container => {
-     container.addEventListener('click', () => {
-       // Add your desired action here
-       console.log('Container clicked:', container);
-       // For example, you could redirect to a movie detail page
-       // window.location.href = 'path/to/detail/page';
-     });
-   });
- });
+          alert('Box clicked!');
+          // Add your desired action here
+        });
+  
