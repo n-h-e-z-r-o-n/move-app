@@ -96,3 +96,19 @@ function Search_Results_SHOW(movies) {
 
  } else {
  }
+
+
+
+
+
+
+ document.addEventListener("DOMContentLoaded", function() {
+    const container = document.querySelector(".box-img");
+
+    container.addEventListener("click", function() {
+        // Your event handler logic here
+        console.log("Container clicked!");
+        // For example, navigate to a new page
+        // window.location.href = 'newpage.html';
+    });
+});
