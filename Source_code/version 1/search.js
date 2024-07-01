@@ -65,9 +65,11 @@ function Search_Results_SHOW(movies) {
                      <div style="color: gray;">${date}</div>
                      <div style="color: gray;"> ${" \t\t\t ★"} ${vote_average}</div>
                   </div>
-
-
     `;
+    // Add event listener to open another page when clicked
+    movieItem.addEventListener("click", () => {
+         window.location.href = "watch_page.html?id=" + id;
+       });
     search_R_div.appendChild(movieItem);
   });
 }
@@ -92,16 +94,3 @@ function Search_Results_SHOW(movies) {
    document.getElementById('result_text').innerText = `SEARCH RESULTS      :  ${searchTerm}`;
    SearchShows(SEARCH_MOVIE_API + searchTerm, SEARCH_TV_API+searchTerm);    // code to fetch and display search results here
  } else { }
-
-
-
-
-
-
- document.addEventListener('DOMContentLoaded', () => {
-      const boxImages = document.querySelectorAll('.box-img');
-
-          alert('Box clicked!');
-          // Add your desired action here
-        });
-  
