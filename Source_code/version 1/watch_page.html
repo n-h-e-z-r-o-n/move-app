@@ -1,62 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Movie Container</title>
-  <style>
-    .movie-container {
-      display: flex;
-      flex-wrap: wrap;
-    }
-    .box-img {
-      margin: 10px;
-      cursor: pointer;
-    }
-    .container_span {
-      display: flex;
-      justify-content: space-between;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Listener Example</title>
 </head>
 <body>
-  <div class="movie-container">
-    <div class="box-img">
+    <div id="myDiv" style="width:200px; height:200px; background-color:lightblue;">
+        Click me!
     </div>
-    <h3>Movie Title 1</h3>
-    <div class="container_span">
-      <div style="color: gray;">Date 1</div>
-      <div style="color: gray;"> ★ 7.8</div>
-    </div>
+    <script src="script.js"></script>
+</body>
 
-    <div class="box-img">
-    </div>
-    <h3>Movie Title 2</h3>
-    <div class="container_span">
-      <div style="color: gray;">Date 2</div>
-      <div style="color: gray;"> ★ 8.2</div>
-    </div>
-
-    <div class="box-img">
-    </div>
-    <h3>Movie Title 3</h3>
-    <div class="container_span">
-      <div style="color: gray;">Date 3</div>
-      <div style="color: gray;"> ★ 7.5</div>
-    </div>
-  </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const boxImages = document.querySelectorAll('.box-img');
+  // Select the div element
+const myDiv = document.getElementById('myDiv');
 
-      boxImages.forEach(boxImg => {
-        boxImg.addEventListener('click', () => {
-          alert('Box clicked!');
-          // Add your desired action here
-        });
-      });
-    });
+// Define the event handler function
+function handleClick() {
+  alert('Div clicked!');
+}
+
+// Add an event listener to the div
+myDiv.addEventListener('click', handleClick);
   </script>
 </body>
 </html>
