@@ -37,7 +37,7 @@ function Search_Results_SHOW(movies) {
   console.log(movies);
   search_R_div.innerHTML = "";
   movies.forEach((movie) => {
-    const { original_title, original_name, poster_path, vote_average, overview, release_date, first_air_date } = movie;
+    const { original_title, original_name, poster_path, id, vote_average, overview, release_date, first_air_date } = movie;
     let title;
 
     if (original_title=== undefined) {
