@@ -104,7 +104,7 @@ function showMovies(movies) {
   console.log(movies);
   ul.innerHTML = "";
   movies.forEach((movie) => {
-    const { title, poster_path, vote_average, overview, release_date } = movie;
+    const { title, poster_path, id, vote_average, overview, release_date } = movie;
     const movieItem = document.createElement("div");
     movieItem.classList.add("box");
     movieItem.innerHTML = `
@@ -120,6 +120,12 @@ function showMovies(movies) {
             </div>
 
     `;
+
+    // Add event listener to open another page when clicked
+    movieItem.addEventListener("click", () => {
+         window.location.href = "watch_page.html?id=" + id + "&type=movie";
+       });
+
     ul.appendChild(movieItem);
   });
 }
@@ -136,7 +142,7 @@ function showTV(movies) {
   console.log(movies);
   series_div.innerHTML = "";
   movies.forEach((movie) => {
-    const { original_name, poster_path, vote_average, overview, first_air_date } = movie;
+    const {id, original_name, poster_path, vote_average, overview, first_air_date } = movie;
     const movieItem = document.createElement("div");
     movieItem.classList.add("box");
     movieItem.innerHTML = `
@@ -152,6 +158,11 @@ function showTV(movies) {
             </div>
 
     `;
+
+    // Add event listener to open another page when clicked
+    movieItem.addEventListener("click", () => {
+         window.location.href = "watch_page.html?id=" + id + "&type=tv";
+       });
     series_div.appendChild(movieItem);
   });
 }

@@ -10,43 +10,95 @@
 </head>
 <body class="watch_page_background">
         <div >
-                <header class = "nav_bar" >
 
-                    <div class="logo">
-                        <h2 >NavBar</h2>
-                    </div>
-
-                    <form id="searchForm" class="search_container">
-                    <input class="search_input" id="search_input" type="text" placeholder="Search">
-                    <div class="search_icon">
-                    <i  aria-hidden="true">🔍</i>
-                    </div>
-                    </form>
-
-                    <div class="profile-container">
-                        <img class="profile-picture" src="profile/xc.jpg" alt="">
-                        <div class="profile-text-container">
-                            <i class="fas fa-caret-down"></i>
-                        </div>
-
-                    </div>
-
-                </header>
                 <main>
 
-                  <div class="watch_container">
-                            <div class="watch_info">
-                                  <img class="watch_image" src="https://image.tmdb.org/t/p/w1280/ysIPmxLVYYvTUaOwEsLjF7nEf4C.jpg">
-                                  <h3>Two Scoops of Italy</h3>
-                                  <p>When an American chef travels to a quant village in Italy for inspiration, she falls in love with the flavors, culture, gelato, and the Italian gentleman who helps her discover it all.</p>
-                            </div>
+                  <div class="uuux" id="back_img">
 
-                            <div class="watch_Frame">
-                                    <iframe  class="iframe_watch"  src="https://vidsrc.to/embed/tv/tt0944947"  frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                            </div>
+                      <header class = "nav_bar" >
+                          <div class="logo">
+                              <h2 >NavBar</h2>
+                          </div>
+                          <form id="searchForm" class="search_container">
+                          <input class="search_input" id="search_input" type="text" placeholder="Search">
+                          <div class="search_icon">
+                          <i  aria-hidden="true">🔍</i>
+                          </div>
+                          </form>
+                          <div class="profile-container">
+                              <img class="profile-picture" src="profile/xc.jpg" alt="">
+                              <div class="profile-text-container">
+                                  <i class="fas fa-caret-down"></i>
+                              </div>
+                          </div>
+                      </header>
+
+                      <div class="watch_container">
+                                <div class="watch_info" id="watch_info">
+                                      <img class="watch_image" src="https://image.tmdb.org/t/p/w1280/ysIPmxLVYYvTUaOwEsLjF7nEf4C.jpg">
+                                      <div class="watch_details">
+                                          <h3 class="watch_title">Two Scoops of Italy</h3>
+                                          <ul >
+                                            <li class="movie_gen__details">PG-13  /</li>
+                                            <li class="movie_gen__details">2h 49min  /</li>
+                                            <li class="movie_gen__details">Adventure, Drama, Sci-Fi,</li>
+                                          </ul>
+
+                                          <p class="watch_review">When an American chef travels to a quant village in Italy for inspiration, she falls in love with the flavors, culture, gelato, and the Italian gentleman who helps her discover it all.</p>
+
+                                          <p class="watch_review" style="color:gray;">★★★✩✩ 8.9</p>
+                                          <div style="display: flex;">
+                                            <div class="watch_review">Genres &nbsp;&nbsp; :&nbsp;&nbsp; </div>
+                                            <div class="watch_review" style="color:gray;">action </div>
+                                          </div>
+                                          <div style="display: flex;">
+                                                <p class="watch_review">Cast &nbsp;&nbsp;&nbsp; :&nbsp;&nbsp; </p>
+                                                <p class="watch_review" style="color:gray;"> 8.9</p>
+
+                                          </div>
+                                          <div style="display: flex;">
+                                                <p class="watch_review">Production &nbsp;&nbsp; :&nbsp;&nbsp; </p>
+                                                <p class="watch_review" style="color:gray;">8.9</p>
+
+                                          </div>
+                                          <div style="display: flex;">
+                                                <p class="watch_review">Country &nbsp;&nbsp; : &nbsp;&nbsp;</p>
+                                                <p class="watch_review" style="color:gray;">8.9</p>
+
+                                          </div>
 
 
+                                      </div>
+
+                                </div>
+
+                                <div class="watch_Frame" id="watch_Frame">
+                                        <iframe  class="iframe_watch"  src="https://vidsrc.to/embed/tv/tt0944947"  frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                </div>
                   </div>
+                </div>
+
+
+                    <div class="seasons">
+                      <div class="seasons_container">
+                        <div class="season-selector" id="season-selector">
+                           <!--
+                            <div data-season="season1" onclick="selectSeason(event)">Season 1</div>
+                            <div data-season="season2" onclick="selectSeason(event)">Season 2</div>
+                            <div data-season="season3" onclick="selectSeason(event)">Season 3</div>
+                          -->
+                        </div>
+
+                      </div>
+                      <div class="episodes_container">
+                        <div id="episode-list" class="episodes"></div>
+
+                      </div>
+
+                    </div>
+
+
+
 
 
 
@@ -54,7 +106,8 @@
                   <div class="watch_recomendation">
                     <div class="show_title_section" >  <h1 class="text_container">Related</h1>      </div>
 
-                    <div class="container">
+                    <div class="REM_container" id="recomed_R_div">
+                      <!--
                       <div class="box">
                         <div class="imgBx">
                           <img src="https://images.unsplash.com/photo-1579748138140-ce9ef2c32db1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80">
@@ -104,7 +157,7 @@
                         </div>
                       </div>
                     </div>
-
+                    -->
 
 
 
@@ -189,7 +242,6 @@
 
     </body>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="watch_page.js"></script>
 
     </html>

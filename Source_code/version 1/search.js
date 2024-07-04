@@ -39,14 +39,16 @@ function Search_Results_SHOW(movies) {
   movies.forEach((movie) => {
     const { original_title, original_name, poster_path, id, vote_average, overview, release_date, first_air_date } = movie;
     let title;
-
+    let type;
     if (original_title=== undefined) {
        title = original_name;
-       date = first_air_date
+       date = first_air_date;
+        type = "tv";
 
     } else {
        title = original_title;
        date = release_date
+        type = "movie";
     }
 
     const movieItem = document.createElement("div");
@@ -68,7 +70,7 @@ function Search_Results_SHOW(movies) {
     `;
     // Add event listener to open another page when clicked
     movieItem.addEventListener("click", () => {
-         window.location.href = "watch_page.html?id=" + id;
+         window.location.href = "watch_page.html?id=" + id + "&type="+type;
        });
     search_R_div.appendChild(movieItem);
   });

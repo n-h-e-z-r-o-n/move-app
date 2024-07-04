@@ -1,67 +1,84 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Receive and Display Data</title>
-    <link rel="stylesheet" type="text/css" href="./styles.css" />
-    <link rel="stylesheet" type="text/css" href="./test.css" />
-    <style id="dynamic-css"></style>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <title>Season Selector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        .container {
+            text-align: center;
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow:scroll;
+        }
+        .season-selector div {
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        .season-selector div:hover {
+            background-color: #f0f0f0;
+            border-color: #aaa;
+        }
+        .season-selector .selected {
+            background-color: #ddd;
+            border-color: #aaa;
+        }
+        .episodes {
+            margin-top: 20px;
+            list-style-type: none;
+            padding: 0;
+        }
+        .episodes li {
+            padding: 5px;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
 </head>
-<body class="watch_page_background">
-  <div class="container">
-    <div class="box">
-      <div class="imgBx">
-        <img src="https://images.unsplash.com/photo-1579748138140-ce9ef2c32db1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80">
-      </div>
-      <div class="content">
-        <div>
-          <h2>Image Title</h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus molestias quidem iusto.
-          </p>
+<body>
+    <div class="container">
+        <h2>Select Season</h2>
+        <div class="season-selector">
+            <div data-season="season1" onclick="selectSeason(event)">Season 1</div>
+            <div data-season="season2" onclick="selectSeason(event)">Season 2</div>
+            <div data-season="season3" onclick="selectSeason(event)">Season 3</div>
         </div>
-      </div>
+        <div id="episode-list" class="episodes"></ul>
     </div>
-    <div class="box">
-      <div class="imgBx">
-        <img src="https://images.unsplash.com/photo-1579639782539-15cc6c0be63f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80">
-      </div>
-      <div class="content">
-        <div>
-          <h2>Image Title</h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus molestias quidem iusto.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="box">
-      <div class="imgBx">
-        <img src="https://images.unsplash.com/photo-1603984362497-0a878f607b92?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80">
-      </div>
-      <div class="content">
-        <div>
-          <h2>Image Title</h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus molestias quidem iusto.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="box">
-      <div class="imgBx">
-        <img src="https://images.unsplash.com/photo-1579310962131-aa21f240d986?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80">
-      </div>
-      <div class="content">
-        <div>
-          <h2>Image Title</h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus molestias quidem iusto.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-  </body>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-  <script src="watch_page.js"></script>
 
-  </html>
+    <script>
+    // Assuming your seasons array is named 'seasons'
+let seasons = [
+  { air_date: '2020-09-10', episode_count: 51, id: 163277, name: 'Specials', overview: '' },
+  { air_date: '2019-07-23', episode_count: 8, id: 98085, name: 'Season 1', overview: 'The story takes place in a universe where most of … gain, information the public is kept unaware of.' },
+  { air_date: '2020-09-03', episode_count: 8, id: 154681, name: 'Season 2', overview: 'The even more intense, more insane season two find…ght seeks to capitalize on the nation’s paranoia.' },
+  { air_date: '2022-06-01', episode_count: 8, id: 215686, name: 'Season 3', overview: 'It’s been a year of calm. Homelander’s subdued. Bu…g the legend of the first Superhero: Soldier Boy.' },
+  { air_date: '2024-06-13', episode_count: 8, id: 305753, name: 'Season 4', overview: "The world is on the brink. Victoria Neuman is clos…together and save the world before it's too late." },
+  { air_date: null, episode_count: 0, id: 393831, name: 'Season 5', overview: '' }
+];
+console.log(seasons);
+// Filter out seasons where air_date is null
+seasons = seasons.filter(season => season.air_date !== null);
+
+// Now 'seasons' will only contain seasons where air_date is not null
+console.log(seasons);
+    </script>
+</body>
+</html>
