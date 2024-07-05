@@ -54,31 +54,31 @@
 </head>
 <body>
     <div class="container">
-        <h2>Select Season</h2>
-        <div class="season-selector">
-            <div data-season="season1" onclick="selectSeason(event)">Season 1</div>
-            <div data-season="season2" onclick="selectSeason(event)">Season 2</div>
-            <div data-season="season3" onclick="selectSeason(event)">Season 3</div>
-        </div>
-        <div id="episode-list" class="episodes"></ul>
+      <iframe id = "myIframe" src="https://example.com/valid-path"></iframe>
+
     </div>
 
-    <script>
-    // Assuming your seasons array is named 'seasons'
-let seasons = [
-  { air_date: '2020-09-10', episode_count: 51, id: 163277, name: 'Specials', overview: '' },
-  { air_date: '2019-07-23', episode_count: 8, id: 98085, name: 'Season 1', overview: 'The story takes place in a universe where most of … gain, information the public is kept unaware of.' },
-  { air_date: '2020-09-03', episode_count: 8, id: 154681, name: 'Season 2', overview: 'The even more intense, more insane season two find…ght seeks to capitalize on the nation’s paranoia.' },
-  { air_date: '2022-06-01', episode_count: 8, id: 215686, name: 'Season 3', overview: 'It’s been a year of calm. Homelander’s subdued. Bu…g the legend of the first Superhero: Soldier Boy.' },
-  { air_date: '2024-06-13', episode_count: 8, id: 305753, name: 'Season 4', overview: "The world is on the brink. Victoria Neuman is clos…together and save the world before it's too late." },
-  { air_date: null, episode_count: 0, id: 393831, name: 'Season 5', overview: '' }
-];
-console.log(seasons);
-// Filter out seasons where air_date is null
-seasons = seasons.filter(season => season.air_date !== null);
 
-// Now 'seasons' will only contain seasons where air_date is not null
-console.log(seasons);
-    </script>
 </body>
+<script>
+async function checkIframeStatus(url) {
+      try {
+        const response = await fetch(`/check-status?url=${encodeURIComponent(url)}`);
+        const data = await response.json();
+        if (data.status === 404) {
+          console.error('Resource not found (404)');
+        } else {
+          console.log('Status code:', data.status);
+        }
+      } catch (error) {
+        console.error('Error checking status:', error);
+      }
+    }
+
+    const iframe = document.getElementById('myIframe');
+    const iframeSrc = iframe.src;
+
+    checkIframeStatus(iframeSrc);
+
+</script>
 </html>

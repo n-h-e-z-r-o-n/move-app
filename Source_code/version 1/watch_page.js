@@ -59,10 +59,14 @@ function Search_Results_SHOW(imdb, type, info_data) {
     }
 
   if (type==="movie"){
+               let title = info_data['title'];
+               if (title === "undefined"){
+                 title = info_data['original_name'];
+               }
                 watch_info.innerHTML = `
                       <img class="watch_image" src="${IMG_PATH+info_data['poster_path']}">
                       <div class="watch_details">
-                          <h3 class="watch_title">${info_data['title']}</h3>
+                          <h3 class="watch_title">${title}</h3>
                           <ul >
                             <li class="movie_gen__details">PG-${PG}  /</li>
                             <li class="movie_gen__details"> ${info_data['runtime']} min  /</li>
@@ -71,6 +75,8 @@ function Search_Results_SHOW(imdb, type, info_data) {
 
                           <p class="watch_review">${info_data['overview']}</p>
                           <p class="watch_review" style="color:gray;">★★★✩✩ ${info_data['vote_average']}</p>
+                          <p class="watch_review" style="color:gray;">Type: Movie</p>
+
                           <div>
                             <div class="watch_review">Genres &nbsp; </div>
                             <div class="watch_review" style="color:gray; padding-left: 20px;">${genres} </div>
@@ -94,13 +100,22 @@ function Search_Results_SHOW(imdb, type, info_data) {
                       </div>
                 `;
 
-                watch_Frame.innerHTML = `<iframe  class="iframe_watch"  id="watch-frame" src="https://vidsrc.to/embed/${type}/${imdb}"  frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>`;
+                watch_Frame.innerHTML = `<iframe  class="iframe_watch"  id="watch-frame" onerror="iframeLoadError()" src="https://vidsrc.to/embed/${type}/${imdb}"  frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>`;
+                //watch_Frame.innerHTML = `<iframe  class="iframe_watch"  id="watch-frame" src="https://multiembed.mov/?video_id=${imdb}&tmdb=1"  frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>`;
+
+
 }else{
+
+  let title = info_data['title'];
+  if (`${title}` === `undefined`){
+    title = info_data['original_name'];
+  }
+
 
   watch_info.innerHTML = `
         <img class="watch_image" src="${IMG_PATH+info_data['poster_path']}">
         <div class="watch_details">
-            <h3 class="watch_title">${info_data['title']}</h3>
+            <h3 class="watch_title">${title}</h3>
             <ul >
               <li class="movie_gen__details">PG-${PG}  /</li>
               <li class="movie_gen__details"> ${info_data['episode_run_time']} min  /</li>
@@ -109,6 +124,7 @@ function Search_Results_SHOW(imdb, type, info_data) {
 
             <p class="watch_review">${info_data['overview']}</p>
             <p class="watch_review" style="color:gray;">★★★✩✩ ${info_data['vote_average']}</p>
+            <p class="watch_review" style="color:gray;">Type: series</p>
             <div>
               <div class="watch_review">Genres &nbsp; </div>
               <div class="watch_review" style="color:gray; padding-left: 20px;">${genres} </div>
@@ -135,7 +151,7 @@ function Search_Results_SHOW(imdb, type, info_data) {
         </div>
   `;
 
-  watch_Frame.innerHTML = `<iframe  class="iframe_watch" id="watch-frame" src="https://vidsrc.to/embed/${type}/${imdb}"  frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>`;
+  watch_Frame.innerHTML = `<iframe  class="iframe_watch" id="watch-frame" onerror="iframeLoadError()" src="https://vidsrc.to/embed/${type}/${imdb}"  frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>`;
   //https://vidsrc.to/embed/${type}/${imdb}/{season}/{episode}
 
 
@@ -149,47 +165,39 @@ function Search_Results_SHOW(imdb, type, info_data) {
   let sub = 1;
 
   for (let i = 0; i < se.length; i++) {
-        console.log(i , "--",se[i]['name'])
         if(se[i]['name'] === "Specials"){
             sub = sub - 1;
             continue;
          }
 
         let j = i+sub;
-        console.log(i , "--",(se.length-1))
 
         if (i < (se.length-1)){
-              console.log(1200);
               con = con +  `<div data-season="season1" onclick="displayEpisodes(event, ${j})">${se[i]['name']}</div> `;
               let episodeCount = se[i]['episode_count'];
               episodes[j] = []; // Initialize the array
               // Create an array from 1 to episodeCount
               for (let k = 1; k <= episodeCount; k++) {  episodes[j].push(k); }
         } else {
-                 console.log("-confirm",se[i]['air_date'] , (i < (se.length-1)) )
-                 console.log(1400);
 
-                console.log("processing")
                 con = con +  `<div data-season="season1" onclick="displayEpisodes(event, ${j})">${se[i]['name']}</div> `;
                 let episodeCount = se[i]['episode_count'];
-                let stat = compareWithToday(info_data['next_episode_to_air']['air_date']);
-                let last_ep = info_data['next_episode_to_air']['episode_number'];
-                console.log(last_ep , episodeCount);
-                if (last_ep < episodeCount){
-                        console.log(stat);
-                        if(!stat){  episodeCount = last_ep-1; }
-                        else{  episodeCount = last_ep;      }
-                        console.log(stat);
+                try {
+                    let stat = compareWithToday(info_data['next_episode_to_air']['air_date']);
+                    let last_ep = info_data['next_episode_to_air']['episode_number'];
+                    if (last_ep < episodeCount){
+                            if(!stat){  episodeCount = last_ep-1; }
+                            else{  episodeCount = last_ep;      }
+                    }
+                } finally {
+                    episodes[j] = []; // Initialize the array
+                    for (let k = 1; k <= episodeCount; k++) {  episodes[j].push(k); }
+                    break;
                 }
-                episodes[j] = []; // Initialize the array
-                for (let k = 1; k <= episodeCount; k++) {  episodes[j].push(k); }
-                break;
-              }
+            }
   }
   season_selector.innerHTML = ` ${con}`;
   console.log('episodes', episodes);
-  console.log('con', con);
-
 //season_selector.appendChild(movieItem);
 }
 }
@@ -298,10 +306,7 @@ function Suggestion_Search(movies) {
 
  // Extract the search term from URL parameters
  const params = getQueryParams();
- const searchTerm = params['id'];
-
-  console.log(params);
-    console.log(searchTerm);
+ console.log(params);
 
  if (params) {
    const watch_id = params['id'];
