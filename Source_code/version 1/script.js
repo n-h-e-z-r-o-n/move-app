@@ -1,11 +1,13 @@
 // -----------------------------Slide Show Function ------------------------------------------------------------
+var element = document.getElementById("trending_container");
+
 function start_slider(){
  jQuery(document).ready(function ($) {
          $(".slider-img").on("click", function () {
            if ($(this).hasClass("active")) {
              const redirectUrl = this.dataset.redirectUrl;
-             console.log(redirectUrl);
-             //window.location.href = "watch_page.html?id=" + redirectUrl + "&type=movie";
+             //console.log(redirectUrl);
+             window.location.href = "watch_page.html?id=" + redirectUrl + "&type=movie";
            } else {
              $(".slider-img").removeClass("active");
              $(this).addClass("active");
@@ -31,7 +33,6 @@ function start_slider(){
 
     });
   }
-  //start_slider();
     // ------------------------------------------------------------------------------------------
 
 function AutoScroll_TRENDING() {
@@ -261,8 +262,10 @@ async function Latest_shows(page) {
   let count = 1;
 
   let data_json = [];
-    console.log();
-    while (count <= page) {
+  console.log();
+  let id_prev = 0;
+
+  while (count <= page) {
 
       let res = await fetch(`https://vidsrc.to/vapi/episode/latest/${count}`);
       let data = await res.json();
@@ -278,7 +281,10 @@ async function Latest_shows(page) {
         let res2 = await fetch(`https://api.themoviedb.org/3/tv/${data_json[i]['tmdb_id']}&?api_key=6bfaa39b0a3a25275c765dcaddc7dae7`);
         let data2 = await res2.json();
         if(`${data2['poster_path']}` !== `undefined`){
+          if (id_prev !==data2['id']){
             hold.push({poster_path:data2['poster_path'], first_air_date:data2['first_air_date'], vote_average:data2['vote_average'], original_name:data2['original_name'], id:data2['id']});
+            id_prev = data2['id'];
+          }
         }
   }
   showTV(hold);

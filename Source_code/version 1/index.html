@@ -11,42 +11,31 @@
 <body>
         <div >
 
-                <header class = "nav_bar" >
-
-                    <div class="logo">
-                        <h2 >NavBar</h2>
-                    </div>
-
-                    <form id="searchForm" class="search_container">
-                    <input class="search_input" id="search_input" type="text" placeholder="Search">
-                    <div class="search_icon">
-                    <i  aria-hidden="true">🔍</i>
-                    </div>
-                    </form>
-
-                    <div class="profile-container">
-                        <img class="profile-picture" src="profile/xc.jpg" alt="">
-                        <div class="profile-text-container">
-                            <i class="fas fa-caret-down"></i>
-                        </div>
-
-                    </div>
-
-                </header>
-
-
-
 
                 <main>
 
+                      <div class="trending_container" id="trending_container">
 
+                        <header class = "nav_bar" >
+                            <div class="logo">
+                                <h2 >NavBar</h2>
+                            </div>
+                            <form id="searchForm" class="search_container">
+                            <input class="search_input" id="search_input" type="text" placeholder="Search">
+                            </form>
+                            <div class="profile-container">
+                                <img class="profile-picture" src="profile/xc.jpg" alt="">
+                                <div class="profile-text-container">
+                                    <i class="fas fa-caret-down"></i>
+                                </div>
 
+                            </div>
+                        </header>
 
-                      <div class="trending_container">
                         <div class="slider-container">
 
                             <div class="slider-images" id="sliderUl">
-                              <!-- -->
+                              <!--
                                <div class="slider-img" >
                                  <img src="https://static.fmovies24.to/i/f/f5/1328b97f4f7b956d76ea94406a2d2754.jpg" />
                                  <div class="details">
@@ -110,7 +99,7 @@
                                    <p class="details_p">sql Developer</p>
                                  </div>
                                </div>
-                              <!-- -->
+                               -->
                              </div>
 
                        </div>
@@ -118,7 +107,8 @@
 
 
                      <div class="recommended_container" >
-                        <div class="show_title_section" ><h1 class="text_container">◣ Trending </h1>
+                        <div class="show_title_section" >
+                          <h1 class="text_container">◣ Trending </h1>
                         </div>
                         <div class="movie-list-container">
                               <div class="movie-list-wrapper">
@@ -139,7 +129,10 @@
                     </div>
 
                     <div class="grid_container" >
-                       <div class="show_title_section" >  <h1 class="text_container">◣  Latest Movies  </h1> </div>
+                       <div class="show_title_section" >
+                         <h3 class="text_container">◣  Latest Movies  </h3>
+                         <a href="view-more.html?query=movie" class="show_title_button">View More</a>
+                       </div>
                              <!-- Movies container  -->
                              <div class="movies-container" id="movieUl">
 
@@ -151,9 +144,10 @@
 
 
                     <div class="grid_container" >
-                       <div class="show_title_section" >  <h1 class="text_container">◣ Latest TV Series</h1>      </div>
-                       <!-- Movies  -->
-                       <!-- Movies container  -->
+                       <div class="show_title_section" >
+                         <h3 class="text_container">◣ Latest TV Series  </h3>
+                         <a href="view-more.html?query=show" class="show_title_button">View More</a>
+                       </div>
                        <div class="movies-container" id="seriesUl">
 
 

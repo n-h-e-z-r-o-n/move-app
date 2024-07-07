@@ -1,84 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Season Selector</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f4f4f9;
-        }
-        .container {
-            text-align: center;
-            width: 100px;
-            height: 100px;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            overflow:scroll;
-        }
-        .season-selector div {
-            padding: 10px;
-            margin: 5px;
-            cursor: pointer;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            transition: background-color 0.3s, border-color 0.3s;
-        }
-        .season-selector div:hover {
-            background-color: #f0f0f0;
-            border-color: #aaa;
-        }
-        .season-selector .selected {
-            background-color: #ddd;
-            border-color: #aaa;
-        }
-        .episodes {
-            margin-top: 20px;
-            list-style-type: none;
-            padding: 0;
-        }
-        .episodes li {
-            padding: 5px;
-            border-bottom: 1px solid #ddd;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Pagination</title>
+  <style>
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+    }
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .pagination button {
+      margin: 0 5px;
+      padding: 10px 20px;
+      border: 1px solid #ddd;
+      background-color: #f4f4f4;
+      cursor: pointer;
+    }
+    .pagination button.active {
+      background-color: #007bff;
+      color: #fff;
+      border-color: #007bff;
+    }
+    .pagination button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-      <iframe id = "myIframe" src="https://example.com/valid-path"></iframe>
+  <div class="container">
+    <div class="pagination" id="pagination"></div>
+  </div>
 
-    </div>
+  <script>
+    const items = Array.from({length: 500}, (_, i) => `Item ${i + 1}`);
+    const itemsPerPage = 5;
+    const maxVisiblePages = 5;
+    let currentPage = 1;
 
+    function renderPagination() {
+      const pagination = document.getElementById('pagination');
+      pagination.innerHTML = '';
+      const totalPages = Math.ceil(items.length / itemsPerPage);
+      const half = Math.floor(maxVisiblePages / 2);
 
-</body>
-<script>
-async function checkIframeStatus(url) {
-      try {
-        const response = await fetch(`/check-status?url=${encodeURIComponent(url)}`);
-        const data = await response.json();
-        if (data.status === 404) {
-          console.error('Resource not found (404)');
-        } else {
-          console.log('Status code:', data.status);
-        }
-      } catch (error) {
-        console.error('Error checking status:', error);
+      let startPage = currentPage - half;
+      let endPage = currentPage + half;
+
+      if (startPage < 1) {
+        startPage = 1;
+        endPage = Math.min(totalPages, maxVisiblePages);
       }
+
+      if (endPage > totalPages) {
+        endPage = totalPages;
+        startPage = Math.max(1, totalPages - maxVisiblePages + 1);
+      }
+
+      const createButton = (text, page, isActive = false, isDisabled = false) => {
+        const button = document.createElement('button');
+        button.textContent = text;
+        button.className = isActive ? 'active' : '';
+        button.disabled = isDisabled;
+        if (!isDisabled) {
+          button.addEventListener('click', () => goToPage(page));
+        }
+        pagination.appendChild(button);
+      };
+
+      createButton('First', 1, false, currentPage === 1);
+      createButton('Prev', currentPage - 1, false, currentPage === 1);
+
+      for (let i = startPage; i <= endPage; i++) {
+        createButton(i, i, i === currentPage);
+      }
+
+      createButton('Next', currentPage + 1, false, currentPage === totalPages);
+      createButton('Last', totalPages, false, currentPage === totalPages);
     }
 
-    const iframe = document.getElementById('myIframe');
-    const iframeSrc = iframe.src;
+    function goToPage(page) {
+      currentPage = page;
+      renderPagination();
+    }
 
-    checkIframeStatus(iframeSrc);
-
-</script>
+    // Initial render
+    renderPagination();
+  </script>
+</body>
 </html>

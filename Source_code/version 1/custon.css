@@ -35,19 +35,6 @@ body , html {
 
 }
 
-.profile-container {
-  flex: 2;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.profile-picture {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  object-fit: cover;
-}
 
 
 
@@ -58,24 +45,25 @@ body , html {
   color: rgb(0, 206, 206);
   cursor: pointer;
   margin: 0 0.5rem;
-  display: flex;
+  flex: 1;
   align-items: center; /* Center items vertically */
 
 }
 
 
 .search_container {
+  flex: 1;
     height: 100%;
     width:  50%;
     flex-grow: 1;
     display: flex; /* Flexbox for the search bar and button */
-    justify-content: center; /* Center the items within the container */
     align-items: center; /* Align items vertically within the container */
-
+    float: left;
 }
 
 .search_input {
-    height: 20%;
+
+    height: 2s0%;
     width:  100%;
     padding: 10px;
     font-size: 16px;
@@ -86,6 +74,8 @@ body , html {
     text-align: center; /* Center the text horizontally */
     background-color:transparent;
     color: black;
+    align-items: center; /* Align items vertically within the container */
+
 }
 
 
@@ -100,21 +90,31 @@ body , html {
 
 }
 
+.profile-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.profile-picture {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
+/* ------------------------------------------------------------------------ */
 
 .trending_container{
-    background: linear-gradient(to bottom, rgba(0,0,0,0), yellow);
+    background: linear-gradient(to bottom, rgba(0,0,0,0), var(--global-color-bg)), url("./profile/porsche.jpg");
     /*background-image:  url("./profile/porsche.jpg");*/
     animation:backAn 50s infinite;
-    height: 750px;
+    height: 770px;
     width:  100%;
-
 }
 
-.text_container {
-  color: var(--global-color-fg);
-  border-bottom: 2px solid yellow; /* Adjust the thickness and color as needed */
-}
-/* ------------------------------------------------------------------------ */
 
 .slider-container{
   width: 100%;
@@ -208,19 +208,49 @@ body , html {
 .show_title_section{
   height: 45px;
   width: 100%;
+  border-top: 2px solid yellow; /* Adjust the thickness and color as needed */
+
+  border-bottom: 2px solid gray; /* Adjust the thickness and color as needed */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
 }
+
+.text_container {
+  height: 80%;
+  width:50%;
+  color: var(--global-color-fg);
+  font-size: 20px;
+  text-align:left;
+
+}
+
+.show_title_button{
+      height: 50%;
+      width:10%;
+      font-style: italic;
+      cursor: pointer;
+      text-align: center;
+      border-radius: 20px;
+      border: 1px solid;
+      text-decoration: none;
+      text-overflow: clip;
+}
+
+
 
 
 
 /* --------------------------------------------------------------------------------------------------*/
 .recommended_container{
-    height: 300px;
+    height: 330px;
     width:  100%;
 
 }
 
 .movie-list-container {
-  height: 100%;
+  height: 90%;
   width: 100%;
 }
 
@@ -349,6 +379,7 @@ body , html {
 .grid_container{
     height: auto;
     width:  100%;
+    padding-bottom: 40px;
 }
 
 .movies-container{
@@ -663,17 +694,55 @@ body , html {
   transform: translateY(0px);
 }
 
+/* ViewMore ------------------------------------------------------------------*/
 
+.view_more{
+    height: 700px;
+    width:  100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0), var(--global-color-bg)), url('./profile/back.jpg');
+}
+.view_grid_container{
+width: 100%;
+min-height: 500px;
+display: flex;
+
+}
+.pagination_container{
+  width: 650px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.pagination button {
+  margin: 0 5px;
+  padding: 10px 20px;
+  border: 1px solid #ddd;
+  background-color: #f4f4f4;
+  cursor: pointer;
+  color: black;
+}
+.pagination button.active {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
 /*---------------------------------------------------FOOTER SECTION-------------------------------------------------------*/
 
 .footer_contaner{
-
     height: auto;
     max-width:   100%;
     padding-top: 20px;
-
-
 }
+
 .footer_div{
   background: #140B5C;
   width: 100%;
@@ -686,6 +755,7 @@ body , html {
   margin: auto;
   padding: 30px 40px 40px 40px;
 }
+
 .footer_div .content .top{
   display: flex;
   align-items: center;
