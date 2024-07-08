@@ -1,5 +1,5 @@
 :root {
- --global-color-bg: #1A2421;
+ --global-color-bg:  #000000;
   --global-color-fg: white;
 }
 
@@ -113,6 +113,7 @@ body , html {
     animation:backAn 50s infinite;
     height: 770px;
     width:  100%;
+    padding-bottom: 40px;
 }
 
 
@@ -192,7 +193,7 @@ body , html {
   display: none;
 }
 .slider-img.active{
-  width: 1066px !important;
+  width:  95% !important;
   height:  700px !important;
 }
 .slider-img.active h1{
@@ -235,7 +236,7 @@ body , html {
       border-radius: 20px;
       border: 1px solid;
       text-decoration: none;
-      text-overflow: clip;
+      text-overflow: hidden;
 }
 
 
@@ -463,6 +464,8 @@ body , html {
   border-radius: 10px 10px 10px 10px;
   box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.5);
   overflow:scroll;
+  flex-wrap: wrap;
+
 
 }
 
@@ -518,6 +521,8 @@ body , html {
   height: 100%;
   width:  85%;
   padding: 20px 20px 0 20px;
+  flex-wrap: wrap;
+
 
 }
 
@@ -526,7 +531,7 @@ body , html {
   .iframe_watch {
     width: 100%;
     height: 100%;
-    border-radius: 40px 40px 40px 40px;
+    border-radius: 30px 30px 30px 30px;
 
   }
 
@@ -574,9 +579,13 @@ body , html {
             display: flex;
             position: relative;
             flex-wrap: wrap;
-
-
         }
+
+.episodes .selected {
+    background-color: gray;
+    border-color: #aaa;
+}
+
 .episodes_each {
     padding: 15px;
     border: 1px solid gray;
@@ -607,8 +616,8 @@ body , html {
 }
 .REM_container .box {
   position: relative;
-  width: 275px;
-  height: 330px;
+  width: 375px;
+  height: 430px;
   background: #000;
   transition: 0.5s;
   transform-style: preserve-3d;
@@ -618,10 +627,10 @@ body , html {
   border-radius: 20px;
 }
 .REM_container:hover .box {
-  transform: rotateY(8deg);
+  transform: rotateY(0.2deg);
 }
 .REM_container .box:hover ~ .box {
-  transform: rotateY(-8deg);
+  transform: rotateY(-0.2deg);
 }
 .REM_container .box:hover {
   transform: rotateY(0deg) scale(1.25);
@@ -708,7 +717,7 @@ display: flex;
 
 }
 .pagination_container{
-  width: 650px;
+  width: auto;
   margin: 0 auto;
   padding: 20px;
   text-align: center;
@@ -744,7 +753,7 @@ display: flex;
 }
 
 .footer_div{
-  background: #140B5C;
+  background: #3D0C02;
   width: 100%;
   bottom: 0;
   left: 0;
@@ -816,82 +825,10 @@ display: flex;
   color: #FF0000;
   background: #fff;
 }
-.footer_div .content .link-boxes{
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-.footer_div .content .link-boxes .box{
-  width: calc(100% / 5 - 10px);
-}
-.content .link-boxes .box .link_name{
-  color: #fff;
-  font-size: 18px;
-  font-weight: 400;
-  margin-bottom: 10px;
-  position: relative;
-}
-.link-boxes .box .link_name::before{
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  height: 2px;
-  width: 35px;
-  background: #fff;
-}
-.content .link-boxes .box li{
-  margin: 6px 0;
-  list-style: none;
-}
-.content .link-boxes .box li a{
-  color: #fff;
-  font-size: 14px;
-  font-weight: 400;
-  text-decoration: none;
-  opacity: 0.8;
-  transition: all 0.4s ease
-}
-.content .link-boxes .box li a:hover{
-  opacity: 1;
-  text-decoration: underline;
-}
-.content .link-boxes .input-box{
-  margin-right: 55px;
-}
-.link-boxes .input-box input{
-  height: 40px;
-  width: calc(100% + 55px);
-  outline: none;
-  border: 2px solid #AFAFB6;
-  background: #140B5C;
-  border-radius: 4px;
-  padding: 0 15px;
-  font-size: 15px;
-  color: #fff;
-  margin-top: 5px;
-}
-.link-boxes .input-box input::placeholder{
-  color: #AFAFB6;
-  font-size: 16px;
-}
-.link-boxes .input-box input[type="button"]{
-  background: #fff;
-  color: #140B5C;
-  border: none;
-  font-size: 18px;
-  font-weight: 500;
-  margin: 4px 0;
-  opacity: 0.8;
-  cursor: pointer;
-  transition: all 0.4s ease;
-}
-.input-box input[type="button"]:hover{
-  opacity: 1;
-}
+
 .footer_div .bottom-details{
   width: 100%;
-  background: #0F0844;
+  background: #2B1B17;
 }
 .footer_div .bottom-details .bottom_text{
   max-width: 1250px;

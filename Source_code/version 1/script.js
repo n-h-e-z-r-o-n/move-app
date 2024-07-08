@@ -35,29 +35,34 @@ function start_slider(){
   }
     // ------------------------------------------------------------------------------------------
 
-function AutoScroll_TRENDING() {
-const arrows = document.querySelectorAll(".arrow");
-const movieLists = document.querySelectorAll(".movie-list");
+    function AutoScroll_TRENDING() {
+      const arrows = document.querySelectorAll(".arrow");
+      const movieLists = document.querySelectorAll(".movie-list");
 
-arrows.forEach((arrow, i) => {
-  const itemNumber = movieLists[i].querySelectorAll("img").length;
-  let clickCounter = 0;
+      arrows.forEach((arrow, i) => {
+        const itemNumber = movieLists[i].querySelectorAll("img").length;
+        let clickCounter = 0;
 
-  const clickNext = () => {
-    const ratio = Math.floor(window.innerWidth / 270);
-    clickCounter++;
-    if (itemNumber - (4 + clickCounter) + (4 - ratio) >= 0) {
-      const currentTranslateX = movieLists[i].computedStyleMap().get("transform")[0].x.value;
-      movieLists[i].style.transform = `translateX(${currentTranslateX - 300}px)`;
-    } else {
-      movieLists[i].style.transform = "translateX(0)";
-      clickCounter = 0;
+        const clickNext = () => {
+          const ratio = Math.floor(window.innerWidth / 270);
+          clickCounter++;
+          const movieList = movieLists[i];
+          const computedStyle = window.getComputedStyle(movieList);
+          const transformValue = computedStyle.getPropertyValue("transform");
+          const currentTranslateX = parseInt(transformValue.split(",")[4]) || 0;
+
+          if (itemNumber - (4 + clickCounter) + (4 - ratio) >= 0) {
+            movieList.style.transform = `translateX(${currentTranslateX - 300}px)`;
+          } else {
+            movieList.style.transform = "translateX(0)";
+            clickCounter = 0;
+          }
+        };
+
+        arrow.addEventListener("click", clickNext);
+        setInterval(clickNext, 3000);   // Auto-click the next arrow after 3 seconds
+      });
     }
-  };
-  arrow.addEventListener("click", clickNext);
-  setInterval(clickNext, 3000);   // Auto-click the next arrow after 3 seconds
-});
-}
 
 
 
@@ -103,6 +108,7 @@ async function Slider_Movies(url) {
 function Slider_Display(movies) {
   Slider_div.innerHTML = "";
   let count = 1
+  let start = 0;
   movies.forEach((movie) => {
     if (count < 10){
           const { title, backdrop_path, poster_path, id, vote_average, overview, release_date } = movie;
@@ -112,15 +118,17 @@ function Slider_Display(movies) {
                 <img src="${IMG_PATH + backdrop_path}" />
                 <div class="details">
                   <h2 class="details_h2">${title}</h2>
-                  <p class="details_p">✪ ${vote_average}</p>
+                  <p class="details_p">&#9733; ${vote_average}</p>
                 </div>
           `;
           movieItem.dataset.redirectUrl = `${id}`;
           Slider_div.appendChild(movieItem);
+          start = movieItem;
           count++;
     }
   });
   start_slider();
+  start.classList.add("active");
 
 }
 
@@ -143,7 +151,7 @@ function showMovies(movies) {
             <h3>${title}</h3>
             <div class="container_span">
                <div style="color: gray;">${release_date}</div>
-               <div style="color: gray;"> ${"★"} ${vote_average}</div>
+               <div style="color: gray;"> &starf; &starf; &#9734;  ${vote_average}</div>
             </div>
 
     `;
@@ -180,7 +188,7 @@ function showTV(movies) {
             <h3>${original_name}</h3>
             <div class="container_span">
                <div style="color: gray;">${first_air_date}</div>
-               <div style="color: gray;"> ${" \t\t\t ★"} ${vote_average}</div>
+               <div style="color: gray;"> &starf; &starf; &#9734;   ${vote_average}</div>
             </div>
 
     `;
@@ -262,30 +270,32 @@ async function Latest_shows(page) {
   let count = 1;
 
   let data_json = [];
-  console.log();
   let id_prev = 0;
 
   while (count <= page) {
-
       let res = await fetch(`https://vidsrc.to/vapi/episode/latest/${count}`);
       let data = await res.json();
-
-      data_json = data_json.concat(data['result']['items']) ;
-      count++;
-
+      if(Array.isArray(data['result']['items'])){
+        data_json = data_json.concat(data['result']['items']) ;
+        count++;
+      }else{
+        itemValues = Object.values(data.result.items);
+        data_json = data_json.concat(itemValues) ;
+        count++;
+      }
     }
-
   let hold = [];
   for (let i = 0; i < data_json.length; i++) {
-
-        let res2 = await fetch(`https://api.themoviedb.org/3/tv/${data_json[i]['tmdb_id']}&?api_key=6bfaa39b0a3a25275c765dcaddc7dae7`);
-        let data2 = await res2.json();
-        if(`${data2['poster_path']}` !== `undefined`){
-          if (id_prev !==data2['id']){
-            hold.push({poster_path:data2['poster_path'], first_air_date:data2['first_air_date'], vote_average:data2['vote_average'], original_name:data2['original_name'], id:data2['id']});
-            id_prev = data2['id'];
+      try{
+          let res2 = await fetch(`https://api.themoviedb.org/3/tv/${data_json[i]['tmdb_id']}&?api_key=6bfaa39b0a3a25275c765dcaddc7dae7`);
+          let data2 = await res2.json();
+          if(`${data2['poster_path']}` !== `undefined`){
+            if (id_prev !==data2['id']){
+              hold.push({poster_path:data2['poster_path'], first_air_date:data2['first_air_date'], vote_average:data2['vote_average'], original_name:data2['original_name'], id:data2['id']});
+              id_prev = data2['id'];
+            }
           }
-        }
+        }finally{continue;}
   }
   showTV(hold);
 }
@@ -319,7 +329,7 @@ function Search_Results_SHOW(movies) {
                   <h3>${title}</h3>
                   <div class="container_span">
                      <div style="color: gray;">${first_air_date}</div>
-                     <div style="color: gray;"> ${" \t\t\t ★"} ${vote_average}</div>
+                     <div style="color: gray;"> &starf; &starf; &#9734;   ${vote_average}</div>
                   </div>
 
 

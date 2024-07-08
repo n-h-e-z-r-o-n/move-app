@@ -74,17 +74,12 @@ function Search_Results_SHOW(imdb, type, info_data) {
                           </ul>
 
                           <p class="watch_review">${info_data['overview']}</p>
-                          <p class="watch_review" style="color:gray;">★★★✩✩ ${info_data['vote_average']}</p>
+                          <p class="watch_review" style="color:gray;">&starf; &starf; &#9734;   ${info_data['vote_average']}</p>
                           <p class="watch_review" style="color:gray;">Type: Movie</p>
 
                           <div>
                             <div class="watch_review">Genres &nbsp; </div>
                             <div class="watch_review" style="color:gray; padding-left: 20px;">${genres} </div>
-                          </div>
-                          <div>
-                                <p class="watch_review">Cast &nbsp;</p>
-                                <p class="watch_review" style="color:gray; padding-left: 20px;"> 8.9</p>
-
                           </div>
                           <div >
                                 <p class="watch_review">Production &nbsp;</p>
@@ -123,17 +118,13 @@ function Search_Results_SHOW(imdb, type, info_data) {
             </ul>
 
             <p class="watch_review">${info_data['overview']}</p>
-            <p class="watch_review" style="color:gray;">★★★✩✩ ${info_data['vote_average']}</p>
+            <p class="watch_review" style="color:gray;">&starf; &starf; &#9734;   ${info_data['vote_average']}</p>
             <p class="watch_review" style="color:gray;">Type: series</p>
             <div>
               <div class="watch_review">Genres &nbsp; </div>
               <div class="watch_review" style="color:gray; padding-left: 20px;">${genres} </div>
             </div>
-            <div>
-                  <p class="watch_review">Cast &nbsp;</p>
-                  <p class="watch_review" style="color:gray; padding-left: 20px;"> 8.9</p>
 
-            </div>
             <div >
                   <p class="watch_review">Production &nbsp;</p>
                   <p class="watch_review" style="color:gray; padding-left: 20px;">${production_companies}</p>
@@ -271,7 +262,7 @@ function Suggestion_Search(movies) {
                 <div>
                   <h2>${title}</h2>
                   <p>${overview}</p>
-                  <p>${vote_average}</p>
+                  <p>&starf; &starf; ${vote_average}</p>
                 </div>
               </div>
 
@@ -329,6 +320,8 @@ function Suggestion_Search(movies) {
            const season = seasonSelect.getAttribute("data-season");
            // Remove 'selected' class from all divs
            const seasonDivs = document.querySelectorAll('.season-selector div');
+           console.log("seasonDivs", seasonDivs);
+
            seasonDivs.forEach(div => div.classList.remove('selected'));
            seasonSelect.classList.add('selected');            // Add 'selected' class to the clicked div
 
@@ -339,15 +332,22 @@ function Suggestion_Search(movies) {
            selectedEpisodes.forEach(episode => {
              const li = document.createElement("div");
              li.classList.add("episodes_each");
-             li.textContent = `Episode ${episode}`;
 
-             li.addEventListener("click", () => {
+
+             li.textContent = `Episode ${episode}`;
+             li.addEventListener("click", (event) => {
+               const episodeSelect = event.target;
+               const episodeDivs = document.querySelectorAll('.episodes div');
+               episodeDivs.forEach(div => div.classList.remove('selected'));
+               console.log("Episod", episodeDivs);
+
+               episodeSelect.classList.add('selected');
+
                const iframe = document.getElementById("watch-frame");
                const newSrc = `https://vidsrc.to/embed/tv/${show_id}/${season_no}/${episode}`;
                iframe.src = newSrc;
 
              });
              episodeList.appendChild(li);
-
            });
        }

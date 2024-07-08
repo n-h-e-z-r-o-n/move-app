@@ -1,98 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simple Pagination</title>
-  <style>
-    .container {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 20px;
-      text-align: center;
-    }
-    .pagination {
-      display: flex;
-      justify-content: center;
-      margin-top: 20px;
-    }
-    .pagination button {
-      margin: 0 5px;
-      padding: 10px 20px;
-      border: 1px solid #ddd;
-      background-color: #f4f4f4;
-      cursor: pointer;
-    }
-    .pagination button.active {
-      background-color: #007bff;
-      color: #fff;
-      border-color: #007bff;
-    }
-    .pagination button:disabled {
-      background-color: #ccc;
-      cursor: not-allowed;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad Blocker Example</title>
 </head>
 <body>
-  <div class="container">
-    <div class="pagination" id="pagination"></div>
-  </div>
-
-  <script>
-    const items = Array.from({length: 500}, (_, i) => `Item ${i + 1}`);
-    const itemsPerPage = 5;
-    const maxVisiblePages = 5;
-    let currentPage = 1;
-
-    function renderPagination() {
-      const pagination = document.getElementById('pagination');
-      pagination.innerHTML = '';
-      const totalPages = Math.ceil(items.length / itemsPerPage);
-      const half = Math.floor(maxVisiblePages / 2);
-
-      let startPage = currentPage - half;
-      let endPage = currentPage + half;
-
-      if (startPage < 1) {
-        startPage = 1;
-        endPage = Math.min(totalPages, maxVisiblePages);
-      }
-
-      if (endPage > totalPages) {
-        endPage = totalPages;
-        startPage = Math.max(1, totalPages - maxVisiblePages + 1);
-      }
-
-      const createButton = (text, page, isActive = false, isDisabled = false) => {
-        const button = document.createElement('button');
-        button.textContent = text;
-        button.className = isActive ? 'active' : '';
-        button.disabled = isDisabled;
-        if (!isDisabled) {
-          button.addEventListener('click', () => goToPage(page));
-        }
-        pagination.appendChild(button);
-      };
-
-      createButton('First', 1, false, currentPage === 1);
-      createButton('Prev', currentPage - 1, false, currentPage === 1);
-
-      for (let i = startPage; i <= endPage; i++) {
-        createButton(i, i, i === currentPage);
-      }
-
-      createButton('Next', currentPage + 1, false, currentPage === totalPages);
-      createButton('Last', totalPages, false, currentPage === totalPages);
-    }
-
-    function goToPage(page) {
-      currentPage = page;
-      renderPagination();
-    }
-
-    // Initial render
-    renderPagination();
-  </script>
+    <div class="content">
+        <h1>Welcome to My Website</h1>
+        <p>This is some content on the website.</p>
+    </div>
+    <div class="ad-banner">This is an ad banner</div>
+    <div class="ad-sidebar">This is a sidebar ad</div>
+    <div>
+      <div id="sandboxedDiv">
+      <iframe  class="iframe_watch"  src="https://vidsrc.to/embed/tv/tt0944947"  frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+    </div>
 </body>
+<script>
+    const sandboxedDiv = document.getElementById('sandboxedDiv');
+
+    // Example: Disable right-click context menu
+    sandboxedDiv.addEventListener('contextmenu', function(event) {
+        event.preventDefault();
+    });
+
+    // Example: Disable text selection
+    sandboxedDiv.addEventListener('selectstart', function(event) {
+        event.preventDefault();
+    });
+</script>
 </html>

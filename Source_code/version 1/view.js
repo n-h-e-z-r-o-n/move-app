@@ -13,6 +13,22 @@
  const params = getQueryParams();  // Extract the search term from URL parameters
 
  console.log(params)
+
+ // FOR SEARCH SUBMIT -----------------------------------------------------------------
+ const form = document.getElementById("searchForm");
+ const search = document.getElementById("search_input");
+ 
+ form.addEventListener("submit", (e) => {
+   e.preventDefault();
+   const searchTerm = search.value;
+   if (searchTerm && searchTerm !== "") {
+
+     search.value = "";
+     window.location.href = "S_Results.html?query=" + searchTerm; // Replace with the URL of the page you want to open
+   } else {
+
+   }
+ });
 //------------------------------------------------------------------------------
 const IMG_PATH = "https://image.tmdb.org/t/p/w1280";
 
@@ -24,17 +40,27 @@ async function Latest_shows(page) {
   let data = await res.json();
   let hold = [];
   let data_json  = data['result']['items'];
-  let id_prev = 0;
-  for (let i = 0; i < data_json.length; i++) {
-        let res2 = await fetch(`https://api.themoviedb.org/3/tv/${data_json[i]['tmdb_id']}&?api_key=6bfaa39b0a3a25275c765dcaddc7dae7`);
-        let data2 = await res2.json();
-        if(`${data2['poster_path']}` !== `undefined`){
-          if (id_prev !==data2['id']){
-            hold.push({poster_path:data2['poster_path'], first_air_date:data2['first_air_date'], vote_average:data2['vote_average'], overview:data2['overview'], original_name:data2['original_name'], id:data2['id']});
-            id_prev = data2['id'];
-            }
-        }
+
+  if(Array.isArray(data_json)){
+  }else{
+      itemValues = Object.values(data.result.items);
+      data_json = itemValues;
   }
+
+  let id_prev = 0;
+  for (let i = 0; i < 15; i++) {
+        try{
+            let res2 = await fetch(`https://api.themoviedb.org/3/tv/${data_json[i]['tmdb_id']}&?api_key=6bfaa39b0a3a25275c765dcaddc7dae7`);
+            let data2 = await res2.json();
+            if(`${data2['poster_path']}` !== `undefined`){
+              if (id_prev !==data2['id']){
+                hold.push({poster_path:data2['poster_path'], first_air_date:data2['first_air_date'], vote_average:data2['vote_average'], overview:data2['overview'], original_name:data2['original_name'], id:data2['id']});
+                id_prev = data2['id'];
+                }
+            }
+          }finally{continue;}
+  }
+  console.log("show f: ", hold);
   Suggestion_Search(hold);
 }
 
@@ -86,7 +112,7 @@ function Suggestion_Search(movies) {
                 <div>
                   <h2>${title}</h2>
                   <p>${overview}</p>
-                  <p>${vote_average}</p>
+                  <p>&starf; &starf;  ${vote_average}</p>
                 </div>
               </div>
 
@@ -154,10 +180,12 @@ function goToPage(page) {
 }
 // =============================================================================
 if (params['query'] === 'show'){
+  console.log("DISP show");
   Latest_shows(1);
   renderPagination();// Initial render
 }
 else{
+  console.log("DISP movies");
   Latest_Movies(1);
   renderPagination();// Initial render
 }
