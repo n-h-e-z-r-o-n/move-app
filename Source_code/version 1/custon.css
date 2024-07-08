@@ -384,7 +384,7 @@ body , html {
 }
 
 .movies-container{
-    max-width: 100%;
+    width: 100%;
     margin-right: auto;
     margin-left: auto;
     display: grid;
