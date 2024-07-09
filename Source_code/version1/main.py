@@ -2,12 +2,12 @@ import tkinter as tk
 import threading
 import os
 import ctypes as ct
-
+import requests
 path_exe = os.getcwd()
+
 bg_color = '#36454F'
 fg_color = "black"
 
-# ---------------------------------------------- HTTP_ Local Server  -------------------------------------------------------------------------
 
 # ------------------------------- web-Integration ---------------------------------------------------------------------------------------------------
 
@@ -78,6 +78,18 @@ class WebView2(tk.Frame):
     def reload(self):
         self.core.Reload()
 
+    def Go_back(self):
+        self.web.GoBack()
+
+    def Go_Forwad(self):
+        self.web.GoForward()
+
+    def reload(self):
+        try:
+            self.reload()
+        except:
+            pass
+
 
 def modify_css():
     # Read the content of the CSS file
@@ -90,6 +102,11 @@ def modify_css():
         # Write the modified content back to the CSS file
         with open(i, 'w') as file:
             file.write(css_style)
+
+
+
+
+
 
 # =============================== Functions definition ============================================================================================
 
@@ -119,27 +136,52 @@ def title_bar_color(window, color):
     except Exception as e:
         print("title_bar_color fun error : ", e)
 
+def download_app_icon():
+    url = "https://raw.githubusercontent.com/Hezron26/assets/main/panda.ico"
+    filename = 'panda.ico'
+    response = requests.get(url)
+    with open(filename, 'wb') as f:
+        f.write(response.content)
 
-def Main():
-    global  bg_color
+
+def toggle_fullscreen(main_widget):
+    main_widget.overrideredirect(False)
+    main_widget.overrideredirect(True)
+
+def main():
     app = tk.Tk()
+    app.geometry("600x500")
+    app.state("zoomed")
+    app.title("FilmFusion")
+    title_bar_color(app, "#000000")
 
-    screen_width = app.winfo_screenwidth()  # Get the screen width dimensions
-    screen_height = app.winfo_screenheight()
+    new_web_view_frame = tk.Frame(app, bg="#000000")
+    new_web_view_frame.place(y=30, relwidth=1, relheight=0.977)
+    url = "file:///"+path_exe+"\index.html"
+    frame2 = WebView2(new_web_view_frame, 500, 500)
+    frame2.place(relheight=1, relwidth=1, relx=0, rely=0)
 
-    view = WebView2(app, width=screen_width, height=screen_height)
-    view.place(relheight=1, relwidth=1)
+    frame2.load_url(url)
 
-    view.load_url('file:///' + path_exe+'./index.html')
-    #view.load_url( "https://vidsrc.to/embed/tv/tt11198330")
-    title_bar_color(app, bg_color)
-    modify_css()
+    # ===================== Navigation Bar Section ==========================================================================================================
+    nav_bar_bg = "#000000"
+    nav_bar = tk.Frame(app, bg=nav_bar_bg)
+    nav_bar.place(x=0, y=0, relwidth=1, height=30)
+
+    back_button = tk.Button(master=nav_bar, fg='white', text="⊂", font=("Courier New", 17), activebackground=nav_bar_bg, activeforeground='yellow', bg=nav_bar_bg, command=lambda :frame2.Go_back(), border=0, borderwidth=0)
+    back_button.place(relx=0.001, rely=0.1, relwidth=0.03, relheight=0.8)
+
+    Next_button = tk.Button(master=nav_bar, fg='white', text="⊃", font=("Courier New", 17), activebackground=nav_bar_bg, activeforeground='yellow', bg=nav_bar_bg, command= lambda :frame2.Go_Forwad(), border=0, borderwidth=0)
+    Next_button.place(relx=0.031, rely=0.1, relwidth=0.03, relheight=0.8)
+
+    reload_button = tk.Button(master=nav_bar, fg='white', text="⟳", font=("Arial Bold", 15), activebackground=nav_bar_bg, activeforeground='yellow', bg=nav_bar_bg, command= lambda :frame2.reload(), border=0, borderwidth=0)
+    reload_button.place(relx=0.061, rely=0.1, relwidth=0.03, relheight=0.8)
 
     app.mainloop()
 
 def go():
     try:
-      Main()
+      main()
     except Exception as e:
         print(e)
 

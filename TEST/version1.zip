@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta name="viewport" content="initial-scale=1"><title>https://drive.google.com/file/d/1tBO1qMaimN-CoKq3w7Kkitu-dCE_V9Y9/view?usp=drive_link</title></head>
+<body style="font-family: arial, sans-serif; background-color: #fff; color: #000; padding:20px; font-size:18px; overscroll-behavior:contain;" onload="e=document.getElementById('captcha');if(e){e.focus();} if(solveSimpleChallenge) {solveSimpleChallenge(,);}">
+<div style="max-width:400px;">
+<hr noshade size="1" style="color:#ccc; background-color:#ccc;"><br>
+<form id="captcha-form" action="index" method="post">
+<noscript>
+<div style="font-size:13px;">
+  In order to continue, please enable javascript on your web browser.
+</div>
+</noscript>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>var submitCallback = function(response) {document.getElementById('captcha-form').submit();};</script>
+<div id="recaptcha" class="g-recaptcha" data-sitekey="6LfwuyUTAAAAAOAmoS0fdqijC2PbbdH4kjq62Y1b" data-callback="submitCallback" data-s="JJ0i6xPeDYhKOHG62CXv6AJf1qrdn2_smbmS-5o0nb62YOgAmAK9Hjze5IuRP0MX6OZHj9jWc9b4oEJ03FbvUawmAynxK2N6zbMnGWc9owjTyIzaOHJ8A9gF3_UFxA3Qt3vTTTmsj9AKrNcieNqlYz-F59Ne6Nw4j5wsrgBV1j30X8YPr0GR7qn4T95q-EsmP5N6rxuhSMBh8w4t4kzWsF-Uc_jEbg0xcDfvSmEEo_J215Ea-iYtTHPgeHZVr9kdATYgwbyQNJX6ZGykbEUw2lo3huqhiPI"></div>
+
+<input type='hidden' name='q' value='EgQpWrAvGNz-tLQGIjDVy4PZTBzQ5YZNq5N--rBL_AGwv9agHRmbgH0H43jSbh5d862EuQVhto7t_x7MAmQyAXJKEVNPUlJZX0lTUF9NRVNTQUdFWgFD'><input type="hidden" name="continue" value="https://drive.google.com/file/d/1tBO1qMaimN-CoKq3w7Kkitu-dCE_V9Y9/view?usp=drive_link">
+</form>
+<hr noshade size="1" style="color:#ccc; background-color:#ccc;">
+
+<div style="font-size:13px;">
+<b>About this page</b><br><br>
+We have detected automated abuse of Google coming from your Internet Service Provider.  This page checks to see if it's really a human sending the requests and not a robot coming through your ISP&#39;s network.
+<br><br>
+<div id="infoDiv" style="display:none; background-color:#eee; padding:10px; margin:0 0 15px 0; line-height:1.4em;">
+This page appears when Google automatically detects requests coming from your computer network which appear to be in violation of the <a href="//www.google.com/policies/terms/">Terms of Service</a>. The block will expire shortly after those requests stop.  In the meantime, solving the above CAPTCHA will let you continue to use our services.<br><br>This traffic may have been sent by malicious software, a browser plug-in, or a script that sends automated requests.  If you share your network connection, ask your administrator for help &mdash; a different computer using the same IP address may be responsible.  <a href="//support.google.com/websearch/answer/86640">Learn more</a><br><br>Sometimes you may be asked to solve the CAPTCHA if you are using advanced terms that robots are known to use, or sending requests very quickly.
+</div>
+
+IP address: 41.90.176.47<br>Time: 2024-07-09T13:47:09Z<br>URL: https://drive.google.com/file/d/1tBO1qMaimN-CoKq3w7Kkitu-dCE_V9Y9/view?usp=drive_link<br>
+</div>
+</div>
+</body>
+</html>
