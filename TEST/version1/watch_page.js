@@ -15,15 +15,7 @@ function compareWithToday(dateString) {
         return true;
     }
 }
-//------------------------------------------------------------------------------
-document.addEventListener("fullscreenchange", function() {
-    const iframe = document.getElementById('watch-frame');
-    if (document.fullscreenElement === iframe) {
-        console.log("Iframe is in fullscreen mode");
-    } else {
-        console.log("Iframe is not in fullscreen mode");
-    }
-});
+
 //------------------------------------------------------------------------------
 
 const watch_info = document.getElementById("watch_info");

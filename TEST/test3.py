@@ -20,9 +20,9 @@ def download_and_extract_zip(url, extract_to='.'):
 
 
 # URL of the zip file to download
-url = "https://drive.google.com/file/d/1tBO1qMaimN-CoKq3w7Kkitu-dCE_V9Y9/view?usp=drive_link"
+url = "https://github.com/ice-black/move-app/blob/6faa41cbf3536f857342753be62ee5be5a15e677/Source_code/version1.zip"
 # Folder where the contents will be extracted
-extract_to = 'Source_code'
+extract_to = 'version1'
 
 # Call the function to download and extract the zip file
 download_and_extract_zip(url, extract_to)

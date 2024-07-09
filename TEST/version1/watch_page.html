@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FilmFusion</title>
+    <link rel="icon" href="profile/tx.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="./styles.css" />
+    <link rel="stylesheet" type="text/css" href="./custon.css" />
+    <style id="dynamic-css"></style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body class="watch_page_background">
+        <div >
+
+                <main>
+
+                  <div class="uuux" id="back_img">
+
+                      <header class = "nav_bar" >
+                          <a href="index.html" class="logo">
+                              <h2 >NavBar</h2>
+                          </a>
+                          <form id="searchForm" class="search_container">
+                          <input class="search_input" id="search_input" type="text" placeholder="Search">
+                          <div class="search_icon">
+                          <i  aria-hidden="true">&#128269;</i>
+                          </div>
+                          </form>
+                          <div class="profile-container">
+                            <!-- img class="profile-picture" src="profile/xc.jpg" alt="" -->
+                              <div class="profile-text-container">
+                                  <i class="fas fa-caret-down"></i>
+                              </div>
+                          </div>
+                      </header>
+
+                      <div class="watch_container">
+                                <div class="watch_info" id="watch_info">
+                                      <img class="watch_image" src="https://image.tmdb.org/t/p/w1280/ysIPmxLVYYvTUaOwEsLjF7nEf4C.jpg">
+                                      <div class="watch_details">
+                                          <h3 class="watch_title">Two Scoops of Italy</h3>
+                                          <ul >
+                                            <li class="movie_gen__details">PG-13  /</li>
+                                            <li class="movie_gen__details">2h 49min  /</li>
+                                            <li class="movie_gen__details">Adventure, Drama, Sci-Fi,</li>
+                                          </ul>
+
+                                          <p class="watch_review">When an American chef travels to a quant village in Italy for inspiration, she falls in love with the flavors, culture, gelato, and the Italian gentleman who helps her discover it all.</p>
+
+                                          <p class="watch_review" style="color:gray;">&starf; &starf;  8.9</p>
+                                          <div style="display: flex;">
+                                            <div class="watch_review">Genres &nbsp;&nbsp; :&nbsp;&nbsp; </div>
+                                            <div class="watch_review" style="color:gray;">action </div>
+                                          </div>
+                                          <div style="display: flex;">
+                                                <p class="watch_review">Cast &nbsp;&nbsp;&nbsp; :&nbsp;&nbsp; </p>
+                                                <p class="watch_review" style="color:gray;"> 8.9</p>
+
+                                          </div>
+                                          <div style="display: flex;">
+                                                <p class="watch_review">Production &nbsp;&nbsp; :&nbsp;&nbsp; </p>
+                                                <p class="watch_review" style="color:gray;">8.9</p>
+
+                                          </div>
+                                          <div style="display: flex;">
+                                                <p class="watch_review">Country &nbsp;&nbsp; : &nbsp;&nbsp;</p>
+                                                <p class="watch_review" style="color:gray;">8.9</p>
+
+                                          </div>
+
+
+                                      </div>
+
+                                </div>
+
+                                <div class="watch_Frame" id="watch_Frame">
+                                        <!-- iframe  class="iframe_watch"  src="https://vidsrc.to/embed/tv/tt0944947"  frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe -->
+                                </div>
+                  </div>
+                </div>
+
+
+                    <div class="seasons">
+                      <div class="seasons_container">
+                        <div class="season-selector" id="season-selector">
+                           <!--
+                            <div data-season="season1" onclick="selectSeason(event)">Season 1</div>
+                            <div data-season="season2" onclick="selectSeason(event)">Season 2</div>
+                            <div data-season="season3" onclick="selectSeason(event)">Season 3</div>
+                          -->
+                        </div>
+
+                      </div>
+                      <div class="episodes_container">
+                        <div id="episode-list" class="episodes"></div>
+
+                      </div>
+
+                    </div>
+
+
+
+
+
+
+
+                  <div class="watch_recomendation">
+                    <div class="show_title_section" >  <h1 class="text_container">Related</h1>      </div>
+
+                    <div class="REM_container" id="recomed_R_div">
+                      <!--
+                      <div class="box">
+                        <div class="imgBx">
+                          <img src="https://images.unsplash.com/photo-1579748138140-ce9ef2c32db1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80">
+                        </div>
+                        <div class="content">
+                          <div>
+                            <h2>Image Title</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus molestias quidem iusto.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="box">
+                        <div class="imgBx">
+                          <img src="https://images.unsplash.com/photo-1579639782539-15cc6c0be63f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80">
+                        </div>
+                        <div class="content">
+                          <div>
+                            <h2>Image Title</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus molestias quidem iusto.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="box">
+                        <div class="imgBx">
+                          <img src="https://images.unsplash.com/photo-1603984362497-0a878f607b92?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80">
+                        </div>
+                        <div class="content">
+                          <div>
+                            <h2>Image Title</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus molestias quidem iusto.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="box">
+                        <div class="imgBx">
+                          <img src="https://images.unsplash.com/photo-1579310962131-aa21f240d986?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80">
+                        </div>
+                        <div class="content">
+                          <div>
+                            <h2>Image Title</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus molestias quidem iusto.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    -->
+
+                  </div>
+                </main>
+
+
+            </div>
+
+          <!-- footer section --------------------------------------------------------------------------------------------------------->
+                    <div class="footer_contaner">
+
+                        <div class="footer_div">
+                          <div class="content">
+                            <div class="top">
+                              <div class="logo-details">
+                                <i class="fab fa-slack"></i>
+                                <span class="logo_name">FilmFusion</span>
+                              </div>
+                              <div class="media-icons">
+                                <a ><i class="fab fa-facebook-f"></i></a>
+                                <a><i class="fab fa-twitter"></i></a>
+                                <a><i class="fab fa-instagram"></i></a>
+                                <a><i class="fab fa-linkedin-in"></i></a>
+                                <a><i class="fab fa-youtube"></i></a>
+                              </div>
+                            </div>
+                          </div>
+
+
+
+                          <div class="bottom-details">
+                            <div class="bottom_text">
+                              <span class="copyright_text">Copyright © 2024 <a>Logo.</a>All rights reserved</span>
+                              <span class="policy_terms">
+                                <a>Privacy policy</a>
+                                <a>Terms & condition</a>
+                                <a href="https://github.com/ice-black">
+                                <div class="profile-container">
+                                    <img class="profile-picture" src="profile/xc.jpg" alt="">
+                                    <div class="profile-text-container">
+                                        <h2>Developer</h2>
+                                    </div>
+                                </div>
+                               </a>
+                              </span>
+                            </div>
+
+                          </div>
+                        </div>
+                    </div>
+
+
+
+
+    </body>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="watch_page.js"></script>
+    </html>

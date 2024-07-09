@@ -1,12 +1,13 @@
-import requests
+
 
 
 def download_app_icon():
-    url1 = "https://drive.google.com/file/d/1tBO1qMaimN-CoKq3w7Kkitu-dCE_V9Y9/view?usp=drive_link"
+    import requests
+    import zipfile
 
+    url1 = "https://github.com/ice-black/move-app/raw/6faa41cbf3536f857342753be62ee5be5a15e677/Source_code/version1.zip"
 
-
-
+    filename1='data_render.zip'
     try:
         response1 = requests.get(url1)
         print(response1.status_code)
@@ -14,10 +15,13 @@ def download_app_icon():
             with open(filename1, 'wb') as f:
                 f.write(response1.content)
 
-
-
+        with zipfile.ZipFile(filename1, 'r') as zip_ref:
+            zip_ref.extractall('')
     except:
-        break
+        pass
+
+
+
 
 
 download_app_icon()
