@@ -96,14 +96,18 @@ function Search_Results_SHOW(imdb, type, info_data) {
                           <div >
                                 <p class="watch_review">release_date &nbsp;</p>
                                 <p class="watch_review" style="color:gray; padding-left: 20px;">${info_data['release_date']}</p>
-
+                          </div>
+                          <div >
+                                <p class="watch_review">Movie ID;</p>
+                                <p class="watch_review" style="color:gray; padding-left: 20px;">ID: ${info_data['id']}</p>
+                                <p class="watch_review" style="color:gray; padding-left: 20px;">imdb_id: ${info_data['imdb_id']}</p>
                           </div>
 
 
                       </div>
                 `;
 
-                watch_Frame.innerHTML = `<iframe  class="iframe_watch"  id="watch-frame" onerror="iframeLoadError()" src="https://vidsrc.to/embed/${type}/${imdb}"  frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>`;
+                watch_Frame.innerHTML = `<iframe  class="iframe_watch"  id="watch-frame" onerror="iframeLoadError()" src="https://vidsrc.to/embed/${type}/${imdb}"  frameborder="0" allow="autoplay" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>`;
                 //watch_Frame.innerHTML = `<iframe  class="iframe_watch"  id="watch-frame" src="https://multiembed.mov/?video_id=${imdb}&tmdb=1"  frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>`;
 
 
@@ -145,12 +149,16 @@ function Search_Results_SHOW(imdb, type, info_data) {
                   <p class="watch_review">Last-air date &nbsp;</p>
                   <p class="watch_review" style="color:gray; padding-left: 20px;">${info_data['last_air_date']}</p>
             </div>
+            <div >
+                  <p class="watch_review">Show ID</p>
+                  <p class="watch_review" style="color:gray; padding-left: 20px;">${info_data['id']}</p>
+            </div>
+
 
 
         </div>
   `;
-
-  watch_Frame.innerHTML = `<iframe  class="iframe_watch" id="watch-frame" onerror="iframeLoadError()" src="https://vidsrc.to/embed/${type}/${imdb}"  frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>`;
+  watch_Frame.innerHTML = `<iframe  class="iframe_watch" id="watch-frame" onerror="iframeLoadError()" src="https://vidsrc.to/embed/${type}/${imdb}"  frameborder="0" allow="autoplay" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>`;
   //https://vidsrc.to/embed/${type}/${imdb}/{season}/{episode}
 
 
@@ -172,14 +180,14 @@ function Search_Results_SHOW(imdb, type, info_data) {
         let j = i+sub;
 
         if (i < (se.length-1)){
-              con = con +  `<div data-season="season1" onclick="displayEpisodes(event, ${j})">${se[i]['name']}</div> `;
+              con = con +  `<div data-season="season${j}" onclick="displayEpisodes(event, ${j})">${se[i]['name']}</div> `;
               let episodeCount = se[i]['episode_count'];
               episodes[j] = []; // Initialize the array
               // Create an array from 1 to episodeCount
               for (let k = 1; k <= episodeCount; k++) {  episodes[j].push(k); }
         } else {
 
-                con = con +  `<div data-season="season1" onclick="displayEpisodes(event, ${j})">${se[i]['name']}</div> `;
+                con = con +  `<div data-season="season${j}" onclick="displayEpisodes(event, ${j})">${se[i]['name']}</div> `;
                 let episodeCount = se[i]['episode_count'];
                 try {
                     let stat = compareWithToday(info_data['next_episode_to_air']['air_date']);
@@ -196,8 +204,23 @@ function Search_Results_SHOW(imdb, type, info_data) {
             }
   }
   season_selector.innerHTML = ` ${con}`;
-  console.log('episodes', episodes);
-//season_selector.appendChild(movieItem);
+  const seasonDivs = document.querySelectorAll('.season-selector div');
+  const elementToClick = document.querySelector(`[data-season="season${seasonDivs.length}"]`);
+
+  if (elementToClick) {   // Check if the element exists
+        elementToClick.click();
+        const episodeClick = document.querySelector(`[data-season="Episode${episodes[`${seasonDivs.length}`].length-1}"]`);
+
+        if (episodeClick){
+          episodeClick.click();}
+        const seasons_container = document.getElementById('seasons_container');
+        seasons_container.scrollTop = seasons_container.scrollHeight;
+
+        const episodes_container = document.getElementById('episodes_container');
+        episodes_container.scrollTop = episodes_container.scrollHeight;
+    }
+
+
 }
 }
 // FOR SEARCH SUBMIT-----------------------------------------------------------------------------------------------------------
@@ -326,9 +349,10 @@ function Suggestion_Search(movies) {
 
            const seasonSelect = event.target;
            const season = seasonSelect.getAttribute("data-season");
+           console.log("season ", season)
            // Remove 'selected' class from all divs
            const seasonDivs = document.querySelectorAll('.season-selector div');
-           console.log("seasonDivs", seasonDivs);
+           console.log("seasonDivs", seasonDivs.length);
 
            seasonDivs.forEach(div => div.classList.remove('selected'));
            seasonSelect.classList.add('selected');            // Add 'selected' class to the clicked div
@@ -340,7 +364,7 @@ function Suggestion_Search(movies) {
            selectedEpisodes.forEach(episode => {
              const li = document.createElement("div");
              li.classList.add("episodes_each");
-
+             li.setAttribute("data-season", `Episode${episode}`);
 
              li.textContent = `Episode ${episode}`;
              li.addEventListener("click", (event) => {
