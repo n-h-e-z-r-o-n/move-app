@@ -1,13 +1,13 @@
-import time
 import tkinter as tk
 import threading
 import os
 import ctypes as ct
+import requests
+
 path_exe = os.getcwd()
 
 bg_color = '#36454F'
 fg_color = "black"
-
 
 # ------------------------------- web-Integration ---------------------------------------------------------------------------------------------------
 
@@ -28,7 +28,8 @@ class WebView2(tk.Frame):
         tk.Frame.__init__(self, parent, width=width, height=height, **kw)
         control = Control()
         uid = 'master'
-        window = Window(uid, str(id(self)), url=None, html=None, js_api=None, width=width, height=height, x=None, y=None,
+        window = Window(uid, str(id(self)), url=None, html=None, js_api=None, width=width, height=height, x=None,
+                        y=None,
                         resizable=True, fullscreen=False, min_size=(200, 100), hidden=False,
                         frameless=False, easy_drag=True,
                         minimized=False, on_top=False, confirm_close=False, background_color=bg_color,
@@ -95,7 +96,7 @@ def modify_css():
     # Read the content of the CSS file
     global bg_color, fg_color
 
-    css_files = ['./version1/styles.css']
+    css_files = ['./styles.css']
     css_style = ":root { \n --global-color-bg:" + bg_color + ";\n  --global-color-fg:" + fg_color + ";\n}"
 
     for i in css_files:
@@ -123,12 +124,13 @@ def download_app_icon():
     except:
         pass
 
+
 threading.Thread(target=download_app_icon).start()
 
 
-# =============================== Functions definition ============================================================================================
+# =============================== Functions definition =================================================================
 
-# --------------------------------- Themes --------------------------------------------------------------------------------------------------------
+# --------------------------------- Themes -----------------------------------------------------------------------------
 def title_bar_color(window, color):
     # import ctypes as ct
     try:
@@ -155,64 +157,62 @@ def title_bar_color(window, color):
         print("title_bar_color fun error : ", e)
 
 
+def toggle_fullscreen(main_widget):
+    main_widget.overrideredirect(False)
+    main_widget.overrideredirect(True)
 
 
 def main():
-    #threading.Thread(target=download_app_icon).start()
-    download_app_icon()
-
     app = tk.Tk()
     app.geometry("600x500")
     app.state("zoomed")
     app.title("FilmFusion")
-    try:
-        app.iconbitmap("./version1/profile/tx.ico")
-    except:
-        pass
     title_bar_color(app, "#000000")
 
     new_web_view_frame = tk.Frame(app, bg="#000000")
     new_web_view_frame.place(y=30, relwidth=1, relheight=0.977)
-    url = "file:///"+path_exe+"\\version1\index.html"
+    url = "file:///" + path_exe + "\\version1\index.html"
     frame2 = WebView2(new_web_view_frame, 500, 500)
     frame2.place(relheight=1, relwidth=1, relx=0, rely=0)
 
     frame2.load_url(url)
 
-    # ===================== Navigation Bar Section ==========================================================================================================
+    # ===================== Navigation Bar Section =====================================================================
     nav_bar_bg = "#000000"
     nav_bar = tk.Frame(app, bg=nav_bar_bg)
     nav_bar.place(x=0, y=0, relwidth=1, height=30)
 
-    back_button = tk.Button(master=nav_bar, fg='white', text="⊂", font=("Courier New", 17), activebackground=nav_bar_bg, activeforeground='yellow', bg=nav_bar_bg, command=lambda :frame2.Go_back(), border=0, borderwidth=0)
+    back_button = tk.Button(master=nav_bar, fg='white', text="⊂", font=("Courier New", 17), activebackground=nav_bar_bg,
+                            activeforeground='yellow', bg=nav_bar_bg, command=lambda: frame2.Go_back(), border=0,
+                            borderwidth=0)
     back_button.place(relx=0.001, rely=0.1, relwidth=0.03, relheight=0.8)
 
-    Next_button = tk.Button(master=nav_bar, fg='white', text="⊃", font=("Courier New", 17), activebackground=nav_bar_bg, activeforeground='yellow', bg=nav_bar_bg, command= lambda :frame2.Go_Forwad(), border=0, borderwidth=0)
+    Next_button = tk.Button(master=nav_bar, fg='white', text="⊃", font=("Courier New", 17), activebackground=nav_bar_bg,
+                            activeforeground='yellow', bg=nav_bar_bg, command=lambda: frame2.Go_Forwad(), border=0,
+                            borderwidth=0)
     Next_button.place(relx=0.031, rely=0.1, relwidth=0.03, relheight=0.8)
 
-    reload_button = tk.Button(master=nav_bar, fg='white', text="⟳", font=("Arial Bold", 15), activebackground=nav_bar_bg, activeforeground='yellow', bg=nav_bar_bg, command= lambda :frame2.reload(), border=0, borderwidth=0)
+    reload_button = tk.Button(master=nav_bar, fg='white', text="⟳", font=("Arial Bold", 15),
+                              activebackground=nav_bar_bg, activeforeground='yellow', bg=nav_bar_bg,
+                              command=lambda: frame2.reload(), border=0, borderwidth=0)
     reload_button.place(relx=0.061, rely=0.1, relwidth=0.03, relheight=0.8)
 
-    def on_closing():
-        import shutil
-        app.destroy()
-        shutil.rmtree("./version1")
-
-    app.protocol("WM_DELETE_WINDOW", on_closing)
     app.mainloop()
+
 
 def go():
     try:
-      main()
+        main()
     except Exception as e:
         print(e)
 
-if __name__ == "__main__":
-    #main()
 
-    #"""
-        t = System_Thread(ThreadStart(go))
-        t.ApartmentState = ApartmentState.STA
-        t.Start()
-        t.Join()
-    #"""
+if __name__ == "__main__":
+    # main()
+
+    # """
+    t = System_Thread(ThreadStart(go))
+    t.ApartmentState = ApartmentState.STA
+    t.Start()
+    t.Join()
+# """
