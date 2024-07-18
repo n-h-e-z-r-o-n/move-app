@@ -91,9 +91,10 @@ const search = document.getElementById("search_input");
 
 if (movie_div) {
     trendingShows(Trending_API_URL)
-    Latest_Movies(2);
     Slider_Movies(Movies_API_URL); // initial Movies
-    Latest_shows(2);
+
+    Latest_Movies(null, 4, 'add');
+    Latest_episode(null,4);
     //getTV(TVs_API_URL); // initial Movies
 }
 
@@ -133,6 +134,131 @@ function Slider_Display(movies) {
 }
 
 
+// get Movies and shows --------------------------------------------------------
+
+async function Latest_Movies(event, page, type) {
+
+  try{
+    const choiceSelect = event.target;
+    const choiceDivs = document.querySelectorAll('.show_title_section_movie button');
+    choiceDivs.forEach(div => div.classList.remove('selected_glow'));
+    choiceSelect.classList.add('selected_glow');
+  } catch{console.log();}
+
+
+
+  let count = 1;
+
+  let data_json = [];
+    console.log();
+    while (count <= page) {
+
+      let res = await fetch(`https://vidsrc.to/vapi/movie/${type}/${count}`);
+      let data = await res.json();
+
+      data_json = data_json.concat(data['result']['items']) ;
+      count++;
+    }
+
+  let hold = [];
+  for (let i = 0; i < data_json.length; i++) {
+
+    let res2 = await fetch(`https://api.themoviedb.org/3/movie/${data_json[i]['tmdb_id']}&?api_key=6bfaa39b0a3a25275c765dcaddc7dae7`);
+    let data2 = await res2.json();
+    hold.push({poster_path:data2['poster_path'], release_date:data2['release_date'], vote_average:data2['vote_average'], title:data2['title'], id:data2['id']});
+  }
+  showMovies(hold);
+}
+
+
+async function Latest_episode(event, page) {
+
+  try{
+    const choiceSelect = event.target;
+    const choiceDivs = document.querySelectorAll('.show_title_section_show button');
+    choiceDivs.forEach(div => div.classList.remove('selected_glow'));
+    choiceSelect.classList.add('selected_glow');
+  } catch{console.log();}
+
+  let count = 1;
+
+  let data_json = [];
+  let id_prev = 0;
+
+  while (count <= page) {
+      let res = await fetch(`https://vidsrc.to/vapi/episode/latest/${count}`);
+      let data = await res.json();
+      if(Array.isArray(data['result']['items'])){
+        data_json = data_json.concat(data['result']['items']) ;
+        count++;
+      }else{
+        itemValues = Object.values(data.result.items);
+        data_json = data_json.concat(itemValues) ;
+        count++;
+      }
+    }
+  let hold = [];
+  for (let i = 0; i < data_json.length; i++) {
+      try{
+          let res2 = await fetch(`https://api.themoviedb.org/3/tv/${data_json[i]['tmdb_id']}&?api_key=6bfaa39b0a3a25275c765dcaddc7dae7`);
+          let data2 = await res2.json();
+          if(`${data2['poster_path']}` !== `undefined`){
+            if (id_prev !==data2['id']){
+              hold.push({poster_path:data2['poster_path'], first_air_date:data2['first_air_date'], vote_average:data2['vote_average'], original_name:data2['original_name'], id:data2['id']});
+              id_prev = data2['id'];
+            }
+          }
+        }finally{continue;}
+  }
+  showTV(hold);
+}
+
+async function Latest_Shows(event, page, type) {
+
+  try{
+    const choiceSelect = event.target;
+
+    const choiceDivs = document.querySelectorAll('.show_title_section_show button');
+    choiceDivs.forEach(div => div.classList.remove('selected_glow'));
+    choiceSelect.classList.add('selected_glow');
+  } catch{console.log();}
+
+  let count = 1;
+
+  let data_json = [];
+  let id_prev = 0;
+
+  while (count <= page) {
+      let res = await fetch(`https://vidsrc.to/vapi/tv/${type}/${count}`);
+      let data = await res.json();
+      if(Array.isArray(data['result']['items'])){
+        data_json = data_json.concat(data['result']['items']) ;
+        count++;
+      }else{
+        itemValues = Object.values(data.result.items);
+        data_json = data_json.concat(itemValues) ;
+        count++;
+      }
+    }
+  let hold = [];
+  for (let i = 0; i < data_json.length; i++) {
+      try{
+          let res2 = await fetch(`https://api.themoviedb.org/3/tv/${data_json[i]['tmdb_id']}&?api_key=6bfaa39b0a3a25275c765dcaddc7dae7`);
+          let data2 = await res2.json();
+          if(`${data2['poster_path']}` !== `undefined`){
+            if (id_prev !==data2['id']){
+              hold.push({poster_path:data2['poster_path'], first_air_date:data2['first_air_date'], vote_average:data2['vote_average'], original_name:data2['original_name'], id:data2['id']});
+              id_prev = data2['id'];
+            }
+          }
+        }finally{continue;}
+  }
+  showTV(hold);
+}
+
+
+
+
 // SHOW MOVIES  SECTION --------------------------------------------------------
 
 
@@ -167,11 +293,6 @@ function showMovies(movies) {
 
 
 // SHOW TV SECTION -----------------------------------------------------------------------
-async function getTV(url) {
-  const res = await fetch(url);
-  const data = await res.json();
-  showTV(data.results);
-}
 
 function showTV(movies) {
   series_div.innerHTML = "";
@@ -239,65 +360,6 @@ function showsTrending(movies) {
 function redirect_function(id, media_type) {
   console.log("watch clicker", id, media_type);
   window.location.href = "watch_page.html?id=" + id + `&type=${media_type}`;
-}
-
-
-async function Latest_Movies(page) {
-  let count = 1;
-
-  let data_json = [];
-    console.log();
-    while (count <= page) {
-
-      let res = await fetch(`https://vidsrc.to/vapi/movie/new/${count}`);
-      let data = await res.json();
-
-      data_json = data_json.concat(data['result']['items']) ;
-      count++;
-    }
-
-  let hold = [];
-  for (let i = 0; i < data_json.length; i++) {
-    let res2 = await fetch(`https://api.themoviedb.org/3/movie/${data_json[i]['tmdb_id']}&?api_key=6bfaa39b0a3a25275c765dcaddc7dae7`);
-    let data2 = await res2.json();
-    hold.push({poster_path:data2['poster_path'], release_date:data2['release_date'], vote_average:data2['vote_average'], title:data2['title'], id:data2['id']});
-  }
-  showMovies(hold);
-}
-
-
-async function Latest_shows(page) {
-  let count = 1;
-
-  let data_json = [];
-  let id_prev = 0;
-
-  while (count <= page) {
-      let res = await fetch(`https://vidsrc.to/vapi/episode/latest/${count}`);
-      let data = await res.json();
-      if(Array.isArray(data['result']['items'])){
-        data_json = data_json.concat(data['result']['items']) ;
-        count++;
-      }else{
-        itemValues = Object.values(data.result.items);
-        data_json = data_json.concat(itemValues) ;
-        count++;
-      }
-    }
-  let hold = [];
-  for (let i = 0; i < data_json.length; i++) {
-      try{
-          let res2 = await fetch(`https://api.themoviedb.org/3/tv/${data_json[i]['tmdb_id']}&?api_key=6bfaa39b0a3a25275c765dcaddc7dae7`);
-          let data2 = await res2.json();
-          if(`${data2['poster_path']}` !== `undefined`){
-            if (id_prev !==data2['id']){
-              hold.push({poster_path:data2['poster_path'], first_air_date:data2['first_air_date'], vote_average:data2['vote_average'], original_name:data2['original_name'], id:data2['id']});
-              id_prev = data2['id'];
-            }
-          }
-        }finally{continue;}
-  }
-  showTV(hold);
 }
 
 

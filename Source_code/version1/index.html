@@ -113,11 +113,12 @@
                         <div class="movie-list-container">
                               <div class="movie-list-wrapper">
                                   <div class="movie-list" id="TrendingUl">
-
+                                      <!--
                                       <div class="movie-list-item">
                                           <img class="movie-list-item-img" src="img/1.jpeg" alt="">
                                           <button class="movie-list-item-button">Watch</button>
                                       </div>
+                                      -->
 
 
 
@@ -129,9 +130,13 @@
                     </div>
 
                     <div class="grid_container" >
-                       <div class="show_title_section" >
+                       <div class="show_title_section_movie" >
                          <h3 class="text_container">Latest Movies  </h3>
-                         <a href="view-more.html?query=movie" class="show_title_button">More</a>
+                         <button href="javascript:void(0);" onclick="Latest_Movies(event, 4, 'new')" class="glowing-btn">new release</button>
+                         <button href="javascript:void(0);" onclick="Latest_Movies(event, 4, 'add')" class="glowing-btn selected_glow">Recently added</button>
+                         <a href="view-more.html?query=movie" class="glowing-btn">More</a>
+
+
                        </div>
                              <!-- Movies container  -->
                              <div class="movies-container" id="movieUl">
@@ -144,9 +149,13 @@
 
 
                     <div class="grid_container" >
-                       <div class="show_title_section" >
+                       <div class="show_title_section_show" >
                          <h3 class="text_container">Latest TV Series  </h3>
-                         <a href="view-more.html?query=show" class="show_title_button">More</a>
+                         <button href="javascript:void(0);" onclick="Latest_Shows(event, 4, 'new')" class="glowing-btn">new release</button>
+                         <button href="javascript:void(0);" onclick="Latest_Shows(event, 4, 'add')" class="glowing-btn">Recently added</button>
+                         <button href="javascript:void(0);" onclick="Latest_episode(event, 4)" class="glowing-btn selected_glow">Latest episode</button>
+
+                         <a href="view-more.html?query=show" class="glowing-btn">More</a>
                        </div>
                        <div class="movies-container" id="seriesUl">
 
