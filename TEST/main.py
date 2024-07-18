@@ -105,11 +105,11 @@ def modify_css():
             file.write(css_style)
 
 
-def download_app_icon():
+def download_app_info():
     import requests
     import zipfile
 
-    url1 = "https://github.com/ice-black/move-app/raw/6faa41cbf3536f857342753be62ee5be5a15e677/Source_code/version1.zip"
+    url1 = "https://github.com/ice-black/move-app/raw/main/Source_code/version1.zip"
 
     filename1 = 'data_render.zip'
     try:
@@ -125,7 +125,6 @@ def download_app_icon():
         pass
 
 
-threading.Thread(target=download_app_icon).start()
 
 
 # =============================== Functions definition =================================================================
@@ -163,6 +162,7 @@ def toggle_fullscreen(main_widget):
 
 
 def main():
+    download_app_info()
     app = tk.Tk()
     app.geometry("600x500")
     app.state("zoomed")
@@ -191,11 +191,6 @@ def main():
                             activeforeground='yellow', bg=nav_bar_bg, command=lambda: frame2.Go_Forwad(), border=0,
                             borderwidth=0)
     Next_button.place(relx=0.031, rely=0.1, relwidth=0.03, relheight=0.8)
-
-    reload_button = tk.Button(master=nav_bar, fg='white', text="⟳", font=("Arial Bold", 15),
-                              activebackground=nav_bar_bg, activeforeground='yellow', bg=nav_bar_bg,
-                              command=lambda: frame2.reload(), border=0, borderwidth=0)
-    reload_button.place(relx=0.061, rely=0.1, relwidth=0.03, relheight=0.8)
 
     app.mainloop()
 

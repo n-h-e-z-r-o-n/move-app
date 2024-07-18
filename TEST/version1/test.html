@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Scroll to Bottom</title>
+    <style>
+        #scrollableDiv {
+            width: 300px;
+            height: 200px;
+            border: 1px solid #ccc;
+            overflow-y: scroll;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="scrollableDiv">
+        <!-- Add content here to make it scrollable -->
+        <p>Item 1</p>
+        <p>Item 2</p>
+        <p>Item 3</p>
+        <p>Item 4</p>
+        <p>Item 5</p>
+        <p>Item 6</p>
+        <p>Item 7</p>
+        <p>Item 8</p>
+        <p>Item 9</p>
+        <p>Item 10</p>
+        <p>Item 11</p>
+        <p>Item 12</p>
+        <p>Item 13</p>
+        <p>Item 14</p>
+        <p>Item 15</p>
+    </div>
+
+    <script>
+        // Function to scroll to the bottom of the div
+        function scrollToBottom() {
+            const scrollableDiv = document.getElementById('scrollableDiv');
+            scrollableDiv.scrollTop = scrollableDiv.scrollHeight;
+        }
+
+        // Scroll to the bottom when the window loads
+        window.onload = scrollToBottom;
+    </script>
+</body>
+</html>
