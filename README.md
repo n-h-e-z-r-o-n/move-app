@@ -2,7 +2,7 @@
 This desktop application allows users to watch movies and TV shows on their computer. It provides a user-friendly interface for browsing, searching, and streaming media content.
 
 ## Installation
-- version 1 : Windows os platform(2024)  : [DOWNLOAD]()
+- version 1 : Windows os platform(2024)  : [DOWNLOAD](https://github.com/ice-black/move-app/blob/main/APPS/FilmFusion.exe)
 
 - Prototype 1 : Windows os platform(2023)  : [ DOWNLOAD ](https://github.com/ice-black/move-app/raw/main/APPS/TX%20movies%20(0.0.1).exe)
 
