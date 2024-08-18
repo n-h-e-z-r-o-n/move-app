@@ -107,7 +107,9 @@ function Search_Results_SHOW(imdb, type, info_data) {
                       </div>
                 `;
 
-                watch_Frame.innerHTML = `<iframe  class="iframe_watch"  id="watch-frame" onerror="iframeLoadError()" src="https://vidsrc.to/embed/${type}/${imdb}"  frameborder="0" allow="autoplay" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>`;
+                //watch_Frame.innerHTML = `<iframe  class="iframe_watch"  id="watch-frame" onerror="iframeLoadError()" src="https://vidsrc.to/embed/${type}/${imdb}"  frameborder="0" allow="autoplay" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>`; // https://vidsrc.to
+                watch_Frame.innerHTML = `<iframe  class="iframe_watch"  id="watch-frame" onerror="iframeLoadError()" src="https://vidsrc.xyz/embed/${type}/${imdb}"  frameborder="0" allow="autoplay" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>`; //https://vidsrc.net/api/
+
                 //watch_Frame.innerHTML = `<iframe  class="iframe_watch"  id="watch-frame" src="https://multiembed.mov/?video_id=${imdb}&tmdb=1"  frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>`;
 
 
@@ -158,8 +160,9 @@ function Search_Results_SHOW(imdb, type, info_data) {
 
         </div>
   `;
-  watch_Frame.innerHTML = `<iframe  class="iframe_watch" id="watch-frame" onerror="iframeLoadError()" src="https://vidsrc.to/embed/${type}/${imdb}"  frameborder="0" allow="autoplay" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>`;
-  //https://vidsrc.to/embed/${type}/${imdb}/{season}/{episode}
+  //watch_Frame.innerHTML = `<iframe  class="iframe_watch" id="watch-frame" onerror="iframeLoadError()" src="https://vidsrc.to/embed/${type}/${imdb}"  frameborder="0" allow="autoplay" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>`;
+  watch_Frame.innerHTML = `<iframe  class="iframe_watch" id="watch-frame" onerror="iframeLoadError()" src="https://vidsrc.xyz/embed/${type}/${imdb}"  frameborder="0" allow="autoplay" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>`;
+
 
 
   let se = info_data['seasons'];
@@ -376,7 +379,9 @@ function Suggestion_Search(movies) {
                episodeSelect.classList.add('selected');
 
                const iframe = document.getElementById("watch-frame");
-               const newSrc = `https://vidsrc.to/embed/tv/${show_id}/${season_no}/${episode}`;
+               //const newSrc = `https://vidsrc.to/embed/tv/${show_id}/${season_no}/${episode}`;
+               const newSrc = `https://vidsrc.xyz/embed/tv?tmdb=${show_id}&season=${season_no}&episode=${episode}`;
+
                iframe.src = newSrc;
 
              });

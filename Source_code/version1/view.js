@@ -17,7 +17,7 @@
  // FOR SEARCH SUBMIT -----------------------------------------------------------------
  const form = document.getElementById("searchForm");
  const search = document.getElementById("search_input");
- 
+
  form.addEventListener("submit", (e) => {
    e.preventDefault();
    const searchTerm = search.value;

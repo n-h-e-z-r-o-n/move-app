@@ -1,6 +1,8 @@
 :root {
- --global-color-bg:  #000000;
-  --global-color-fg: white;
+--global-color-bg:  #0F0404;
+--global-color-fg: white;
+--color_theme:  hsl(186 100% 69%);
+--section_header_color:  #1B1B1B;
 }
 
 body , html {
@@ -120,6 +122,7 @@ body , html {
 .slider-container{
   width: 100%;
   height: 100%;
+  padding-bottom: 10px:
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -131,17 +134,17 @@ body , html {
   display: flex;
   align-items: center;
   gap: 10px;
-  border-radius: 90px;
+  border-radius: 10px;
 }
 .slider-images img{
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 90px;
+  border-radius: 10px;
 
 }
 .slider-img{
-  width: 5%;
+  width: 1%;
   border-radius: 6px;
   cursor: pointer;
   position: relative;
@@ -194,7 +197,7 @@ body , html {
 }
 .slider-img.active{
   width:  95% !important;
-  height:  700px !important;
+  height:  715px !important;
 }
 .slider-img.active h1{
    display: none;
@@ -209,19 +212,17 @@ body , html {
 .show_title_section{
   height: 45px;
   width: 100%;
-  border-top: 2px solid yellow; /* Adjust the thickness and color as needed */
-
-  border-bottom: 2px solid gray; /* Adjust the thickness and color as needed */
+  background-color: var(--section_header_color);
+  padding-top: 5px solid ; /* Adjust the thickness and color as needed */
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .show_title_section_movie {
   height: 45px;
   width: 100%;
-  border-top: 2px solid yellow; /* Adjust the thickness and color as needed */
-
-  border-bottom: 2px solid gray; /* Adjust the thickness and color as needed */
+  background-color: var(--section_header_color);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -230,9 +231,7 @@ body , html {
 .show_title_section_show{
   height: 45px;
   width: 100%;
-  border-top: 2px solid yellow; /* Adjust the thickness and color as needed */
-
-  border-bottom: 2px solid gray; /* Adjust the thickness and color as needed */
+  background-color: var(--section_header_color);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -242,9 +241,9 @@ body , html {
   height: 80%;
   width:50%;
   color: var(--global-color-fg);
-  font-size: 20px;
+  font-size: 25px;
   text-align:left;
-
+font-family: monospace;
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -394,7 +393,26 @@ body , html {
 
 
 
+/*-----------------------------------------------------------------------------*/
 
+.show_more{
+  width: auto;
+  margin: 0 auto;
+  padding: 0px;
+  text-align: center;
+}
+.show_more_1 {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.show_more_1 button {
+  padding: 5px 10px;
+  background-color: white;
+  border-radius: 10px 10px 10px 10px;
+  cursor: pointer;
+  color: black;
+}
 
 /* --------------------------------------------------------------------------------------------------*/
 .recommended_container{
@@ -534,6 +552,7 @@ body , html {
     height: auto;
     width:  100%;
     padding-bottom: 40px;
+
 }
 
 .movies-container{
@@ -544,14 +563,15 @@ body , html {
     grid-template-columns: repeat(auto-fit, minmax(180px,auto));
     gap: 3rem;
     margin-top: 2rem;
-
+    padding-left:  40px;
+    padding-right:   40px;
 }
 .box .box-img{
     width: 100%;
-    height: 270px;
+    height: 300px;
     cursor: pointer;
-    background-color: yellow;
-    border-radius: 40px 40px 40px 40px;
+    background-color: transparent;
+    border-radius: 10px 10px 10px 10px;
 
 
 }
@@ -559,7 +579,7 @@ body , html {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 40px 40px 40px 40px;
+    border-radius: 10px 10px 10px 10px;
 
 }
 .box .box-img img:hover{
@@ -596,11 +616,12 @@ body , html {
 
 .watch_container{
     height: 750px;
-    width:  100%;
-    display: flex;
-    padding:  20px;
+    width:  98%;
+    display:inline-flex;
 
 }
+
+
 .uuux{
   height: auto;
   width:  100%;
@@ -608,6 +629,7 @@ body , html {
   background-size: cover; /* Ensure the image covers the entire container */
   background-position: center; /* Center the image within the container */
   background-repeat: no-repeat;
+  margin: auto;
 }
 
 .watch_info {
@@ -618,6 +640,7 @@ body , html {
   box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.5);
   overflow:scroll;
   flex-wrap: wrap;
+  margin-left: 1%;
 
 
 }
@@ -630,6 +653,7 @@ body , html {
       border-radius: 40px 40px 40px 40px;
        transition: all 0.4s;
        background-position: center;
+
 
 }
 
@@ -672,27 +696,26 @@ body , html {
 
 .watch_Frame {
   height: 100%;
-  width:  85%;
-  padding: 20px 20px 0 20px;
-  flex-wrap: wrap;
-
-
+  width:  75%;
+  justify-content: center;
+  text-align: center;
+  margin-left: 1%;
 }
 
 
 
   .iframe_watch {
-    width: 100%;
+    width: 96%;
     height: 100%;
-    border-radius: 30px 30px 30px 30px;
+    border-radius: 5px 5px 5px 5px;
 
   }
 
 
  .seasons{
      display: flex;
-     width: 100%;
-     height: 200px;
+     width: auto;
+     min-height: 0px;
      padding-top: 20px;
 
  }
@@ -742,10 +765,30 @@ body , html {
 .episodes_each {
     padding: 15px;
     border: 1px solid gray;
-    height: 10%;
-    border-radius: 10px;
+    height: 2%;
+    border-radius: 1px;
     display: flex;
-    margin: auto;
+    margin: 2px;
+}
+
+
+@media (max-width: 768px) {
+  .watch_container{
+      height: 750px;
+      width:  100%;
+      display:inline-grid;
+  }
+  .watch_info {
+    height: 200px;
+    width:  auto;
+
+
+  }
+  .watch_Frame {
+    height: 300px;
+    width:  auto;
+    margin-top:  40px;
+  }
 }
 
   /* ------------------------------------------------------------------------------------------------------------*/
@@ -755,29 +798,28 @@ body , html {
   max-width:   100%;
   padding-top: 20px;
 
+
 }
 
 .REM_container {
-  position: relative;
+height: auto;
   width: 100%;
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   flex-wrap: wrap;
-  transform-style: preserve-3d;
-  perspective: 500px;
-  margin: auto;
 }
+
 .REM_container .box {
   position: relative;
-  width: 375px;
-  height: 430px;
+  width: 275px;
+  height: 330px;
   background: #000;
   transition: 0.5s;
   transform-style: preserve-3d;
   overflow: hidden;
   margin-right: 15px;
   margin-top: 45px;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 .REM_container:hover .box {
   transform: rotateY(0.2deg);
@@ -872,7 +914,7 @@ display: flex;
 .pagination_container{
   width: auto;
   margin: 0 auto;
-  padding: 20px;
+  padding: 0px;
   text-align: center;
 }
 .pagination {
@@ -881,20 +923,17 @@ display: flex;
   margin-top: 20px;
 }
 .pagination button {
-  margin: 0 5px;
-  padding: 10px 20px;
-  border: 1px solid #ddd;
-  background-color: #f4f4f4;
+  padding: 5px 10px;
+  background-color: #343434;
   cursor: pointer;
   color: black;
 }
 .pagination button.active {
   background-color: #007bff;
   color: #fff;
-  border-color: #007bff;
 }
 .pagination button:disabled {
-  background-color: #ccc;
+  background-color: #343434;
   cursor: not-allowed;
 }
 /*---------------------------------------------------FOOTER SECTION-------------------------------------------------------*/
@@ -906,7 +945,7 @@ display: flex;
 }
 
 .footer_div{
-  background: #3D0C02;
+  background: var(--global-color-bg:);
   width: 100%;
   bottom: 0;
   left: 0;

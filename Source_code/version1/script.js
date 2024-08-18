@@ -89,12 +89,13 @@ const form = document.getElementById("searchForm");
 const search = document.getElementById("search_input");
 
 
+const page_count = 1;
 if (movie_div) {
     trendingShows(Trending_API_URL)
     Slider_Movies(Movies_API_URL); // initial Movies
 
-    Latest_Movies(null, 4, 'add');
-    Latest_episode(null,4);
+    Latest_Movies(null, page_count, 'add');
+    Latest_episode(null, page_count);
     //getTV(TVs_API_URL); // initial Movies
 }
 
@@ -136,6 +137,7 @@ function Slider_Display(movies) {
 
 // get Movies and shows --------------------------------------------------------
 
+
 async function Latest_Movies(event, page, type) {
 
   try{
@@ -145,21 +147,17 @@ async function Latest_Movies(event, page, type) {
     choiceSelect.classList.add('selected_glow');
   } catch{console.log();}
 
-
-
   let count = 1;
-
   let data_json = [];
     console.log();
     while (count <= page) {
-
-      let res = await fetch(`https://vidsrc.to/vapi/movie/${type}/${count}`);
+      let res = await fetch(`https://vidsrc.xyz/movies/latest/page-${page}.json`);
       let data = await res.json();
-
-      data_json = data_json.concat(data['result']['items']) ;
+      data_json = data_json.concat(data['result']) ;
       count++;
+      break;
     }
-
+  console.log("erererere", data_json);
   let hold = [];
   for (let i = 0; i < data_json.length; i++) {
 
@@ -171,8 +169,79 @@ async function Latest_Movies(event, page, type) {
 }
 
 
-async function Latest_episode(event, page) {
 
+async function Old_Latest_Movies(event, page, type) {
+  try{
+    const choiceSelect = event.target;
+    const choiceDivs = document.querySelectorAll('.show_title_section_movie button');
+    choiceDivs.forEach(div => div.classList.remove('selected_glow'));
+    choiceSelect.classList.add('selected_glow');
+  } catch{console.log();}
+
+  let count = 1;
+
+  let data_json = [];
+    console.log();
+    while (count <= page) {
+      let res = await fetch(`https://vidsrc.to/vapi/movie/${type}/${count}`);
+      let data = await res.json();
+      data_json = data_json.concat(data['result']['items']) ;
+      count++;
+    }
+  console.log("erererere", data_json);
+  let hold = [];
+  for (let i = 0; i < data_json.length; i++) {
+
+    let res2 = await fetch(`https://api.themoviedb.org/3/movie/${data_json[i]['tmdb_id']}&?api_key=6bfaa39b0a3a25275c765dcaddc7dae7`);
+    let data2 = await res2.json();
+    hold.push({poster_path:data2['poster_path'], release_date:data2['release_date'], vote_average:data2['vote_average'], title:data2['title'], id:data2['id']});
+  }
+  showMovies(hold);
+}
+
+async function Latest_episode(event, page) {
+  try{
+    const choiceSelect = event.target;
+    const choiceDivs = document.querySelectorAll('.show_title_section_show button');
+    choiceDivs.forEach(div => div.classList.remove('selected_glow'));
+    choiceSelect.classList.add('selected_glow');
+  } catch{console.log();}
+
+  let count = 1;
+
+  let data_json = [];
+  let id_prev = 0;
+
+  while (count <= page) {
+      let res = await fetch(`https://vidsrc.xyz/episodes/latest/page-${page}.json`);
+      let data = await res.json();
+      if(Array.isArray(data['result'])){
+        data_json = data_json.concat(data['result']) ;
+        count++;
+      }else{
+        itemValues = Object.values(data.result);
+        data_json = data_json.concat(itemValues) ;
+        count++;
+      }
+      break;
+    }
+  let hold = [];
+  for (let i = 0; i < data_json.length; i++) {
+      try{
+          let res2 = await fetch(`https://api.themoviedb.org/3/tv/${data_json[i]['tmdb_id']}&?api_key=6bfaa39b0a3a25275c765dcaddc7dae7`);
+          let data2 = await res2.json();
+          if(`${data2['poster_path']}` !== `undefined`){
+            if (id_prev !==data2['id']){
+              hold.push({poster_path:data2['poster_path'], first_air_date:data2['first_air_date'], vote_average:data2['vote_average'], original_name:data2['original_name'], id:data2['id']});
+              id_prev = data2['id'];
+            }
+          }
+        }finally{continue;}
+  }
+  showTV(hold);
+}
+
+async function old_Latest_episode(event, page) {
   try{
     const choiceSelect = event.target;
     const choiceDivs = document.querySelectorAll('.show_title_section_show button');
@@ -263,11 +332,12 @@ async function Latest_Shows(event, page, type) {
 
 
 function showMovies(movies) {
-  movie_div.innerHTML = "";
+  //movie_div.innerHTML = "";
   movies.forEach((movie) => {
     const { title, poster_path, id, vote_average, overview, release_date } = movie;
     const movieItem = document.createElement("div");
     movieItem.classList.add("box");
+    let updatedString = release_date.substring(0, 4);
     movieItem.innerHTML = `
         <!-- box-1  -->
 
@@ -276,8 +346,8 @@ function showMovies(movies) {
             </div>
             <h3>${title}</h3>
             <div class="container_span">
-               <div style="color: gray;">${release_date}</div>
-               <div style="color: gray;"> &starf; &starf; &#9734;  ${vote_average}</div>
+               <div style="color: gray;">${updatedString}</div>
+               <div style="color: gray;"> &starf;  ${vote_average}</div>
             </div>
 
     `;
@@ -295,7 +365,7 @@ function showMovies(movies) {
 // SHOW TV SECTION -----------------------------------------------------------------------
 
 function showTV(movies) {
-  series_div.innerHTML = "";
+  //series_div.innerHTML = "";
   movies.forEach((movie) => {
     const {id, original_name, poster_path, vote_average, overview, first_air_date } = movie;
     const movieItem = document.createElement("div");
@@ -402,9 +472,6 @@ function Search_Results_SHOW(movies) {
 // FOR SEARCH SUBMIT
 
 
-
-
-
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   const searchTerm = search.value;
@@ -418,4 +485,61 @@ form.addEventListener("submit", (e) => {
 });
 
 //
-//  ----------------------------------------------------------------------------
+
+//============================================================================== SHOW MORE FUNCTIONS
+let movie_currentPage = 1;
+
+async function more_movie(){
+  movie_currentPage = movie_currentPage + 1;
+
+  let data_json = [];
+
+  let res = await fetch(`https://vidsrc.xyz/movies/latest/page-${movie_currentPage}.json`);
+  let data = await res.json();
+  data_json = data_json.concat(data['result']) ;
+  count++;
+
+  let hold = [];
+  for (let i = 0; i < data_json.length; i++) {
+
+    let res2 = await fetch(`https://api.themoviedb.org/3/movie/${data_json[i]['tmdb_id']}&?api_key=6bfaa39b0a3a25275c765dcaddc7dae7`);
+    let data2 = await res2.json();
+    hold.push({poster_path:data2['poster_path'], release_date:data2['release_date'], vote_average:data2['vote_average'], title:data2['title'], id:data2['id']});
+  }
+  showMovies(hold)
+}
+
+let series_currentPage = 1;
+async function more_series(){
+  series_currentPage = series_currentPage + 1;
+
+  let data_json = [];
+  let id_prev = 0;
+
+  let res = await fetch(`https://vidsrc.xyz/episodes/latest/page-${series_currentPage}.json`);
+  let data = await res.json();
+  if(Array.isArray(data['result'])){
+    data_json = data_json.concat(data['result']) ;
+  }else{
+    itemValues = Object.values(data.result);
+    data_json = data_json.concat(itemValues) ;
+  }
+
+  let hold = [];
+  for (let i = 0; i < data_json.length; i++) {
+      try{
+          let res2 = await fetch(`https://api.themoviedb.org/3/tv/${data_json[i]['tmdb_id']}&?api_key=6bfaa39b0a3a25275c765dcaddc7dae7`);
+          let data2 = await res2.json();
+          if(`${data2['poster_path']}` !== `undefined`){
+            if (id_prev !==data2['id']){
+              hold.push({poster_path:data2['poster_path'], first_air_date:data2['first_air_date'], vote_average:data2['vote_average'], original_name:data2['original_name'], id:data2['id']});
+              id_prev = data2['id'];
+            }
+          }
+        }finally{continue;}
+  }
+  showTV(hold);
+}
+
+
+// =============================================================================
