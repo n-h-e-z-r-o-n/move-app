@@ -543,3 +543,10 @@ async function more_series(){
 
 
 // =============================================================================
+
+
+$(document).ready(function(){
+            $('.toggle').click(function(){
+                $('.menu').toggleClass('active');
+            });
+        });
