@@ -609,7 +609,7 @@ font-family: monospace;
     transition: 0.2s all linear;
 }
 
-.img-on:hover .box-img-button   {
+.box-img:hover .box-img-button   {
   opacity: 1;
 }
 
@@ -619,8 +619,8 @@ font-family: monospace;
     transform: translate(-50%, -50%); /* Center the button exactly */
     position: absolute;
 
-
-    padding: 10px;
+    font-size: 40px;
+    padding: 0px;
     background-color: blue;
     color: white;
     border-radius: 100px;
@@ -628,6 +628,7 @@ font-family: monospace;
     border: none;
     cursor: pointer;
     transition: 1s all ease-in-out;
+    opacity: 0;
 }
 
 .box_title {
