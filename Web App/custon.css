@@ -590,6 +590,10 @@ font-family: monospace;
     cursor: pointer;
     background-color: transparent;
     border-radius: 10px 10px 10px 10px;
+
+    display: flex;
+                place-items: center; /* Center child div both vertically and horizontally */
+
 }
 
 .img-on {
@@ -620,8 +624,7 @@ font-family: monospace;
   bottom: 30px;
   left: 50px;
   transition: 1s all ease-in-out;
-  position: relative;
-  align-items: center; /* Center vertically */
+  position: absolute;
 }
 
 .box_title {
