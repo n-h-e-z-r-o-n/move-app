@@ -591,8 +591,9 @@ font-family: monospace;
     background-color: transparent;
     border-radius: 10px 10px 10px 10px;
 
+    position: relative;
     display: flex;
-                place-items: center; /* Center child div both vertically and horizontally */
+                display: inline-block; /* Ensure it wraps content */
 
 }
 
@@ -621,7 +622,7 @@ font-family: monospace;
   outline: none;
   border: none;
   cursor: pointer;
-  bottom: 30px;
+  bottom: 10px;
   left: 50px;
   transition: 1s all ease-in-out;
   position: absolute;
