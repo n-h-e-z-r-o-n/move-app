@@ -619,11 +619,7 @@ font-family: monospace;
     transform: translate(-50%, -50%); /* Center the button exactly */
     position: absolute;
 
-    width: 40px; /* Width of the circle */
-    height: 40px; /* Height of the circle (same as width for a perfect circle) */
-    align-items: center; /* Vertically center text */
-    justify-content: center; /* Horizontally center text */
-    border-radius: 50%;
+
     background-color: red;
     color: white;
     outline: none;
@@ -632,6 +628,19 @@ font-family: monospace;
     transition: 1s all ease-in-out;
     opacity: 1;
 }
+
+button_style {
+width: 45px; /* Width of the circle */
+    height: 45px; /* Height of the circle (same as width for a perfect circle) */
+    align-items: center; /* Vertically center text */
+    justify-content: center; /* Horizontally center text */
+    display: flex; /* Use Flexbox for centering */
+    font-size: 25px;
+
+}
+
+
+
 
 .box_title {
     font-size: 0.9rem;
