@@ -352,8 +352,22 @@ function showMovies(movies) {
 
             <div class="box-img">
                 <img src="${IMG_PATH + poster_path}"  alt="">
+                <div class="box-img-button">
+                    <div class="button_style">&#9654;</div>
+                    <div class="button_style" style="background-color: black;">+</div>
+               </div>
             </div>
-            <h3>${title}</h3>
+            <div class="box_title">${title}</div>
+
+             <div class="container_span">
+               <div style="display:flex;">
+                    <div  class="badge-type"> tv </div>
+                    <div class="badge-type_year"> 2024 </div>
+               </div>
+               <div  class="badge-type_rating"> ★  0</div>
+            </div>
+
+
             <div class="container_span">
                <div style="color: gray;">${updatedString}</div>
                <div style="color: gray;"> &starf;  ${vote_average}</div>

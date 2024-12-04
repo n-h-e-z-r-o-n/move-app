@@ -1,5 +1,5 @@
 :root {
---global-color-bg:   white; /*#0F0404;*/
+--global-color-bg:   #0F0404;
 --global-color-fg: white;
 --color_theme:  hsl(186 100% 69%);
 --section_header_color:  #1B1B1B;
@@ -588,7 +588,7 @@ font-family: monospace;
 
 .box-img{
     width:  200px;
-    height: 305px;
+    height: 302px;
     cursor: pointer;
     background-color: transparent;
     border-radius: 10px 10px 10px 10px;
@@ -604,11 +604,9 @@ font-family: monospace;
     height: 100%;
     object-fit: fill;
     border-radius: 10px 10px 10px 10px;
-
 }
 
 .box-img:hover{
-    background-color: black;
     transform: translateY(-10px);
     opacity: 0.5;
 }
@@ -650,7 +648,6 @@ font-family: monospace;
 .box_title {
     height: 22px;
     margin:2px;
-    background-color:red;
     font-size: 0.9rem;
     font-weight: 500;
     text-align: center;
@@ -659,14 +656,11 @@ font-family: monospace;
 
 .container_span{
   height: 22px;
-  background-color:blue;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: .85em;
-  margin:2px;
-
-
+  margin: 0px 10px 0px 10px;
 }
 
 .badge-type {
