@@ -619,16 +619,14 @@ font-family: monospace;
     transform: translate(-50%, -50%); /* Center the button exactly */
     position: absolute;
 
-    font-size: 40px;
-    padding: 0px;
-    background-color: blue;
+    border-radius: 50%;
+    background-color: red;
     color: white;
-    border-radius: 100px;
     outline: none;
     border: none;
     cursor: pointer;
     transition: 1s all ease-in-out;
-    opacity: 0;
+    opacity: 1;
 }
 
 .box_title {
