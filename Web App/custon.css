@@ -616,17 +616,18 @@ font-family: monospace;
 .box-img-button {
     top: 50%; /* Move the button 50% down */
     left: 50%; /* Move the button 50% to the right */
+    transform: translate(-50%, -50%); /* Center the button exactly */
+    position: absolute;
 
-  padding: 10px;
-  background-color: blue;
-  color: white;
-  border-radius: 100px;
-  outline: none;
-  border: none;
-  cursor: pointer;
 
-  transition: 1s all ease-in-out;
-  position: absolute;
+    padding: 10px;
+    background-color: blue;
+    color: white;
+    border-radius: 100px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition: 1s all ease-in-out;
 }
 
 .box_title {
