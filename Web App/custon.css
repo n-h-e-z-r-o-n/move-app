@@ -581,6 +581,8 @@ font-family: monospace;
 .box {
     width:  200px;
     height: 350px;
+    backdrop-filter: blur(10px); /* Applies blur to the background */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .box-img{
@@ -654,6 +656,8 @@ font-family: monospace;
   align-items: center;
   justify-content: space-between;
   font-size: .85em;
+
+
 }
 
 .badge-type {
