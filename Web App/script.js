@@ -156,8 +156,8 @@ async function Latest_Movies(event, page, type) {
 
   let count = 1;
   let data_json = [];
-    console.log();
-    while (count <= page) {
+
+  while (count <= page) {
       const li  = `https://vidsrc.xyz/movies/latest/page-${page}`
       let res = await fetch(`https://vidsrc.xyz/movies/latest/page-${page}.json`);
       let data = await res.json();
@@ -165,47 +165,20 @@ async function Latest_Movies(event, page, type) {
       count++;
       break;
     }
-  console.log("erererere", data_json);
+
   let hold = [];
   for (let i = 0; i < data_json.length; i++) {
 
     let res2 = await fetch(`https://api.themoviedb.org/3/movie/${data_json[i]['tmdb_id']}&?api_key=6bfaa39b0a3a25275c765dcaddc7dae7`);
     let data2 = await res2.json();
-    hold.push({poster_path:data2['poster_path'], release_date:data2['release_date'], vote_average:data2['vote_average'], title:data2['title'], id:data2['id']});
+    hold.push({poster_path:data2['poster_path'], release_date:data2['release_date'], vote_average:data2['vote_average'], title:data2['title'], id:data2['id'], runtime:data2['runtime']});
   }
   showMovies(hold);
 }
 
 
 
-async function Old_Latest_Movies(event, page, type) {
-  try{
-    const choiceSelect = event.target;
-    const choiceDivs = document.querySelectorAll('.show_title_section_movie button');
-    choiceDivs.forEach(div => div.classList.remove('selected_glow'));
-    choiceSelect.classList.add('selected_glow');
-  } catch{console.log();}
 
-  let count = 1;
-
-  let data_json = [];
-    console.log();
-    while (count <= page) {
-      let res = await fetch(`https://vidsrc.to/vapi/movie/${type}/${count}`);
-      let data = await res.json();
-      data_json = data_json.concat(data['result']['items']) ;
-      count++;
-    }
-  console.log("erererere", data_json);
-  let hold = [];
-  for (let i = 0; i < data_json.length; i++) {
-
-    let res2 = await fetch(`https://api.themoviedb.org/3/movie/${data_json[i]['tmdb_id']}&?api_key=6bfaa39b0a3a25275c765dcaddc7dae7`);
-    let data2 = await res2.json();
-    hold.push({poster_path:data2['poster_path'], release_date:data2['release_date'], vote_average:data2['vote_average'], title:data2['title'], id:data2['id']});
-  }
-  showMovies(hold);
-}
 
 async function Latest_episode(event, page) {
   try{
@@ -239,10 +212,25 @@ async function Latest_episode(event, page) {
       try{
           let res2 = await fetch(`https://api.themoviedb.org/3/tv/${data_json[i]['tmdb_id']}&?api_key=6bfaa39b0a3a25275c765dcaddc7dae7`);
           let data2 = await res2.json();
+
+          let  seasons_episode = '';
+
+
+
+
           if(`${data2['poster_path']}` !== `undefined`){
             if (id_prev !==data2['id']){
-              hold.push({poster_path:data2['poster_path'], first_air_date:data2['first_air_date'], vote_average:data2['vote_average'], original_name:data2['original_name'], id:data2['id']});
-              id_prev = data2['id'];
+
+                try{
+                   seasons_episode =   `SS ${data2['number_of_seasons']} / ESP ${data2['last_episode_to_air']['episode_number']}`;
+                }catch (error) {
+                  seasons_episode =  `SS ${data2['number_of_seasons']} / ESP ${data2['number_of_episodes']}`;
+                }
+
+
+                hold.push({poster_path:data2['poster_path'], first_air_date:data2['first_air_date'], vote_average:data2['vote_average'], original_name:data2['original_name'], id:data2['id'], S_info: seasons_episode});
+                id_prev = data2['id'];
+
             }
           }
         }finally{continue;}
@@ -250,46 +238,7 @@ async function Latest_episode(event, page) {
   showTV(hold);
 }
 
-async function old_Latest_episode(event, page) {
-  try{
-    const choiceSelect = event.target;
-    const choiceDivs = document.querySelectorAll('.show_title_section_show button');
-    choiceDivs.forEach(div => div.classList.remove('selected_glow'));
-    choiceSelect.classList.add('selected_glow');
-  } catch{console.log();}
 
-  let count = 1;
-
-  let data_json = [];
-  let id_prev = 0;
-
-  while (count <= page) {
-      let res = await fetch(`https://vidsrc.to/vapi/episode/latest/${count}`);
-      let data = await res.json();
-      if(Array.isArray(data['result']['items'])){
-        data_json = data_json.concat(data['result']['items']) ;
-        count++;
-      }else{
-        itemValues = Object.values(data.result.items);
-        data_json = data_json.concat(itemValues) ;
-        count++;
-      }
-    }
-  let hold = [];
-  for (let i = 0; i < data_json.length; i++) {
-      try{
-          let res2 = await fetch(`https://api.themoviedb.org/3/tv/${data_json[i]['tmdb_id']}&?api_key=6bfaa39b0a3a25275c765dcaddc7dae7`);
-          let data2 = await res2.json();
-          if(`${data2['poster_path']}` !== `undefined`){
-            if (id_prev !==data2['id']){
-              hold.push({poster_path:data2['poster_path'], first_air_date:data2['first_air_date'], vote_average:data2['vote_average'], original_name:data2['original_name'], id:data2['id']});
-              id_prev = data2['id'];
-            }
-          }
-        }finally{continue;}
-  }
-  showTV(hold);
-}
 
 async function Latest_Shows(event, page, type) {
 
@@ -343,42 +292,42 @@ async function Latest_Shows(event, page, type) {
 function showMovies(movies) {
   //movie_div.innerHTML = "";
   movies.forEach((movie) => {
-    const { title, poster_path, id, vote_average, overview, release_date } = movie;
+    const { title, poster_path, id, vote_average, overview, release_date, runtime } = movie;
     const movieItem = document.createElement("div");
     movieItem.classList.add("box");
     let updatedString = release_date.substring(0, 4);
     movieItem.innerHTML = `
         <!-- box-1  -->
 
-            <div class="box-img">
-                <img src="${IMG_PATH + poster_path}"  alt="">
+             <div class="box-img">
+                <img class="img-on" src="${IMG_PATH + poster_path}" alt="">
                 <div class="box-img-button">
-                    <div class="button_style">&#9654;</div>
-                    <div class="button_style" style="background-color: black;">+</div>
-               </div>
+                     <div class="button_style">&#9654;</div>
+                     <div class="button_style">+</div>
+                </div>
             </div>
             <div class="box_title">${title}</div>
-
-             <div class="container_span">
-               <div style="display:flex;">
-                    <div  class="badge-type"> tv </div>
-                    <div class="badge-type_year"> 2024 </div>
-               </div>
-               <div  class="badge-type_rating"> ★  0</div>
-            </div>
-
-
             <div class="container_span">
-               <div style="color: gray;">${updatedString}</div>
-               <div style="color: gray;"> &starf;  ${vote_average}</div>
+               <div style="display:flex;">
+                    <div  class="badge-type"> mv </div>
+                    <div class="badge-type_year"> ${updatedString} </div>
+               </div>
+               <div class="badge-type_text"> ${runtime} </div>
+               <div  class="badge-type_rating"> &starf;  ${vote_average} </div>
             </div>
 
     `;
 
     // Add event listener to open another page when clicked
-    movieItem.addEventListener("click", () => {
-         window.location.href = "watch_page.html?id=" + id + "&type=movie";
-       });
+    //movieItem.addEventListener("click", () => {
+    //     window.location.href = "watch_page.html?id=" + id + "&type=movie";
+    //   });
+
+
+    const boxImg = movieItem.querySelector(".box-img");
+    boxImg.addEventListener("click", () => {
+      window.location.href = "watch_page.html?id=" + id + "&type=movie";
+    });
 
     movie_div.appendChild(movieItem);
   });
@@ -390,28 +339,43 @@ function showMovies(movies) {
 function showTV(movies) {
   //series_div.innerHTML = "";
   movies.forEach((movie) => {
-    const {id, original_name, poster_path, vote_average, overview, first_air_date } = movie;
+    const {id, original_name, poster_path, vote_average, overview, first_air_date, S_info } = movie;
+    let updatedString = first_air_date.substring(0, 4);
     const movieItem = document.createElement("div");
     movieItem.classList.add("box");
     movieItem.innerHTML = `
         <!-- box-1  -->
 
             <div class="box-img">
-                <img src="${IMG_PATH + poster_path}"  alt="">
+                <img class="img-on" src="${IMG_PATH + poster_path}" alt="">
+                <div class="box-img-button">
+                     <div class="button_style">&#9654;</div>
+                     <div class="button_style" style="background-color: black;">+</div>
+                </div>
             </div>
-            <h3>${original_name}</h3>
+            <div class="box_title">${original_name}</div>
             <div class="container_span">
-               <div style="color: gray;">${first_air_date}</div>
-               <div style="color: gray;"> &starf; &starf; &#9734;   ${vote_average}</div>
+               <div style="display:flex;">
+                    <div  class="badge-type"> tv </div>
+                    <div class="badge-type_year"> ${updatedString} </div>
+               </div>
+               <div class="badge-type_text"> ${S_info} </div>
+               <div  class="badge-type_rating"> &starf;  ${vote_average} </div>
             </div>
 
     `;
 
     // Add event listener to open another page when clicked
-    movieItem.addEventListener("click", () => {
-         window.location.href = "watch_page.html?id=" + id + "&type=tv";
-       });
-    series_div.appendChild(movieItem);
+    //movieItem.addEventListener("click", () => {
+    //     window.location.href = "watch_page.html?id=" + id + "&type=tv";
+    //   });
+
+    const boxImg = movieItem.querySelector(".box-img");
+    boxImg.addEventListener("click", () => {
+      window.location.href = "watch_page.html?id=" + id + "&type=tv";
+    });
+
+    series_div.appendChild(movieItem); // Append the `movieItem` to the container
   });
 }
 
@@ -513,55 +477,74 @@ form.addEventListener("submit", (e) => {
 let movie_currentPage = 1;
 
 async function more_movie(){
-  movie_currentPage = movie_currentPage + 1;
 
-  let data_json = [];
+  const button = document.getElementById("moreMovieButton");
+  console.log(button.textContent )
 
-  let res = await fetch(`https://vidsrc.xyz/movies/latest/page-${movie_currentPage}.json`);
-  let data = await res.json();
-  data_json = data_json.concat(data['result']) ;
-  count++;
+  if (button.textContent ==='Show More'){
+            button.textContent = "Loading...";
 
-  let hold = [];
-  for (let i = 0; i < data_json.length; i++) {
+            movie_currentPage = movie_currentPage + 1;
 
-    let res2 = await fetch(`https://api.themoviedb.org/3/movie/${data_json[i]['tmdb_id']}&?api_key=6bfaa39b0a3a25275c765dcaddc7dae7`);
-    let data2 = await res2.json();
-    hold.push({poster_path:data2['poster_path'], release_date:data2['release_date'], vote_average:data2['vote_average'], title:data2['title'], id:data2['id']});
-  }
-  showMovies(hold)
+            let data_json = [];
+
+            let res = await fetch(`https://vidsrc.xyz/movies/latest/page-${movie_currentPage}.json`);
+            let data = await res.json();
+            data_json = data_json.concat(data['result']) ;
+
+            let hold = [];
+            for (let i = 0; i < data_json.length; i++) {
+
+            let res2 = await fetch(`https://api.themoviedb.org/3/movie/${data_json[i]['tmdb_id']}&?api_key=6bfaa39b0a3a25275c765dcaddc7dae7`);
+            let data2 = await res2.json();
+            hold.push({poster_path:data2['poster_path'], release_date:data2['release_date'], vote_average:data2['vote_average'], title:data2['title'], id:data2['id']});
+            }
+            button.textContent = "Show More";
+            showMovies(hold)
+    }
 }
+
+
 
 let series_currentPage = 1;
 async function more_series(){
-  series_currentPage = series_currentPage + 1;
 
-  let data_json = [];
-  let id_prev = 0;
+  const button = document.getElementById("moretvButton");
+  console.log(button.textContent )
 
-  let res = await fetch(`https://vidsrc.xyz/episodes/latest/page-${series_currentPage}.json`);
-  let data = await res.json();
-  if(Array.isArray(data['result'])){
-    data_json = data_json.concat(data['result']) ;
-  }else{
-    itemValues = Object.values(data.result);
-    data_json = data_json.concat(itemValues) ;
-  }
+  if (button.textContent ==='Show More'){
+            button.textContent = "Loading...";
 
-  let hold = [];
-  for (let i = 0; i < data_json.length; i++) {
-      try{
-          let res2 = await fetch(`https://api.themoviedb.org/3/tv/${data_json[i]['tmdb_id']}&?api_key=6bfaa39b0a3a25275c765dcaddc7dae7`);
-          let data2 = await res2.json();
-          if(`${data2['poster_path']}` !== `undefined`){
-            if (id_prev !==data2['id']){
-              hold.push({poster_path:data2['poster_path'], first_air_date:data2['first_air_date'], vote_average:data2['vote_average'], original_name:data2['original_name'], id:data2['id']});
-              id_prev = data2['id'];
+            series_currentPage = series_currentPage + 1;
+
+            let data_json = [];
+            let id_prev = 0;
+
+            let res = await fetch(`https://vidsrc.xyz/episodes/latest/page-${series_currentPage}.json`);
+            let data = await res.json();
+            if(Array.isArray(data['result'])){
+                 data_json = data_json.concat(data['result']) ;
+            }else{
+                itemValues = Object.values(data.result);
+                data_json = data_json.concat(itemValues) ;
             }
-          }
-        }finally{continue;}
-  }
-  showTV(hold);
+
+            let hold = [];
+            for (let i = 0; i < data_json.length; i++) {
+              try{
+                  let res2 = await fetch(`https://api.themoviedb.org/3/tv/${data_json[i]['tmdb_id']}&?api_key=6bfaa39b0a3a25275c765dcaddc7dae7`);
+                  let data2 = await res2.json();
+                  if(`${data2['poster_path']}` !== `undefined`){
+                    if (id_prev !==data2['id']){
+                      hold.push({poster_path:data2['poster_path'], first_air_date:data2['first_air_date'], vote_average:data2['vote_average'], original_name:data2['original_name'], id:data2['id']});
+                      id_prev = data2['id'];
+                    }
+                  }
+                }finally{continue;}
+            }
+            button.textContent = "Show More";
+            showTV(hold);
+}
 }
 
 

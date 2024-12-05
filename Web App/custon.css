@@ -1,6 +1,6 @@
 :root {
---global-color-bg:   #0F0404;
---global-color-fg: white;
+--global-color-bg:  white;  /*#0F0404;*/
+--global-color-fg: black;
 --color_theme:  hsl(186 100% 69%);
 --section_header_color:  #1B1B1B;
 }
@@ -139,23 +139,25 @@ body , html {
 }
 .slider-images{
   display: flex;
+  justify-content: space-between;
+
   align-items: center;
-  gap: 2px;
   border-radius: 5px;
 }
 .slider-images img{
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 50px;
 
 }
 .slider-img{
-  width: 1%;
-  border-radius: 6px;
+  width: 3%;
+  border-radius: 15px;
   cursor: pointer;
   position: relative;
   transition: 0.7s ease;
+  margin: 4px;
 }
 .slider-images .slider-img:first-child, .slider-images .slider-img:last-child{
   height: 400px;
@@ -203,8 +205,8 @@ body , html {
   display: none;
 }
 .slider-img.active{
-  width:  95% !important;
-  height:  715px !important;
+  width:  70% !important;
+  height:  710px !important;
 }
 .slider-img.active h1{
    display: none;
@@ -632,8 +634,8 @@ font-family: monospace;
 .button_style {
    background-color: #420D09;
     border-radius: 50%;
-    width: 40px; /* Width of the circle */
-    height: 40px; /* Height of the circle (same as width for a perfect circle) */
+    width: 60px; /* Width of the circle */
+    height: 60px; /* Height of the circle (same as width for a perfect circle) */
     align-items: center; /* Vertically center text */
     justify-content: center; /* Horizontally center text */
     display: flex; /* Use Flexbox for centering */
@@ -646,12 +648,12 @@ font-family: monospace;
 
 
 .box_title {
+    margin: 0px 10px 0px 10px;
     height: 22px;
-    margin:2px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    text-align: center;
+    font-size: 1rem;
+    font-style: bold;
     font-family: Candara;
+    overflow:hidden;
 }
 
 .container_span{
@@ -664,23 +666,31 @@ font-family: monospace;
 }
 
 .badge-type {
-    border: 0.1px solid gray;
+    border: 0.1px solid var(--global-color-fg);
     padding: 0 2px;
-    color: gray;
+    color: var(--global-color-fg);
     font-size: 1em;
     border-radius: .2rem;
     margin: 1px;
 }
 
 .badge-type_year {
-       color: gray;
+       color: var(--global-color-fg);
        margin-top: auto; /* Pushes the text to the bottom */
        text-align: center;
-       font-size: .55em;
+       font-size: .75em;
      }
 .badge-type_rating {
-   color: gray;
+   color: var(--global-color-fg);
    font-size: 1em;
+}
+
+.badge-type_text {
+    color:var(--global-color-fg);
+    display: flex;
+    text-align: center;
+    font-size: 1em;
+    justify-content: center;
 
 }
 /* ------------------------------------------------------------------------------------------------------------*/
