@@ -283,24 +283,13 @@ body , html {
 
 /*-----------------------------------------------------------------------------*/
 .glowing-btn {
-  font-size: 2rem;
-  color: hsl(186 100% 69%);
+  font-size: 1.5rem;
+  color: var(--global-color-fg);
   animation: flicker 1.5s infinite;
+  margin-right: 10px;
 }
 
-@keyframes flicker {
-  0%, 100% {
-    color: hsl(186 100% 69%); /* Original color */
-    text-shadow: 0 0 5px hsl(186 100% 69%), 0 0 10px hsl(186 100% 69%), 0 0 20px hsl(186 100% 69%);
-  }
-  50% {
-    color: hsl(186 100% 69%); /* Flicker color */
-    text-shadow: 0 0 2px hsl(186 100% 69%), 0 0 5px hsl(186 100% 69%);
-  }
-  25%, 75% {
-    color: hsl(186 100% 69%); /* Flicker to black (off) */
-    text-shadow: none;
-  }
+
 }
 
 
