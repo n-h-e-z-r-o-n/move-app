@@ -47,13 +47,15 @@ body , html {
 }
 
 .logo_ {
-    background: linear-gradient(135deg, black 20%, transparent 10%);
+    background: linear-gradient(135deg, var(--global-color-bg) 20%, transparent 10%);
     height: 100%;
 }
 
 .logo_text {
+    color: transparent;
     font-size: 40px;
     text-decoration: none;
+    margin-left: 5px;
 }
 
 
