@@ -52,7 +52,8 @@ body , html {
 }
 
 .logo_text {
-    color: transparent;
+    color: transparent !important;
+
     font-size: 40px;
     text-decoration: none;
     margin-left: 5px;
@@ -546,12 +547,10 @@ font-family: monospace;
     color: black;
 }
 
-.toggle.active{
-    background-color: black;
+.toggle .active{
 }
 
 .toggle-ball.active{
-    background-color: white;
     transform: translateX(-20px);
 }
 
