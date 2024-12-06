@@ -119,7 +119,7 @@ function Suggestion_Search(movies) {
 
     } else {
         title = original_title;
-        date = first_air_date.substring(0, 4);
+        date = release_date.substring(0, 4);
         type = "mv";
         info = `${runtime} min` ;
     }
