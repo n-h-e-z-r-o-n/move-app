@@ -4,6 +4,7 @@
 --color_theme:  hsl(186 100% 69%);
 --section_header_color:  black; /*#1B1B1B;*/
 --Brand_Color:  #C49102;
+--Brand_Image:  linear-gradient(to bottom, rgba(0,0,0,0), var(--global-color-bg)), url("./profile/Home_img.jpg");
 }
 
 body , html {
@@ -772,7 +773,7 @@ body , html {
   }
 
   .menu{
-      background: linear-gradient(to bottom, rgba(0,0,0,0), var(--global-color-bg)), url("./profile/Home_img.jpg");
+      background:  var(--Brand_Image);
       background-repeat: no-repeat;
       background-position: center;
       margin: 0;
@@ -896,11 +897,14 @@ height: auto;
 
 /* ViewMore ------------------------------------------------------------------*/
 
-.view_more{
+.view_more_Page_Body{
+
     height: 700px;
     width:  100%;
-    background: linear-gradient(to bottom, rgba(0,0,0,0), var(--global-color-bg)), url('./profile/back.jpg');
-}
+    background: var(--Brand_Image);
+    background-repeat: no-repeat;
+    background-position: center;
+    }
 .view_grid_container{
 width: 100%;
 min-height: 500px;
