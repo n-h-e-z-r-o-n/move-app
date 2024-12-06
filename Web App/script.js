@@ -101,10 +101,10 @@ if (movie_div) {
 
 
 
-    Latest_Movies(null, page_count, 'add');
-    Latest_episode(null, page_count);
-    //getTV(TVs_API_URL); // initial Movies
-}
+    //Latest_Movies(null, page_count, 'add');
+    //Latest_episode(null, page_count);
+    Latest_Shows(null, page_count);
+  }
 
 //SLIDER_ function --------------------------------------------------------------------------------
 
