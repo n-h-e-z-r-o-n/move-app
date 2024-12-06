@@ -312,7 +312,7 @@ function showMovies(movies) {
                     <div  class="badge-type"> mv </div>
                     <div class="badge-type_year"> ${updatedString} </div>
                </div>
-               <div class="badge-type_text"> ${runtime} </div>
+               <div class="badge-type_text"> ${runtime} min</div>
                <div  class="badge-type_rating"> &starf;  ${vote_average} </div>
             </div>
 

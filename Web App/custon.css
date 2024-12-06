@@ -490,7 +490,7 @@ body , html {
 .movie-list-item-button {
   padding: 10px;
   background-color: var(--Brand_Color);
-  color: white;
+  color: var(--global-color-bg);
   border-radius: 10px;
   outline: none;
   border: none;
@@ -635,7 +635,7 @@ body , html {
 
 .button_style {
    background-color:  var(--Brand_Color);
-   color: white;
+   color: var(--global-color-bg);
     border-radius: 50%;
     width: 60px; /* Width of the circle */
     height: 60px; /* Height of the circle (same as width for a perfect circle) */
