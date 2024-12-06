@@ -39,7 +39,12 @@ async function Latest_shows(page) {
   let res = await fetch(`https://vidsrc.xyz/episodes/latest/page-${page}.json`);
   let data = await res.json();
   let hold = [];
+  
+  if (params === 'show'){
+  let data_json  = data['result'];
+  }else{
   let data_json  = data['result']['items'];
+  }
 
   if(Array.isArray(data_json)){
   }else{
