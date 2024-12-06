@@ -2,7 +2,7 @@
 --global-color-bg:  white;  /*#0F0404;*/
 --global-color-fg: black;
 --color_theme:  hsl(186 100% 69%);
---section_header_color:  #1B1B1B;
+--section_header_color:  black; /*#1B1B1B;*/
 }
 
 body , html {
@@ -252,10 +252,10 @@ body , html {
 .text_container {
   height: 80%;
   width:50%;
-  color: var(--global-color-fg);
+  color: var(--global-color-bg);
   font-size: 25px;
   text-align:left;
-font-family: monospace;
+  font-family: monospace;
 }
 
 /*-----------------------------------------------------------------------------*/
