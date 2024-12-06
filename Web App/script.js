@@ -98,11 +98,8 @@ if (movie_div) {
     trendingShows(Trending_API_URL)
     Slider_Movies(Movies_API_URL); // initial Movies
 
-
-
-
-    //Latest_Movies(null, page_count, 'add');
-    //Latest_episode(null, page_count);
+    Latest_Movies(null, page_count, 'add');
+    Latest_episode(null, page_count);
   }
 
 //SLIDER_ function --------------------------------------------------------------------------------
