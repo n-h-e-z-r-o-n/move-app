@@ -36,7 +36,7 @@ const more_div = document.getElementById("moreUl");
 
 
 async function Latest_shows(page) {
-  let res = await fetch(`https://vidsrc.to/vapi/episode/latest/${page}`);
+  let res = await fetch(`https://vidsrc.xyz/episodes/latest/page-${page}.json`);
   let data = await res.json();
   let hold = [];
   let data_json  = data['result']['items'];
@@ -66,9 +66,10 @@ async function Latest_shows(page) {
 
 
 async function Latest_Movies(page) {
+  console.log("dffdfdfdff")
   let count = 1;
   let data_json = [];
-  let res = await fetch(`https://vidsrc.to/vapi/movie/new/${page}`);
+  let res = await fetch(`https://vidsrc.xyz/movies/latest/page-${page}.json`);
   let data = await res.json();
   data_json = data_json.concat(data['result']['items']) ;
 
@@ -79,6 +80,7 @@ async function Latest_Movies(page) {
     console.log(data2);
     hold.push({poster_path:data2['poster_path'], overview:data2['overview'] ,release_date:data2['release_date'], vote_average:data2['vote_average'], original_title:data2['title'], id:data2['id']});
   }
+  console.log("ewerwwewdef")
   Suggestion_Search(hold);
 }
 

@@ -154,7 +154,6 @@ async function Latest_Movies(event, page, type) {
   let data_json = [];
 
   while (count <= page) {
-      const li  = `https://vidsrc.xyz/movies/latest/page-${page}`
       let res = await fetch(`https://vidsrc.xyz/movies/latest/page-${page}.json`);
       let data = await res.json();
       data_json = data_json.concat(data['result']) ;
