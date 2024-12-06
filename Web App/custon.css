@@ -225,7 +225,7 @@ body , html {
 .show_title_section{
   height: 45px;
   width: 100%;
-  background-color: var(--section_header_color);
+  background-color: hsl(0, 0%, 90%);
   padding-top: 5px solid ; /* Adjust the thickness and color as needed */
   display: flex;
   justify-content: space-between;
