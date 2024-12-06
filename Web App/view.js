@@ -60,9 +60,17 @@ async function Latest_shows(page) {
         try{
             let res2 = await fetch(`https://api.themoviedb.org/3/tv/${data_json[i]['tmdb_id']}&?api_key=6bfaa39b0a3a25275c765dcaddc7dae7`);
             let data2 = await res2.json();
+            let  seasons_episode = '';
             if(`${data2['poster_path']}` !== `undefined`){
               if (id_prev !==data2['id']){
-                hold.push({poster_path:data2['poster_path'], first_air_date:data2['first_air_date'], vote_average:data2['vote_average'], overview:data2['overview'], original_name:data2['original_name'], id:data2['id']});
+
+                try{
+                   seasons_episode =   `SS ${data2['number_of_seasons']} / ESP ${data2['last_episode_to_air']['episode_number']}`;
+                }catch (error) {
+                  seasons_episode =  `SS ${data2['number_of_seasons']} / ESP ${data2['number_of_episodes']}`;
+                }
+
+                hold.push({poster_path:data2['poster_path'], first_air_date:data2['first_air_date'], vote_average:data2['vote_average'], overview:data2['overview'], original_name:data2['original_name'], id:data2['id'], S_info: seasons_episode});
                 id_prev = data2['id'];
                 }
             }
@@ -81,13 +89,11 @@ async function Latest_Movies(page) {
   data_json = data_json.concat(data['result']) ;
   let data2;
   let hold = [];
-  let  seasons_episode = '';
+
 
   for (let i = 0; i < data_json.length; i++) {
     let res2 = await fetch(`https://api.themoviedb.org/3/movie/${data_json[i]['tmdb_id']}&?api_key=6bfaa39b0a3a25275c765dcaddc7dae7`);
     data2 = await res2.json();
-
-    try{}catch(){continue}
 
     hold.push({poster_path:data2['poster_path'], release_date:data2['release_date'], vote_average:data2['vote_average'], original_title:data2['title'], original_name:data2['original_name'],  id:data2['id'], runtime:data2['runtime']});
 
@@ -99,7 +105,7 @@ async function Latest_Movies(page) {
 function Suggestion_Search(movies) {
   more_div.innerHTML = "";
   movies.forEach((movie) => {
-    const { original_title, original_name, poster_path, id, vote_average, overview, release_date, first_air_date , runtime} = movie;
+    const { original_title, original_name, poster_path, id, vote_average, overview, release_date, first_air_date , runtime, S_info} = movie;
     //console.log(movie);
     let title;
     let type;
@@ -109,7 +115,7 @@ function Suggestion_Search(movies) {
        title = original_name;
        date = first_air_date.substring(0, 4);
        type = "tv";
-       info = first_air_date.substring(0, 4);
+       info = S_info;
 
     } else {
         title = original_title;
@@ -131,10 +137,10 @@ function Suggestion_Search(movies) {
             <div class="box_title">${title}</div>
             <div class="container_span">
                <div style="display:flex;">
-                    <div  class="badge-type"> type </div>
+                    <div  class="badge-type"> ${type} </div>
                     <div class="badge-type_year"> ${date} </div>
                </div>
-               <div class="badge-type_text"> ${info} min</div>
+               <div class="badge-type_text"> ${info}</div>
                <div  class="badge-type_rating"> &starf;  ${vote_average} </div>
             </div>
 
