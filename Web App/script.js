@@ -103,7 +103,6 @@ if (movie_div) {
 
     //Latest_Movies(null, page_count, 'add');
     //Latest_episode(null, page_count);
-    Latest_Shows(null, page_count);
   }
 
 //SLIDER_ function --------------------------------------------------------------------------------
@@ -237,69 +236,6 @@ async function Latest_episode(event, page) {
   }
   showTV(hold);
 }
-
-
-
-async function Latest_Shows(event, page, type) {
-
-  try{
-    const choiceSelect = event.target;
-    const choiceDivs = document.querySelectorAll('.show_title_section_show button');
-    choiceDivs.forEach(div => div.classList.remove('selected_glow'));
-    choiceSelect.classList.add('selected_glow');
-  } catch{console.log();}
-
-  let count = 1;
-
-  let data_json = [];
-  let id_prev = 0;
-
-  while (count <= page) {
-      let res = await fetch(`https://vidsrc.xyz/tvshows/latest/page-${page}.json`);
-
-      let data = await res.json();
-      if(Array.isArray(data['result'])){
-        data_json = data_json.concat(data['result']) ;
-        count++;
-      }else{
-        itemValues = Object.values(data.result);
-        data_json = data_json.concat(itemValues) ;
-        count++;
-      }
-      break;
-    }
-  let hold = [];
-  for (let i = 0; i < data_json.length; i++) {
-      try{
-          let res2 = await fetch(`https://api.themoviedb.org/3/tv/${data_json[i]['tmdb_id']}&?api_key=6bfaa39b0a3a25275c765dcaddc7dae7`);
-          let data2 = await res2.json();
-
-          let  seasons_episode = '';
-
-          if(`${data2['poster_path']}` !== `undefined`){
-            if (id_prev !==data2['id']){
-
-                try{
-                   seasons_episode =   `SS ${data2['number_of_seasons']} / ESP ${data2['last_episode_to_air']['episode_number']}`;
-                }catch (error) {
-                  seasons_episode =  `SS ${data2['number_of_seasons']} / ESP ${data2['number_of_episodes']}`;
-                }
-
-
-                hold.push({poster_path:data2['poster_path'], first_air_date:data2['first_air_date'], vote_average:data2['vote_average'], original_name:data2['original_name'], id:data2['id'], S_info: seasons_episode});
-                id_prev = data2['id'];
-
-            }
-          }
-        }finally{continue;}
-  }
-  showTV(hold);
-
-}
-
-
-
-
 
 // SHOW MOVIES  SECTION --------------------------------------------------------
 
