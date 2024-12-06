@@ -58,7 +58,29 @@ body , html {
     font-size: 40px;
     text-decoration: none;
     margin-left: 5px;
+    animation: logo_flicker 2s infinite;
 }
+
+
+@keyframes logo_flicker {
+  0%, 100% {
+    color: var(--global-color-fg);
+    text-shadow: 0 0 5px var(--global-color-fg), 0 0 10px var(--global-color-fg), 0 0 20px var(--global-color-fg);
+  }
+  50% {
+    color: var(--global-color-fg);
+    text-shadow: 0 0 2px var(--global-color-fg), 0 0 5px var(--global-color-fg);
+  }
+  25%, 75% {
+    color: var(--global-color-fg);
+    text-shadow: none;
+  }
+}
+
+
+
+
+
 
 
 .search_container {
