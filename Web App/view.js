@@ -80,8 +80,6 @@ async function Latest_Movies(page) {
     hold.push({poster_path:data2['poster_path'], release_date:data2['release_date'], vote_average:data2['vote_average'], original_title:data2['title'], original_name:data2['original_name'],  id:data2['id'], runtime:data2['runtime']});
 
   }
-  console.log(data2);
-  console.log("ewerwwewdef")
   Suggestion_Search(hold);
 }
 
@@ -94,8 +92,7 @@ function Suggestion_Search(movies) {
     let title;
     let type;
     let Info;
-    console.log(movie);
-    console.log(original_title);
+
     if (original_title === undefined) {
        title = original_name;
        date = first_air_date;
@@ -113,8 +110,6 @@ function Suggestion_Search(movies) {
     const movieItem = document.createElement("div");
     movieItem.classList.add("box");
     movieItem.innerHTML = `
-
-
              <div class="box-img">
                 <img class="img-on" src="${IMG_PATH + poster_path}" alt="">
                 <div class="box-img-button">
@@ -131,9 +126,6 @@ function Suggestion_Search(movies) {
                <div class="badge-type_text"> ${info} min</div>
                <div  class="badge-type_rating"> &starf;  ${vote_average} </div>
             </div>
-
-
-
 
     `;
     // Add event listener to open another page when clicked
