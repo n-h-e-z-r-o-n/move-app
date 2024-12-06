@@ -71,14 +71,14 @@ async function Latest_Movies(page) {
   let data_json = [];
   let res = await fetch(`https://vidsrc.xyz/movies/latest/page-${page}.json`);
   let data = await res.json();
-  data_json = data_json.concat(data['result']['items']) ;
+  data_json = data_json.concat(data['result']) ;
 
   let hold = [];
   for (let i = 0; i < data_json.length; i++) {
+
     let res2 = await fetch(`https://api.themoviedb.org/3/movie/${data_json[i]['tmdb_id']}&?api_key=6bfaa39b0a3a25275c765dcaddc7dae7`);
     let data2 = await res2.json();
-    console.log(data2);
-    hold.push({poster_path:data2['poster_path'], overview:data2['overview'] ,release_date:data2['release_date'], vote_average:data2['vote_average'], original_title:data2['title'], id:data2['id']});
+    hold.push({poster_path:data2['poster_path'], release_date:data2['release_date'], vote_average:data2['vote_average'], title:data2['title'], id:data2['id'], runtime:data2['runtime']});
   }
   console.log("ewerwwewdef")
   Suggestion_Search(hold);
