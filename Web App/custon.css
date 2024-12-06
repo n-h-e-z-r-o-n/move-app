@@ -261,19 +261,19 @@ body , html {
 
 /*-----------------------------------------------------------------------------*/
 .glowing-btn {
-    font-size: 2rem;
-  color: hsl(186 100% 69%);
+  font-size: 2rem;
+  color: var(--global-color-bg);
   animation: flicker 1.5s infinite;
 }
 
 @keyframes flicker {
   0%, 100% {
-    color: hsl(186 100% 69%); /* Original color */
-    text-shadow: 0 0 5px blue, 0 0 10px blue, 0 0 20px blue;
+    color: var(--global-color-bg); /* Original color */
+    text-shadow: 0 0 5px var(--global-color-bg), 0 0 10px var(--global-color-bg), 0 0 20px var(--global-color-fg);
   }
   50% {
-    color: #ff00ff; /* Flicker color */
-    text-shadow: 0 0 2px #ff00ff, 0 0 5px #ff00ff;
+    color: hsl(186 100% 69%); /* Flicker color */
+    text-shadow: 0 0 2px hsl(186 100% 69%), 0 0 5px hsl(186 100% 69%);
   }
   25%, 75% {
     color: hsl(186 100% 69%); /* Flicker to black (off) */
