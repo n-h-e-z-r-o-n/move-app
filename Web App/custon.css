@@ -52,10 +52,8 @@ body , html {
 }
 
 .logo_text {
-    color: transparent !important;
+    color: var(--global-color-fg);
     background: transparent;
-
-
     font-size: 40px;
     text-decoration: none;
     margin-left: 5px;
