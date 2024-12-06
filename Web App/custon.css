@@ -421,7 +421,8 @@ body , html {
 }
 .show_more_1 button {
   padding: 5px 10px;
-  background-color: white;
+  background-color: transparent;
+  border-color: var(--Brand_Color);
   border-radius: 10px 10px 10px 10px;
   cursor: pointer;
   color: black;
