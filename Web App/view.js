@@ -39,11 +39,14 @@ async function Latest_shows(page) {
   let res = await fetch(`https://vidsrc.xyz/episodes/latest/page-${page}.json`);
   let data = await res.json();
   let hold = [];
-  
-  if (params === 'show'){
-  let data_json  = data['result'];
+  let data_json = [];
+  console.log(params)
+  if (params['query'] === 'show'){
+   data_json  = data['result'];
+   console.log("params show")
   }else{
-  let data_json  = data['result']['items'];
+   data_json  = data['result']['items'];
+    console.log("params movie")
   }
 
   if(Array.isArray(data_json)){
@@ -78,9 +81,13 @@ async function Latest_Movies(page) {
   data_json = data_json.concat(data['result']) ;
   let data2;
   let hold = [];
+  let  seasons_episode = '';
+
   for (let i = 0; i < data_json.length; i++) {
     let res2 = await fetch(`https://api.themoviedb.org/3/movie/${data_json[i]['tmdb_id']}&?api_key=6bfaa39b0a3a25275c765dcaddc7dae7`);
     data2 = await res2.json();
+
+    try{}catch(){continue}
 
     hold.push({poster_path:data2['poster_path'], release_date:data2['release_date'], vote_average:data2['vote_average'], original_title:data2['title'], original_name:data2['original_name'],  id:data2['id'], runtime:data2['runtime']});
 
@@ -100,16 +107,15 @@ function Suggestion_Search(movies) {
 
     if (original_title === undefined) {
        title = original_name;
-       date = first_air_date;
+       date = first_air_date.substring(0, 4);
        type = "tv";
        info = first_air_date.substring(0, 4);
 
     } else {
         title = original_title;
-        date = release_date;
+        date = first_air_date.substring(0, 4);
         type = "mv";
-        info = release_date;
-        info = runtime;
+        info = `${runtime} min` ;
     }
 
     const movieItem = document.createElement("div");
@@ -126,7 +132,7 @@ function Suggestion_Search(movies) {
             <div class="container_span">
                <div style="display:flex;">
                     <div  class="badge-type"> type </div>
-                    <div class="badge-type_year"> ${release_date} </div>
+                    <div class="badge-type_year"> ${date} </div>
                </div>
                <div class="badge-type_text"> ${info} min</div>
                <div  class="badge-type_rating"> &starf;  ${vote_average} </div>
