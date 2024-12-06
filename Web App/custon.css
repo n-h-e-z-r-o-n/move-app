@@ -269,12 +269,7 @@ body , html {
   background: none;
   perspective: 3em;
  font-family: "Raleway", sans-serif;
-  -webkit-box-shadow: inset 0px 0px 0em 0px hsl(186 100% 69%),
-    0px 0px 0.5em 0px hsl(186 100% 69%);
-  -moz-box-shadow: inset 0px 0px 0em 0px vhsl(186 100% 69%),
-    0px 0px 0.5em 0px hsl(186 100% 69%);
-  box-shadow: inset 0px 0px 0em 0px hsl(186 100% 69%),
-    0px 0px 0em 0px hsl(186 100% 69%);
+
   animation: border-flicker 2s linear infinite;
 }
 
