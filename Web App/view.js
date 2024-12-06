@@ -88,7 +88,7 @@ async function Latest_Movies(page) {
 function Suggestion_Search(movies) {
   more_div.innerHTML = "";
   movies.forEach((movie) => {
-    const { original_title, original_name, poster_path, id, vote_average, overview, release_date, first_air_date } = movie;
+    const { original_title, original_name, poster_path, id, vote_average, overview, release_date, first_air_date , runtime} = movie;
     //console.log(movie);
     let title;
     let type;
@@ -117,6 +117,28 @@ function Suggestion_Search(movies) {
                   <p>&starf; &starf;  ${vote_average}</p>
                 </div>
               </div>
+
+
+
+             <div class="box-img">
+                <img class="img-on" src="${IMG_PATH + poster_path}" alt="">
+                <div class="box-img-button">
+                     <div class="button_style">&#9654;</div>
+                     <div class="button_style">+</div>
+                </div>
+            </div>
+            <div class="box_title">${title}</div>
+            <div class="container_span">
+               <div style="display:flex;">
+                    <div  class="badge-type"> mv </div>
+                    <div class="badge-type_year"> ${updatedString} </div>
+               </div>
+               <div class="badge-type_text"> ${runtime} min</div>
+               <div  class="badge-type_rating"> &starf;  ${vote_average} </div>
+            </div>
+
+
+
 
     `;
     // Add event listener to open another page when clicked
