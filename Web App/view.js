@@ -92,15 +92,18 @@ function Suggestion_Search(movies) {
     //console.log(movie);
     let title;
     let type;
+    let Info;
     if (original_title=== undefined) {
        title = original_name;
        date = first_air_date;
-        type = "tv";
+       type = "tv";
+       info = first_air_date.substring(0, 4);
 
     } else {
        title = original_title;
        date = release_date
         type = "movie";
+        info = release_date;
     }
 
     const movieItem = document.createElement("div");
@@ -130,10 +133,10 @@ function Suggestion_Search(movies) {
             <div class="box_title">${title}</div>
             <div class="container_span">
                <div style="display:flex;">
-                    <div  class="badge-type"> mv </div>
-                    <div class="badge-type_year"> ${updatedString} </div>
+                    <div  class="badge-type"> type </div>
+                    <div class="badge-type_year"> ${release_date} </div>
                </div>
-               <div class="badge-type_text"> ${runtime} min</div>
+               <div class="badge-type_text"> ${info} min</div>
                <div  class="badge-type_rating"> &starf;  ${vote_average} </div>
             </div>
 
