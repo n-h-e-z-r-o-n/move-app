@@ -276,9 +276,6 @@ async function Latest_Shows(event, page, type) {
 
           let  seasons_episode = '';
 
-
-
-
           if(`${data2['poster_path']}` !== `undefined`){
             if (id_prev !==data2['id']){
 
