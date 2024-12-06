@@ -88,8 +88,8 @@ const Trending_div = document.getElementById("TrendingUl");
 const form = document.getElementById("searchForm");
 const search = document.getElementById("search_input");
 
-const  Latest_Movies_List_link =  "https://vidsrc.to/vapi/episode/latest/" ;
 
+const  Latest_Movies_List_link =  "https://vidsrc.to/vapi/episode/latest/" ;
 const  Latest_episode_List_link = "https://vidsrc.to/vapi/episode/latest";
 
 
