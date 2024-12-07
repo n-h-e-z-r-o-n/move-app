@@ -248,30 +248,13 @@ body , html {
 .show_title_section{
   height: 45px;
   width: 100%;
-  background-color: hsl(0, 0%, 90%);
-  padding-top: 5px solid ; /* Adjust the thickness and color as needed */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.show_title_section_movie {
-  height: 45px;
-  width: 100%;
   background-color: var(--section_header_color);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.show_title_section_show{
-  height: 45px;
-  width: 100%;
-  background-color: var(--section_header_color);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+
 
 .text_container {
   height: 80%;
@@ -523,8 +506,8 @@ body , html {
 }
 
 .button_style {
-   background-color:  var(--Brand_Color);
-   color: var(--global-color-bg);
+    background-color:  var(--Brand_Color);
+    color: var(--global-color-fg);
     border-radius: 50%;
     width: 60px; /* Width of the circle */
     height: 60px; /* Height of the circle (same as width for a perfect circle) */
@@ -593,6 +576,9 @@ body , html {
   /*background-image: url("https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/773ac512-567c-4316-81c9-511db0c8a094");*/
   min-width: 100%;
   min-height: 100%;
+  background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; /* Ensures the image covers the entire area */
 
 
 }
@@ -608,10 +594,11 @@ body , html {
   height: auto;
   width:  100%;
   background: linear-gradient(to bottom, rgba(0,0,0,0.3)  20%, var(--global-color-bg)), url("./profile/Home_img.jpg");
-  background-size: cover; /* Ensure the image covers the entire container */
-  background-position: center; /* Center the image within the container */
-  background-repeat: no-repeat;
   margin: auto;
+
+  background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; /* Ensures the image covers the entire area */
 }
 
 .watch_info {
@@ -897,13 +884,7 @@ height: auto;
 
 /* ViewMore ------------------------------------------------------------------*/
 
-.viewd_more_Page_Body{
-    height: 700px;
-    width:  100%;
-    background: var(--Brand_Image);
-    background-repeat: no-repeat;
-    background-position: center;
-    }
+
 
 
 .view_more_Page_Body {
