@@ -970,7 +970,7 @@ display: flex;
 .footer_div .content{
   max-width: 100%;
   margin: auto;
-  padding: 30px 40px 40px 40px;
+  padding: 0px 40px 40px 40px;
 }
 
 .footer_div .content .top{
@@ -979,7 +979,7 @@ display: flex;
   justify-content: space-between;
   margin-bottom: 50px;
 }
-.content .top .logo-details{
+.Footer_logo_name {
   color: #fff;
   font-size: 30px;
 }
@@ -1039,7 +1039,30 @@ display: flex;
   background: #2B1B17;
 }
 
+.disclaimer-section {
+    background-color: #f9f9f9; /* Light gray background for contrast */
+    padding: 20px;
+    border: 1px solid #ddd; /* Subtle border */
+    border-radius: 5px; /* Rounded corners */
+    margin: 20px auto;
+    max-width: 100%; /* Centered and limited width */
+    font-family: Arial, sans-serif; /* Clean font */
+    color: #333; /* Dark text color for readability */
+}
 
+.disclaimer-section h2 {
+    text-align: center;
+    color: #d9534f; /* Optional: Red color for emphasis */
+}
+
+.disclaimer-section p {
+    line-height: 1.6; /* Better readability */
+    margin: 10px 0;
+}
+
+.disclaimer-section strong {
+    color: #000; /* Highlight key text */
+}
 
 
 /*=====================================================================================================*/
