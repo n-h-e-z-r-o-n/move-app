@@ -55,11 +55,10 @@ function Search_Results_SHOW(imdb, type, info_data) {
   }else{  }
 
 
-  element.style.background = `linear-gradient(to bottom, rgba(0, 0, 0, 0), var(--global-color-bg)), url("${IMG_PATH}${info_data['backdrop_path']}")`;
-
-element.style.backgroundPosition = 'center';
-element.style.backgroundRepeat = 'no-repeat';
-element.style.backgroundSize = 'cover';
+    element.style.background = `linear-gradient(to bottom, rgba(0, 0, 0, 0), var(--global-color-bg)), url("${IMG_PATH}${info_data['backdrop_path']}")`;
+    element.style.backgroundPosition = 'center';
+    element.style.backgroundRepeat = 'no-repeat';
+    element.style.backgroundSize = 'cover';
 
 
   if(info_data['adult'] ===  false){
