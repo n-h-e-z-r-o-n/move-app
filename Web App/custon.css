@@ -955,8 +955,8 @@ display: flex;
 /*---------------------------------------------------FOOTER SECTION-------------------------------------------------------*/
 
 .footer {
-    background-color: #2c2c2c; /* Dark gray background */
-    color: #f1f1f1; /* Light text */
+    background-color: var(--Brand_Color); /* Dark gray background */
+    color: var(--global-color-fg); /* Light text */
     font-family: Arial, sans-serif;
     padding: 20px 0;
 }
@@ -978,7 +978,7 @@ display: flex;
 
 .footer-section h3 {
     font-size: 18px;
-    color: #d9534f; /* Highlighted heading */
+    color: var(--global-color-fg); /* Highlighted heading */
     margin-bottom: 15px;
 }
 
@@ -994,17 +994,17 @@ display: flex;
 .footer_Link_Hover a { text-decoration: none;}
 
 /* Disclaimer Section */
-.footer-disclaimer {
+.footer-disclaimer * {
     text-align: center;
     padding: 20px 10%;
     font-size: 12px;
     line-height: 1.6;
-    background-color: #1e1e1e; /* Slightly darker background */
-    color: #ccc;
+    background-color: var(--global-color-fg);
+    color: var(--global-color-bg);
 }
 
 .footer-disclaimer strong {
-    color: #f1f1f1;
+    color: var(--global-color-fg);
 }
 /*=====================================================================================================*/
 
