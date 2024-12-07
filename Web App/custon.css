@@ -956,7 +956,7 @@ display: flex;
 /*---------------------------------------------------FOOTER SECTION-------------------------------------------------------*/
 
 .footer {
-    background-color: #819EA8 ; /* Dark gray background */
+    background-color: #000000 ; /* Dark gray background */
     color: var(--global-color-fg); /* Light text */
     font-family: Arial, sans-serif;
     padding: 20px 0;
@@ -978,7 +978,7 @@ display: flex;
 
 .footer-section h3 {
     font-size: 18px;
-    color: var(--global-color-fg); /* Highlighted heading */
+    color: var(--Brand_Color); /* Highlighted heading */
     margin-bottom: 15px;
 }
 
@@ -999,13 +999,13 @@ display: flex;
     padding: 20px 10%;
     font-size: 12px;
 
-    background:linear-gradient(360deg,  var(--Brand_Color)  0%, var(--global-color-fg) 90%);
+    background:#1A2421;
     border: 0px;
 
 }
 
 .footer-disclaimer_text{
-    color: var(--global-color-bg);
+    color: var(--global-color-fg);
 }
 /*=====================================================================================================*/
 
