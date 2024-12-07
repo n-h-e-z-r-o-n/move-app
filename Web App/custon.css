@@ -591,14 +591,14 @@ body , html {
 
 
 .uuux {
-  height: auto;
-  width:  100%;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.3)  20%, var(--global-color-bg)), url("./profile/Home_img.jpg");
-  margin: auto;
+    height: auto;
+    width:  auto;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3)  20%, var(--global-color-bg)), url("./profile/Home_img.jpg");
+    margin: auto;
 
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover; /* Ensures the image covers the entire area */
+    background-size: strech; /* Ensures the image covers the entire area */
 }
 
 .watch_info {
