@@ -591,19 +591,19 @@ body , html {
 
 
 .uuux {
-    height: ;
-    width:  auto;
-    background: var(--Brand_Image);
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), var(--global-color-bg)), url(&quot;https://image.tmdb.org/t/p/w1280/uVlUu174iiKhsUGqnOSy46eIIMU.jpg&quot;);
     margin: auto;
     background-repeat: no-repeat;
 
     background-size: 100% 100%;
-
-
-
 }
 
-background:  var(--Brand_Image);
+
+/*
+ background:  var(--Brand_Image);
       background-repeat: no-repeat;
       background-position: center;
       margin: 0;
@@ -613,9 +613,9 @@ background:  var(--Brand_Image);
       left: -100%;
       width: 100%;
       height: 100%;
-
+      z-index: 1;
       transition: 0.5s;
-
+*/
 
 .watch_info {
   min-height: 100%;
@@ -626,13 +626,9 @@ background:  var(--Brand_Image);
   overflow:scroll;
   flex-wrap: wrap;
   margin-left: 1%;
+
+
 }
-
-
-
-
-
-
 
 .watch_image {
       max-height: 35%;
