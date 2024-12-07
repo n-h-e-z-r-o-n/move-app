@@ -994,17 +994,17 @@ display: flex;
 .footer_Link_Hover a { text-decoration: none;}
 
 /* Disclaimer Section */
-.footer-disclaimer * {
+.footer-disclaimer{
     text-align: center;
     padding: 20px 10%;
     font-size: 12px;
     line-height: 1.6;
     background-color: var(--global-color-fg);
-    color: var(--global-color-bg);
+
 }
 
-.footer-disclaimer strong {
-    color: var(--global-color-fg);
+.footer-disclaimer_text{
+    color: var(--global-color-bg);
 }
 /*=====================================================================================================*/
 
