@@ -1,6 +1,6 @@
 :root {
---global-color-bg:  blue; /*#0F0404;*/
---global-color-fg:  black  ;
+--global-color-bg:  #002244  ; /* #1D2951  #003153  #0F0404;*/
+--global-color-fg:  white  ;
 --color_theme:  hsl(186 100% 69%);
 --section_header_color:  blue; /*#1B1B1B;*/
 --Brand_Color:  #C49102;
