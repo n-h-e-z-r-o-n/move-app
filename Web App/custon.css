@@ -1,10 +1,10 @@
 :root {
---global-color-bg:  white; /*#0F0404;*/
---global-color-fg: black;
+--global-color-bg:  black; /*#0F0404;*/
+--global-color-fg: white ;
 --color_theme:  hsl(186 100% 69%);
 --section_header_color:  blue; /*#1B1B1B;*/
 --Brand_Color:  #C49102;
---Brand_Image:  linear-gradient(to bottom, rgba(0,0,0,0), var(--Brand_Color)), url("./profile/Home_img.jpg");
+--Brand_Image:  linear-gradient(to bottom, rgba(0,0,0,0), var(--global-color-bg)), url("./profile/Home_img.jpg");
 }
 
 body , html {
@@ -927,6 +927,7 @@ display: flex;
   margin: 0 auto;
   padding: 0px;
   text-align: center;
+  margin: 20px;
 }
 .pagination {
   display: flex;
@@ -999,7 +1000,8 @@ display: flex;
     padding: 20px 10%;
     font-size: 12px;
     line-height: 1.6;
-    background-color: var(--global-color-fg);
+    background-color:linear-gradient(130deg,  red  80%, blue 50%);
+
 
 }
 
