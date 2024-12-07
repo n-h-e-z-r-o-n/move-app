@@ -1,8 +1,8 @@
 :root {
---global-color-bg:  #0F0404;
---global-color-fg: white;
+--global-color-bg:  white; /*#0F0404;*/
+--global-color-fg: black;
 --color_theme:  hsl(186 100% 69%);
---section_header_color:  black; /*#1B1B1B;*/
+--section_header_color:  blue; /*#1B1B1B;*/
 --Brand_Color:  #C49102;
 --Brand_Image:  linear-gradient(to bottom, rgba(0,0,0,0), var(--global-color-bg)), url("./profile/Home_img.jpg");
 }
@@ -897,14 +897,25 @@ height: auto;
 
 /* ViewMore ------------------------------------------------------------------*/
 
-.view_more_Page_Body{
-
+.viewd_more_Page_Body{
     height: 700px;
     width:  100%;
     background: var(--Brand_Image);
     background-repeat: no-repeat;
     background-position: center;
     }
+
+
+.view_more_Page_Body {
+    height: 100vh; /* Full viewport height */
+    width:  100%;  /* Full width */
+    background: var(--Brand_Image);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; /* Ensures the image covers the entire area */
+}
+
+
 .view_grid_container{
 width: 100%;
 min-height: 500px;
@@ -923,17 +934,22 @@ display: flex;
   margin-top: 20px;
 }
 .pagination button {
-  padding: 5px 10px;
-  background-color: #343434;
+  border: 0px;
+  padding: 7px 15px;
+  background-color: transparent;
   cursor: pointer;
-  color: black;
+  color: var(--global-color-fg);
+  margin:5px;
+  backdrop-filter: blur(100px); /* Applies blur to the background */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
 }
 .pagination button.active {
-  background-color: #007bff;
+  background-color: var(--Brand_Color);
   color: #fff;
 }
 .pagination button:disabled {
-  background-color: #343434;
+  background-color: transparent;
+
   cursor: not-allowed;
 }
 /*---------------------------------------------------FOOTER SECTION-------------------------------------------------------*/
@@ -1022,78 +1038,11 @@ display: flex;
   width: 100%;
   background: #2B1B17;
 }
-.footer_div .bottom-details .bottom_text{
-  max-width: 1250px;
-  margin: auto;
-  padding: 20px 40px;
-  display: flex;
-  justify-content: space-between;
-}
-.bottom-details .bottom_text span,
-.bottom-details .bottom_text a{
-  font-size: 14px;
-  font-weight: 300;
-  color: #fff;
-  opacity: 0.8;
-  text-decoration: none;
-}
-.bottom-details .bottom_text a:hover{
-  opacity: 1;
-  text-decoration: underline;
-}
-.bottom-details .bottom_text a{
-  margin-right: 10px;
-}
-@media (max-width: 900px) {
-  .footer_div .content .link-boxes{
-    flex-wrap: wrap;
-  }
-  .footer_div .content .link-boxes .input-box{
-    width: 40%;
-    margin-top: 10px;
-  }
-}
-@media (max-width: 700px){
-  .footer_div{
-    position: relative;
-  }
-  .content .top .logo-details{
-    font-size: 26px;
-  }
-  .content .top .media-icons a{
-    height: 35px;
-    width: 35px;
-    font-size: 14px;
-    line-height: 35px;
-  }
-  .footer_div .content .link-boxes .box{
-    width: calc(100% / 3 - 10px);
-  }
-  .footer_div .content .link-boxes .input-box{
-    width: 60%;
-  }
-  .bottom-details .bottom_text span,
-  .bottom-details .bottom_text a{
-    font-size: 12px;
-  }
-}
-@media (max-width: 520px){
-  .footer_div::before{
-    top: 145px;
-  }
-  .footer_div .content .top{
-    flex-direction: column;
-  }
-  .content .top .media-icons{
-    margin-top: 16px;
-  }
-  .footer_div .content .link-boxes .box{
-    width: calc(100% / 2 - 10px);
-  }
-  .footer_div .content .link-boxes .input-box{
-    width: 100%;
-  }
-}
+
+
+
+
+/*=====================================================================================================*/
 
 
 
