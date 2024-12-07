@@ -982,44 +982,16 @@ display: flex;
     margin-bottom: 15px;
 }
 
-.footer-section p, .footer-section ul {
-    font-size: 14px;
-    line-height: 1.6;
-}
-
-.footer-section ul {
-    list-style: none;
-    padding: 0;
-}
 
 .footer-section ul li {
     margin-bottom: 10px;
 }
 
-.footer-section ul li a {
-    color: #f1f1f1;
-    text-decoration: none;
-    transition: color 0.3s;
-}
 
-.footer-section ul li a:hover {
-    color: #d9534f;
+.footer_Link_Hover:hover {
+    color: var(--Brand_Color);
 }
-
-.social-icons {
-    display: flex;
-    gap: 15px;
-}
-
-.social-icons a {
-    color: #f1f1f1;
-    font-size: 20px;
-    transition: color 0.3s;
-}
-
-.social-icons a:hover {
-    color: #d9534f;
-}
+.footer_Link_Hover a { text-decoration: none;}
 
 /* Disclaimer Section */
 .footer-disclaimer {
