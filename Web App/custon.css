@@ -1,6 +1,6 @@
 :root {
---global-color-bg:  black; /*#0F0404;*/
---global-color-fg: white ;
+--global-color-bg:  white; /*#0F0404;*/
+--global-color-fg:  black  ;
 --color_theme:  hsl(186 100% 69%);
 --section_header_color:  blue; /*#1B1B1B;*/
 --Brand_Color:  #C49102;
@@ -967,7 +967,6 @@ display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 0 10%;
-    border-bottom: 1px solid #444; /* Separator line */
     padding-bottom: 20px;
 }
 
@@ -999,9 +998,9 @@ display: flex;
     text-align: center;
     padding: 20px 10%;
     font-size: 12px;
-    line-height: 1.6;
-    background-color:linear-gradient(130deg,  red  80%, blue 50%);
 
+    background:linear-gradient(360deg,  var(--Brand_Color)  0%, var(--global-color-fg) 90%);
+    border: 0px;
 
 }
 
