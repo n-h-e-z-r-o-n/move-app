@@ -591,15 +591,31 @@ body , html {
 
 
 .uuux {
-    height: auto;
+    height: ;
     width:  auto;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.3)  20%, var(--global-color-bg)), url("./profile/Home_img.jpg");
+    background: var(--Brand_Image);
     margin: auto;
-
     background-repeat: no-repeat;
-    background-position: center;
-    background-size: strech; /* Ensures the image covers the entire area */
+
+    background-size: 100% 100%;
+
+
+
 }
+
+background:  var(--Brand_Image);
+      background-repeat: no-repeat;
+      background-position: center;
+      margin: 0;
+      padding: 0;
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+
+      transition: 0.5s;
+
 
 .watch_info {
   min-height: 100%;
@@ -610,9 +626,13 @@ body , html {
   overflow:scroll;
   flex-wrap: wrap;
   margin-left: 1%;
-
-
 }
+
+
+
+
+
+
 
 .watch_image {
       max-height: 35%;
