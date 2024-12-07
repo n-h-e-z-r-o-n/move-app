@@ -602,20 +602,7 @@ body , html {
 }
 
 
-/*
- background:  var(--Brand_Image);
-      background-repeat: no-repeat;
-      background-position: center;
-      margin: 0;
-      padding: 0;
-      position: fixed;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-      transition: 0.5s;
-*/
+
 
 .watch_info {
   min-height: 100%;
@@ -626,6 +613,7 @@ body , html {
   overflow:scroll;
   flex-wrap: wrap;
   margin-left: 1%;
+  margin-top: 1%;
 
 
 }
