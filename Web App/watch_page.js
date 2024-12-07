@@ -55,7 +55,7 @@ function Search_Results_SHOW(imdb, type, info_data) {
   }else{  }
 
 
-  element.style.background = `linear-gradient(to bottom, rgba(0, 0, 0, 0), var(--global-color-bg)), url("${IMG_PATH}${info_data['backdrop_path']}")`;
+  //element.style.background = `linear-gradient(to bottom, rgba(0, 0, 0, 0), var(--global-color-bg)), url("${IMG_PATH}${info_data['backdrop_path']}")`;
 
   if(info_data['adult'] ===  false){
     PG = 13;
