@@ -5,6 +5,7 @@
 --section_header_color:  #003153; /*#1B1B1B;*/
 --Brand_Color:   #00BFFF;
 --Brand_Image:  linear-gradient(to bottom, rgba(0,0,0,0), var(--global-color-bg)), url("./profile/Home_img.jpg");
+--Footer_Image:  linear-gradient(to bottom, rgba(0,0,0,0), var(--global-color-bg)), url("./profile/footer_img.png");
 }
 
 body , html {
@@ -947,9 +948,11 @@ display: flex;
 
 .footer {
     background-color: #000000 ; /* Dark gray background */
+    background: var(--Footer_Image);
     color: var(--global-color-fg); /* Light text */
     font-family: Arial, sans-serif;
     padding: 20px 0;
+    margin-top: 50px;
 }
 
 .footer-content {
