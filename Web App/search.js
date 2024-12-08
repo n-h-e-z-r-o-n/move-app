@@ -28,45 +28,55 @@ async function SearchShows(url, url2) {
 
   const res2 = await fetch(url2);
   const data2 = await res2.json();
-
+  //console.log("show ", data1['results']);
+  console.log("mvovie ", data2['results']);
   const combinedData =data1.results.concat(data2.results);
   Search_Results_SHOW(combinedData) ;
 }
 
 function Search_Results_SHOW(movies) {
-  console.log(movies);
+  //console.log(movies);
   search_R_div.innerHTML = "";
   movies.forEach((movie) => {
-    const { original_title, original_name, poster_path, id, vote_average, overview, release_date, first_air_date } = movie;
+    const { original_title, original_name, poster_path, id, vote_average, overview, release_date, first_air_date , runtime, S_info} = movie;
+    //console.log(movie);
     let title;
     let type;
-    if (original_title=== undefined) {
+    let Info;
+
+    if (original_title === undefined) {
        title = original_name;
-       date = first_air_date;
-        type = "tv";
+       date = first_air_date.substring(0, 4);
+       type = "tv";
+       info = S_info;
 
     } else {
-       title = original_title;
-       date = release_date
-        type = "movie";
+        title = original_title;
+        date = release_date.substring(0, 4);
+        type = "mv";
+        info = `${runtime} min` ;
     }
 
     const movieItem = document.createElement("div");
     movieItem.classList.add("box");
     movieItem.innerHTML = `
+             <div class="box-img">
+                <img class="img-on" src="${IMG_PATH + poster_path}" alt="">
+                <div class="box-img-button">
+                     <div class="button_style">&#9654;</div>
+                     <div class="button_style">+</div>
+                </div>
+            </div>
+            <div class="box_title">${title}</div>
+            <div class="container_span">
+               <div style="display:flex;">
+                    <div  class="badge-type"> ${type} </div>
+                    <div class="badge-type_year"> ${date} </div>
+               </div>
+               <div class="badge-type_text"> ${info}</div>
+               <div  class="badge-type_rating"> &starf;  ${vote_average} </div>
+            </div>
 
-              <!-- box-1  -->
-
-
-
-                  <div class="box-img">
-                      <img src="${IMG_PATH + poster_path}"  alt="">
-                  </div>
-                  <h3>${title}</h3>
-                  <div class="container_span">
-                     <div style="color: gray;">${date}</div>
-                     <div style="color: gray;"> ${" \t\t\t ★"} ${vote_average}</div>
-                  </div>
     `;
     // Add event listener to open another page when clicked
     movieItem.addEventListener("click", () => {

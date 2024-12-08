@@ -252,6 +252,8 @@ body , html {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top:20px;
+  margin-bottom:20px;
 }
 
 
@@ -263,6 +265,7 @@ body , html {
   font-size: 25px;
   text-align:left;
   font-family: monospace;
+
 }
 
 /*-----------------------------------------------------------------------------*/

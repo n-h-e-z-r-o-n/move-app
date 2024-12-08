@@ -209,11 +209,11 @@ function goToPage(page) {
 // =============================================================================
 if (params['query'] === 'show'){
   console.log("DISP show");
-  //Latest_shows(1);
+  Latest_shows(1);
   renderPagination();// Initial render
 }
 else{
   console.log("DISP movies");
-  //Latest_Movies(1);
+  Latest_Movies(1);
   renderPagination();// Initial render
 }
