@@ -48,13 +48,13 @@ function Search_Results_SHOW(movies) {
        title = original_name;
        date = first_air_date.substring(0, 4);
        type = "tv";
-       info = S_info;
+       info = ''; //S_info;
 
     } else {
         title = original_title;
         date = release_date.substring(0, 4);
         type = "mv";
-        info = `${runtime} min` ;
+        info = ''; //`${runtime} min` ;
     }
 
     const movieItem = document.createElement("div");
