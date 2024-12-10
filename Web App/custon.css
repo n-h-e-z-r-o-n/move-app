@@ -410,10 +410,26 @@ body , html {
 }
 
 .left-arrow {
+position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
   left: 10px;
 }
 
 .right-arrow {
+position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
   right: 10px;
 }
 
