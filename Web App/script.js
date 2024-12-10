@@ -72,12 +72,12 @@ function start_slider(){
 
     const arrows = document.querySelectorAll(".arrow");
 
-    const arrowsRight = document.querySelectorAll(".arrow-right"); // Right arrows
-    const arrowsLeft = document.querySelectorAll(".arrow-left"); // Left arrows
+    const arrowsRight = document.querySelectorAll(".arrow_right"); // Right arrows
+    const arrowsLeft = document.querySelectorAll(".arrow_left"); // Left arrows
 
       const movieLists = document.querySelectorAll(".movie-list");
 
-      arrows.forEach((arrow, i) => {
+      arrowsLeft.forEach((arrow, i) => {
         const itemNumber = movieLists[i].querySelectorAll("img").length;
         let clickCounter = 0;
 
