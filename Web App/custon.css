@@ -388,7 +388,7 @@ body , html {
   color: gray;
 }
 
-.arrow {
+.arrowy {
   font-size: 120px;
   position: absolute;
   top: 0px;
@@ -397,6 +397,26 @@ body , html {
   opacity: 0.5;
   cursor: pointer;
 }
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.left-arrow {
+  left: 10px;
+}
+
+.right-arrow {
+  right: 10px;
+}
+
 
 .container.active {
   background-color: white;
