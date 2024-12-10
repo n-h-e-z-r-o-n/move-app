@@ -321,8 +321,7 @@ body , html {
 .movie-list {
   display: flex;
   align-items: center;
-  height: 100%;
-  height: auto;
+  height: auto;;
   transform: translateX(0);
   transition: all 1s ease-in-out;
 }
