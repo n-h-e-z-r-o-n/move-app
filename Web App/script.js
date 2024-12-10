@@ -72,8 +72,12 @@ function start_slider(){
 
     const arrows = document.querySelectorAll(".arrow");
 
-    const arrowsRight = document.querySelectorAll(".arrow_right"); // Right arrows
-    const arrowsLeft = document.querySelectorAll(".arrow_left"); // Left arrows
+    const arrowsRight = document.querySelectorAll(".larrow"); // Right arrows
+    const arrowsLeft = document.querySelectorAll(".rarrow"); // Left arrows
+
+    console.log("ssdsdsdsds", arrows  );
+    console.log("ssdsdsdsds",arrowsRight, );
+    console.log("ssdsdsdsds" , arrowsLeft );
 
       const movieLists = document.querySelectorAll(".movie-list");
 
