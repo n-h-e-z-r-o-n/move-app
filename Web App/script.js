@@ -69,8 +69,9 @@ function start_slider(){
 //ppppppppppppppppppppppppppppp
 
  function AutoScroll_TRENDING() {
-        const arrowsRight = document.querySelectorAll(".arrow-right"); // Right arrows
-        const arrowsLeft = document.querySelectorAll(".arrow-left"); // Left arrows
+
+    const arrowsRight = document.querySelectorAll(".arrow-right"); // Right arrows
+    const arrowsLeft = document.querySelectorAll(".arrow-left"); // Left arrows
 
       const arrows = document.querySelectorAll(".arrow");
       const movieLists = document.querySelectorAll(".movie-list");
@@ -95,20 +96,7 @@ function start_slider(){
           }
         };
 
-        const clickPrev = () => {
-              if (clickCounter > 0) {
-                const movieList = movieLists[i];
-                const computedStyle = window.getComputedStyle(movieList);
-                const transformValue = computedStyle.getPropertyValue("transform");
-                const currentTranslateX = parseInt(transformValue.split(",")[4]) || 0;
-
-                clickCounter--;
-                movieList.style.transform = `translateX(${currentTranslateX + 300}px)`;
-              }
-            };
-
-        arrowsRight.addEventListener("click", clickNext);
-        arrowsLeft.addEventListener("click", clickNext);
+        arrow.addEventListener("click", clickNext);
         setInterval(clickNext, 3000);   // Auto-click the next arrow after 3 seconds
       });
     }
