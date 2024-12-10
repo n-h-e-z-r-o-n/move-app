@@ -35,7 +35,7 @@ function start_slider(){
   }
     // ------------------------------------------------------------------------------------------
 
-    function AutoScroll_TRENDING() {
+    function mAutoScroll_TRENDING() {
       const arrows = document.querySelectorAll(".arrow");
       const movieLists = document.querySelectorAll(".movie-list");
 
@@ -68,7 +68,49 @@ function start_slider(){
 
 //ppppppppppppppppppppppppppppp
 
+ function AutoScroll_TRENDING() {
+        const arrowsRight = document.querySelectorAll(".arrow-right"); // Right arrows
+        const arrowsLeft = document.querySelectorAll(".arrow-left"); // Left arrows
 
+      const arrows = document.querySelectorAll(".arrow");
+      const movieLists = document.querySelectorAll(".movie-list");
+
+      arrows.forEach((arrow, i) => {
+        const itemNumber = movieLists[i].querySelectorAll("img").length;
+        let clickCounter = 0;
+
+        const clickNext = () => {
+          const ratio = Math.floor(window.innerWidth / 270);
+          clickCounter++;
+          const movieList = movieLists[i];
+          const computedStyle = window.getComputedStyle(movieList);
+          const transformValue = computedStyle.getPropertyValue("transform");
+          const currentTranslateX = parseInt(transformValue.split(",")[4]) || 0;
+
+          if (itemNumber - (4 + clickCounter) + (4 - ratio) >= 0) {
+            movieList.style.transform = `translateX(${currentTranslateX - 300}px)`;
+          } else {
+            movieList.style.transform = "translateX(0)";
+            clickCounter = 0;
+          }
+        };
+
+        const clickPrev = () => {
+              if (clickCounter > 0) {
+                const movieList = movieLists[i];
+                const computedStyle = window.getComputedStyle(movieList);
+                const transformValue = computedStyle.getPropertyValue("transform");
+                const currentTranslateX = parseInt(transformValue.split(",")[4]) || 0;
+
+                clickCounter--;
+                movieList.style.transform = `translateX(${currentTranslateX + 300}px)`;
+              }
+            };
+
+        arrow.addEventListener("click", clickNext);
+        setInterval(clickNext, 3000);   // Auto-click the next arrow after 3 seconds
+      });
+    }
 
 //======================================= movie fetch --code block===================================================
 
