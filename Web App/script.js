@@ -119,7 +119,7 @@ function Slider_Display(movies) {
   Slider_div.innerHTML = "";
   let count = 0 ;// Math.floor(Math.random() * (11 - 0) + 0);
 
-  let count_max = count + 15;
+  let count_max = count + 19;
   let start = 0;
   console.log(count);
   movies.forEach((movie, index) => {
