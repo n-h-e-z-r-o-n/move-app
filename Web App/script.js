@@ -67,19 +67,6 @@ function start_slider(){
 
 
 
-setInterval(() => {
-  document.querySelectorAll(".right-arrow").forEach((arrow) => {
-    arrow.click(); // Trigger right-arrow click event
-  });
-}, 3000);
-
-setInterval(() => {
-  document.querySelectorAll(".left-arrow").forEach((arrow) => {
-    arrow.click(); // Trigger left-arrow click event
-  });
-}, 6000); // Delayed to alternate with right scroll
-
-
 //======================================= movie fetch --code block===================================================
 
 
@@ -366,6 +353,7 @@ async function trendingShows(url) {
   const res = await fetch(url);
   const data = await res.json();
   console.log('trending ', data.results);
+  showsTrending(data.results);
 }
 
 
