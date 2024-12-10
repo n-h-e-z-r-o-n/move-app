@@ -72,8 +72,8 @@ function start_slider(){
 
     const arrows = document.querySelectorAll(".arrow");
 
-    const arrowsRight = document.querySelectorAll(".larrow"); // Right arrows
-    const arrowsLeft = document.querySelectorAll(".rarrow"); // Left arrows
+    const arrowsRight = document.querySelectorAll(".rarrow"); // Right arrows
+    const arrowsLeft = document.querySelectorAll(".larrow"); // Left arrows
 
     console.log("ssdsdsdsds", arrows  );
     console.log("ssdsdsdsds",arrowsRight, );
@@ -81,7 +81,7 @@ function start_slider(){
 
       const movieLists = document.querySelectorAll(".movie-list");
 
-      arrowsLeft.forEach((arrow, i) => {
+      arrowsRight.forEach((arrow, i) => {
         const itemNumber = movieLists[i].querySelectorAll("img").length;
         let clickCounter = 0;
 
@@ -101,8 +101,25 @@ function start_slider(){
           }
         };
 
+      const clickPrev = () => {
+      if (clickCounter > 0) {
+        const movieList = movieLists[i];
+        const computedStyle = window.getComputedStyle(movieList);
+        const transformValue = computedStyle.getPropertyValue("transform");
+        const currentTranslateX = parseInt(transformValue.split(",")[4]) || 0;
+
+        clickCounter--;
+        movieList.style.transform = `translateX(${currentTranslateX + 300}px)`;
+      }
+    };
+
+
+
+
+        arrowsLeft[i].addEventListener("click", clickPrev);
+
         arrow.addEventListener("click", clickNext);
-        setInterval(clickNext, 3000);   // Auto-click the next arrow after 3 seconds
+        setInterval(clickNext, 10000);   // Auto-click the next arrow after 3 seconds
       });
     }
 

@@ -409,7 +409,7 @@ body , html {
   z-index: 10;
 }
 
-.left_arrow {
+.larrow {
 position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -421,7 +421,7 @@ position: absolute;
   left: 10px;
 }
 
-.right_arrow {
+.rarrow {
 position: absolute;
   top: 50%;
   transform: translateY(-50%);
