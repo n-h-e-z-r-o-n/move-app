@@ -400,7 +400,7 @@ body , html {
 
 .arrow {
   position: absolute;
-  top: 50%;
+  top: 80%;
   transform: translateY(-50%);
   background: none;
   border: none;
@@ -409,7 +409,7 @@ body , html {
   z-index: 10;
 }
 
-.left-arrow {
+.leftarrow {
 position: absolute;
   top: 50%;
   transform: translateY(-50%);

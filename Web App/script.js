@@ -70,13 +70,14 @@ function start_slider(){
 
  function AutoScroll_TRENDING() {
 
+    const arrows = document.querySelectorAll(".arrow");
+
     const arrowsRight = document.querySelectorAll(".arrow-right"); // Right arrows
     const arrowsLeft = document.querySelectorAll(".arrow-left"); // Left arrows
 
-      const arrows = document.querySelectorAll(".arrow");
       const movieLists = document.querySelectorAll(".movie-list");
 
-      arrowsRight.forEach((arrow, i) => {
+      arrows.forEach((arrow, i) => {
         const itemNumber = movieLists[i].querySelectorAll("img").length;
         let clickCounter = 0;
 
