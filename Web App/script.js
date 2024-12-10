@@ -107,7 +107,8 @@ function start_slider(){
               }
             };
 
-        arrow.addEventListener("click", clickNext);
+        arrowsRight.addEventListener("click", clickNext);
+        arrowsLeft.addEventListener("click", clickNext);
         setInterval(clickNext, 3000);   // Auto-click the next arrow after 3 seconds
       });
     }
