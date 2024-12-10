@@ -69,55 +69,6 @@ function start_slider(){
 //ppppppppppppppppppppppppppppp
 
 
-function AutoScrollBothDirections() {
-  const leftArrows = document.querySelectorAll(".left-arrow");
-  const rightArrows = document.querySelectorAll(".right-arrow");
-  const movieLists = document.querySelectorAll(".movie-list");
-
-  movieLists.forEach((movieList, i) => {
-    const itemNumber = movieList.querySelectorAll("img").length;
-    let clickCounter = 0; // Track current scroll position
-    const ratio = Math.floor(window.innerWidth / 270); // Adjust for visible items
-
-    const scroll = (direction) => {
-      const computedStyle = window.getComputedStyle(movieList);
-      const transformValue = computedStyle.getPropertyValue("transform");
-      const currentTranslateX = parseInt(transformValue.split(",")[4]) || 0;
-
-      if (direction === "right") {
-        if (itemNumber - (4 + clickCounter) + (4 - ratio) > 0) {
-          movieList.style.transform = `translateX(${currentTranslateX - 300}px)`;
-          clickCounter++;
-        } else {
-          movieList.style.transform = "translateX(0)";
-          clickCounter = 0;
-        }
-      } else if (direction === "left") {
-        if (clickCounter > 0) {
-          movieList.style.transform = `translateX(${currentTranslateX + 300}px)`;
-          clickCounter--;
-        }
-      }
-    };
-
-    rightArrows[i].addEventListener("click", () => scroll("right"));
-    leftArrows[i].addEventListener("click", () => scroll("left"));
-  });
-}
-
-
-setInterval(() => {
-  document.querySelectorAll(".right-arrow").forEach((arrow) => {
-    arrow.click(); // Trigger right-arrow click event
-  });
-}, 3000);
-
-setInterval(() => {
-  document.querySelectorAll(".left-arrow").forEach((arrow) => {
-    arrow.click(); // Trigger left-arrow click event
-  });
-}, 6000); // Delayed to alternate with right scroll
-
 
 //======================================= movie fetch --code block===================================================
 
