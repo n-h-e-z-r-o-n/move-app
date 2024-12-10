@@ -27,7 +27,7 @@ function start_slider(){
         }
 
         // Automatically change the image every 3 seconds
-        setInterval(showNextImage,1000);
+        setInterval(showNextImage,15000);
 
         // Add click event to redirect when an active image is clicked
 

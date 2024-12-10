@@ -387,15 +387,6 @@ body , html {
   color: gray;
 }
 
-.arrowy {
-  font-size: 120px;
-  position: absolute;
-  top: 0px;
-  right: 0;
-  color: lightgray;
-  opacity: 0.5;
-  cursor: pointer;
-}
 
 .arrow {
   position: absolute;
