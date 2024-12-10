@@ -27,7 +27,7 @@ function start_slider(){
         }
 
         // Automatically change the image every 3 seconds
-        setInterval(showNextImage, 5000);
+        setInterval(showNextImage,1000);
 
         // Add click event to redirect when an active image is clicked
 
@@ -119,7 +119,7 @@ function Slider_Display(movies) {
   Slider_div.innerHTML = "";
   let count = 0 ;// Math.floor(Math.random() * (11 - 0) + 0);
 
-  let count_max = count + 12;
+  let count_max = count + 15;
   let start = 0;
   console.log(count);
   movies.forEach((movie, index) => {
