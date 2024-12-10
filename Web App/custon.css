@@ -5,7 +5,6 @@
 --section_header_color:  #003153; /*#1B1B1B;*/
 --Brand_Color:   #00BFFF;
 --Brand_Image:  linear-gradient(to bottom, rgba(0,0,0,0), var(--global-color-bg)), url("./profile/Home_img.jpg");
---Footer_Image:  linear-gradient(to bottom, rgba(0,0,0,0), var(--global-color-bg)), url("./profile/footer_img.png");
 }
 
 body , html {
@@ -180,7 +179,7 @@ body , html {
 
 }
 .slider-img{
-  width: 3%;
+  width: 1%;
   border-radius: 15px;
   cursor: pointer;
   position: relative;
@@ -227,7 +226,7 @@ body , html {
   text-align: left;
   line-height: 33px;
   text-align: left;
-  color: gray;
+  color: var(--Brand_Color);
   text-transform: uppercase;
   transition: 0.7s ease;
   display: none;
@@ -491,6 +490,9 @@ body , html {
     opacity: 0.9;
 }
 
+.box-img:hover .box-img-button   {
+  opacity: 1;
+}
 
 .box-img-button {
     top: 50%; /* Move the button 50% down */
@@ -946,7 +948,6 @@ display: flex;
 
 .footer {
     background-color: #000000 ; /* Dark gray background */
-    background: var(--Footer_Image);
     color: var(--global-color-fg); /* Light text */
     font-family: Arial, sans-serif;
     padding: 20px 0;

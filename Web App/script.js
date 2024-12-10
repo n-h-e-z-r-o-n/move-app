@@ -96,7 +96,11 @@ const  Latest_episode_List_link = "https://vidsrc.to/vapi/episode/latest";
 const page_count = 1;
 if (movie_div) {
     trendingShows(Trending_API_URL)
-    Slider_Movies(Movies_API_URL); // initial Movies
+
+    //Slider_Movies(Movies_API_URL); // initial Movies
+    //Slider_Movies(TVs_API_URL);
+
+    Math.random() < 0.5 ? Slider_Movies(Movies_API_URL) : Slider_Movies(TVs_API_URL);
 
     Latest_Movies(null, page_count, 'add');
     Latest_episode(null, page_count);
@@ -107,23 +111,41 @@ if (movie_div) {
 async function Slider_Movies(url) {
   const res = await fetch(url);
   const data = await res.json();
+  console.log(data.results)
   Slider_Display(data.results);
 }
 
 function Slider_Display(movies) {
   Slider_div.innerHTML = "";
-  let count = 1
+  let count = 0 ;// Math.floor(Math.random() * (11 - 0) + 0);
+
+  let count_max = count + 12;
   let start = 0;
-  movies.forEach((movie) => {
-    if (count < 10){
-          const { title, backdrop_path, poster_path, id, vote_average, overview, release_date } = movie;
+  console.log(count);
+  movies.forEach((movie, index) => {
+    if (count < count_max && index >= count){
+          let  show_name;
+          let updatedString;
+          const { title, original_name, backdrop_path, first_air_date, poster_path, id, vote_average, overview, release_date } = movie;
+
+          if (title === undefined){
+          show_name = original_name;
+          updatedString = first_air_date.substring(0, 4);
+          }else{
+          show_name= title;
+          updatedString = release_date.substring(0, 4);
+          }
+
+
+
           const movieItem = document.createElement("div");
           movieItem.classList.add("slider-img");
           movieItem.innerHTML = `
                 <img src="${IMG_PATH + backdrop_path}" />
                 <div class="details">
-                  <h2 class="details_h2">${title}</h2>
+                  <h2 class="details_h2">${show_name}</h2>
                   <p class="details_p">&#9733; ${vote_average}</p>
+                  <p class="details_p">${updatedString}</p>
                 </div>
           `;
           movieItem.dataset.redirectUrl = `${id}`;
@@ -250,14 +272,14 @@ function showMovies(movies) {
                 <img class="img-on" src="${IMG_PATH + poster_path}" alt="">
                 <div class="box-img-button">
                      <div class="button_style">&#9654;</div>
-                     <div class="button_style">+</div>
+                     <div class="button_style" style="background-color: black;">+</div>
                 </div>
             </div>
             <div class="box_title">${title}</div>
             <div class="container_span">
                <div style="display:flex;">
                     <div  class="badge-type"> mv </div>
-                    <div class="badge-type_year"> ${updatedString} </div>
+                    <div class="badge-type_year">${updatedString} </div>
                </div>
                <div class="badge-type_text"> ${runtime} min</div>
                <div  class="badge-type_rating"> &starf;  ${vote_average} </div>
@@ -426,10 +448,11 @@ let movie_currentPage = 1;
 async function more_movie(){
 
   const button = document.getElementById("moreMovieButton");
-  console.log(button.textContent )
+  const state = button.getAttribute('data-state');
 
-  if (button.textContent ==='Show More'){
+  if (state ==='show-more'){
             button.textContent = "Loading...";
+            button.setAttribute('data-state', 'loading');
 
             movie_currentPage = movie_currentPage + 1;
 
@@ -446,7 +469,8 @@ async function more_movie(){
             let data2 = await res2.json();
             hold.push({poster_path:data2['poster_path'], release_date:data2['release_date'], vote_average:data2['vote_average'], title:data2['title'], id:data2['id']});
             }
-            button.textContent = "Show More";
+            button.innerHTML = "Show More &#x21b4;";
+            button.setAttribute('data-state', 'show-more');
             showMovies(hold)
     }
 }
@@ -457,10 +481,12 @@ let series_currentPage = 1;
 async function more_series(){
 
   const button = document.getElementById("moretvButton");
-  console.log(button.textContent )
+  const state = button.getAttribute('data-state');
 
-  if (button.textContent ==='Show More'){
+
+  if (state ==='show-more'){
             button.textContent = "Loading...";
+            button.setAttribute('data-state', 'loading');
 
             series_currentPage = series_currentPage + 1;
 
@@ -489,7 +515,8 @@ async function more_series(){
                   }
                 }finally{continue;}
             }
-            button.textContent = "Show More";
+            button.innerHTML = "Show More &#x21b4;";
+            button.setAttribute('data-state', 'show-more');
             showTV(hold);
 }
 }
