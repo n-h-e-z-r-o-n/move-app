@@ -117,7 +117,7 @@ async function Slider_Movies(url) {
 
 function Slider_Display(movies) {
   Slider_div.innerHTML = "";
-  let count = 0 ;// Math.floor(Math.random() * (11 - 0) + 0);
+  let count = 0 ; // Math.floor(Math.random() * (11 - 0) + 0);
 
   let count_max = count + 19;
   let start = 0;
@@ -352,6 +352,7 @@ function showTV(movies) {
 async function trendingShows(url) {
   const res = await fetch(url);
   const data = await res.json();
+  console.log('trending ', data.results);
   showsTrending(data.results);
 }
 
