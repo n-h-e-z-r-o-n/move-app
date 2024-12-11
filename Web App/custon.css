@@ -766,13 +766,13 @@ position: absolute;
               border: 0.5px solid var(--Brand_Color);;
               border-radius: 5px;
               transition: background-color 0.3s, border-color 0.3s;
+              border: 0.1px solid transparent;
           }
 .season-selector div:hover {
-    background-color: var(--Brand_Color);
-    border-color: #aaa;
+    border: 0.1px solid var(--Brand_Color);
 }
 .season-selector .selected {
-    background-color: gray;
+    background-color: var(--Brand_Color);
 }
 
   .episodes_container {
@@ -781,7 +781,6 @@ position: absolute;
     display: flex;
     overflow:scroll;
     margin-left: 1%;
-    box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.5);
 
   }
 
@@ -795,22 +794,22 @@ position: absolute;
 
 .episodes .selected {
     background-color: var(--Brand_Color);
-    border-color: #aaa;
 }
 
 .episodes_each {
     padding: 15px;
     border-radius: 5px;
     display: flex;
-    margin: auto;
+    margin: 8px;
     justify-content: center;
     text-align: center;
-    box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+    border: 0.1px solid transparent;
 
 }
 
 .episodes_each:hover {
-    border: 0.4px solid var(--Brand_Color);
+    border: 0.1px solid var(--Brand_Color);
 }
 
 
