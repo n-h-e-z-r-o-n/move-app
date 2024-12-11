@@ -621,8 +621,7 @@ position: absolute;
 }
 
 .watch_container{
-background-color: red;
-    height: 800px;
+    height: 750px;
     width:  100%;
     display:inline-flex;
 }
@@ -645,25 +644,28 @@ background-color: red;
 .watch_info {
   height: 96%;
   width:  25%;
-  padding: 20px 20px 0 20px;
+  padding: 0px 20px 0 20px;
   border-radius: 10px 10px 10px 10px;
+
   box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.5);
   overflow:scroll;
   flex-wrap: wrap;
   margin-left: 1%;
   margin-top: 1%;
-
+  margin-bottom: 1%;
 
 }
 
 .watch_image {
-      max-height: 35%;
-      max-width: 99%;
-      object-fit: cover;
+      height: 35%;
+      width: 50%;
+      object-fit: fit;
       filter: brightness(60%);
       border-radius: 40px 40px 40px 40px;
-       transition: all 0.4s;
-       background-position: center;
+      transition: all 0.4s;
+      background-position: center;
+      margin-left: 1%;
+      margin-top: 1%;
 
 
 }
@@ -707,18 +709,22 @@ background-color: red;
 
 
 .watch_Frame {
-  height: 100%;
+  height: 96%;
   width:  75%;
   justify-content: center;
   text-align: center;
   margin-left: 1%;
+  margin-right: 1%;
   margin-top: 1%;
+  margin-bottom: 1%;
+  box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.5);
+
 }
 
 
 
   .iframe_watch {
-    width: 96%;
+    width: 100%;
     height: 100%;
     border-radius: 5px 5px 5px 5px;
 
