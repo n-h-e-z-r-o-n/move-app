@@ -732,19 +732,27 @@ position: absolute;
 
 
  .seasons{
-     background-color: black;
-     display: flex;
-     width: auto;
-     min-height: 0px;
-     padding-top: 20px;
+     background-color: red;
+      height: 96%;
+  width:  25%;
+  padding: 0px 20px 0 20px;
+  border-radius: 10px 10px 10px 10px;
+
+  box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.5);
+  overflow:scroll;
+  flex-wrap: wrap;
+  margin-left: 1%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+
 
  }
   .seasons_container {
     width: 30%;
     height: 100%;
-    overflow:scroll;
+    overflow: hidden; /* Prevent horizontal scroll */
     text-align: center;
-
+    flex-wrap: wrap;
   }
 
   .episodes_container {
