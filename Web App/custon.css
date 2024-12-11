@@ -732,27 +732,33 @@ position: absolute;
 
 
  .seasons{
-     background-color: red;
-      height: 96%;
-  width:  25%;
-  padding: 0px 20px 0 20px;
-  border-radius: 10px 10px 10px 10px;
 
-  box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.5);
-  overflow:scroll;
-  flex-wrap: wrap;
-  margin-left: 1%;
-  margin-top: 1%;
-  margin-bottom: 1%;
-
+     display: flex;
+     width: auto;
+     min-height: 0px;
+     max-height: 300px;
+     padding-top: 20px;
 
  }
-  .seasons_container {
-    width: 30%;
+
+ /*  width: 30%;
     height: 100%;
-    overflow: hidden; /* Prevent horizontal scroll */
+    overflow: hidden;
     text-align: center;
     flex-wrap: wrap;
+    */
+
+  .seasons_container {
+
+    background-color: red;
+    max-height: 100%;
+    width:  25%;
+    box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.5);
+    overflow:scroll;
+    flex-wrap: wrap;
+    margin-left: 2%;
+
+
   }
 
   .episodes_container {
@@ -772,7 +778,7 @@ position: absolute;
               transition: background-color 0.3s, border-color 0.3s;
           }
 .season-selector div:hover {
-    background-color: gray;
+    background-color: var(--Brand_Color);
     border-color: #aaa;
 }
 .season-selector .selected {
