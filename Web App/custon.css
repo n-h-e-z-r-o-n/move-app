@@ -732,6 +732,7 @@ position: absolute;
 
 
  .seasons{
+     background-color: black; 
      display: flex;
      width: auto;
      min-height: 0px;
