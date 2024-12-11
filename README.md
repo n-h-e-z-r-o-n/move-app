@@ -10,17 +10,17 @@ This desktop application allows users to watch movies and TV shows on their comp
 - Browse Movies and Shows: Easily navigate through a collection of movies and TV shows.
 - Search Functionality: Quickly find specific titles by searching through the database.
 - Streaming Capabilities: Stream content directly within the application.
-![image](https://github.com/user-attachments/assets/075d677a-a04e-49b4-8dda-3cd4956e33f2)
 
 # Screenshot
-##New Version  Screenshots
+## New Version  Screenshots
 ![image](https://github.com/user-attachments/assets/db4b31b5-8651-4667-90cb-8b5696fc206f)
 ![image](https://github.com/user-attachments/assets/a3c65b3b-8d30-4122-af32-8c1444b288ae)
 ![image](https://github.com/user-attachments/assets/dbffef31-ed0d-4148-99b1-769343b85938)
 ![image](https://github.com/user-attachments/assets/c961de6d-187c-4356-be5c-b16e70a4fe30)
-![image](https://github.com/user-attachments/assets/6c3f2c30-4764-43e8-b855-ffad21a845a3)
+![image](https://github.com/user-attachments/assets/075d677a-a04e-49b4-8dda-3cd4956e33f2)
 
-##Old Version 1 Screenshots
+
+## Old Version 1 Screenshots
 ### 1
 ![image](https://github.com/ice-black/move-app/assets/55835551/3e898042-1d4b-4e86-89db-06f1cf591d0a)
 ### 2
