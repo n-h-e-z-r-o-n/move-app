@@ -119,13 +119,14 @@ body , html {
 }
 
 .search_input:focus {
-    background-color: var(--Brand_Color);; /* Background color on focus */
+    background-color: var(--Brand_Color); /* Background color on focus */
     border-color: var(--Brand_Color); /* Border color on focus */
     color: var(--global-color-fg);
 
 }
 
 .profile-container {
+
   flex: 1;
   display: flex;
   align-items: center;
@@ -133,13 +134,21 @@ body , html {
 }
 
 .profile-picture {
-  width: 42px;
-  height: 42px;
+  background-color: transparent;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   object-fit: cover;
+  margin-right: 2px;
+  border: 0.3px solid transparent;
+  backdrop-filter: blur(21px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
 }
 
-
+.profile-picture:hover {
+    border-color: var(--Brand_Color); /* Border color on hover */
+}
 /* ------------------------------------------------------------------------ */
 
 .trending_container{
