@@ -759,16 +759,6 @@ position: absolute;
 
   }
 
-  .episodes_container {
-    width: 72%;
-    height: 100%;
-    display: flex;
-    overflow:scroll;
-    margin-left: 1%;
-    box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.5);
-
-  }
-
   .season-selector div {
               padding: 10px;
               margin: 15px;
@@ -783,27 +773,44 @@ position: absolute;
 }
 .season-selector .selected {
     background-color: gray;
-    border-color: #aaa;
 }
+
+  .episodes_container {
+    width: 72%;
+    height: 100%;
+    display: flex;
+    overflow:scroll;
+    margin-left: 1%;
+    box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.5);
+
+  }
+
+
 .episodes {
             display: flex;
             position: relative;
             flex-wrap: wrap;
-            
+
         }
 
 .episodes .selected {
-    background-color: gray;
+    background-color: var(--Brand_Color);
     border-color: #aaa;
 }
 
 .episodes_each {
     padding: 15px;
-    border: 1px solid gray;
-    height: 2%;
-    border-radius: 1px;
+    border-radius: 5px;
     display: flex;
-    margin: 2px;
+    margin: auto;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.5);
+
+}
+
+.episodes_each:hover {
+    border: 0.4px solid var(--Brand_Color);
 }
 
 
